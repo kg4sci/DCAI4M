@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Materials Discovery: A Data-Centric Perspective</title>
+<style>
+  :root {
+    --bg:#f4f6f9;--surface:#fff;--text:#0f172a;--text2:#475569;--text3:#94a3b8;
+    --border:#e2e8f0;--border-light:#f1f5f9;--primary:#4f46e5;--primary-light:#eef2ff;
+    --primary-dark:#3730a3;--accent:#0d9488;--accent-light:#ccfbf1;--amber:#d97706;
+    --amber-light:#fef3c7;--rose:#e11d48;--rose-light:#ffe4e6;--sky:#0284c7;
+    --sky-light:#e0f2fe;--violet:#7c3aed;--violet-light:#ede9fe;--emerald:#059669;
+    --emerald-light:#d1fae5;--radius:10px;--radius-sm:6px;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.03);--shadow:0 1px 3px rgba(0,0,0,.05),0 1px 2px rgba(0,0,0,.04);
+    --shadow-md:0 4px 14px rgba(0,0,0,.06),0 2px 4px rgba(0,0,0,.04);
+    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--primary);text-decoration:none;transition:color .15s}
+  a:hover{color:var(--primary-dark)}
+
+  /* ═══ HEADER ═══ */
+  .site-header{background:linear-gradient(135deg,#0f172a 0%,#1e293b 40%,#312e81 100%);color:#fff;padding:32px 0 28px;position:relative;overflow:hidden}
+  .site-header::before{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(99,102,241,.12)}
+  .site-header::after{content:'';position:absolute;bottom:-50px;left:5%;width:200px;height:200px;border-radius:50%;background:rgba(13,148,136,.08)}
+  .header-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;flex-wrap:wrap;gap:16px}
+  .logo-row{display:flex;align-items:center;gap:16px}
+  .logo-icon{width:48px;height:48px;background:rgba(255,255,255,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.12)}
+  .logo-text h1{font-size:20px;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+  .logo-text span{font-size:12px;opacity:.6;font-weight:400}
+  .header-stats{display:flex;gap:28px}
+  .hstat{text-align:center}
+  .hstat .num{font-size:28px;font-weight:700;line-height:1.1}
+  .hstat .lbl{font-size:11px;opacity:.55;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+
+  /* ═══ CONTAINER ═══ */
+  .container{max-width:1400px;margin:0 auto;padding:0 24px}
+
+  /* ═══ TABS ═══ */
+  .tab-nav{display:flex;gap:2px;margin:20px 0 0;background:var(--surface);border-radius:var(--radius) var(--radius) 0 0;padding:5px;border:1px solid var(--border);border-bottom:none}
+  .tab-btn{flex:1;max-width:220px;padding:11px 20px;border:none;background:transparent;font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;border-radius:var(--radius-sm);transition:all .15s;display:flex;align-items:center;justify-content:center;gap:7px;font-family:var(--font)}
+  .tab-btn:hover{color:var(--text);background:var(--border-light)}
+  .tab-btn.active{background:var(--primary);color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(79,70,229,.3)}
+  .tab-panel{display:none;background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:24px}
+  .tab-panel.active{display:block}
+
+  /* ═══ FILTERS ═══ */
+  .filter-section{margin-bottom:18px}
+  .filter-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+  .search-wrap{flex:1;min-width:260px;max-width:440px;position:relative}
+  .search-wrap input{width:100%;padding:10px 14px 10px 40px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:14px;background:var(--bg);color:var(--text);transition:all .15s;font-family:var(--font)}
+  .search-wrap input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light);background:#fff}
+  .search-wrap .s-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:15px;pointer-events:none}
+  .filter-select{padding:10px 34px 10px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;background:var(--bg);color:var(--text);cursor:pointer;font-family:var(--font);appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;transition:all .15s;min-width:150px}
+  .filter-select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light);background-color:#fff}
+  .btn-reset{padding:10px 18px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);color:var(--text2);cursor:pointer;font-size:13px;font-family:var(--font);white-space:nowrap;transition:all .15s;display:flex;align-items:center;gap:5px}
+  .btn-reset:hover{background:var(--rose-light);color:var(--rose);border-color:var(--rose)}
+  .btn-export{padding:10px 18px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--emerald-light);color:var(--emerald);cursor:pointer;font-size:13px;font-family:var(--font);white-space:nowrap;transition:all .15s;display:flex;align-items:center;gap:5px;font-weight:500}
+  .btn-export:hover{background:var(--emerald);color:#fff;border-color:var(--emerald)}
+  .filter-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+  .f-tag{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--bg);color:var(--text2);transition:all .15s;white-space:nowrap;user-select:none}
+  .f-tag:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+  .f-tag.active{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:600;box-shadow:0 2px 6px rgba(79,70,229,.25)}
+  .f-tag .count{font-size:10px;opacity:.7;background:rgba(0,0,0,.1);padding:1px 5px;border-radius:8px}
+  .f-tag.active .count{background:rgba(255,255,255,.2)}
+  .result-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .result-bar-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .result-bar-right{display:flex;align-items:center;gap:8px}
+  .result-count{font-size:13px;color:var(--text2)}
+  .result-count strong{color:var(--text);font-size:15px}
+  .view-toggle{display:flex;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border)}
+  .view-toggle button{padding:7px 14px;border:none;background:var(--bg);color:var(--text2);cursor:pointer;font-size:12px;font-family:var(--font);transition:all .12s}
+  .view-toggle button.active{background:var(--primary);color:#fff;font-weight:600}
+  .view-toggle button:not(.active):hover{background:var(--border-light);color:var(--text)}
+
+  /* ═══ CARDS ═══ */
+  .card-list{display:flex;flex-direction:column;gap:10px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;box-shadow:var(--shadow-sm);transition:all .18s;position:relative;border-left:3px solid transparent}
+  .card:hover{box-shadow:var(--shadow-md);border-color:#cbd5e1;border-left-color:var(--primary)}
+  .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .card-name{font-size:15px;font-weight:600;color:var(--text);line-height:1.45;flex:1;min-width:200px;word-break:break-word}
+  .card-name a{color:inherit}
+  .card-name a:hover{color:var(--primary)}
+  .card-badges{display:flex;flex-wrap:wrap;gap:5px;align-items:center;flex-shrink:0}
+  .badge{font-size:11px;padding:4px 10px;border-radius:12px;font-weight:600;white-space:nowrap;letter-spacing:.01em}
+  .badge-cat{background:var(--violet-light);color:var(--violet)}
+  .badge-dt{background:var(--sky-light);color:var(--sky)}
+  .badge-task{background:var(--accent-light);color:var(--accent)}
+  .badge-year{background:var(--amber-light);color:var(--amber)}
+  .badge-score{background:var(--emerald-light);color:var(--emerald)}
+  .badge-score.zero{background:#f1f5f9;color:#94a3b8}
+  .card-desc{font-size:13px;color:var(--text2);margin-top:8px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .card-desc.open{-webkit-line-clamp:unset}
+  .card-expand{font-size:12px;color:var(--primary);cursor:pointer;border:none;background:none;padding:2px 0;margin-top:3px;font-family:var(--font);font-weight:500}
+  .card-expand:hover{text-decoration:underline}
+  .card-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px;font-size:12px;color:var(--text2)}
+  .card-foot .url-link{max-width:360px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle}
+  .card-foot .sep{color:var(--text3)}
+
+  /* ═══ TABLE VIEW ═══ */
+  .table-view{width:100%;border-collapse:collapse;font-size:13px}
+  .table-view th{text-align:left;padding:10px 12px;background:var(--bg);color:var(--text2);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid var(--border);white-space:nowrap;position:sticky;top:0;z-index:1}
+  .table-view td{padding:9px 12px;border-bottom:1px solid var(--border-light);vertical-align:top}
+  .table-view tr:hover td{background:var(--primary-light)}
+  .table-view .td-name{font-weight:600;max-width:300px}
+  .table-view .td-name a{color:var(--text)}
+  .table-view .td-name a:hover{color:var(--primary)}
+  .table-view .td-url{max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+  .table-view .td-desc{max-width:300px;font-size:12px;color:var(--text2);line-height:1.4}
+  .table-wrap{overflow-x:auto;max-height:70vh;overflow-y:auto}
+
+  /* ═══ PAGINATION ═══ */
+  .pager{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:24px;padding:8px 0}
+  .pager button{padding:8px 15px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);cursor:pointer;font-size:13px;font-family:var(--font);transition:all .12s}
+  .pager button:hover:not(:disabled){background:var(--primary-light);color:var(--primary);border-color:var(--primary)}
+  .pager button:disabled{opacity:.35;cursor:default}
+  .pager button.cur{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:600}
+  .pager .pg-info{font-size:13px;color:var(--text2);margin:0 8px}
+
+  /* ═══ STATS ═══ */
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:18px}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow-sm)}
+  .stat-card h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .stat-card h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--primary);flex-shrink:0}
+  .stat-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+  .stat-bar-row .lbl{width:170px;font-size:12px;color:var(--text2);text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .stat-bar-row .bar-track{flex:1;height:20px;background:var(--bg);border-radius:4px;overflow:hidden;min-width:30px}
+  .stat-bar-row .bar-fill{height:100%;background:linear-gradient(90deg,var(--primary),#818cf8);border-radius:4px;transition:width .5s ease}
+  .stat-bar-row .val{font-size:12px;font-weight:600;color:var(--text);width:32px;flex-shrink:0;text-align:right}
+
+  /* ═══ HEATMAP ═══ */
+  .heatmap-wrap{overflow-x:auto;margin-top:2px}
+  .heatmap-table{border-collapse:collapse;font-size:12px;width:100%}
+  .heatmap-table th{padding:8px 10px;text-align:center;font-weight:600;color:var(--text2);font-size:11px;white-space:nowrap}
+  .heatmap-table th:first-child{text-align:right;padding-right:14px}
+  .heatmap-table td{padding:0;text-align:center}
+  .heatmap-table .hm-cell{display:block;padding:8px 4px;min-width:60px;font-weight:600;font-size:13px;border-radius:4px;margin:2px;transition:transform .12s}
+  .heatmap-table .hm-cell:hover{transform:scale(1.1);z-index:2;position:relative}
+  .heatmap-table .hm-row-label{text-align:right;padding-right:14px;font-size:12px;color:var(--text2);white-space:nowrap;font-weight:500}
+  .hm-0{background:var(--bg);color:var(--text3)}
+  .hm-1{background:#e0e7ff;color:#4338ca}
+  .hm-2{background:#c7d2fe;color:#3730a3}
+  .hm-3{background:#a5b4fc;color:#312e81}
+  .hm-4{background:#818cf8;color:#fff}
+  .hm-5{background:#6366f1;color:#fff}
+  .hm-6{background:#4f46e5;color:#fff}
+
+  /* ═══ COMPLETENESS ═══ */
+  .completeness-grid{display:flex;flex-wrap:wrap;gap:14px}
+  .comp-item{display:flex;align-items:center;gap:8px;min-width:160px}
+  .comp-item .comp-label{font-size:11px;color:var(--text2);width:80px;text-align:right;white-space:nowrap}
+  .comp-item .comp-bar-track{flex:1;height:14px;background:var(--bg);border-radius:4px;overflow:hidden;min-width:60px}
+  .comp-item .comp-bar-fill{height:100%;border-radius:4px;transition:width .5s ease}
+  .comp-item .comp-pct{font-size:11px;font-weight:600;color:var(--text);width:36px;text-align:right}
+
+  /* ═══ TIMELINE ═══ */
+  .timeline-section{margin-top:22px}
+  .timeline-section h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+  .timeline-section h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex-shrink:0}
+  .tl-container{position:relative}
+  .tl-chart{display:flex;align-items:flex-end;gap:5px;height:220px;padding:0 4px;border-bottom:1px solid var(--border);margin-bottom:40px}
+  .tl-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:22px;position:relative}
+  .tl-bar{width:100%;max-width:40px;background:linear-gradient(180deg,#6366f1,#0d9488);border-radius:5px 5px 0 0;transition:height .5s ease,filter .15s;cursor:pointer;min-height:4px}
+  .tl-bar:hover{filter:brightness(1.2);box-shadow:0 0 12px rgba(99,102,241,.3)}
+  .tl-val{font-size:10px;font-weight:700;color:var(--text);margin-bottom:3px}
+  .tl-year{position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--text3);white-space:nowrap;font-weight:500}
+
+  /* Empty */
+  .empty-state{text-align:center;padding:60px 20px;color:var(--text3)}
+  .empty-state .e-icon{font-size:48px;margin-bottom:8px;opacity:.5}
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:768px){
+    .header-inner{flex-direction:column;text-align:center}
+    .header-stats{gap:18px}
+    .container{padding:0 12px}
+    .tab-panel{padding:16px 12px}
+    .filter-row{flex-direction:column}
+    .search-wrap{max-width:100%}
+    .card-top{flex-direction:column}
+    .stats-grid{grid-template-columns:1fr}
+    .stat-bar-row .lbl{width:110px}
+    .tl-chart{height:160px;margin-bottom:30px}
+    .tl-year{bottom:-24px;font-size:9px}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-row">
+      <div class="logo-icon">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <rect x="2" y="7" width="11" height="11" rx="2.5" fill="white" opacity=".9"/>
+          <rect x="17" y="2" width="11" height="11" rx="2.5" fill="white" opacity=".55"/>
+          <rect x="7" y="17" width="11" height="11" rx="2.5" fill="white" opacity=".7"/>
+          <rect x="17" y="17" width="4" height="4" rx="1.2" fill="white" opacity=".3"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <h1>AI for Materials Discovery: A Data-Centric Perspective</h1>
+        <span>Curated benchmark registry for AI-driven materials science</span>
+      </div>
+    </div>
+    <div class="header-stats">
+      <div class="hstat"><div class="num" id="hdr-total">220</div><div class="lbl">Datasets</div></div>
+      <div class="hstat"><div class="num" id="hdr-cats">5</div><div class="lbl">Categories</div></div>
+      <div class="hstat"><div class="num" id="hdr-years">&ndash;</div><div class="lbl">Year Span</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="browse">&#128269; Browse Datasets</button>
+    <button class="tab-btn" data-tab="stats">&#128202; Statistics</button>
+  </nav>
+
+  <!-- ═══ TAB 1: BROWSE ═══ -->
+  <div class="tab-panel active" id="panel-browse">
+    <div class="filter-section">
+      <div class="filter-row">
+        <div class="search-wrap">
+          <span class="s-icon">&#128269;</span>
+          <input type="text" id="search" placeholder="Search datasets by name, description, material, DOI...">
+        </div>
+        <select class="filter-select" id="sel-category"><option value="">All Categories</option></select>
+        <select class="filter-select" id="sel-datatype"><option value="">All Data Types</option></select>
+        <select class="filter-select" id="sel-tasktype"><option value="">All Task Types</option></select>
+        <button class="btn-reset" id="btn-reset">&#8635; Reset</button>
+      </div>
+      <div class="filter-tags" id="quick-tags-cat"></div>
+    </div>
+    <div class="result-bar">
+      <div class="result-bar-left">
+        <span class="result-count" id="result-msg">Loading...</span>
+      </div>
+      <div class="result-bar-right">
+        <div class="view-toggle" id="view-toggle">
+          <button class="active" data-view="cards" title="Card view">&#9638;&#9638;&#9638; Cards</button>
+          <button data-view="table" title="Table view">&#9776; Table</button>
+        </div>
+        <button class="btn-export" id="btn-export" title="Download filtered results as CSV">&#128229; Export CSV</button>
+      </div>
+    </div>
+    <div id="view-container">
+      <div class="card-list" id="card-list"></div>
+      <div class="table-wrap" id="table-wrap" style="display:none"></div>
+    </div>
+    <div class="pager" id="pager"></div>
+  </div>
+
+  <!-- ═══ TAB 2: STATISTICS ═══ -->
+  <div class="tab-panel" id="panel-stats">
+    <div class="stats-grid">
+      <div class="stat-card"><h3><span class="dot"></span>By Category</h3><div id="stat-cat"></div></div>
+      <div class="stat-card"><h3><span class="dot"></span>By Data Type</h3><div id="stat-dt"></div></div>
+      <div class="stat-card"><h3><span class="dot"></span>By Task Type</h3><div id="stat-tt"></div></div>
+    </div>
+
+    <!-- Heatmap -->
+    <div class="stats-grid" style="margin-top:18px">
+      <div class="stat-card" style="grid-column:1/-1">
+        <h3><span class="dot"></span>Category &times; Task Type Cross-Tabulation</h3>
+        <div class="heatmap-wrap" id="heatmap"></div>
+      </div>
+    </div>
+
+    <!-- Completeness -->
+    <div class="stats-grid" style="margin-top:18px">
+      <div class="stat-card">
+        <h3><span class="dot"></span>Data Completeness</h3>
+        <div class="completeness-grid" id="completeness"></div>
+      </div>
+      <div class="stat-card">
+        <h3><span class="dot"></span>Timeline &mdash; Dataset Publications by Year</h3>
+        <div class="tl-container"><div class="tl-chart" id="timeline"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+//  DATA & STATE
+// ═══════════════════════════════════════
+let ALL = [];
+let filtered = [];
+const PER_PAGE = 20;
+let page = 1;
+let activeCatTag = null;
+let currentView = 'cards';
+const descStore = {};
+
+async function init() {
+  try {
+    const r = await fetch('datasets.json');
+    ALL = await r.json();
+  } catch(e) {
+    document.getElementById('card-list').innerHTML = '<div class="empty-state"><div class="e-icon">&#9888;&#65039;</div><p>Failed to load datasets. Ensure datasets.json exists.</p></div>';
+    return;
+  }
+  document.getElementById('hdr-total').textContent = ALL.length;
+  const cats = [...new Set(ALL.map(d=>d.category))];
+  document.getElementById('hdr-cats').textContent = cats.length;
+  const years = ALL.map(d=>d.year).filter(y=>/^\d{4}$/.test(y)).sort();
+  document.getElementById('hdr-years').innerHTML = years.length ? `${years[0]}&ndash;${years[years.length-1]}` : '&ndash;';
+
+  populateSelects();
+  renderQuickTags();
+  bindEvents();
+  applyFilters();
+  renderStats();
+}
+
+// ═══════════════════════════════════════
+//  FILTER UI
+// ═══════════════════════════════════════
+function populateSelects() {
+  const catVals = [...new Set(ALL.map(d=>d.category))].sort();
+  fillSelect('sel-category', catVals);
+  const dtVals = [...new Set(ALL.map(d=>d.data_type).filter(Boolean))].sort();
+  fillSelect('sel-datatype', dtVals);
+  const ttVals = [...new Set(ALL.map(d=>d.task_type).filter(Boolean))].sort();
+  fillSelect('sel-tasktype', ttVals);
+}
+function fillSelect(id, vals) {
+  const sel = document.getElementById(id);
+  vals.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
+}
+function renderQuickTags() {
+  const cats = [...new Set(ALL.map(d=>d.category))].sort();
+  const counts = {}; cats.forEach(c => { counts[c] = ALL.filter(d=>d.category===c).length; });
+  document.getElementById('quick-tags-cat').innerHTML = cats.map(c =>
+    `<span class="f-tag${activeCatTag===c?' active':''}" data-cat="${escHtml(c)}" onclick="toggleCatTag('${escJs(c)}')">${escHtml(c)}<span class="count">${counts[c]}</span></span>`
+  ).join('');
+}
+function toggleCatTag(cat) {
+  activeCatTag = (activeCatTag === cat) ? null : cat;
+  document.getElementById('sel-category').value = activeCatTag || '';
+  renderQuickTags();
+  applyFilters();
+}
+function bindEvents() {
+  document.getElementById('search').addEventListener('input', debounce(applyFilters, 250));
+  document.getElementById('sel-category').addEventListener('change', ()=>{ activeCatTag = null; renderQuickTags(); applyFilters(); });
+  document.getElementById('sel-datatype').addEventListener('change', applyFilters);
+  document.getElementById('sel-tasktype').addEventListener('change', applyFilters);
+  document.getElementById('btn-reset').addEventListener('click', resetAll);
+  document.getElementById('btn-export').addEventListener('click', exportCSV);
+  document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click', switchTab));
+  document.querySelectorAll('#view-toggle button').forEach(b=>b.addEventListener('click', function(){
+    currentView = this.dataset.view;
+    document.querySelectorAll('#view-toggle button').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');
+    renderView();
+  }));
+}
+function resetAll() {
+  document.getElementById('search').value = '';
+  document.getElementById('sel-category').value = '';
+  document.getElementById('sel-datatype').value = '';
+  document.getElementById('sel-tasktype').value = '';
+  activeCatTag = null;
+  renderQuickTags();
+  applyFilters();
+}
+
+// ═══════════════════════════════════════
+//  FILTER LOGIC
+// ═══════════════════════════════════════
+function applyFilters() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const cat = document.getElementById('sel-category').value;
+  const dt = document.getElementById('sel-datatype').value;
+  const tt = document.getElementById('sel-tasktype').value;
+  filtered = ALL.filter(d => {
+    if (cat && d.category !== cat) return false;
+    if (dt && d.data_type !== dt) return false;
+    if (tt && d.task_type !== tt) return false;
+    if (q) {
+      const hay = [d.name,d.description,d.material_system,d.category,d.doi,d.scale,d.baseline,d.data_type,d.task_type].filter(Boolean).join(' ').toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  page = 1;
+  renderView();
+}
+
+// ═══════════════════════════════════════
+//  VIEW RENDERING
+// ═══════════════════════════════════════
+function renderView() {
+  document.getElementById('result-msg').innerHTML = `Showing <strong>${filtered.length}</strong> of ${ALL.length} datasets`;
+  if (currentView === 'cards') {
+    document.getElementById('card-list').style.display = '';
+    document.getElementById('table-wrap').style.display = 'none';
+    renderCards();
+  } else {
+    document.getElementById('card-list').style.display = 'none';
+    document.getElementById('table-wrap').style.display = '';
+    renderTable();
+  }
+}
+
+// ═══════════════════════════════════════
+//  CARD VIEW
+// ═══════════════════════════════════════
+function renderCards() {
+  const el = document.getElementById('card-list');
+  if (!filtered.length) {
+    el.innerHTML = '<div class="empty-state"><div class="e-icon">&#128236;</div><p>No datasets match your filters.</p></div>';
+    document.getElementById('pager').innerHTML = '';
+    return;
+  }
+  const totalPages = Math.ceil(filtered.length / PER_PAGE);
+  const start = (page-1)*PER_PAGE;
+  const slice = filtered.slice(start, start+PER_PAGE);
+  descStore._ = {};
+
+  el.innerHTML = slice.map((d,i)=>{
+    const idx = start+i;
+    const desc = d.description||'';
+    const short = desc.length>200 ? desc.slice(0,200)+'&hellip;' : desc;
+    const expandable = desc.length>200;
+    descStore._[idx] = {full:desc, short};
+    const sc = (d.score||0)>0 ? 'badge-score' : 'badge-score zero';
+    const st = (d.score||0)>0 ? `&#9733; ${d.score}` : '&#9734; 0';
+    return `<div class="card">
+      <div class="card-top">
+        <div class="card-name">${d.url ? `<a href="${escHtml(d.url)}" target="_blank" rel="noopener" title="${escHtml(d.url)}">${escHtml(d.name||'(untitled)')}</a>` : escHtml(d.name||'(untitled)')}</div>
+        <div class="card-badges">
+          <span class="badge badge-cat">${escHtml(d.category)}</span>
+          ${d.data_type ? `<span class="badge badge-dt">${escHtml(d.data_type)}</span>` : ''}
+          <span class="badge badge-task">${escHtml(d.task_type||'')}</span>
+          ${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : ''}
+          <span class="badge ${sc}">${st}</span>
+        </div>
+      </div>
+      <div class="card-desc" id="dsc-${idx}">${short}</div>
+      ${expandable ? `<button class="card-expand" onclick="toggleDesc(${idx})">&#9654; Show more</button>` : ''}
+      <div class="card-foot">
+        ${d.url ? `<span>&#128279; <a href="${escHtml(d.url)}" target="_blank" rel="noopener" class="url-link">${escHtml(d.url)}</a></span>` : ''}
+        ${d.doi ? `<span class="sep">&middot;</span><span>DOI: ${escHtml(d.doi)}</span>` : ''}
+        ${d.scale ? `<span class="sep">&middot;</span><span>${escHtml(d.scale).slice(0,120)}</span>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  renderPager(totalPages);
+}
+
+function renderTable() {
+  const el = document.getElementById('table-wrap');
+  if (!filtered.length) {
+    el.innerHTML = '<div class="empty-state"><div class="e-icon">&#128236;</div><p>No datasets match your filters.</p></div>';
+    document.getElementById('pager').innerHTML = '';
+    return;
+  }
+  const totalPages = Math.ceil(filtered.length / PER_PAGE);
+  const start = (page-1)*PER_PAGE;
+  const slice = filtered.slice(start, start+PER_PAGE);
+
+  el.innerHTML = `<table class="table-view"><thead><tr>
+    <th>#</th><th>Name</th><th>Category</th><th>Data Type</th><th>Task Type</th><th>Year</th><th>Score</th><th>Description</th><th>URL</th><th>DOI</th>
+  </tr></thead><tbody>${slice.map((d,i)=>{
+    const sc = (d.score||0)>0 ? `&#9733; ${d.score}` : '&#9734; 0';
+    return `<tr>
+      <td style="color:var(--text3)">${start+i+1}</td>
+      <td class="td-name">${d.url ? `<a href="${escHtml(d.url)}" target="_blank" rel="noopener">${escHtml(d.name||'')}</a>` : escHtml(d.name||'')}</td>
+      <td><span class="badge badge-cat">${escHtml(d.category)}</span></td>
+      <td>${d.data_type ? `<span class="badge badge-dt">${escHtml(d.data_type)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
+      <td><span class="badge badge-task">${escHtml(d.task_type||'')}</span></td>
+      <td>${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
+      <td style="font-weight:600;color:${(d.score||0)>0?'var(--emerald)':'var(--text3)'}">${sc}</td>
+      <td class="td-desc">${escHtml((d.description||'').slice(0,150))}${(d.description||'').length>150?'&hellip;':''}</td>
+      <td class="td-url">${d.url ? `<a href="${escHtml(d.url)}" target="_blank" rel="noopener">link</a>` : ''}</td>
+      <td style="font-size:12px">${escHtml((d.doi||'').slice(0,40))}</td>
+    </tr>`;
+  }).join('')}</tbody></table>`;
+
+  renderPager(totalPages);
+}
+
+function renderPager(totalPages) {
+  const pg = document.getElementById('pager');
+  if (totalPages<=1) { pg.innerHTML=''; return; }
+  let h = `<button ${page===1?'disabled':''} onclick="goPage(${page-1})">&lsaquo; Prev</button>`;
+  for (let p=1; p<=totalPages; p++) {
+    if (p===1||p===totalPages||(p>=page-2&&p<=page+2)) {
+      h += `<button class="${p===page?'cur':''}" onclick="goPage(${p})">${p}</button>`;
+    } else if (p===page-3||p===page+3) {
+      h += `<span style="padding:0 4px;color:var(--text3)">&hellip;</span>`;
+    }
+  }
+  h += `<button ${page===totalPages?'disabled':''} onclick="goPage(${page+1})">Next &rsaquo;</button>`;
+  h += `<span class="pg-info">Page ${page} / ${totalPages}</span>`;
+  pg.innerHTML = h;
+}
+
+function goPage(p) { page = p; renderView(); window.scrollTo({top:0,behavior:'smooth'}); }
+function toggleDesc(idx) {
+  const el = document.getElementById('dsc-'+idx);
+  const btn = el.nextElementSibling;
+  const s = descStore._[idx];
+  if (!el||!btn||!s) return;
+  if (el.classList.contains('open')) { el.innerHTML=s.short; el.classList.remove('open'); btn.innerHTML='&#9654; Show more'; }
+  else { el.innerHTML=s.full; el.classList.add('open'); btn.innerHTML='&#9650; Show less'; }
+}
+
+// ═══════════════════════════════════════
+//  EXPORT CSV
+// ═══════════════════════════════════════
+function exportCSV() {
+  const cols = ['name','category','data_type','task_type','year','score','url','doi','description','material_system','scale','usage','baseline'];
+  const header = cols.join(',');
+  const rows = filtered.map(d=>cols.map(c=>{
+    let v = (d[c]||'').toString();
+    if (v.includes(',')||v.includes('"')||v.includes('\n')) v = '"'+v.replace(/"/g,'""')+'"';
+    return v;
+  }).join(','));
+  const csv = [header, ...rows].join('\n');
+  const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = `materials-benchmarks-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click(); URL.revokeObjectURL(url);
+}
+
+// ═══════════════════════════════════════
+//  STATISTICS
+// ═══════════════════════════════════════
+function renderStats() {
+  renderBarChart('stat-cat', countBy(ALL, 'category'));
+  renderBarChart('stat-dt', countBy(ALL.filter(d=>d.data_type), 'data_type'));
+  renderBarChart('stat-tt', countBy(ALL, 'task_type'));
+  renderHeatmap();
+  renderCompleteness();
+  renderTimeline();
+}
+function countBy(arr, key) {
+  const m = {};
+  arr.forEach(d=>{ const v=d[key]; if(v){ m[v]=(m[v]||0)+1; } });
+  return Object.entries(m).sort((a,b)=>b[1]-a[1]);
+}
+function renderBarChart(elId, entries) {
+  const max = Math.max(...entries.map(e=>e[1]), 1);
+  document.getElementById(elId).innerHTML = entries.map(([k,v])=>`<div class="stat-bar-row"><span class="lbl" title="${escHtml(k)}">${escHtml(k)}</span><div class="bar-track"><div class="bar-fill" style="width:${(v/max*100).toFixed(0)}%"></div></div><span class="val">${v}</span></div>`).join('');
+}
+
+// Heatmap: Category × Task Type
+function renderHeatmap() {
+  const cats = [...new Set(ALL.map(d=>d.category))].sort();
+  const tasks = [...new Set(ALL.map(d=>d.task_type).filter(Boolean))].sort();
+  const matrix = {};
+  cats.forEach(c=>{ matrix[c]={}; tasks.forEach(t=>{ matrix[c][t]=0; }); });
+  ALL.forEach(d=>{ if (d.task_type&&matrix[d.category]) matrix[d.category][d.task_type]=(matrix[d.category][d.task_type]||0)+1; });
+  const maxVal = Math.max(1, ...cats.flatMap(c=>tasks.map(t=>matrix[c][t])));
+
+  function hmClass(v) {
+    if (v===0) return 'hm-0';
+    const pct = v/maxVal;
+    if (pct<=0.15) return 'hm-1';
+    if (pct<=0.3) return 'hm-2';
+    if (pct<=0.5) return 'hm-3';
+    if (pct<=0.7) return 'hm-4';
+    if (pct<=0.85) return 'hm-5';
+    return 'hm-6';
+  }
+
+  let h = '<table class="heatmap-table"><thead><tr><th></th>';
+  tasks.forEach(t=>{ h += `<th>${escHtml(t)}</th>`; });
+  h += '<th style="color:var(--text3)">Total</th></tr></thead><tbody>';
+  let colTotals = {}; tasks.forEach(t=>{ colTotals[t]=0; });
+  cats.forEach(c=>{
+    h += `<tr><td class="hm-row-label">${escHtml(c)}</td>`;
+    let rowTotal = 0;
+    tasks.forEach(t=>{
+      const v = matrix[c][t];
+      rowTotal += v; colTotals[t] += v;
+      h += `<td><span class="hm-cell ${hmClass(v)}" title="${c} / ${t}: ${v}">${v||''}</span></td>`;
+    });
+    h += `<td style="font-weight:700;color:var(--text);font-size:13px">${rowTotal}</td></tr>`;
+  });
+  // Totals row
+  h += '<tr style="border-top:2px solid var(--border)"><td class="hm-row-label" style="font-weight:700;color:var(--text)">Total</td>';
+  let grandTotal = 0;
+  tasks.forEach(t=>{ grandTotal+=colTotals[t]; h+=`<td style="font-weight:700;color:var(--text);font-size:13px;padding:6px 0">${colTotals[t]}</td>`; });
+  h += `<td style="font-weight:700;color:var(--primary);font-size:14px">${grandTotal}</td></tr>`;
+  h += '</tbody></table>';
+  document.getElementById('heatmap').innerHTML = h;
+}
+
+// Data completeness
+function renderCompleteness() {
+  const fields = [
+    {key:'name', label:'Name'},
+    {key:'url', label:'URL'},
+    {key:'year', label:'Year'},
+    {key:'description', label:'Description'},
+    {key:'data_type', label:'Data Type'},
+    {key:'task_type', label:'Task Type'},
+    {key:'material_system', label:'Material'},
+    {key:'doi', label:'DOI'},
+    {key:'scale', label:'Scale'},
+    {key:'score', label:'Score'},
+  ];
+  const total = ALL.length;
+  function barColor(pct) {
+    if (pct>=95) return 'var(--emerald)';
+    if (pct>=70) return 'var(--amber)';
+    return 'var(--rose)';
+  }
+  document.getElementById('completeness').innerHTML = fields.map(f=>{
+    const cnt = ALL.filter(d=>!!d[f.key]).length;
+    const pct = Math.round(cnt/total*100);
+    return `<div class="comp-item">
+      <span class="comp-label">${f.label}</span>
+      <span class="comp-bar-track"><span class="comp-bar-fill" style="width:${pct}%;background:${barColor(pct)}"></span></span>
+      <span class="comp-pct">${pct}%</span>
+    </div>`;
+  }).join('');
+}
+
+// Timeline
+function renderTimeline() {
+  const yrMap = {};
+  ALL.forEach(d=>{ if(d.year&&/^\d{4}$/.test(d.year)) yrMap[d.year]=(yrMap[d.year]||0)+1; });
+  const yrs = Object.keys(yrMap).sort();
+  if (!yrs.length) { document.getElementById('timeline').innerHTML='<span style="color:var(--text3);font-size:13px">No year data available.</span>'; return; }
+  const max = Math.max(...Object.values(yrMap),1);
+  document.getElementById('timeline').innerHTML = yrs.map(y=>{
+    const h = Math.max(4, (yrMap[y]/max*200).toFixed(0));
+    return `<div class="tl-bar-wrap"><span class="tl-val">${yrMap[y]}</span><div class="tl-bar" style="height:${h}px" title="${y}: ${yrMap[y]} datasets"></div><span class="tl-year">${y}</span></div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════
+//  TABS
+// ═══════════════════════════════════════
+function switchTab() {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  this.classList.add('active');
+  document.getElementById('panel-'+this.dataset.tab).classList.add('active');
+  if (this.dataset.tab==='stats') renderStats();
+}
+
+// ═══════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════
+function escHtml(s) { if(!s) return ''; const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+function escJs(s) { return (s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"'); }
+function debounce(fn,ms) { let t; return function(...a){ clearTimeout(t); t=setTimeout(()=>fn.apply(this,a),ms); }; }
+
+init();
+</script>
+</body>
+</html>
