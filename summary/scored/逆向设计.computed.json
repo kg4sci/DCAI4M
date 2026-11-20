@@ -1,0 +1,2201 @@
+[
+  {
+    "row_index": 2,
+    "paper_id": "https://openreview.net/forum?id=ZfPGcTfDWn",
+    "title": "LEMAT-GENBENCH: Bridging the gap between crystal generation and materials discovery",
+    "benchmark_name": "LEMAT-GENBENCH",
+    "task_summary": "Unified offline benchmark comparing 12 crystal generation models on stability/novelty/uniqueness/diversity/alignment/efficiency.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 2,
+      "A": 0,
+      "I": 1,
+      "G": 0,
+      "U": 0,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "generation judged by generic generation+stability metrics, no target property/screening (cap5)",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "one-shot evaluation, no sequential feedback",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "single generation model + metric suite",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "no optimization objective or constraint",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "outputs metrics only",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "LeMat-Bulk computational data, no experiment",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "no stated experimental use",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Offline generation-quality benchmark; no decision loop or experimental grounding.",
+    "x100_raw": 17.5,
+    "x5_raw": 0.875,
+    "x5_final": 0.875,
+    "applied_caps": [],
+    "level": 1,
+    "level_label": "Predictive",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 3,
+    "paper_id": "10.21105/joss.0561",
+    "title": "Matbench-genmetrics: A Python library for benchmarking crystal structure generative models using time-based splits of Materials Project structures",
+    "benchmark_name": "Matbench-genmetrics",
+    "task_summary": "Offline library benchmarking generative models with time-split MP data on validity/coverage/novelty/uniqueness.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 2,
+      "A": 0,
+      "I": 1,
+      "G": 0,
+      "U": 0,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "only validity/coverage/novelty/uniqueness (cap5)",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "static time-split evaluation",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "single generator + metric library",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "no objective/constraint",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "metrics only",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "Materials Project DFT data",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "no experimental decision",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Reproducible offline generation-metric benchmark; purely computational.",
+    "x100_raw": 17.5,
+    "x5_raw": 0.875,
+    "x5_final": 0.875,
+    "applied_caps": [],
+    "level": 1,
+    "level_label": "Predictive",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 4,
+    "paper_id": "10.1039/d4dd00100a",
+    "title": "Dismai-Bench: Benchmarking and designing generative models using disordered materials and interfaces",
+    "benchmark_name": "Dismai-Bench",
+    "task_summary": "Offline benchmark of generative models on disordered alloys/interfaces/amorphous Si via structure-similarity metrics.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 2,
+      "A": 0,
+      "I": 1,
+      "G": 0,
+      "U": 1,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "structure-distribution metrics, no target property (cap5)",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "one-shot generation comparison",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "single task per dataset",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "no explicit objective",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "reports generation failure rate",
+        "confidence": "low"
+      },
+      "P": {
+        "text": "metrics only",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "simulation-derived datasets",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "no experimental use stated",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Extends generation benchmarks to disordered systems; offline and computational.",
+    "x100_raw": 20.0,
+    "x5_raw": 1.0,
+    "x5_final": 1.0,
+    "applied_caps": [],
+    "level": 1,
+    "level_label": "Predictive",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 5,
+    "paper_id": "10.1088/3050-287X/ae9ee4",
+    "title": "PhononBench: A Large-Scale Phonon-Based Benchmark for Dynamical Stability in Crystal Generation",
+    "benchmark_name": "PhononBench",
+    "task_summary": "Benchmarks dynamical stability of generated crystals via phonon spectra; DFT-verifies a subset.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 0,
+      "I": 2,
+      "G": 1,
+      "U": 1,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "generation screened by dynamical-stability target property",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "one-shot generation then verification",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "generation + phonon/stability pipeline",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "stability objective with frequency thresholds",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "reports false-stable/false-unstable rates",
+        "confidence": "low"
+      },
+      "P": {
+        "text": "no autonomous action",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "DFT/phonon computational verification only",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "computational screening need, not experimental",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Adds physics-grounded stability screening to generation benchmarks; still offline/computational.",
+    "x100_raw": 35.0,
+    "x5_raw": 1.75,
+    "x5_final": 1.75,
+    "applied_caps": [],
+    "level": 2,
+    "level_label": "Design-oriented",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 6,
+    "paper_id": "10.1039/d4dd00395k",
+    "title": "Benchmarking study of deep generative models for inverse polymer design",
+    "benchmark_name": "Inverse-polymer-design bench",
+    "task_summary": "Benchmarks generative models (incl. RL) for inverse polymer design targeting high Tg.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 3,
+      "I": 2,
+      "G": 1,
+      "U": 0,
+      "P": 1
+    },
+    "x_evidence": {
+      "O": {
+        "text": "goal-directed inverse design toward Tg",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "RL training = multi-round optimization with surrogate feedback",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "generator + Tg predictor + RL",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "single objective (high Tg)",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "recommends candidates; humans act",
+        "confidence": "medium"
+      }
+    },
+    "y_scores": {
+      "E": 1,
+      "R": 1,
+      "C": 1
+    },
+    "y_evidence": {
+      "E": {
+        "text": "PolyInfo real-polymer data used for training/target",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "addresses polymer design need, constraints partial",
+        "confidence": "low"
+      },
+      "C": {
+        "text": "some conditions from curated databases",
+        "confidence": "low"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Systematic polymer generation benchmark with RL-guided target-oriented variants.",
+    "x100_raw": 50.0,
+    "x5_raw": 2.5,
+    "x5_final": 2.5,
+    "applied_caps": [],
+    "level": 3,
+    "level_label": "Decision-oriented",
+    "y_total": 3,
+    "y_complete": true
+  },
+  {
+    "row_index": 7,
+    "paper_id": "10.48550/arXiv.2509.23156",
+    "title": "CrystalGym: A New Benchmark for Materials Discovery Using Reinforcement Learning",
+    "benchmark_name": "CrystalGym",
+    "task_summary": "RL benchmark where an agent fills crystal structures and receives DFT-computed property rewards in a closed loop.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 4,
+      "A": 3,
+      "I": 3,
+      "G": 2,
+      "U": 1,
+      "P": 3
+    },
+    "x_evidence": {
+      "O": {
+        "text": "agent decides next candidate compositions",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "closed loop agent->DFT->reward->policy update",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "RL agent + DFT oracle + reward pipeline",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "target property objective with action-space constraints",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "reports DFT failure rate / noisy reward",
+        "confidence": "low"
+      },
+      "P": {
+        "text": "agent auto-selects next action from feedback",
+        "confidence": "medium"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "DFT oracle, no experiment",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "computational discovery need",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Gym-style closed-loop RL discovery environment with expensive DFT feedback.",
+    "x100_raw": 72.5,
+    "x5_raw": 3.625,
+    "x5_final": 3.625,
+    "applied_caps": [],
+    "level": 3,
+    "level_label": "Decision-oriented",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 8,
+    "paper_id": "10.48550/arXiv.2601.20996",
+    "title": "MADE: Benchmark Environments for Closed-Loop Materials Discovery",
+    "benchmark_name": "MADE",
+    "task_summary": "Modular closed-loop discovery environments with oracle budget, adaptive planning, and discovery-acceleration metrics.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 4,
+      "A": 4,
+      "I": 4,
+      "G": 3,
+      "U": 1,
+      "P": 3
+    },
+    "x_evidence": {
+      "O": {
+        "text": "decides next candidates/experiments under budget",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "multi-round feedback-driven adaptive closed loop",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "planner+generator+filter+selector integrated",
+        "confidence": "high"
+      },
+      "G": {
+        "text": "discovery + diversity objectives under query budget",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "handles oracle noise implicitly",
+        "confidence": "low"
+      },
+      "P": {
+        "text": "auto selects next action from feedback",
+        "confidence": "medium"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "MLIP oracle, computational",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "computational discovery need",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Strongest closed-loop discovery benchmark in this sheet; adaptive planning under budget.",
+    "x100_raw": 86.25,
+    "x5_raw": 4.312,
+    "x5_final": 4.312,
+    "applied_caps": [],
+    "level": 4,
+    "level_label": "Adaptive discovery",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 9,
+    "paper_id": "10.1088/2632-2153/ac9e42",
+    "title": "Material transformers: deep learning language models for generative materials design",
+    "benchmark_name": "Material transformers",
+    "task_summary": "Transformer language models for unconditional/conditional inorganic composition generation; benchmark is a secondary contribution.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 1,
+      "I": 1,
+      "G": 1,
+      "U": 0,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "conditional high-bandgap generation = goal-directed",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "conditional generation without updating",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "single model single task",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "single objective (high bandgap)",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "outputs candidates only",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "ICSD/OQMD/MP computational",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "no defined experimental decision",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; benchmark is ancillary to a methods paper"
+    ],
+    "overall_justification": "Composition-generation benchmark attached to a methods paper; offline.",
+    "x100_raw": 32.5,
+    "x5_raw": 1.625,
+    "x5_final": 1.625,
+    "applied_caps": [],
+    "level": 2,
+    "level_label": "Design-oriented",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 10,
+    "paper_id": "10.1039/d5dd00272a",
+    "title": "PolyRL: reinforcement learning-guided polymer generation for multi-objective polymer discovery",
+    "benchmark_name": "PolyRL",
+    "task_summary": "RL closed-loop framework for multi-objective (CO2 permeability/selectivity) polymer generation with MD validation.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 3,
+      "I": 2,
+      "G": 3,
+      "U": 0,
+      "P": 3
+    },
+    "x_evidence": {
+      "O": {
+        "text": "goal-directed multi-objective polymer generation",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "RL multi-round with property feedback",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "generator + RL + MD validation",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "two objectives (permeability, selectivity)",
+        "confidence": "high"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "RL auto-selects next generation action",
+        "confidence": "medium"
+      }
+    },
+    "y_scores": {
+      "E": 1,
+      "R": 2,
+      "C": 1
+    },
+    "y_evidence": {
+      "E": {
+        "text": "353 real gas-separation polymers from literature",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "gas-separation membrane decision with tradeoff constraints",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "some conditions from literature data",
+        "confidence": "low"
+      }
+    },
+    "limitations": [
+      "table-only evidence; benchmark ancillary to methods paper"
+    ],
+    "overall_justification": "Multi-objective RL polymer discovery with experimental-literature grounding.",
+    "x100_raw": 62.5,
+    "x5_raw": 3.125,
+    "x5_final": 2.5,
+    "applied_caps": [
+      "O<4 -> X5<=2.5"
+    ],
+    "level": 3,
+    "level_label": "Decision-oriented",
+    "y_total": 4,
+    "y_complete": true
+  },
+  {
+    "row_index": 11,
+    "paper_id": "10.1038/s42256-026-01262-4",
+    "title": "Guiding generative models to uncover diverse and novel crystals via reinforcement learning",
+    "benchmark_name": "Chemeleon-RL",
+    "task_summary": "GRPO RL guiding latent diffusion models toward property-targeted, diverse, novel crystals.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 3,
+      "I": 2,
+      "G": 2,
+      "U": 0,
+      "P": 3
+    },
+    "x_evidence": {
+      "O": {
+        "text": "property-oriented generation (bandgap target)",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "RL multi-round guidance",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "diffusion model + RL + MLFF stability",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "target property + mSUN/stability constraints",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "RL selects next generation action",
+        "confidence": "low"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "MP-20 / MLFF computational",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "computational discovery need",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; benchmark ancillary to methods paper"
+    ],
+    "overall_justification": "RL-guided generation improving mSUN; offline computational evaluation.",
+    "x100_raw": 58.75,
+    "x5_raw": 2.938,
+    "x5_final": 2.5,
+    "applied_caps": [
+      "O<4 -> X5<=2.5"
+    ],
+    "level": 3,
+    "level_label": "Decision-oriented",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 12,
+    "paper_id": "10.48550/arXiv.2501.02144",
+    "title": "Establishing baselines for generative discovery of inorganic crystals",
+    "benchmark_name": "Generative-discovery baselines",
+    "task_summary": "Compares traditional baselines vs generative models for novel stable crystal discovery with DFT validation and ML filtering.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 1,
+      "I": 2,
+      "G": 2,
+      "U": 0,
+      "P": 1
+    },
+    "x_evidence": {
+      "O": {
+        "text": "generation + stability/novelty screening",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "one-shot generation then ML filter, no loop",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "generation + ML filter + DFT verification",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "stability + novelty objectives",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "recommends candidates",
+        "confidence": "medium"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 1,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "DFT validation, computational",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "synthesis-candidate need, constraints partial",
+        "confidence": "low"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Baseline study revealing stability-novelty tradeoff; offline with DFT confirmation.",
+    "x100_raw": 43.75,
+    "x5_raw": 2.188,
+    "x5_final": 2.188,
+    "applied_caps": [],
+    "level": 2,
+    "level_label": "Design-oriented",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 13,
+    "paper_id": "https://openreview.net/forum?id=K15Dqxm0ge",
+    "title": "MGB: The Material Generation Benchmark",
+    "benchmark_name": "MGB",
+    "task_summary": "Unified multi-task generation benchmark (CSP, De Novo, MOF, OOD) with physical-plausibility metrics.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 2,
+      "A": 0,
+      "I": 2,
+      "G": 0,
+      "U": 0,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "generation-quality metrics incl. coverage/plausibility, no target property (cap5)",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "static evaluation",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "multi-task suite",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "no optimization objective",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "metrics only",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "computational datasets",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "no experimental decision",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Broad offline generation benchmark with OOD suite; no decision loop.",
+    "x100_raw": 22.5,
+    "x5_raw": 1.125,
+    "x5_final": 1.125,
+    "applied_caps": [],
+    "level": 1,
+    "level_label": "Predictive",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 14,
+    "paper_id": "https://openreview.net/forum?id=w1JsxPYWLL",
+    "title": "Benchmarking Text Representations for Crystal Structure Generation with Large Language Models",
+    "benchmark_name": "Text-repr crystal gen",
+    "task_summary": "Compares four crystal text representations for LLM structure generation on success/validity/coverage.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 2,
+      "A": 0,
+      "I": 1,
+      "G": 0,
+      "U": 0,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "validity/coverage generation metrics (cap5)",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "one-shot sampling",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "single LLM generation task",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "no objective/constraint",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "metrics only",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "MP-20 computational",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "no experimental use",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Representation study for LLM crystal generation; offline.",
+    "x100_raw": 17.5,
+    "x5_raw": 0.875,
+    "x5_final": 0.875,
+    "applied_caps": [],
+    "level": 1,
+    "level_label": "Predictive",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 15,
+    "paper_id": "10.48550/arXiv.2510.16165",
+    "title": "AtomBench: A Benchmarking Framework for Generative Crystal Reconstruction Models in Conventional Superconductors",
+    "benchmark_name": "AtomBench",
+    "task_summary": "Benchmark for crystal reconstruction (CSP) in superconductors with ccRMSD fidelity metrics and optional Tc conditioning.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 2,
+      "A": 0,
+      "I": 1,
+      "G": 1,
+      "U": 0,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "structural-fidelity reconstruction metrics (cap5)",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "one-shot reconstruction",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "single reconstruction task",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "optional Tc condition as constraint",
+        "confidence": "low"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "metrics only",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "JARVIS/Alexandria DFT data",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "no experimental decision",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Reconstruction-focused CSP benchmark with new threshold-free metric; offline.",
+    "x100_raw": 21.25,
+    "x5_raw": 1.062,
+    "x5_final": 1.062,
+    "applied_caps": [],
+    "level": 1,
+    "level_label": "Predictive",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 16,
+    "paper_id": "10.52202/075280-0145",
+    "title": "Tartarus: A Benchmarking Platform for Realistic And Practical Inverse Molecular Design",
+    "benchmark_name": "Tartarus",
+    "task_summary": "Resource-constrained inverse molecular design benchmark over four practical domains with simulation oracles.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 4,
+      "A": 3,
+      "I": 3,
+      "G": 3,
+      "U": 0,
+      "P": 3
+    },
+    "x_evidence": {
+      "O": {
+        "text": "decides next candidates under evaluation budget",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "iterative algorithms under closed-loop budget",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "generators + simulation oracles + evaluators",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "target properties + explicit resource constraints",
+        "confidence": "high"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "algorithms auto-select next candidates",
+        "confidence": "medium"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 2,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "physical simulation oracles",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "practical domains with defined objectives/constraints",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Practical, resource-bounded inverse-design benchmark; simulation-grounded.",
+    "x100_raw": 73.75,
+    "x5_raw": 3.688,
+    "x5_final": 3.688,
+    "applied_caps": [],
+    "level": 3,
+    "level_label": "Decision-oriented",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 17,
+    "paper_id": "10.1107/S2052520624007492",
+    "title": "The seventh blind test of crystal structure prediction: structure generation methods",
+    "benchmark_name": "CSP blind test 7",
+    "task_summary": "Community blind test of CSP structure generation against experimentally provided structures, with PXRD support.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 0,
+      "I": 2,
+      "G": 1,
+      "U": 0,
+      "P": 1
+    },
+    "x_evidence": {
+      "O": {
+        "text": "candidate structure generation/prediction",
+        "confidence": "high"
+      },
+      "A": {
+        "text": "one-shot blinded submissions",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "generation + ranking stages separated",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "objective = correct experimental structure",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "predictions aid experimentalists",
+        "confidence": "low"
+      }
+    },
+    "y_scores": {
+      "E": 2,
+      "R": 2,
+      "C": 1
+    },
+    "y_evidence": {
+      "E": {
+        "text": "experimental structures are the formal test basis",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "supports experimental structure determination (PXRD)",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "target/PXRD info provided, some conditions in SI",
+        "confidence": "low"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Authoritative experiment-grounded CSP blind test; one-shot protocol.",
+    "x100_raw": 35.0,
+    "x5_raw": 1.75,
+    "x5_final": 1.75,
+    "applied_caps": [],
+    "level": 2,
+    "level_label": "Design-oriented",
+    "y_total": 5,
+    "y_complete": true
+  },
+  {
+    "row_index": 18,
+    "paper_id": "10.1021/acs.jcim.8b00839",
+    "title": "GuacaMol: Benchmarking Models for de Novo Molecular Design",
+    "benchmark_name": "GuacaMol",
+    "task_summary": "Distribution-learning and goal-oriented de novo molecular design benchmarks over ChEMBL.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 1,
+      "I": 2,
+      "G": 3,
+      "U": 0,
+      "P": 1
+    },
+    "x_evidence": {
+      "O": {
+        "text": "goal-oriented design tasks with target properties",
+        "confidence": "high"
+      },
+      "A": {
+        "text": "goal optimization within generation, no cross-round loop",
+        "confidence": "low"
+      },
+      "I": {
+        "text": "distribution + goal-oriented suites",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "multi-objective with property/similarity constraints",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "recommends molecules",
+        "confidence": "medium"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 1,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "properties via scoring functions, not experiment",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "medicinal-chemistry-like need, constraints partial",
+        "confidence": "low"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Classic molecular-design benchmark separating distribution and goal-oriented tasks.",
+    "x100_raw": 47.5,
+    "x5_raw": 2.375,
+    "x5_final": 2.375,
+    "applied_caps": [],
+    "level": 2,
+    "level_label": "Design-oriented",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 19,
+    "paper_id": "10.3389/fphar.2020.565644",
+    "title": "Molecular Sets (MOSES): A Benchmarking Platform for Molecular Generation Models",
+    "benchmark_name": "MOSES",
+    "task_summary": "Standardized distribution-learning benchmark for molecular generation with fixed splits.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 2,
+      "A": 0,
+      "I": 1,
+      "G": 0,
+      "U": 0,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "distribution-learning metrics only (cap5)",
+        "confidence": "high"
+      },
+      "A": {
+        "text": "static train/test splits",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "single generation task",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "no objective/constraint",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "metrics only",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "ChEMBL structures, computed metrics",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "no experimental decision",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Pure distribution-learning generation benchmark; offline.",
+    "x100_raw": 17.5,
+    "x5_raw": 0.875,
+    "x5_final": 0.875,
+    "applied_caps": [],
+    "level": 1,
+    "level_label": "Predictive",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 20,
+    "paper_id": "10.48550/arXiv.2407.04424",
+    "title": "Benchmarking structure-based three-dimensional molecular generative models using GenBench3D: ligand conformation quality matters",
+    "benchmark_name": "GenBench3D",
+    "task_summary": "Benchmarks 3D structure-based generation on conformation quality (Validity3D), strain, pocket clashes, and affinity.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 0,
+      "I": 2,
+      "G": 2,
+      "U": 1,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "pocket-conditioned goal-directed generation",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "one-shot generation per pocket",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "generation + docking/scoring modules",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "objective = bind pocket with geometric constraints",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "reports strain energy / pocket conflicts",
+        "confidence": "low"
+      },
+      "P": {
+        "text": "no autonomous action",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 1,
+      "R": 1,
+      "C": 1
+    },
+    "y_evidence": {
+      "E": {
+        "text": "CSD experimental geometry distributions calibrate Validity3D",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "drug-design need, constraints partial",
+        "confidence": "low"
+      },
+      "C": {
+        "text": "CSD conditions documented",
+        "confidence": "low"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Highlights poor 3D conformation validity of SBDD models; partially experiment-calibrated.",
+    "x100_raw": 38.75,
+    "x5_raw": 1.938,
+    "x5_final": 1.938,
+    "applied_caps": [],
+    "level": 2,
+    "level_label": "Design-oriented",
+    "y_total": 3,
+    "y_complete": true
+  },
+  {
+    "row_index": 21,
+    "paper_id": "https://openreview.net/challenge?redirect=%2Fforum%3Fid%3DXh2MzYH1h9",
+    "title": "MetaGen: A DSL, Database, and Benchmark for VLM-Assisted Metamaterial Generation",
+    "benchmark_name": "MetaGen",
+    "task_summary": "VLM-assisted metamaterial generation/understanding/reconstruction benchmark over MetaDB with target attribute profiles.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 0,
+      "I": 3,
+      "G": 2,
+      "U": 0,
+      "P": 1
+    },
+    "x_evidence": {
+      "O": {
+        "text": "inverse design from specs/attribute profiles",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "one-shot VLM inference",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "VLM + DSL compiler + property predictor",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "target attribute values/ranges/bounds",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "recommends programs",
+        "confidence": "low"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 2,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "homogenization simulation attributes",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "defined design targets with constraints",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Unified VLM metamaterial ecosystem; offline simulation-grounded.",
+    "x100_raw": 43.75,
+    "x5_raw": 2.188,
+    "x5_final": 2.188,
+    "applied_caps": [],
+    "level": 2,
+    "level_label": "Design-oriented",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 22,
+    "paper_id": "10.48550/arXiv.2605.26741",
+    "title": "MatFormBench: A Benchmarking Evaluation Framework for Target-Driven Materials Formulation",
+    "benchmark_name": "MatFormBench",
+    "task_summary": "Closed-loop, budget-limited benchmark of 39 inverse-design algorithms on target-driven formulation with a physics-driven oracle.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 4,
+      "A": 3,
+      "I": 3,
+      "G": 3,
+      "U": 2,
+      "P": 3
+    },
+    "x_evidence": {
+      "O": {
+        "text": "sequential candidate-formulation decisions under budget",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "closed-loop sequential decision protocol",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "oracle + 39 algorithms + multi-axis evaluator",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "target constraints across 5 difficulty levels",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "Robustness axis probes noise/failure",
+        "confidence": "low"
+      },
+      "P": {
+        "text": "algorithms auto-select next candidates",
+        "confidence": "medium"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 2,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "synthetic physics-driven oracle",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "formulation targets with explicit constraints",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Large-scale closed-loop inverse-design algorithm benchmark; simulation oracle.",
+    "x100_raw": 78.75,
+    "x5_raw": 3.938,
+    "x5_final": 3.938,
+    "applied_caps": [],
+    "level": 4,
+    "level_label": "Adaptive discovery",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 23,
+    "paper_id": "10.52202/075280-3383",
+    "title": "M2Hub: Unlocking the Potential of Machine Learning for Materials Discovery",
+    "benchmark_name": "M2Hub",
+    "task_summary": "Toolkit/benchmark spanning 56 prediction and generation tasks across six material types with multiple real splits.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 2,
+      "A": 0,
+      "I": 2,
+      "G": 1,
+      "U": 0,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "multi-property prediction + generic generation metrics (cap5)",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "static task evaluation",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "multi-task toolkit pipeline",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "per-task objectives only",
+        "confidence": "low"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "metrics only",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "DFT-derived datasets",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "no single experimental decision",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Broad ML-for-discovery toolkit; offline computational tasks.",
+    "x100_raw": 26.25,
+    "x5_raw": 1.312,
+    "x5_final": 1.312,
+    "applied_caps": [],
+    "level": 1,
+    "level_label": "Predictive",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 24,
+    "paper_id": "10.52202/085713-1331",
+    "title": "All that structure matches does not glitter",
+    "benchmark_name": "Polymorph-aware CSP eval",
+    "task_summary": "Exposes dataset duplication/polymorph issues in crystal-generation benchmarks and proposes METRe/cRMSE plus polymorph-aware splits.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 2,
+      "A": 0,
+      "I": 1,
+      "G": 0,
+      "U": 0,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "matching-based generation metrics (cap5)",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "static re-evaluation",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "single evaluation task",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "no objective/constraint",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "metrics only",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "computational datasets",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "no experimental decision",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Metrics/dataset-hygiene paper improving CSP evaluation validity.",
+    "x100_raw": 17.5,
+    "x5_raw": 0.875,
+    "x5_final": 0.875,
+    "applied_caps": [],
+    "level": 1,
+    "level_label": "Predictive",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 25,
+    "paper_id": "10.1038/s41524-024-01259-w",
+    "title": "JARVIS-Leaderboard: a large scale benchmark of materials design methods",
+    "benchmark_name": "JARVIS-Leaderboard",
+    "task_summary": "Community platform with 322 benchmarks across AI/ES/FF/QC/EXP methods and multimodal inputs.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 2,
+      "A": 0,
+      "I": 3,
+      "G": 1,
+      "U": 0,
+      "P": 1
+    },
+    "x_evidence": {
+      "O": {
+        "text": "multi-property prediction + generation, not decision-making",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "independent submissions, no loop per task",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "multimodal multi-task platform",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "per-task objectives",
+        "confidence": "low"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "leaderboard recommendations",
+        "confidence": "low"
+      }
+    },
+    "y_scores": {
+      "E": 2,
+      "R": 1,
+      "C": 1
+    },
+    "y_evidence": {
+      "E": {
+        "text": "includes experimental (EXP) benchmarks as test basis",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "broad needs, constraints partial",
+        "confidence": "low"
+      },
+      "C": {
+        "text": "metadata/run.sh/Dockerfile reproducibility",
+        "confidence": "low"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Large reproducible multi-method platform including experimental benchmarks.",
+    "x100_raw": 33.75,
+    "x5_raw": 1.688,
+    "x5_final": 1.688,
+    "applied_caps": [],
+    "level": 2,
+    "level_label": "Design-oriented",
+    "y_total": 4,
+    "y_complete": true
+  },
+  {
+    "row_index": 26,
+    "paper_id": "10.48550/arXiv.2601.19076",
+    "title": "C2NP: A Benchmark for Learning Scale-Dependent Geometric Invariances in 3D Materials Generation",
+    "benchmark_name": "C2NP",
+    "task_summary": "Bidirectional benchmark (crystal->nanoparticle generation and nanoparticle->crystal reconstruction) probing scale generalization.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 2,
+      "A": 0,
+      "I": 2,
+      "G": 1,
+      "U": 0,
+      "P": 0
+    },
+    "x_evidence": {
+      "O": {
+        "text": "structural-fidelity metrics (cap5)",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "one-shot tasks",
+        "confidence": "high"
+      },
+      "I": {
+        "text": "two complementary tasks",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "target radius condition",
+        "confidence": "low"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "metrics only",
+        "confidence": "high"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 0,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "DFT-relaxed supercells, computational",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "no experimental decision",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Probes template-memorization vs physical generalization in 3D generation.",
+    "x100_raw": 26.25,
+    "x5_raw": 1.312,
+    "x5_final": 1.312,
+    "applied_caps": [],
+    "level": 1,
+    "level_label": "Predictive",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 27,
+    "paper_id": "10.1039/d1nr08346e",
+    "title": "Inverse deep learning methods and benchmarks for artificial electromagnetic material design",
+    "benchmark_name": "AEM inverse-design bench",
+    "task_summary": "Three inverse-design benchmarks mapping target electromagnetic spectra to geometry, scored by re-simulation error.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 0,
+      "I": 2,
+      "G": 2,
+      "U": 0,
+      "P": 1
+    },
+    "x_evidence": {
+      "O": {
+        "text": "inverse design toward target spectra",
+        "confidence": "high"
+      },
+      "A": {
+        "text": "one-shot inverse mapping",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "inverse model + re-simulation verification",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "target spectrum as objective/constraint",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "recommends geometries",
+        "confidence": "low"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 1,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "simulation-derived datasets",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "design need, constraints partial",
+        "confidence": "low"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; sparse table row"
+    ],
+    "overall_justification": "Inverse-design benchmark for metamaterials; simulation-grounded, offline.",
+    "x100_raw": 38.75,
+    "x5_raw": 1.938,
+    "x5_final": 1.938,
+    "applied_caps": [],
+    "level": 2,
+    "level_label": "Design-oriented",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 28,
+    "paper_id": "10.48550/arXiv.2511.00070",
+    "title": "Benchmarking Generative AI Against Bayesian Optimization for Constrained Multi-Objective Inverse Design",
+    "benchmark_name": "BenchGenAlBO",
+    "task_summary": "Compares LLM/generative models vs Bayesian optimization on constrained multi-objective formulation inverse design.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 2,
+      "I": 2,
+      "G": 3,
+      "U": 0,
+      "P": 2
+    },
+    "x_evidence": {
+      "O": {
+        "text": "constrained multi-objective inverse design",
+        "confidence": "high"
+      },
+      "A": {
+        "text": "BO sequential active selection; LLM one-shot",
+        "confidence": "low"
+      },
+      "I": {
+        "text": "surrogate + optimizer pipeline",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "multiple objectives with constraints",
+        "confidence": "high"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "BO auto-executes optimization workflow",
+        "confidence": "low"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 2,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "computational/surrogate evaluation",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "practical formulation needs with constraints",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; sparse table row"
+    ],
+    "overall_justification": "Shows BO still dominates constrained multi-objective inverse design vs LLMs.",
+    "x100_raw": 55.0,
+    "x5_raw": 2.75,
+    "x5_final": 2.5,
+    "applied_caps": [
+      "O<4 -> X5<=2.5"
+    ],
+    "level": 3,
+    "level_label": "Decision-oriented",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 29,
+    "paper_id": "https://openreview.net/forum?id=Xh2MzYH1h9",
+    "title": "MetaGen: A DSL, Database, and Benchmark for VLM-Assisted Metamaterial Generation",
+    "benchmark_name": "MetaGen (dup row)",
+    "task_summary": "Duplicate listing of MetaGen with richer MetaDB provenance; scored as the same paper.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 0,
+      "I": 3,
+      "G": 2,
+      "U": 0,
+      "P": 1
+    },
+    "x_evidence": {
+      "O": {
+        "text": "inverse design from attribute profiles",
+        "confidence": "medium"
+      },
+      "A": {
+        "text": "one-shot VLM inference",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "VLM + DSL + simulation pipeline",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "target attribute values/ranges/bounds",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "recommends programs",
+        "confidence": "low"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 2,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "homogenization simulation",
+        "confidence": "medium"
+      },
+      "R": {
+        "text": "defined design targets with constraints",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "duplicate of row 21 (same paper, different URL form)",
+      "table-only evidence"
+    ],
+    "overall_justification": "Same paper as row 21; retained as separate table row.",
+    "x100_raw": 43.75,
+    "x5_raw": 2.188,
+    "x5_final": 2.188,
+    "applied_caps": [],
+    "level": 2,
+    "level_label": "Design-oriented",
+    "y_total": null,
+    "y_complete": false
+  },
+  {
+    "row_index": 30,
+    "paper_id": "10.1038/s41467-026-76714-x",
+    "title": "MOCLIP: A Foundation Model for Large-Scale Nanophotonic Inverse Design",
+    "benchmark_name": "MOCLIP",
+    "task_summary": "Experiment-trained CLIP foundation model for nanophotonic inverse design, retrieval, latent optimization, and optical storage.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 3,
+      "I": 3,
+      "G": 2,
+      "U": 2,
+      "P": 2
+    },
+    "x_evidence": {
+      "O": {
+        "text": "inverse design toward target spectra",
+        "confidence": "high"
+      },
+      "A": {
+        "text": "latent-space optimization with FDTD feedback",
+        "confidence": "medium"
+      },
+      "I": {
+        "text": "encoders + retrieval + latent optim + FDTD",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "target spectrum objective over wavelength range",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "replicas for QC; measurement uncertainty inherent",
+        "confidence": "low"
+      },
+      "P": {
+        "text": "auto retrieval/optimization workflow",
+        "confidence": "low"
+      }
+    },
+    "y_scores": {
+      "E": 2,
+      "R": 2,
+      "C": 2
+    },
+    "y_evidence": {
+      "E": {
+        "text": "1.09M fabricated+measured geometry-spectra pairs as basis",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "supports design/storage decisions with defined constraints",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "fabrication/measurement conditions documented (periods, thickness)",
+        "confidence": "medium"
+      }
+    },
+    "limitations": [
+      "table-only evidence; full text not retrieved this run"
+    ],
+    "overall_justification": "Rare fully experiment-grounded inverse-design benchmark with traceable conditions.",
+    "x100_raw": 66.25,
+    "x5_raw": 3.313,
+    "x5_final": 2.5,
+    "applied_caps": [
+      "O<4 -> X5<=2.5"
+    ],
+    "level": 3,
+    "level_label": "Decision-oriented",
+    "y_total": 6,
+    "y_complete": true
+  },
+  {
+    "row_index": 31,
+    "paper_id": "10.1038/s42256-026-01218-8",
+    "title": "Algebraic language models for inverse design of metamaterials via diffusion transformers",
+    "benchmark_name": "DiffuMeta",
+    "task_summary": "Diffusion Transformer over algebraic (implicit-surface) language for inverse design of shell metamaterials from target mechanics.",
+    "evidence_source": "table",
+    "x_scores": {
+      "O": 3,
+      "A": 1,
+      "I": 2,
+      "G": 2,
+      "U": 0,
+      "P": 1
+    },
+    "x_evidence": {
+      "O": {
+        "text": "inverse design toward target stress-strain/Poisson",
+        "confidence": "high"
+      },
+      "A": {
+        "text": "one-shot diffusion generation despite 闭环 label",
+        "confidence": "low"
+      },
+      "I": {
+        "text": "generation + FEA oracle",
+        "confidence": "medium"
+      },
+      "G": {
+        "text": "multi-constraint target mechanics",
+        "confidence": "medium"
+      },
+      "U": {
+        "text": "not reported",
+        "confidence": "high"
+      },
+      "P": {
+        "text": "recommends geometries",
+        "confidence": "low"
+      }
+    },
+    "y_scores": {
+      "E": 0,
+      "R": 2,
+      "C": "NA"
+    },
+    "y_evidence": {
+      "E": {
+        "text": "ABAQUS FEA simulation data",
+        "confidence": "high"
+      },
+      "R": {
+        "text": "clear mechanical design targets with constraints",
+        "confidence": "medium"
+      },
+      "C": {
+        "text": "no experimental records",
+        "confidence": "high"
+      }
+    },
+    "limitations": [
+      "table-only evidence; no executed loop evident despite 闭环 label"
+    ],
+    "overall_justification": "Novel algebraic representation for mechanical inverse design; simulation-grounded.",
+    "x100_raw": 43.75,
+    "x5_raw": 2.188,
+    "x5_final": 2.188,
+    "applied_caps": [],
+    "level": 2,
+    "level_label": "Design-oriented",
+    "y_total": null,
+    "y_complete": false
+  }
+]

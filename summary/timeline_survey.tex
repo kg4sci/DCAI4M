@@ -1,0 +1,484 @@
+% !TEX program = xelatex
+% AI赋能材料领域数据集建设时间线综述
+% 数据来源：金山文档《数据-文献整理》最新版 https://www.kdocs.cn/l/cbXjea3GKDH7
+% 提取日期：2026-11-15；5 个任务 sheet，共 104 条数据集条目。
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2cm]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,urlcolor=blue!55!black}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0em}
+\setlist{itemsep=0.15em,topsep=0.2em}
+
+\title{\textbf{AI赋能材料领域数据集建设时间线综述}\\[0.3em]
+\large A Timeline Survey of Dataset Construction for AI-Enabled Materials Science}
+\author{基于金山文档《数据-文献整理》最新版（5 个任务 sheet，104 条数据集条目）}
+\date{2026年11月15日}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+本文以最新版《数据-文献整理》在线表格为唯一事实源，按五类任务梳理材料领域 AI 数据集的建设时间线。
+五类任务为：预测与识别、生成与逆向设计、路线与步骤规划、优化与实验推荐、AI模型评测。
+表格共收录 104 条数据集条目，年份跨度 1965--2026。
+模拟数据（S）占 63.5\%，真实实验数据（E）占 19.2\%，混合数据（H）占 16.3\%。
+时间线呈六个阶段：实验晶体学积累、高通量第一性原理、领域扩展与基准萌芽、规模化与闭环实验、基础模型数据与生成评测、智能体闭环与深度评测。
+核心趋势是：数据规模从 $10^3$ 跃升至 $10^8$；数据形态从静态性质标签库转向交互环境与闭环反馈；评测重心从有效性/新颖性转向稳定性、分布外发现与泄漏控制。
+本文同时给出各任务的关键节点、跨任务复用关系与当前缺口，并从数据视角提炼四条核心见解。
+
+\smallskip
+\textbf{Abstract (EN).} Using the latest online spreadsheet ``Data--Literature Curation'' as the single source of truth, this survey organizes materials-domain AI datasets along a timeline across five task families: prediction and identification, generation and inverse design, synthesis-route and step planning, optimization and experiment recommendation, and AI model evaluation. The table contains 104 dataset entries spanning 1965--2026. Simulation data (S) account for 63.5\%, experimental data (E) for 19.2\%, and hybrid data (H) for 16.3\%. Six phases are identified. Data scale grows from $10^3$ to $10^8$. Data formats shift from static property-label tables to interactive environments and closed-loop feedback. Evaluation moves from validity and novelty toward stability, out-of-distribution discovery, and leakage control. Four core data-perspective insights are further distilled from cross-tabulations of the timeline.
+\end{abstract}
+
+\section{引言与数据来源（Introduction and Data Source）}
+
+材料信息学的发展以数据基础设施为前提。
+早期研究依赖实验晶体结构库。
+随后高通量密度泛函理论（DFT）计算催生了开放性质数据库。
+近五年，机器学习原子间势（MLIP）与生成模型又把数据规模推向 $10^8$ 量级。
+与此同时，自驱动实验室（SDL）与智能体（agent）评测开始产生真实闭环实验数据。
+已有综述多按模型或任务组织。
+本文改按\textbf{时间线}组织，回答三个问题：各任务的数据集何时出现、规模与形态如何演进、当前缺口在哪里。
+
+数据来源为金山文档《数据-文献整理》最新版（\url{https://www.kdocs.cn/l/cbXjea3GKDH7}），提取日期 2026-11-15。
+该版本含 5 个任务 sheet，字段包括数据集名称/版本、发布年份、数据内容、数据规模、数据类型、任务类型、本阶段具体用途、材料体系、原始发布文献与应用文献。
+本地镜像见 \texttt{summary/raw/*.json} 与 \texttt{summary/snapshot/*.xlsx}；按年份排序的紧凑摘要见 \texttt{summary/timeline\_digest.md}。
+
+\textbf{口径说明。}
+（1）数据类型沿用表内三分法：E 为真实实验数据，S 为模拟/计算数据，H 为混合数据。
+（2）``发布年份''语义不一：部分条目为建库年（如 CSD 1965、ICSD 1978），部分为资源论文年（如 JARVIS 2020），部分为数据发布年（如 OMat24 数据 2024、期刊论文 2026）。本文沿用表内标注并在关键处注明。
+（3）104 为\textbf{条目数}而非去重数据集数；同一基础库可跨任务重复收录（如 Materials Project 本体跨 3 个 sheet，连同衍生基准覆盖 4 类任务）。
+（4）MatterSim 条目字段不全，单列待补。
+
+\begin{table}[h]
+\centering\small
+\caption{五个任务 sheet 的条目数与数据类型分布（E/S/H）}
+\begin{tabular}{@{}lrrrrl@{}}
+\toprule
+任务 sheet & 条目数 & E & S & H & 年份跨度 \\
+\midrule
+预测与识别 & 26 & 5 & 13 & 7 & 1978--2026 \\
+生成与逆向设计 & 33 & 6 & 22 & 5 & 1965--2026 \\
+路线与步骤规划 & 4 & 0 & 2 & 2 & 2013--2026 \\
+优化与实验推荐 & 23 & 9 & 11 & 3 & 2014--2026 \\
+AI模型评测 & 18 & 0 & 18 & 0 & 2019--2026 \\
+\midrule
+合计 & 104 & 20 & 66 & 17 & 1965--2026 \\
+\bottomrule
+\end{tabular}
+
+\smallskip
+注：另有 MatterSim 1 条字段不全，未计入类型统计。
+\end{table}
+
+\section{总体时间线：六个阶段（Six Phases）}
+
+\begin{table}[h]
+\centering\small
+\caption{材料 AI 数据集建设的六个阶段}
+\begin{tabular}{@{}p{3.1cm}p{1.7cm}p{5.4cm}p{5.4cm}@{}}
+\toprule
+阶段 & 时间 & 特征 & 代表数据集 \\
+\midrule
+P1 实验晶体学积累 & 1965--2010 & 文献整理的实验结构与物性；商业授权；非为 AI 而建，后成为结构先验与参照 & CSD (1965)、ICSD (1978)、PolyInfo (2000)、PAULING FILE (2004) \\
+P2 高通量第一性原理 & 2011--2016 & 开放 DFT 数据库与 API；性质标签规模化；机器学习就绪 & MP (2011)、AFLOW/COD/hMOF (2012)、OQMD (2013)、QM9 (2014) \\
+P3 领域扩展与基准萌芽 & 2017--2019 & 二维/MOF/催化/钙钛矿等专门库；反应产率实验数据；首个分子生成基准 & HOIP、JARVIS、C2DB、Ahneman (2018)、Cathub、CoRE MOF、GuacaMol (2019) \\
+P4 规模化与闭环实验 & 2020--2022 & 百万级轨迹与分子语料；统一性质基准；SDL/HTE 真实实验数据；多保真数据 & OC20、Matbench、ZINC20、MOSES、PI1M、OPV-SDL、Olympus、Alexandria \\
+P5 基础模型数据与生成评测 & 2023--2024 & $10^7$--$10^8$ 训练集；晶体生成与稳定性参照；实用性/三维/无序评测 & GNoME、MPtrj、OMat24、PolyTAO、Tartarus、GenBench3D、Dismai-Bench \\
+P6 智能体闭环与深度评测 & 2025--2026 & 交互环境与 agent 基准；稳定性/分布外/泄漏控制；真实实验数据回流 & OMol25、Alex-MP-20、PhononBench、LeMat-GenBench、MADE、CrystalGym、RECOB、CICERO、MOCLIP \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+阶段划分的主要依据是\textbf{数据形态}与\textbf{用途}的联合变化，而非单纯年份。
+P1--P2 解决``有没有标签''；P3--P4 解决``覆盖哪些体系、能否统一比较''；P5 解决``能否训练基础模型''；P6 解决``能否支撑闭环发现与可信评测''。
+从条目年份分布看，2020 年及以后共 77 条（74\%），2023 年及以后 52 条（50\%），2025--2026 年 32 条（31\%）。
+数据集建设明显加速，且重心向任务链后端（优化、评测、规划）移动。
+
+\section{预测与识别（Prediction and Identification）}
+
+该任务的数据集最早源于实验结构参照，随后被高通量 DFT 性质库取代为主力，近年又分化为``基础模型训练集''与``应用导向实验集''两支。
+
+\begin{longtable}{@{}p{1.1cm}p{3.6cm}p{4.3cm}cp{5.4cm}@{}}
+\caption{预测与识别：26 条数据集时间线}\\
+\toprule
+年份 & 数据集 & 规模（代表性口径） & 类型 & 时间线角色 \\
+\midrule
+\endfirsthead
+\toprule
+年份 & 数据集 & 规模（代表性口径） & 类型 & 时间线角色 \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+1978 & ICSD & $>$25 万条实验结构（持续更新） & E & 实验结构参照与相识别 \\
+2000 & PolyInfo & 约 50 万性质点（2024 概述） & E & 聚合物实验性质标签 \\
+2011 & Materials Project & 3 万+ 材料（2013），持续扩充 & S & DFT 性质库起点 \\
+2012 & hMOF & 137,953 假想 MOF & S & MOF 吸附筛选与预训练 \\
+2013 & OQMD & 约 20 万项 DFT（首发） & H & 预训练与跨库去重 \\
+2014 & QM9 & 133,885 分子 & S & 分子性质回归标准集 \\
+2016 & Polymer Dataset & 1,073 材料 / 4,292 任务 & H & 聚合物介电筛选 \\
+2017 & HOIP & 1,346 结构 & S & 钙钛矿带隙预测 \\
+2017/2020 & JARVIS & 4 万材料 / 百万+ 性质（2020） & H & 多子库基础设施 \\
+2018 & Ahneman B--H 偶联 & 约 3,955 条反应 & E & 反应产率预测起点 \\
+2018 & C2DB & 约 1,500 $\to$ 16,789（2024） & S & 二维材料性质预测 \\
+2019 & Cathub & 10 万+ 吸附/反应能 & S & 催化表面能量预测 \\
+2020 & Matbench & 13 任务，312--132,752 样本 & H & 统一性质基准 \\
+2020 & OC20 & 128 万弛豫 / 2.65 亿单点 & S & 催化能量/力大规模数据 \\
+2020 & SNUMAT & 10,481 材料 & H & 半导体带隙筛选 \\
+2021 & QMOF & 20,372 结构（v18） & H & MOF 电子性质 \\
+2022 & Alexandria & 500 万+ 次 DFT & H & 多维晶体训练与势训练 \\
+2022 & Torres EDBO+ & 1,728 条件组合 & E & HTE 产率 + 贝叶斯优化 \\
+2023 & GNoME & 220 万候选 / 38.1 万新稳定 & S & 稳定性预测与发现 \\
+2023 & MPtrj & 137 万项弛豫/静态任务 & S & MLIP 训练起点 \\
+2024 & 高熵材料 DFT & 约 84,000 结构 & S & 高熵体系泛化检验 \\
+2025 & HeuslerDB & 27,865 组成 / 51,373 能带 & S & 磁性/热电候选筛选 \\
+2025 & OMol25 & 1 亿+ 次 DFT / 8,300 万分子 & S & 分子基础模型数据 \\
+2026 & GOLD (DES) & 3,493 条性质记录 & E & 深共熔溶剂实验物性 \\
+2026 & OMat24 & 1.18 亿构型 & S & MLIP 预训练（期刊 2026） \\
+不详 & MatterSim & 条目待补 & -- & 待补 \\
+\end{longtable}
+
+\textbf{时间线要点。}
+（1）2011--2014 年确立``结构 + DFT 标签''范式：MP、OQMD、QM9 成为后续几乎所有任务的公共底座。
+（2）2018 年 Ahneman 等（\textit{Science}）把\textbf{反应产率}引入预测任务，数据来自真实实验而非 DFT。
+（3）2020 年出现两条分化线：Matbench 统一评测口径；OC20 把规模推到亿级单点计算。
+（4）2023 年后数据主要服务于 MLIP 与基础模型：MPtrj、OMat24、OMol25 的标签是能量/力/应力，而非单一物性。
+（5）2026 年 GOLD（DES）代表``应用导向小规模实验集''回流：3,493 条记录即支撑一个完整建模--审计基准。
+
+\section{生成与逆向设计（Generation and Inverse Design）}
+
+该任务的数据集分三层：结构先验层（实验晶体库）、训练语料层（分子/聚合物/晶体）、条件与参照层（稳定性凸包、性质标签）。
+2020 年是语料建设峰值（6 条），2023--2025 年是晶体与超材料生成数据峰值。
+
+\begin{longtable}{@{}p{1.1cm}p{3.6cm}p{4.3cm}cp{5.4cm}@{}}
+\caption{生成与逆向设计：33 条数据集时间线}\\
+\toprule
+年份 & 数据集 & 规模（代表性口径） & 类型 & 时间线角色 \\
+\midrule
+\endfirsthead
+\toprule
+年份 & 数据集 & 规模（代表性口径） & 类型 & 时间线角色 \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+1965 & CSD & 125 万+ 条（2024） & E & 构象/堆积先验（授权） \\
+2004 & PAULING FILE & 约 20 万无机相 & H & 结构--性能--相图约束 \\
+2012 & AFLOW & 170 万+ 化合物（2017） & S & 结构原型与性质约束 \\
+2012 & COD & 持续增长 & E & 开放 CIF 预训练 \\
+2012 & hMOF & 137,953 假想 MOF & S & 组合式生成空间 \\
+2013 & Materials Project & 动态更新 & S & 生成训练 + 稳定性参照 \\
+2013 & OQMD & 动态更新 & S & 能量/稳定性监督 \\
+2014 & QM9 & 133,885 分子 & S & 分子图/三维生成 \\
+2019 & 2DMatPedia & 6,351 二维材料 & S & 二维生成与剥离扩展 \\
+2019 & CoRE MOF (ASR) & 14,142 MOF & H & 实验 MOF 分布参照 \\
+2020 & JARVIS-DFT & 约 4 万材料 & S & 多性质条件生成 \\
+2020 & METASET & 二维子集 20/100 例 & S & 超材料多样性采样 \\
+2020 & MOSES & 194 万分子 & S & 分布生成 + 骨架测试 \\
+2020 & OC20 & 120 万轨迹 / 1.33 亿构型 & S & 逆设计弛豫代理 \\
+2020 & PI1M & 约 100 万重复单元 & S & 聚合物生成语料 \\
+2020 & ZINC20 & 约 14 亿化合物 & H & 可采购候选库 \\
+2022 & QMOF 20k & 2 万+ 结构 & S & MOF 条件生成 \\
+2023 & ChEMBL 33 & 240 万化合物 / 2,030 万活性 & E & 生物活性条件生成 \\
+2023 & GNoME & 38.1 万 $\to$ 52 万+ & S & 新颖性/稳定性参照凸包 \\
+2023 & Pearson's 2023/24 & 约 39.5 万条 & E & 原型/对称性参照（商业） \\
+2023 & PubChem & 亿级化合物 & H & 大规模分子预训练 \\
+2024 & C2DB 快照 & 16,789 条（2024-05） & S & 二维多属性设计 \\
+2024 & Dismai-Bench 数据 & 3 类体系 & S & 无序结构生成训练 \\
+2024 & OMat24 & 1.18 亿构型 & S & 生成后弛豫势 \\
+2024 & PoLyInfo & 112,771 样品 / 357,812 点 & E & 聚合物实验设计源 \\
+2024 & PolyTAO & 约 100 万结构--性质对 & S & 性质提示聚合物生成 \\
+2025 & Alex-MP-20 & 607,683 稳定结构 & S & MatterGen 条件生成 \\
+2025 & DiffuMeta & 公开包 25.9 MB & S & 壳超材料逆设计 \\
+2025 & MIND & 18 万例 & S & 微结构条件生成 \\
+2025 & MetamatBench 数据 & 5 集 / 百万级样本 & S & 标准化超材料语料 \\
+2025 & Symmetry-induced & 参数 + 图两类表示 & S & 对称性约束逆设计 \\
+2026 & ICSD 2026.1 & 335,032 条 & H & 原型模板与新颖性 \\
+2026 & MOCLIP & 466,537 对（公开 1 万） & E & 几何--光谱实验配对 \\
+\end{longtable}
+
+\textbf{时间线要点。}
+（1）实验晶体库（CSD、COD、ICSD、Pearson's）始终充当\textbf{先验与新颖性参照}，而非训练主力；其商业授权是复用瓶颈。
+（2）2020 年分子生成语料集中爆发：ZINC20（14 亿）$\to$ MOSES（194 万）$\to$ PI1M（100 万），形成``源库--基准子集--领域语料''的派生链。
+（3）2023 年 GNoME 把``生成候选的稳定性参照''本身变成大规模数据产品；2025 年 Alex-MP-20 进一步把 MP 与 Alexandria 重计算整理为生成专用训练集。
+（4）2024--2025 年数据向\textbf{非晶体体系}扩展：无序材料（Dismai）、聚合物（PolyTAO）、机械超材料（MIND、DiffuMeta、MetamatBench）、纳米光子（MOCLIP）。
+（5）2026 年 MOCLIP 首次提供大规模\textbf{实验}几何--光谱配对（46.7 万对），标志生成数据从纯模拟走向实验对齐。
+
+\section{路线与步骤规划（Synthesis-Route and Step Planning）}
+
+该任务条目最少（4 条），是当前数据建设的明显短板。
+数据形态从静态候选库演进为交互环境，再演进为面向 LLM 智能体的多模态路线基准。
+
+\begin{longtable}{@{}p{1.1cm}p{3.6cm}p{4.3cm}cp{5.4cm}@{}}
+\caption{路线与步骤规划：4 条数据集时间线}\\
+\toprule
+年份 & 数据集 & 规模（代表性口径） & 类型 & 时间线角色 \\
+\midrule
+\endfirsthead
+\toprule
+年份 & 数据集 & 规模（代表性口径） & 类型 & 时间线角色 \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+2013 & Materials Project & 20 万项 DFT（论文口径） & H & 候选空间 + 稳定性 oracle \\
+2023 & ChemGymRL & 3 个基准环境 & S & 数字化学实验室 RL 环境 \\
+2026 & CICERO 响应曲面 & 3 实例 $\times$ 3 路径假设 & S & 诊断 + 批量 BO 两阶段决策 \\
+2026 & Material Discovery Bench & 500+ 候选 / 7 个 agent & H & 发现 + 路线可行性分级 \\
+\end{longtable}
+
+\textbf{时间线要点。}
+（1）2013--2022 年没有专门的规划数据集；MP 被自主合成研究（如 \textit{Nature} 2023 自主实验室）借用作候选与参照。
+（2）2023 年 ChemGymRL 首次把反应/萃取/蒸馏操作序列建成\textbf{可交互环境}，但体系为有机化学而非固体材料。
+（3）2026 年出现两个材料导向基准：CICERO 面向稀土选择性沉淀的\textbf{有成本诊断 + 序贯优化}两阶段决策；Material Discovery Bench 同时评价候选发现与合成路线规划，含配方文本、设备与表征方案，并引入 7 个 LLM agent 参评。
+（4）缺口：真实合成路线/步骤记录几乎没有入库；现有条目以模拟响应面与文本方案为主。
+
+\section{优化与实验推荐（Optimization and Experiment Recommendation）}
+
+该任务的数据集以\textbf{实验预算}为第一公民：规模普遍为 $10^2$--$10^4$，但附带成本、保真度、约束与失败信息。
+2025--2026 年出现标准化任务库与真实仪器闭环。
+
+\begin{longtable}{@{}p{1.1cm}p{3.6cm}p{4.3cm}cp{5.4cm}@{}}
+\caption{优化与实验推荐：23 条数据集时间线}\\
+\toprule
+年份 & 数据集 & 规模（代表性口径） & 类型 & 时间线角色 \\
+\midrule
+\endfirsthead
+\toprule
+年份 & 数据集 & 规模（代表性口径） & 类型 & 时间线角色 \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+2014 & FreeSolv & 641 分子 & H & 多保真 BO 案例 \\
+2018 & MAX 相 & 402 相 & S & 多目标弹性 BO \\
+2020 & Matbench\_steel & 312 条 & E & 小样本 AL 钢强度 \\
+2020 & OPV 四元 SDL & HTE 约 2,100 / SDL 60 & E & 真实闭环配方优化 \\
+2020 & OER 组合 HTE & 4 $\times$ 2,121 组成 & E & 序贯组成选择 \\
+2021 & BzNSN & 1,400 标签 / 100 万候选 & S & 储能分子多目标 BO \\
+2021 & Olympus & 10 集 / 208--10,404 点 & E & 实验规划基准套件 \\
+2021 & PBE/HSE 带隙 & 74,992 / 5,974 条 & S & 多保真主动学习 \\
+2021 & 五实验 BO 集 & 5 集 / 60--600 点 & E & 真实实验回放 \\
+2022 & Alexandria 分子 & 1,134（应用口径） & S & 多保真分子 BO \\
+2022 & Fe--Co--Ni 薄膜 & 921 组成 & E & 磁性薄膜 AL \\
+2023 & 硬球堆积 & 494,498 次模拟 & S & 多目标/多保真/失败区域 \\
+2024 & AAC 9 套 & 1,367 mixes & E & 强度/CO$_2$ 多目标 \\
+2024--25 & MXene PBE0 & 4,448（946 半导体） & S & 带隙目标 AL \\
+2025 & AutoML 9 套 & 13 任务 / 6,000+ 样本 & E & AL + AutoML 切换 \\
+2025 & COF 608 & 608 / 预算 30 & S & 多保真 Xe/Kr 分离 \\
+2025 & Ni--Pd--Pt--Ru & 12 库 / 4,000+ 点 & E & 四元 OER 批量 BO \\
+2025 & 纳米压痕闭环 & 网格仿真 + 真实薄膜 & H & 仿真到仪器闭环 \\
+2026 & ALEX-MP-20 环境 & 可自定义 episode & S & RL/agent 晶体编辑反馈 \\
+2026 & COF 69,839 & 约 69,839 候选 & S & 搜索空间缩减 + MOBO \\
+2026 & MAC/GMC & 1 基准 / 100 次评估 & S & 层合板多目标 BO \\
+2026 & RECOB & 19 集 / 5,291 条记录 & H & 实测回放 + 学习 oracle \\
+2026 & M3GNet+NEB & 1 基准 / $\le$100 次评估 & S & 固态电解质掺杂 BO \\
+\end{longtable}
+
+\textbf{时间线要点。}
+（1）2014--2018 年以分子/计算空间的小规模 BO 案例为主（FreeSolv、MAX 相）。
+（2）2020--2021 年真实实验数据集中入库：OPV 自驱动实验室、OER 组合电化学、Olympus 与五实验回放集，确立``有限预算下发现效率''的评价口径。
+（3）2021--2025 年\textbf{多保真}成为主线：PBE/HSE、Alexandria、COF 608、硬球堆积同时提供低/高保真标签与成本。
+（4）2025--2026 年出现两类升级：一是标准化任务库（RECOB 19 集 5,291 条、AutoML 9 套、AAC 9 套），支持 regret/hypervolume 统一比较；二是真实仪器闭环（纳米压痕、Ni--Pd--Pt--Ru 四元库）。
+（5）2026 年环境型数据（ALEX-MP-20、M3GNet+NEB、MAC/GMC）把优化任务封装为可查询反馈接口，与生成/规划任务共享底座。
+
+\section{AI模型评测（AI Model Evaluation）}
+
+该 sheet 的 18 条全部为模拟型基准（S=18），且目标任务以生成与逆向设计为主。
+评测范式在 2024--2026 年发生质变：从``分布像不像''转向``发现是否真实可信''。
+
+\begin{longtable}{@{}p{1.1cm}p{3.6cm}p{4.3cm}cp{5.4cm}@{}}
+\caption{AI模型评测：18 条基准时间线}\\
+\toprule
+年份 & 基准 & 规模（代表性口径） & 类型 & 评测范式贡献 \\
+\midrule
+\endfirsthead
+\toprule
+年份 & 基准 & 规模（代表性口径） & 类型 & 评测范式贡献 \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+2019 & GuacaMol & 约 160 万分子 / 20 任务 & S & 分布学习 + 目标导向指标 \\
+2020 & MOSES & 194 万 / 骨架切分 & S & FCD/SNN/骨架泛化 \\
+2022 & AEM\_DIM\_Bench & 3 $\times$ 5 万 / 500 目标谱 & S & 电磁逆设计统一预算 \\
+2022 & 纳米光子基准 & 2 任务 / 3 类模型 & S & 多解性与制造约束 \\
+2023 & Tartarus & 4 类任务 & S & 实用性约束 + 计算预算 \\
+2024 & Dismai-Bench & 3 体系 / 5 模型 & S & 无序生成盲区 \\
+2024 & GenBench3D & 100 靶点 & S & 三维构象/口袋相容 \\
+2024 & Matbench-genmetrics & MP 时间切分 & S & 时间外推生成 \\
+2025 & AtomBench & 3 子集 / 4 模型 & S & 超导晶体重构 \\
+2025 & CrystalGym & 3 类性质任务 & S & RL 交互环境 \\
+2025 & LeMat-GenBench & 10 $\to$ 12 模型 & S & SUN + 版本固定 \\
+2025 & MetamatBench & 5 集 / 17 模型 / 12 指标 & S & 超材料统一评测 \\
+2025 & 非生成式基线 & 2 类基线 & S & 生成增益证伪 \\
+2025 & METRe/cRMSE & 3 数据集修订 & S & 去重/多晶型泄漏 \\
+2025 & 聚合物生成基准 & 6 类模型 & S & 小样本/扩增分析 \\
+2026 & MADE & 多元素凸包任务 & S & 闭环发现效率指标 \\
+2026 & PhononBench & 108,843 晶体 / 6 模型 & S & 动力学稳定性 \\
+2026 & OOD 扩散评测 & 3 设置 / 2 模型 & S & 化学空间外推 \\
+\end{longtable}
+
+\textbf{时间线要点。}
+（1）2019--2020 年分子生成指标定型：有效性、唯一性、新颖性、FCD（GuacaMol、MOSES）。
+（2）2022--2023 年评测扩展到光子/超材料逆设计与实用性约束（AEM\_DIM\_Bench、Tartarus）。
+（3）2024 年晶体生成评测引入\textbf{时间切分}与三维/无序维度（Matbench-genmetrics、GenBench3D、Dismai-Bench）。
+（4）2025 年（7 条，峰值）集中解决\textbf{可信度}：非生成式基线证伪、去重与多晶型泄漏（METRe/cRMSE）、版本固定（LeMat-GenBench）、环境化（CrystalGym）。
+（5）2026 年评测进入\textbf{物理验证与闭环}：PhononBench 以声子谱判动力学稳定（10.9 万晶体）；MADE 用 AF/EF/AUDC/mSUN 衡量闭环发现效率；OOD 评测检验分布外发现。
+（6）缺口：18 条基准全部为模拟型，尚无以真实实验为终判的评测。
+
+\section{跨任务趋势（Cross-Task Trends）}
+
+\begin{enumerate}
+\item \textbf{规模跃迁。}实验集 $10^2$--$10^4$（RECOB 5,291 条）$\to$ 早期 DFT 库 $10^5$（QM9 13.4 万）$\to$ 轨迹库 $10^6$--$10^7$（MPtrj 137 万、Alexandria 500 万）$\to$ 基础模型集 $10^8$（OMat24 1.18 亿构型、OMol25 1 亿+ 次 DFT）。
+\item \textbf{来源闭环。}E（文献实验）$\to$ S（高通量 DFT）$\to$ S 规模化（MLIP 弛豫轨迹）$\to$ E+S 回流（SDL、纳米压痕、MOCLIP、RECOB）。模拟数据占 63.5\%。按年计，实验类条目自 2020 年起稳定在每年约 2 条，模拟类则从每年约 4 条加速到 12 条；实验数据的``回流''是形态变化（仪器自动化、MOCLIP 46.7 万实验配对），而非数量激增。
+\item \textbf{基础库跨任务复用。}MP 本体出现在 3 个 sheet（预测、生成、规划），连同 Matbench、MP-time-split 等衍生基准覆盖 4 类任务；QM9、OQMD、hMOF、OC20、QMOF、GNoME、OMat24、C2DB、ICSD、JARVIS、MOSES、Dismai-Bench、MetamatBench 均跨 2 个以上任务。同一库在不同任务中承担不同角色（训练标签/稳定性参照/候选空间/评测参考）。
+\item \textbf{模态扩展。}结构+能量 $\to$ 图像--光谱配对（MOCLIP）$\to$ 合成配方文本（Material Discovery Bench）$\to$ 可交互环境（ChemGymRL、CrystalGym、MADE）。
+\item \textbf{评测范式升级。}随机切分 $\to$ 时间切分 $\to$ DFT/声子稳定性验证 $\to$ 去重与泄漏控制 $\to$ 分布外发现 $\to$ 闭环效率（AF/EF/AUDC/mSUN、regret/HV）。
+\item \textbf{开放与许可分层。}开放 API（MP、OQMD、AFLOW、COD）$\to$ 商业授权（ICSD、CSD、Pearson's、PAULING FILE）$\to$ 付费批量（PoLyInfo）$\to$ 按需获取（MIND）。许可差异直接决定可复用性。
+\item \textbf{重心后移。}2025--2026 年 32 条中，优化（9）、评测（10）、规划（2）合计 21 条（66\%）。数据建设从``喂模型''转向``考模型''与``驱动闭环''。
+\end{enumerate}
+
+\section{数据视角见解（Data-Perspective Insights）}
+
+对 104 条条目按``时代 $\times$ 来源''、``任务 $\times$ 时代''及跨任务复用关系进行交叉统计（脚本 \texttt{summary/\_insight\_stats.py}），可提炼四条超出单任务叙事的数据视角见解。
+它们的共同主题是：材料 AI 的数据基础设施在过去十年中完成了计算端的工业化，而实验端的数据化才刚刚开始——数据的生产方式、标注权的归属以及评测的对象，各自经历了一次根本性转移。
+
+\textbf{EN.} Cross-tabulating the 104 entries by era $\times$ origin, task $\times$ era, and cross-task reuse (script: \texttt{summary/\_insight\_stats.py}) distills four core insights beyond the per-task narrative. Their common theme is that the data infrastructure for materials AI has industrialized the computational end over the past decade, while the datafication of experiments has only just begun---the mode of data production, the locus of labeling authority, and the object of evaluation have each undergone a fundamental shift.
+
+\subsection*{见解 1　数据生产的结构性失衡：实验供给恒速与双峰分布（Insight 1: Structural Imbalance in Data Production---Flat Experimental Supply and a Bimodal Distribution）}
+
+材料 AI 数据集的规模增长几乎完全由模拟数据驱动。
+实验类条目（E）自 2020 年起逐年维持在 3, 2, 2, 2, 2, 2, 2 条，六年间供给速率几乎不变；同期模拟类条目（S）从年均约 4 条加速至约 12 条，E 占比由 P4（2020--22）的 28\% 降至 P6（2025--26）的仅 12.5\%。
+自驱动实验室（SDL）、MOCLIP（46.7 万几何--光谱实验配对）和 RECOB 的出现无疑提升了单条数据的信息密度——从孤立状态标签拓展为过程轨迹、多模态配对与可回放决策记录——但它们改变的是数据的\textbf{形态}而非\textbf{供给速率}。
+
+实验数据的内部结构同样值得关注。
+全部 20 条 E 类条目呈断裂的双峰分布（表~\ref{tab:bimodal}）：一侧是文献积累的状态库（$10^5$--$10^7$，如 CSD 125 万条晶体结构、ChEMBL 2,030 万条活性记录），仅提供结构与性质标签；另一侧是决策级实验库（$10^2$--$10^4$，如 Matbench\_steel 312 条、BO 回放集 60--600 点、Torres 1,728 个条件组合、RECOB 5,291 条记录），记录条件--结果轨迹——即贝叶斯优化与智能体方法所依赖的数据形态。
+两群相差 3--4 个数量级，而 RECOB 手工从 17 篇已发表论文中聚合的 5,291 条已是当前规模最大的决策级实验基准。
+
+这揭示了一个深层矛盾：材料 AI 发现通量的瓶颈正从模型架构与计算资源转向\textbf{真实实验的数据化产能}。
+当前最紧迫的基础设施缺口并非更大的 DFT 库，而是 $10^4$--$10^6$ 量级的\textbf{实验过程数据库}——须包含操作序列、资源预算与失败记录。
+
+\begin{table}[h]
+\centering\small
+\caption{实验数据的双峰分布（Bimodal distribution of experimental data）}
+\label{tab:bimodal}
+\begin{tabular}{@{}p{3.0cm}p{2.0cm}p{5.0cm}p{5.6cm}@{}}
+\toprule
+类型 Type & 规模 Scale & 代表 Examples & 记录内容 What is recorded \\
+\midrule
+文献状态库 State libraries & $10^5$--$10^7$ & CSD、ChEMBL、PolyInfo、MOCLIP & 结构/性质标签（``是什么''）Structure/property labels (``what'') \\
+决策实验库 Decision libraries & $10^2$--$10^4$ & Matbench\_steel、BO 集、Torres、RECOB & 条件$\to$结果轨迹（``怎么做''）Condition$\to$outcome trajectories (``how'') \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{EN.} The growth of materials AI datasets has been driven almost entirely by simulation data. Experimental entries (E) have remained nearly constant since 2020 at 3, 2, 2, 2, 2, 2, 2 per year, while simulation entries (S) accelerated from roughly 4 to 12 per year, reducing the E share from 28\% in P4 (2020--22) to merely 12.5\% in P6 (2025--26). Self-driving laboratories (SDL), MOCLIP (466,537 geometry--spectrum experimental pairs), and RECOB have undeniably raised the information density per record---extending from isolated state labels to process trajectories, multimodal pairings, and replayable decision records---but what they have changed is the \textbf{form} of the data, not its \textbf{supply rate}.
+
+The internal structure of experimental data is equally telling. The 20 E-type entries exhibit a disconnected bimodal distribution (Table~\ref{tab:bimodal}): on one side, literature-accumulated state libraries at $10^5$--$10^7$ (e.g., CSD 1.25M crystal structures, ChEMBL 20.3M activity records) provide only structure and property labels; on the other, decision-level experimental libraries at $10^2$--$10^4$ (e.g., Matbench\_steel 312 entries, BO replay sets of 60--600 points, Torres 1,728 condition combinations, RECOB 5,291 records) document condition--outcome trajectories---the data modality that Bayesian optimization and agent-based methods actually consume. The two populations differ by 3--4 orders of magnitude, and RECOB, hand-curated from 17 published papers into 5,291 records, is already the largest decision-level experimental benchmark available.
+
+This reveals a deep structural tension: the throughput bottleneck for AI-enabled materials discovery is shifting from model architectures and compute toward the \textbf{datafication capacity of real experiments}. The most pressing infrastructure gap is not a larger DFT library, but an \textbf{experimental-process database} at the $10^4$--$10^6$ scale---one that captures operational sequences, resource budgets, and failure records.
+
+\subsection*{见解 2　任务覆盖的不对称性：基础库复用与决策端孤岛（Insight 2: Asymmetric Task Coverage---Foundation-Library Reuse and Decision-Side Islands）}
+
+跨任务数据复用网络呈现高度不对称的拓扑结构。
+15 个跨任务枢纽覆盖了 31 条条目（30\%），但其中 12 个为``预测$\leftrightarrow$生成''配对（MP、QM9、OC20、GNoME、OMat24、OQMD、JARVIS 等），3 个为``评测$\leftrightarrow$生成''配对（MOSES、Dismai-Bench、MetamatBench）。
+与此形成鲜明对比的是，优化任务 sheet 中没有任何跨任务枢纽，规划任务 sheet 中唯一的外部引用——Materials Project——也仅作为候选空间或稳定性 oracle 被借用，而非作为规划过程数据被复用。
+
+任务 $\times$ 时代矩阵（表~\ref{tab:matrix}）进一步揭示了一个时序迁移模式：预测任务在 P4（2020--22）见顶（6 条）后回落，生成任务在 P5（2023--24）见顶（9 条），评测任务则单调加速至 P6（2025--26）的 10 条（占其全部条目的 56\%）。
+P6 的 32 条条目中，优化（9）、评测（10）、规划（2）合计占 66\%，显示数据建设的重心正在向任务链后端移动。
+
+综合而言，当前的数据生态呈现出一种结构性偏斜：预测与生成两端已形成可互操作的基础库网络，预训练红利向这两个方向集中；而决策端——规划、优化与闭环评测——每个任务承载各自的小规模专用数据，难以跨体系复用。
+规划数据的极度稀缺（4/104 = 3.8\%）并非偶然，而是过程类数据天然难以标准化、难以获得宽松许可、难以跨材料体系迁移的必然结果。
+
+\begin{table}[h]
+\centering\small
+\caption{任务 $\times$ 时代条目数矩阵（Task $\times$ era entry-count matrix）}
+\label{tab:matrix}
+\begin{tabular}{@{}p{4.6cm}rrrrrr@{}}
+\toprule
+任务 Task & $\le$2010 & 2011--16 & 2017--19 & 2020--22 & 2023--24 & 2025--26 \\
+\midrule
+预测与识别 Prediction & 2 & 5 & 5 & 6 & 3 & 4 \\
+生成与逆向设计 Generation & 2 & 6 & 2 & 7 & 9 & 7 \\
+路线与步骤规划 Planning & 0 & 1 & 0 & 0 & 1 & 2 \\
+优化与实验推荐 Optimization & 0 & 1 & 1 & 9 & 3 & 9 \\
+AI模型评测 Evaluation & 0 & 0 & 1 & 3 & 4 & 10 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{EN.} The cross-task reuse network exhibits a strikingly asymmetric topology. Fifteen cross-task hubs span 31 entries (30\%), but twelve of these are prediction$\leftrightarrow$generation pairs (MP, QM9, OC20, GNoME, OMat24, OQMD, JARVIS, etc.) and three are evaluation$\leftrightarrow$generation pairs (MOSES, Dismai-Bench, MetamatBench). In sharp contrast, the optimization sheet contains no cross-task hub whatsoever, and the sole external reference in the planning sheet---Materials Project---is borrowed as a candidate space or stability oracle, not reused as planning-process data.
+
+The task $\times$ era matrix (Table~\ref{tab:matrix}) further reveals a temporal migration pattern: prediction entries peaked in P4 (2020--22, 6 entries) and subsequently receded; generation entries peaked in P5 (2023--24, 9 entries); and evaluation entries have accelerated monotonically to 10 in P6 (2025--26, 56\% of all evaluation entries). Of the 32 entries in P6, optimization (9), evaluation (10), and planning (2) together account for 66\%, indicating a shift of data-construction effort toward the downstream end of the task chain.
+
+Taken together, the current data ecosystem exhibits a structural skew: the forward-prediction and inverse-generation ends have developed an interoperable network of foundation libraries, concentrating pretraining dividends in these two directions; the decision side---planning, optimization, and closed-loop evaluation---carries small, task-specific datasets with little cross-system reusability. The extreme scarcity of planning data (4/104 = 3.8\%) is not accidental but a structural consequence of the inherent difficulty of standardizing, licensing, and transferring process-level data across material systems.
+
+\subsection*{见解 3　标注权的转移：从第一性原理到机器学习势的自标注（Insight 3: The Shift of Labeling Authority---From First-Principles to MLIP Self-Labeling）}
+
+模拟数据的规模阶梯勾勒出一条清晰的技术路线：QM9（$1.3\times10^5$ 分子，2014）$\to$ OC20（$2.6\times10^8$ 次 DFT 单点计算，2020）$\to$ OMat24（$1.18\times10^8$ 个标记结构，2024）$\to$ OMol25（$10^8$+ 次 DFT 计算，2025）。
+这一序列体现了现代材料 AI 的规模化方法论——以算力换取数据。
+然而，2026 年的 PhononBench 标志着一次质变：该基准使用 MatterSim 机器学习原子间势（MLIP）为 108,843 个 AI 生成晶体赋予动力学稳定性标签，DFT 退居为校准参考而非逐结构的生产工具。
+
+数据生产函数由此从``人工实验 $\to$ DFT 标注''演进为``AI 势标注、DFT 校准''的二级结构。
+这一转变解除了数据规模的物理瓶颈——MLIP 标注的速度比 DFT 高数个数量级——但引入了一个系统性的自指风险：当训练数据、生成模型与评测 oracle 共享同一 MLIP 家族（OMat24 系）的底层参数化时，模型性能评估可能被系统性高估，误差在迭代中复利。
+独立 DFT 锚点与严格的版本溯源机制因此成为防止基准污染的必要条件。
+该风险并非理论推演：OMat24 已在表格中两次出现——2024 年作为生成任务的训练资源（预印本口径），2026 年作为预测任务的 MLIP 预训练集（期刊口径）——两次收录引用了不同的原始文献；GNoME 则在 2023 年的 38.1 万新稳定结构与 2024 年的 52 万+ 近凸包材料之间留下了一个未经审计的版本增量。
+
+\textbf{EN.} The simulation-data scale ladder traces a clear technological trajectory: QM9 ($1.3\times10^5$ molecules, 2014) $\to$ OC20 ($2.6\times10^8$ DFT single-point calculations, 2020) $\to$ OMat24 ($1.18\times10^8$ labeled structures, 2024) $\to$ OMol25 ($10^8$+ DFT calculations, 2025). This sequence embodies the scaling methodology of modern materials AI---trading compute for data. However, PhononBench in 2026 marks a qualitative shift: it employs the MatterSim machine-learned interatomic potential (MLIP) to assign dynamical stability labels to 108,843 AI-generated crystals, relegating DFT to a calibration reference rather than a per-structure production tool.
+
+The data production function has thus evolved from ``human experiment $\to$ DFT labeling'' into a two-tier structure of ``AI-potential labeling, DFT calibration.'' This transition lifts the physical bottleneck on data scale---MLIP labeling is orders of magnitude faster than DFT---but introduces a systemic self-referential risk: when training data, generative models, and evaluation oracles share the underlying parameterization of the same MLIP family (the OMat24 lineage), model performance may be systematically overestimated, with errors compounding across iterations. Independent DFT anchors and rigorous version tracing are therefore necessary safeguards against benchmark contamination. This risk is not hypothetical: OMat24 appears twice in the table---in 2024 as a training resource for generation (preprint reference) and in 2026 as an MLIP pretraining set for prediction (journal reference)---citing different original publications; GNoME carries an unaudited version increment between 381k newly stable structures (2023) and 520k+ near-hull materials (2024).
+
+\subsection*{见解 4　评测范式的四次跃迁：从分布相似到闭环效率（Insight 4: Four Paradigm Leaps in Evaluation---From Distributional Similarity to Closed-Loop Efficiency）}
+
+评测任务的 18 条基准全部为模拟型（S = 18），其发展轨迹可归纳为四次范式跃迁：（1）分布学习指标（GuacaMol, 2019；MOSES, 2020），以有效性、唯一性、新颖性和 Fr\'echet ChemNet 距离（FCD）评价分子生成质量；（2）防泄漏切分（Matbench-genmetrics / MP time-split, 2024），以时间外推取代随机切分，暴露生成模型对训练分布的过拟合；（3）物理稳定性验证（PhononBench, 2026），以 MLIP 计算的声子谱与虚频判定 108,843 个 AI 生成晶体的动力学稳定性；（4）闭环预算效率（MADE, 2026），以 AF/EF/AUDC/mSUN 指标在固定 oracle 调用预算下衡量闭环发现效率；以及分布外发现评测（2026），检验扩散模型在未充分覆盖的元素组合与三元体系中的泛化能力。
+
+评测的形态学转变同样值得注意。
+早期基准为静态数据表（GuacaMol、MOSES），近年已演化为可交互环境：CrystalGym 将晶体性质优化封装为强化学习环境，MADE 提供固定 oracle 与初始凸包的闭环发现协议，RECOB 引入 measured-table replay（对历史实测数据的回放）与 learned oracle（由实测数据训练的代理模型作为连续查询界面）两种评测模式，CICERO 则设计了包含有成本诊断实验与序贯贝叶斯优化的两阶段决策基准。
+
+然而，一个根本性空白贯穿全部 18 条基准：没有任何一条以真实物理实验作为最终裁决。
+评测的目标已从``拟合是否准确''推进至``发现是否高效''，但当模型排名最终取决于计算代理的数值而非实验台上的产率或稳定性时，基准的生态效度仍然未经验证。
+Material Discovery Bench（2026）——以 7 个 LLM agent 在 500+ 候选材料上联合评价材料可行性与合成路线可行性——向真实实验端迈出了重要一步，但路线评价仍停留在文本级别的专家判断，尚未接入实验验证回路。
+
+\textbf{EN.} All 18 evaluation benchmarks are simulation-based (S = 18). Their trajectory can be summarized as four paradigm leaps: (1) distribution-learning metrics (GuacaMol, 2019; MOSES, 2020), assessing molecular generation quality through validity, uniqueness, novelty, and Fr\'echet ChemNet distance (FCD); (2) leakage-aware splitting (Matbench-genmetrics / MP time-split, 2024), replacing random splits with temporal extrapolation to expose generative models' overfitting to training distributions; (3) physical stability verification (PhononBench, 2026), using MLIP-computed phonon spectra and imaginary frequencies to judge the dynamical stability of 108,843 AI-generated crystals; and (4) closed-loop budget efficiency (MADE, 2026), measuring closed-loop discovery efficiency under fixed oracle-call budgets via AF/EF/AUDC/mSUN metrics, alongside out-of-distribution evaluation (2026), which tests diffusion models' generalization to under-represented element combinations and ternary systems.
+
+The morphological evolution of evaluation is equally noteworthy. Early benchmarks were static data tables (GuacaMol, MOSES); recent ones have evolved into interactive environments: CrystalGym wraps crystal property optimization as a reinforcement-learning environment, MADE provides a closed-loop discovery protocol with a fixed oracle and initial convex hull, RECOB introduces two evaluation modes---measured-table replay (replaying historical experimental records) and learned oracle (a surrogate model trained on experimental data as a continuous-query interface)---and CICERO designs a two-stage decision benchmark with costly diagnostic experiments and sequential Bayesian optimization.
+
+Yet one fundamental gap runs through all 18 benchmarks: none employs real physical experiments as the final arbiter. The evaluation objective has advanced from ``does it fit accurately?'' to ``does it discover efficiently?'' but when model rankings ultimately depend on numerical surrogates rather than bench-top yield or stability, the ecological validity of the benchmarks remains unverified. Material Discovery Bench (2026)---which jointly evaluates material viability and synthesis-route feasibility for 500+ candidates using seven LLM agents---represents a meaningful step toward the experimental end, but route assessment remains at the level of textual expert judgment, not yet connected to an experimental validation loop.
+
+\subsection*{综合讨论（Synthesis）}
+
+以上四条见解指向同一个判断：材料 AI 的数据基础设施已完成计算端的工业化——从高通量 DFT 库到百万级轨迹到亿级 MLIP 标注——但实验端的数据化仍然处于手工挖掘阶段。
+下一阶段的竞争焦点很可能从模型架构转向三个数据维度的基础设施：（1）实验过程数据的规模化生产线，将实验条件、操作序列与结果以机器可读且可回放的形式系统采集；（2）独立于任何特定 MLIP 参数化的物理评测锚点，例如以多方法 DFT 交叉验证的关键体系子集；以及（3）面向决策任务的跨体系可复用基础库，使规划与优化任务能够共享由多来源实验聚合的过程级数据。
+
+\textbf{EN.} The four insights converge on a single diagnosis: the data infrastructure for materials AI has industrialized the computational end---from high-throughput DFT libraries through million-scale trajectories to hundred-million-scale MLIP labeling---while the experimental end remains in a hand-mining stage. The next phase of competition is likely to shift from model architectures toward data infrastructure along three dimensions: (1) a scaled production line for experimental-process data, systematically capturing experimental conditions, operational sequences, and outcomes in machine-readable, replayable form; (2) physical evaluation anchors independent of any specific MLIP parameterization, such as cross-validated DFT subsets for key material systems; and (3) cross-system reusable foundation libraries for decision-side tasks, enabling planning and optimization to share process-level data aggregated from diverse experimental sources.
+
+\section{缺口与局限（Gaps and Limitations）}
+
+\begin{itemize}
+\item \textbf{规划数据稀缺。}仅 4 条，且无真实合成步骤记录；固体材料合成路线数据几乎空白。
+\item \textbf{实验/模拟失衡是标签类型性的。}E 共 20 条（19.2\%），内部两极：文献积累型大库（CSD 125 万、ChEMBL 2,030 万活性）只提供状态标签；单 campaign 仪器数据仅 $10^2$--$10^4$。过程级与决策级实验记录才是真正瓶颈。
+\item \textbf{评测缺真实终判。}AI模型评测 18 条全为 S；缺少以实验复核为终点的基准。
+\item \textbf{版本口径不一。}多条自注``规模随版本变化''（ICSD、C2DB、QMOF、LeMat-GenBench 等）；跨论文比较需固定 snapshot。
+\item \textbf{许可壁垒。}商业库（CSD、ICSD、Pearson's）与付费批量（PoLyInfo）限制大规模预训练复用。
+\item \textbf{负结果缺位。}失败实验/不稳定结构记录极少；硬球堆积的失败概率是少数例外。
+\item \textbf{条目完整性。}MatterSim 字段待补；部分``应用文献''标注为未单独核实。
+\item \textbf{本文局限。}统计基于表内条目而非去重数据集；年份语义混合（建库/资源论文/数据发布）；未对每条原始文献逐一复核。
+\end{itemize}
+
+\section{结语（Conclusion）}
+
+1965--2026 年的材料 AI 数据集建设，走过了``实验结构库 $\to$ 高通量 DFT 库 $\to$ 大规模训练集 $\to$ 交互环境与闭环反馈''四个形态台阶。
+预测与生成任务的数据已相对充裕；规划与真实实验评测是下一个建设重点。
+对数据集建设者，本文建议：（1）优先补齐合成路线与步骤的真实记录；（2）为每个发布固定版本快照与许可声明；（3）把失败/负结果纳入采集；（4）以闭环发现效率而非单一分布指标作为评测终点。
+
+配套画图 prompt 见 \texttt{summary/timeline\_figure\_prompt.md}；按年份排序的原始摘要见 \texttt{summary/timeline\_digest.md}。
+
+\end{document}
