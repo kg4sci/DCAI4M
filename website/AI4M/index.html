@@ -187,7 +187,6 @@
     .tl-chart{height:160px;margin-bottom:30px}
     .tl-year{bottom:-24px;font-size:9px}
     .modal-body{max-height:60vh;padding:18px 22px}
-    .score-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr))}
   }
 
   /* ═══ MODAL ═══ */
@@ -204,15 +203,17 @@
   .modal-body .info-line strong{color:var(--text)}
   .score-section{margin-top:16px}
   .score-section h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:6px}
-  .score-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
-  .score-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;text-align:center;transition:all .12s}
-  .score-card:hover{border-color:var(--primary);background:var(--primary-light)}
-  .score-card .s-dim{font-size:18px;font-weight:700;color:var(--text);line-height:1.2}
-  .score-card .s-label{font-size:10px;color:var(--text2);margin-top:2px;letter-spacing:.03em}
-  .score-card .s-name{font-size:9px;color:var(--text3);margin-top:1px;line-height:1.3}
-  .score-card.pending{opacity:.55}
-  .score-card.pending .s-dim{color:var(--amber)}
-  .score-note{font-size:11px;color:var(--text3);margin-top:14px;font-style:italic}
+  .score-table{width:100%;border-collapse:collapse;font-size:12px}
+  .score-table td{padding:6px 8px;border-bottom:1px solid var(--border-light);vertical-align:middle}
+  .score-table td:first-child{font-weight:700;color:var(--text);width:28px;text-align:center;font-size:13px}
+  .score-table td:nth-child(2){color:var(--text2);font-size:11px;width:80px}
+  .score-table td:last-child{color:var(--text3);font-size:10px;line-height:1.3}
+  .score-table td.pending{opacity:.5}
+  .score-table td.pending:first-child{color:var(--amber)}
+  .score-table tr:last-child td{border-bottom:none}
+  .report-link{display:inline-flex;align-items:center;gap:5px;margin-top:14px;padding:8px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg);color:var(--primary);font-size:12px;font-weight:500;text-decoration:none;transition:all .12s}
+  .report-link:hover{background:var(--primary-light);border-color:var(--primary);color:var(--primary-dark)}
+  .score-note{font-size:11px;color:var(--text3);margin-top:8px;font-style:italic}
   .modal-footer{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-top:1px solid var(--border);gap:12px}
   .modal-footer .m-paper-id{font-size:11px;color:var(--text3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 </style>
@@ -326,9 +327,10 @@
       <div class="info-line"><strong>Paper ID:</strong> <span id="modal-paperid"></span></div>
       <div class="score-section">
         <h3>&#128202; Intelligence &amp; Experiment Scores</h3>
-        <div class="score-grid" id="modal-scores"></div>
+        <table class="score-table" id="modal-scores"></table>
       </div>
-      <div class="score-note">Scores assigned by LLM agent evaluation (model: gpt-6-sol, thinking: high). ~N = candidate score pending verification.</div>
+      <a class="report-link" id="modal-report-link" href="#" target="_blank" rel="noopener">&#128196; View Full Evaluation Report</a>
+      <div class="score-note">Scores assigned by LLM agent (gpt-6-sol, high reasoning). ~N = candidate score pending verification.</div>
     </div>
     <div class="modal-footer">
       <span class="m-paper-id" id="modal-footer-id"></span>
@@ -725,10 +727,10 @@ function openReview(idx) {
   if (!d||!d.agent_review) return;
   const r = d.agent_review;
   const dims = Object.keys(DIM_NAMES);
-  let scoresHtml = '';
+
+  let rows = '';
   dims.forEach(dim => {
     const v = r.scores?.[dim];
-    const label = dim;
     const name = DIM_NAMES[dim]||'';
     let display = 'N/A';
     let pending = false;
@@ -736,17 +738,20 @@ function openReview(idx) {
     else if (typeof v==='string'&&v.includes('待复核')) { display='?'; pending=true; }
     else if (typeof v==='string'&&v.startsWith('~')) { display=v; pending=true; }
     else { display=v; }
-    scoresHtml += `<div class="score-card${pending?' pending':''}">
-      <div class="s-dim">${display}</div>
-      <div class="s-label">${label}</div>
-      <div class="s-name">${name}</div>
-    </div>`;
+    rows += `<tr class="${pending?'pending':''}"><td>${display}</td><td>${dim}</td><td>${name}</td></tr>`;
   });
   document.getElementById('modal-title').textContent = d.name||'(untitled)';
   document.getElementById('modal-dsname').textContent = d.name||'';
   document.getElementById('modal-paperid').textContent = r.paper_id||'N/A';
   document.getElementById('modal-footer-id').textContent = 'Paper ID: '+(r.paper_id||'N/A');
-  document.getElementById('modal-scores').innerHTML = scoresHtml;
+  document.getElementById('modal-scores').innerHTML = rows;
+  const rl = document.getElementById('modal-report-link');
+  if (r.report_url) {
+    rl.href = r.report_url;
+    rl.style.display = '';
+  } else {
+    rl.style.display = 'none';
+  }
   document.getElementById('review-modal').classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 }
