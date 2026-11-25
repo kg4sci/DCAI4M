@@ -344,7 +344,7 @@
   <div class="modal">
     <div class="modal-header">
       <h2 id="modal-title">Agent Evaluation</h2>
-      <span class="m-badge">Agent评价</span>
+      <span class="m-badge">Agent Review</span>
       <button class="modal-close" onclick="closeReview()">&times;</button>
     </div>
     <div class="modal-body">
@@ -525,7 +525,7 @@ function renderCards() {
           <span class="badge badge-task">${escHtml(d.task_type||'')}</span>
           ${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : ''}
           <span class="badge ${sc}">${st}</span>
-                    ${d.agent_review ? `<button class="badge badge-agent" onclick="openReview(${idx})" title="View LLM evaluation scores">&#129488; Agent评价</button>` : ''}
+                    ${d.agent_review ? `<button class="badge badge-agent" onclick="openReview(${idx})" title="View LLM evaluation scores">&#129488; AI Review</button>` : ''}
         </div>
       </div>
       <div class="card-desc" id="dsc-${idx}">${short}</div>
