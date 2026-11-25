@@ -14,7 +14,21 @@
   "material_system": "Inorganic crystal",
   "baseline": "MatterGen/DiffCSP/DiffCSP++/FlowMM ( version )",
   "score": 0,
-  "source_sheet": "AI模型评测"
+  "source_sheet": "AI模型评测",
+  "agent_review": {
+   "paper_id": "paper_64641de3f9e4e515",
+   "scores": {
+    "O": 3,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": "",
+    "P": 2,
+    "E": "",
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Matbench-genmetrics / MP time-split",
@@ -52,7 +66,21 @@
   "score": 1.0,
   "source_sheet": "AI模型评测",
   "level": 1,
-  "level_label": "Predictive"
+  "level_label": "Predictive",
+  "agent_review": {
+   "paper_id": "paper_5f58decf6f642357",
+   "scores": {
+    "O": 3,
+    "A": "",
+    "I": 3,
+    "G": 2,
+    "U": 3,
+    "P": 2,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "PhononBench",
@@ -71,7 +99,21 @@
   "score": 1.75,
   "source_sheet": "AI模型评测",
   "level": 2,
-  "level_label": "Design-oriented"
+  "level_label": "Design-oriented",
+  "agent_review": {
+   "paper_id": "paper_836d4d140a503c7a",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": 3,
+    "G": "",
+    "U": 1,
+    "P": 2,
+    "E": 0,
+    "R": 1,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Polymer design generation model benchmark",
@@ -109,7 +151,21 @@
   "score": 3.62,
   "source_sheet": "AI模型评测",
   "level": 3,
-  "level_label": "Decision-oriented"
+  "level_label": "Decision-oriented",
+  "agent_review": {
+   "paper_id": "paper_c7d64282ea2dd4d4",
+   "scores": {
+    "O": 3,
+    "A": 4,
+    "I": 3,
+    "G": 2,
+    "U": 3,
+    "P": 3,
+    "E": 0,
+    "R": 0,
+    "C": "待复核"
+   }
+  }
  },
  {
   "name": "M AD E material discovery",
@@ -128,7 +184,21 @@
   "score": 4.31,
   "source_sheet": "AI模型评测",
   "level": 4,
-  "level_label": "Adaptive discovery"
+  "level_label": "Adaptive discovery",
+  "agent_review": {
+   "paper_id": "paper_8c791f6b9bb3ee43",
+   "scores": {
+    "O": 4,
+    "A": "",
+    "I": "",
+    "G": 3,
+    "U": 3,
+    "P": "",
+    "E": 0,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Inorganic crystal generation discovery baseline",
@@ -183,7 +253,21 @@
   "score": 3.69,
   "source_sheet": "AI模型评测",
   "level": 3,
-  "level_label": "Decision-oriented"
+  "level_label": "Decision-oriented",
+  "agent_review": {
+   "paper_id": "paper_4f150443f6b3c004",
+   "scores": {
+    "O": 3,
+    "A": 4,
+    "I": 3,
+    "G": 3,
+    "U": 3,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": "待复核"
+   }
+  }
  },
  {
   "name": "GuacaMol",
@@ -257,7 +341,21 @@
   "material_system": "Metamaterial",
   "baseline": "Generation baseline CDVAE/CondCDVAE/DiffCSP/EquiCSP/EDM/GeoLDM",
   "score": 0,
-  "source_sheet": "AI模型评测"
+  "source_sheet": "AI模型评测",
+  "agent_review": {
+   "paper_id": "paper_63c63e7f7cd57984",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": "",
+    "G": "",
+    "U": "",
+    "P": "",
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Crystal evaluation (METRe/cRMSE)",
@@ -361,7 +459,21 @@
   "material_system": "Metamaterial",
   "baseline": "",
   "score": 0,
-  "source_sheet": "生成与逆向设计"
+  "source_sheet": "生成与逆向设计",
+  "agent_review": {
+   "paper_id": "paper_797377af837356ac",
+   "scores": {
+    "O": "",
+    "A": 2,
+    "I": "",
+    "G": "",
+    "U": "",
+    "P": 2,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "DiffuMeta metamaterial data",
@@ -828,7 +940,21 @@
   "material_system": "2D inorganic material",
   "baseline": "",
   "score": 0,
-  "source_sheet": "生成与逆向设计"
+  "source_sheet": "生成与逆向设计",
+  "agent_review": {
+   "paper_id": "paper_346170a5975dbc61",
+   "scores": {
+    "O": "",
+    "A": 1,
+    "I": "",
+    "G": 0,
+    "U": 0,
+    "P": 2,
+    "E": 2,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "C2DB(2024-05 )",
@@ -1372,7 +1498,21 @@
   "material_system": "Inorganic crystal material, covers element crystal structure",
   "baseline": "",
   "score": 0,
-  "source_sheet": "预测与识别"
+  "source_sheet": "预测与识别",
+  "agent_review": {
+   "paper_id": "paper_6e56c6779de86477",
+   "scores": {
+    "O": 1,
+    "A": 0,
+    "I": "",
+    "G": 1,
+    "U": 1,
+    "P": 2,
+    "E": 2,
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "JARVIS",
@@ -1406,7 +1546,21 @@
   "material_system": "Inorganic crystal material",
   "baseline": "",
   "score": 0,
-  "source_sheet": "预测与识别"
+  "source_sheet": "预测与识别",
+  "agent_review": {
+   "paper_id": "paper_a71271d94a94d9cd",
+   "scores": {
+    "O": 3,
+    "A": "待复核",
+    "I": 2,
+    "G": 0,
+    "U": 0,
+    "P": "待复核",
+    "E": "待复核",
+    "R": 0,
+    "C": "待复核"
+   }
+  }
  },
  {
   "name": "Matbench",
@@ -1423,7 +1577,21 @@
   "material_system": "Material property benchmark, primarily inorganic crystal, also including perovskite/system",
   "baseline": "",
   "score": 0,
-  "source_sheet": "预测与识别"
+  "source_sheet": "预测与识别",
+  "agent_review": {
+   "paper_id": "paper_003a1bf09c4f7e29",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 1,
+    "U": 1,
+    "P": 2,
+    "E": 2,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "OMat24",
@@ -1440,7 +1608,21 @@
   "material_system": "Inorganic crystal material",
   "baseline": "",
   "score": 0,
-  "source_sheet": "预测与识别"
+  "source_sheet": "预测与识别",
+  "agent_review": {
+   "paper_id": "paper_3bbcd0bb5ced6be0",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 2,
+    "G": 3,
+    "U": 0,
+    "P": 0,
+    "E": 1,
+    "R": 0,
+    "C": "待复核"
+   }
+  }
  },
  {
   "name": "HOIP",
@@ -1508,7 +1690,21 @@
   "material_system": "Catalytic surface catalytic system",
   "baseline": "",
   "score": 0,
-  "source_sheet": "预测与识别"
+  "source_sheet": "预测与识别",
+  "agent_review": {
+   "paper_id": "paper_35d65cd8316e4e65",
+   "scores": {
+    "O": 2,
+    "A": "",
+    "I": 2,
+    "G": 1,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Polymer Dataset",
@@ -1525,7 +1721,21 @@
   "material_system": "Polymer polymer crystal",
   "baseline": "",
   "score": 0,
-  "source_sheet": "预测与识别"
+  "source_sheet": "预测与识别",
+  "agent_review": {
+   "paper_id": "paper_4dea7ac1d5e44eab",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 0,
+    "G": 2,
+    "U": 1,
+    "P": 1,
+    "E": 1,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "QMOF",
@@ -1892,7 +2102,21 @@
   "score": 2.5,
   "source_sheet": "逆向设计",
   "level": 3,
-  "level_label": "Decision-oriented"
+  "level_label": "Decision-oriented",
+  "agent_review": {
+   "paper_id": "paper_8c3dd2cfb2ab06cc",
+   "scores": {
+    "O": 3,
+    "A": "",
+    "I": 1,
+    "G": "",
+    "U": "",
+    "P": "",
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "CrystalGym: A New Benchmark for Materials Discovery Using Reinforcement Learning",
@@ -1930,7 +2154,21 @@
   "score": 4.31,
   "source_sheet": "逆向设计",
   "level": 4,
-  "level_label": "Adaptive discovery"
+  "level_label": "Adaptive discovery",
+  "agent_review": {
+   "paper_id": "paper_0c72c10069f0b713",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 3,
+    "U": 3,
+    "P": 3,
+    "E": 0,
+    "R": 0,
+    "C": "待复核"
+   }
+  }
  },
  {
   "name": "Material transformers: deep learning language models for generative materials design",
@@ -2006,7 +2244,21 @@
   "score": 2.19,
   "source_sheet": "逆向设计",
   "level": 2,
-  "level_label": "Design-oriented"
+  "level_label": "Design-oriented",
+  "agent_review": {
+   "paper_id": "paper_f8580239587da0a7",
+   "scores": {
+    "O": 4,
+    "A": 2,
+    "I": 3,
+    "G": 2,
+    "U": "",
+    "P": 2,
+    "E": 1,
+    "R": 1,
+    "C": ""
+   }
+  }
  },
  {
   "name": "MGB: The Material Generation Benchmark",
@@ -2025,7 +2277,21 @@
   "score": 1.12,
   "source_sheet": "逆向设计",
   "level": 1,
-  "level_label": "Predictive"
+  "level_label": "Predictive",
+  "agent_review": {
+   "paper_id": "paper_a3ca8a1e4918e58b",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": "",
+    "G": 2,
+    "U": 3,
+    "P": "",
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Benchmarking Text Representations for Crystal Structure Generation with Large Language Models",
@@ -2063,7 +2329,21 @@
   "score": 1.06,
   "source_sheet": "逆向设计",
   "level": 1,
-  "level_label": "Predictive"
+  "level_label": "Predictive",
+  "agent_review": {
+   "paper_id": "paper_cf0464f374b21599",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": "",
+    "G": 2,
+    "U": "",
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Tartarus: A Benchmarking Platform for Realistic And Practical Inverse Molecular Design",
@@ -2139,7 +2419,21 @@
   "score": 0.88,
   "source_sheet": "逆向设计",
   "level": 1,
-  "level_label": "Predictive"
+  "level_label": "Predictive",
+  "agent_review": {
+   "paper_id": "paper_93bd12028b9e3cde",
+   "scores": {
+    "O": 3,
+    "A": 0,
+    "I": 3,
+    "G": 2,
+    "U": "待复核",
+    "P": 2,
+    "E": 0,
+    "R": "NR",
+    "C": "待复核"
+   }
+  }
  },
  {
   "name": "Benchmarking structure-based three-dimensional molecular generative models using GenBench3D: ligand conformation quality matters",
@@ -2177,7 +2471,21 @@
   "score": 2.19,
   "source_sheet": "逆向设计",
   "level": 2,
-  "level_label": "Design-oriented"
+  "level_label": "Design-oriented",
+  "agent_review": {
+   "paper_id": "paper_2a0ac89738179b18",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": 3,
+    "G": 3,
+    "U": "",
+    "P": "",
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "MatFormBench: A Benchmarking Evaluation Framework for Target-Driven Materials Formulation",
@@ -2234,7 +2542,21 @@
   "score": 0.88,
   "source_sheet": "逆向设计",
   "level": 1,
-  "level_label": "Predictive"
+  "level_label": "Predictive",
+  "agent_review": {
+   "paper_id": "paper_192ad61d116c5a0f",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": 3,
+    "G": 1,
+    "U": 3,
+    "P": 0,
+    "E": "待复核",
+    "R": 0,
+    "C": "待复核"
+   }
+  }
  },
  {
   "name": "JARVIS-Leaderboard: a large scale benchmark of materials design methods",
@@ -2401,7 +2723,21 @@
   "material_system": "Inorganic crystal/material",
   "baseline": "eqV2 S DENS,ORB MPtrj,SevenNet,MACE,CHGNet,M3GNet,ALIGNN,MEGNet,CGCNN,CGCNN+P,Wrenformer,BOWSR,Voronoi RF,Dummy",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_f7de4fd5118c5f06",
+   "scores": {
+    "O": 2,
+    "A": "",
+    "I": 3,
+    "G": 2,
+    "U": 3,
+    "P": "",
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "LAMBench: a benchmark for large atomistic models",
@@ -2418,7 +2754,21 @@
   "material_system": "Inorganic material, catalytic molecular",
   "baseline": "Dummy model; LAMs: DPA/MACE/Orb/SevenNet/MatterSim/GRACE; model: MACE-OFF23/EquiformerV2/eSCN/JMP",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_a256b6e13a4e702e",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": "",
+    "U": "",
+    "P": 2,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "MatUQ: a benchmark for uncertainty-aware out-ofdistribution materials property prediction with graph neural networks.",
@@ -2435,7 +2785,21 @@
   "material_system": "Inorganic crystal/material",
   "baseline": "12 GNN: CGCNN/SchNet/MEGNet/DimeNet++/ALIGNN/PotNet/DeeperGATGNN/Matformer/iComFormer/eComFormer/SODNet/CrystalFramer; training baseline MSE MVE; UQ comparing 8",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_7be3d23c69b694bf",
+   "scores": {
+    "O": 2,
+    "A": 1,
+    "I": 3,
+    "G": 3,
+    "U": 1,
+    "P": 2,
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "MOFSimBench: evaluating universal machine learning interatomic potentials in metal-organic framework molecular modeling",
@@ -2452,7 +2816,21 @@
   "material_system": "Porous material ( MOF material )",
   "baseline": "baseline:UFF/UFF4MOF/MACE-MP-MOF0 ;host-guest baseline:MACE-DAC-1/UFF＋DDEC",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_744d4c2f2ea81244",
+   "scores": {
+    "O": "",
+    "A": "",
+    "I": 3,
+    "G": 1,
+    "U": 3,
+    "P": "",
+    "E": 0,
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "MS25: Materials Science Focused Benchmark Dataset for Machine Learning Interatomic Potentials",
@@ -2469,7 +2847,21 @@
   "material_system": "Material/porous material//reaction surface/metal alloy and oxide material",
   "baseline": "External baseline; model: MACE/NequIP/Allegro/MTP/Torch-ANI",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_fe2e2be714bd8c87",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": "",
+    "G": "",
+    "U": "",
+    "P": "",
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Structure-based out-of-distribution (OOD) materials property prediction: a benchmark study",
@@ -2486,7 +2878,21 @@
   "material_system": "Inorganic",
   "baseline": "MatBench SOTA MAE + GNN model i.i.d. MAE + 8 GNN model comparison (CGCNN/MEGNet/Schnet/DimeNet++/ALIGNN/DeeperGATGNN/coGN/coNGN)",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_3e81d013aa590a22",
+   "scores": {
+    "O": 1,
+    "A": 0,
+    "I": "",
+    "G": "",
+    "U": "",
+    "P": "",
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "UniHam: A Large-Scale SOC-Complete Dataset and Benchmark for Hamiltonian Learning in Materials",
@@ -2503,7 +2909,21 @@
   "material_system": "Inorganic crystal material",
   "baseline": "DeepH-pack/HamGNN",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_6323ab4b59a5cbad",
+   "scores": {
+    "O": 1,
+    "A": 0,
+    "I": "",
+    "G": 1,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Vibrational power spectra as a tool to benchmark universal machine-learning interatomic potentials for molecular systems: the OMOL-1k-MD data set",
@@ -2520,7 +2940,21 @@
   "material_system": "Organic molecular",
   "baseline": "PBE AIMD/MACE MP-0/MACE MH-1/UMA OMat/Orb/EquiformerV2/eSCN/SchNet/PaiNN/MatterSim/SevenNet/GFN-FF/GFN2-xTB",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_becb6500dda30e10",
+   "scores": {
+    "O": 2,
+    "A": 1,
+    "I": 3,
+    "G": 0,
+    "U": "",
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "The Open Catalyst 2020 (OC20) Dataset and Community Challenges",
@@ -2554,7 +2988,21 @@
   "material_system": "Crystal material ( inorganic crystal/MOFs/alloy/high-entropy alloy )",
   "baseline": "Baseline model: CGCNN(GNN baseline); comparison model: LLM-Prop(35M)/MatBERT(109.5M)/Llama 2-7b-chat/Llama 3/3.1/3.2/Mistral 7b-Instruct-v0.1/v0.2/v0.3/Gemma 7b/1.1-7b/2-9b",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_036776a8c17549e1",
+   "scores": {
+    "O": 1,
+    "A": 1,
+    "I": 3,
+    "G": 0,
+    "U": 3,
+    "P": 0,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Surface stability modeling with universal machine learning interatomic potentials: a comprehensive benchmark",
@@ -2571,7 +3019,21 @@
   "material_system": "Element/binary/ternary metal compound surface",
   "baseline": "Mean cleavage-energy baseline, Random-selection baseline",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_a85a5b73cd0f2d4d",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 2,
+    "U": 0,
+    "P": "",
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Universal machine learning interatomic potentials are ready for phonons",
@@ -2588,7 +3050,21 @@
   "material_system": "Magnetic inorganic semiconductor crystal",
   "baseline": "7 uMLIP model (M3GNet/CHGNet/MACE-MP-0/SevenNet-0/MatterSim-v1/ORB/eqV2-M/PBESol",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_58eb1cbe13137f77",
+   "scores": {
+    "O": 2,
+    "A": 3,
+    "I": 3,
+    "G": 2,
+    "U": 3,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": "待复核"
+   }
+  }
  },
  {
   "name": "Sim→Exp-MMNMR: A Benchmark for Simulation-to-Experiment Generalization in Multimodal NMR with Chemistry-Aware Metrics",
@@ -2605,7 +3081,21 @@
   "material_system": "Organic molecular",
   "baseline": "Cosine similarity",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_5012c0dc82f98b2f",
+   "scores": {
+    "O": 1,
+    "A": 0,
+    "I": "",
+    "G": 0,
+    "U": 1,
+    "P": 0,
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Benchmarking graph neural networks for materials chemistry",
@@ -2622,7 +3112,21 @@
   "material_system": "Inorganic material",
   "baseline": "CGCNN,SchNet,MEGNet,DimeNet/DimeNet++",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_09825257a0b31b27",
+   "scores": {
+    "O": 1,
+    "A": 0,
+    "I": 3,
+    "G": 1,
+    "U": 0,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": "待复核"
+   }
+  }
  },
  {
   "name": "Benchmarking machine learning interatomic potentials via phonon anharmonicity",
@@ -2639,7 +3143,21 @@
   "material_system": "Inorganic crystal structure",
   "baseline": "GAP/Behler-Parrinello BPNN/ANN NequIP-GNN MLIP",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_5de7ca8dd126933c",
+   "scores": {
+    "O": 2,
+    "A": 1,
+    "I": 3,
+    "G": "",
+    "U": "",
+    "P": "",
+    "E": 0,
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Benchmarking of machine learning interatomic potentials for reactive hydrogen dynamics at metal surfaces",
@@ -2656,7 +3174,21 @@
   "material_system": "Metal (Cu)/inorganic molecular (H₂) surface interface; material: catalytic/surface",
   "baseline": "Baseline: SchNet MLIP baseline; QCD-BOSS/CRP DCM(CRP+EAM) reaction dynamics main comparing PaiNN/MACE/REANN ACE MLIP; DFT/SRP48 main oracle, sticking curve, baseline",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_59d28a25ec077fad",
+   "scores": {
+    "O": 2,
+    "A": "",
+    "I": 3,
+    "G": 2,
+    "U": 1,
+    "P": 2,
+    "E": 2,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Learning from models: high-dimensional analyses on the performance of machine learning interatomic potentials",
@@ -2673,7 +3205,21 @@
   "material_system": "Si",
   "baseline": "Baseline: DFT K4/K1 benchmarks/handpicked benchmarks; comparison model: GAP/NNP/DeePMD/DeepPot-SE/MTP/SNAP",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_0a1a22ed94b70671",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 3,
+    "U": 0,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "PolUQBench: A Benchmark Study on Uncertainty Quantification of Polymer Property Prediction",
@@ -2690,7 +3236,21 @@
   "material_system": "Polymer",
   "baseline": "Baseline model: deterministic model; model: MVE/DEL/QREG/LA/MCD/MFVI/BNNVI/SWAG/DKL/VBLL/VBLL SNGP/Deep Ensemble/Mask Ensemble/Zigzag",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_ee9e2c898b39ced0",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": "",
+    "U": 1,
+    "P": "",
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "A Leakage-Aware Benchmark Study of Machine Learning Models for Deep Eutectic Solvent Property Prediction",
@@ -2707,7 +3267,21 @@
   "material_system": "DESs",
   "baseline": "Baseline model: mean predictor/temperature-only/ratio-only/temperature + ratio/component-identity baseline/1-NN k-NN; comparison model: Ridge regression/ExtraTrees regression/Histogram boosting regression",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_47bc819db83cb6cd",
+   "scores": {
+    "O": 2,
+    "A": 1,
+    "I": 3,
+    "G": 0,
+    "U": 1,
+    "P": 2,
+    "E": 2,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Accurate screening of functional materials with machine-learning potential and transfer-learned regressions: Heusler alloy benchmark",
@@ -2724,7 +3298,21 @@
   "material_system": "Heusler alloy",
   "baseline": "ALIGNN-F/ALIGNN MLRM/CHGNet/MatterSim/SevenNet-13i5/SevenNet-MFompa/HIENet/eqV2-S/M/L-OAM/eSEN-30M-OAM",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_aeb950686590b859",
+   "scores": {
+    "O": 4,
+    "A": 2,
+    "I": 3,
+    "G": 3,
+    "U": 3,
+    "P": "",
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "aLLoyM: a large language model for alloy phase diagram prediction",
@@ -2741,7 +3329,21 @@
   "material_system": "Alloy",
   "baseline": "Baseline model: Mistral-Nemo-Instruct-2407-bnb-4bit( ); comparison: aLLoyM model",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_fb5c5325f2b6e75a",
+   "scores": {
+    "O": 1,
+    "A": 1,
+    "I": 1,
+    "G": 0,
+    "U": "",
+    "P": 0,
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Benchmarking Multimodal Large Language Models on Electronic Structure Analysis and Interpretation",
@@ -2758,7 +3360,21 @@
   "material_system": "Metal/semiconductor",
   "baseline": "o4-mini/GPT-4.1-mini/GPT-4o/GPT-4o-mini/Llama-3.2-11B-Vision-Instruct/Pixtral-12B-2409/Qwen2.5-VL-7B-Instruct",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_8f78aeae2ef3150b",
+   "scores": {
+    "O": 2,
+    "A": 1,
+    "I": 1,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Disentangling symmetry and many-body effects in graph neural networks for plastic response prediction in glasses",
@@ -2775,7 +3391,21 @@
   "material_system": "Metal; Cu-Zr amorphous alloy; alloy/high-entropy",
   "baseline": "DistGNN; comparing GemNet-T/GemNet-Q/NequIP/MACE-3/MACE-4",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_1d8cb0afa5e3376b",
+   "scores": {
+    "O": 1,
+    "A": 0,
+    "I": 2,
+    "G": 1,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Migration as a Probe: A Generalizable Benchmark Framework for Specialist vs. Generalist Machine-Learned Force Fields",
@@ -2792,7 +3422,21 @@
   "material_system": "Inorganic metal; 2D; Cr Sb₂Te₃ layered vdW material",
   "baseline": "Scratch MACE; zero-shot MACE-MP Foundation; comparing FT-600K/FT-Multi-T",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_2b8e59823b13b1c0",
+   "scores": {
+    "O": 2,
+    "A": 3,
+    "I": 3,
+    "G": 1,
+    "U": 1,
+    "P": 2,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "PolyBench: A Reproducible Open Benchmark Platform for RepeatUnit-Based Polymer Property Prediction",
@@ -2809,7 +3453,21 @@
   "material_system": "Organic molecular polymer",
   "baseline": "30 model (22 ML, 8 DL), Ridge/Lasso/ElasticNet/KRR/SVR/Random Forest/ExtraTrees/XGBoost/CatBoost/HistGradientBoosting/MLP/Transformer/GRU/DMPNN/GCN",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_ecf6e8c73a0f03f5",
+   "scores": {
+    "O": "",
+    "A": 0,
+    "I": 3,
+    "G": "",
+    "U": 1,
+    "P": 2,
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "On-the-fly active learning of interpretable Bayesian force fields for atomistic rare events",
@@ -2826,7 +3484,21 @@
   "material_system": "Inorganic material; metal/alloy; ; 2D material; oxide",
   "baseline": "EAM; AGNI; 2-body FLARE; DFT/AIMD Oracle",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_692654f5d631fa19",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 3,
+    "G": 1,
+    "U": 4,
+    "P": 3,
+    "E": 0,
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "CatTestHub: A Benchmarking Database of Experimental Heterogeneous Catalysis for Evaluating Advanced Materials",
@@ -2843,7 +3515,21 @@
   "material_system": "Inorganic material; metal catalytic;/; catalytic/surface",
   "baseline": "ML baseline; catalytic/framework/metal performed comparing",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_2af73854e33cb1ea",
+   "scores": {
+    "O": "",
+    "A": "",
+    "I": 0,
+    "G": 0,
+    "U": 1,
+    "P": "",
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Probing out-of-distribution generalization in machine learning for materials",
@@ -2860,7 +3546,21 @@
   "material_system": "Inorganic metal; metal; inorganic material; crystal material",
   "baseline": "RF/XGB; comparison GMP/ALIGNN/LLM-Prop; random ID split",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_f42291af49684f7a",
+   "scores": {
+    "O": 1,
+    "A": 0,
+    "I": "",
+    "G": 1,
+    "U": 1,
+    "P": "",
+    "E": 0,
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Q-CatNet: Leveraging Quantum and Graph Features for Catalyst Simulation and Discovery",
@@ -2877,7 +3577,21 @@
   "material_system": "Catalytic surface - system",
   "baseline": "Plain CGCNN/CGCNN*/FTCP/GINConv/NNConv/SchNet",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_0cd395d9c9bd2de7",
+   "scores": {
+    "O": 1,
+    "A": 0,
+    "I": "",
+    "G": 1,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "XDIP: A Curated X-ray Absorption Spectrum Dataset for Iron-Containing Proteins",
@@ -2962,7 +3676,21 @@
   "material_system": "Inorganic material ( 89 element, covers oxide/P/metal compound )",
   "baseline": "",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_fa4a98d6e4bd6560",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 2,
+    "G": 1,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Large-scale screening of hypothetical metal-organic frameworks",
@@ -2979,7 +3707,21 @@
   "material_system": "MOF",
   "baseline": "",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_819199dbc2b68f0b",
+   "scores": {
+    "O": "待复核",
+    "A": 3,
+    "I": "待复核",
+    "G": 3,
+    "U": 1,
+    "P": 3,
+    "E": 1,
+    "R": 2,
+    "C": "待复核"
+   }
+  }
  },
  {
   "name": "Machine learning the quantum-chemical properties of metal-organic frameworks for accelerated materials discovery",
@@ -2996,7 +3738,21 @@
   "material_system": "MOFs",
   "baseline": "constant mean/Sine Coulomb matrix/Stoichiometric-45/120/Orbital field matrix/SOAP/CGCNN",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_8af976f1d32d22da",
+   "scores": {
+    "O": 1,
+    "A": 0,
+    "I": 1,
+    "G": 0,
+    "U": 1,
+    "P": 0,
+    "E": 1,
+    "R": 1,
+    "C": "待复核"
+   }
+  }
  },
  {
   "name": "Scaling deep learning for materials discovery",
@@ -3013,7 +3769,21 @@
   "material_system": "Inorganic crystal, binary hexanary; layered/solid electrolyte/Li/Mn oxide",
   "baseline": "",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_f1af6c92eda54f5b",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 3,
+    "U": "",
+    "P": 3,
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "A polymer dataset for accelerated property prediction and design",
@@ -3081,7 +3851,21 @@
   "material_system": "Inorganic crystal",
   "baseline": "",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_330656d13b53b995",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 2,
+    "U": "",
+    "P": "",
+    "E": 1,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Improving machine-learning models in materials science through large datasets",
@@ -3098,7 +3882,21 @@
   "material_system": "Inorganic 3D/2D/1D crystal",
   "baseline": "",
   "score": 0,
-  "source_sheet": "性质预测（正向）"
+  "source_sheet": "性质预测（正向）",
+  "agent_review": {
+   "paper_id": "paper_c701c3ba1d31e60d",
+   "scores": {
+    "O": 2,
+    "A": 1,
+    "I": 2,
+    "G": 1,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "MADE:Benchmark Environments for Closed-Loop Materials Discovery",
@@ -3149,7 +3947,21 @@
   "material_system": "‑ ( inorganic metal ( perovskite )+ metal (AgNP)+ molecular (P3HT/CNT)+ composite (3D )",
   "baseline": "Random sampling random sampling; experimental group: RF/GP‑ARD/vanilla GP, EI/PI/LCB BO",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_669033fcd9c574bf",
+   "scores": {
+    "O": 4,
+    "A": "",
+    "I": "",
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Benchmarking Active Learning Strategies for Materials Optimization and Discovery",
@@ -3166,7 +3978,21 @@
   "material_system": "Metal (Fe-Co-Ni ternary alloy )",
   "baseline": "Random sampling Random sampling; experimental group: EI/UCB/Add‑GP‑UCB/Thompson‑sampling/main CAMEO",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_ffd4dd8ad1c8c40e",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 1,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Olympus: a benchmarking framework for noisy optimization and experiment planning",
@@ -3183,7 +4009,21 @@
   "material_system": "Organic chemical reaction/chemical//material",
   "baseline": "Random Search(100 campaigns × 10000 evaluation ) 18 planners: GPyOpt/HyperOpt/PHOENICS/GENETIC/CMA-ES/PARTICLE SWARMS/DIFFERENTIAL EVOLUTION",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_57e3b0694b3795fa",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 3,
+    "G": 2,
+    "U": 1,
+    "P": 3,
+    "E": 1,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Benchmarking Bayesian Optimization Frameworks and Acquisition Strategies for Materials Discovery and Autonomous Laboratories",
@@ -3200,7 +4040,21 @@
   "material_system": "Inorganic metal (Li₆PS₅Cl )+ composite (8-ply ))+ (Ishigami)",
   "baseline": "Uniform random search random sampling",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_38b50d64f57c7696",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": "",
+    "G": "",
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "AutoDFT: A Closed-Loop Multi-Agent Framework for Autonomous DFT Calculations",
@@ -3234,7 +4088,21 @@
   "material_system": "Inorganic metal oxide",
   "baseline": "Random sample selection random sampling comparing ML model: Random Forest (RF)/Gaussian Process (GP)/Linear Ensemble/query-by-committee (LE)",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_b1c30c36b5fa420f",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 3,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
+  }
  },
  {
   "name": "LLEMA: Evolutionary Search with LLMs for Multi-Objective Materials Discovery",
@@ -3251,7 +4119,21 @@
   "material_system": "Inorganic metal",
   "baseline": "CDVAE/Cond‑CDVAE/DiffCSP/DiffCSP++/EquiCSP/FlowMM/MOFFlow; CrystaLLM/Llama‑3.1‑8B experimental group: generation model/checkpoint",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_737aef662195d14e",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 3,
+    "U": 3,
+    "P": 3,
+    "E": "",
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "CrystalGym: A New Benchmark for Materials Discovery Us ing Reinforcement Learning",
@@ -3287,7 +4169,21 @@
   "material_system": "Inorganic metal, metal",
   "baseline": "Random search Random search experimental group: novelty‑only/50/50 equal‑weight/performance‑only DiSCoVeR",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_be59af8c4cfe6687",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 3,
+    "G": 3,
+    "U": "",
+    "P": 3,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Quantifying the performance of machine learning models in materials discovery",
@@ -3304,7 +4200,21 @@
   "material_system": "Inorganic metal",
   "baseline": "Random search RS experimental group: EV/EI/MU",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_5b550c8f9ec91c7d",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 3,
+    "G": 1,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Sequential learning to accelerate discovery of alkali-activated binders",
@@ -3321,7 +4231,21 @@
   "material_system": "Inorganic metal ( cementitious material, material AAB/)",
   "baseline": "Random sampling RP; experimental group: GPR/DT/TE model × MEI/MLI/MEI+D/MLI+D, 12 SL algorithm",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_301f9bbdc0c649bc",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": "",
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "ACCELERATING THE SEARCH FOR ALKALI ACTIVATED CEMENTS WITH SEQUENTIAL LEARNING",
@@ -3338,7 +4262,21 @@
   "material_system": "Inorganic metal ( cementitious material,/AAB)",
   "baseline": "Random sampling Random Draw (RD); experimental group: GPR/RF model × MLI",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_c51a591a222cd8f5",
+   "scores": {
+    "O": 4,
+    "A": "",
+    "I": 4,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Data driven design of Alkali-activated concrete using Sequential Learning",
@@ -3355,7 +4293,21 @@
   "material_system": "Inorganic metal ( cementitious material, AAC)",
   "baseline": "Random RD; experimental group: GPR/RF model × 3 pipelines(vanilla/PCA/grid search feature )× 2 strategies(Exploitation=0/Exploration=2)× 2 ISS(4/20)× 2 (SOO/MOO)",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_64c74bb927f6f71b",
+   "scores": {
+    "O": 4,
+    "A": "",
+    "I": 4,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 1
+   }
+  }
  },
  {
   "name": "LLMs can Design Sustainable Concrete - a Systematic Benchmark",
@@ -3372,7 +4324,21 @@
   "material_system": "Inorganic metal ( cementitious, AAC)",
   "baseline": "Random sampling RD/BO‑GPR/SL‑RF random; experimental group: KDD: GPT-3.5-Turbo(SFDL TT=1/TVDL TT=3)/GPT-4-Turbo(SFDL only)/Design knowledge(None/Generic/Specific)/10 cycles(GPT-3.5)/5 cycles(GPT-4)",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_66187f2092fbec57",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": "",
+    "U": "",
+    "P": "",
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Efficient Discovery and Property Optimization of Quantum Materials via Reinforcement-Inspired Active Learning: A case study of MXene Semiconductors",
@@ -3389,7 +4355,21 @@
   "material_system": "MXene semiconductor (2D transition-metal carbides/nitrides)",
   "baseline": "Random selection 7 query policies: ε-greedy(ε=0.1)/uncertainty sampling/entropy sampling/UCB(β=0.75)/Thompson sampling/greedy/uncertainty+diversity Surrogate model: XGBoost(Task 1); Random Forest regressor(Task 2, batch-mode UCB)",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_240fb502f75ecb60",
+   "scores": {
+    "O": 4,
+    "A": "",
+    "I": 3,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": ""
+   }
+  }
  },
  {
   "name": "From Automation to Autonomy in Smart Manufacturing: A Bayesian Optimization Framework for Modeling Multi-Objective Experimentation and Sequential Decision Making",
@@ -3406,7 +4386,21 @@
   "material_system": "Inorganic metal (MAX material )",
   "baseline": "Space-filling DoE: UDS(Uniform Design Sampling)/LHS(Latin Hypercube Sampling)/SPM(Sphere Packing Method) State-of-the-art MOO: NSGA-II(metaheuristic)/KGB-DMOEA(ML-based) BMSDM: GP surrogate + qEHVI acquisition function",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_d7e16d7012634264",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 4,
+    "U": 2,
+    "P": 3,
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Role of multifidelity data in sequential active learning materials discovery campaigns: case study of electronic bandgap",
@@ -3423,7 +4417,21 @@
   "material_system": "Inorganic material",
   "baseline": "Single-fidelity( HSE, a = 0, c = 0.58); Random campaign(c = 0.24); Ideal multifidelity( all LF, c = 0.87); Palizhati et al. (single model + one-hot encoding, c = 0.58-0.67) experimental group: model",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_7105a7a95b78f39c",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 2,
+    "U": "",
+    "P": 3,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Bayesian Optimization Hackathon for Chemistry and Materials",
@@ -3440,7 +4448,21 @@
   "material_system": "Inorganic nanoparticle (AuNP)",
   "baseline": "Random sampling; VanillaBO vs SAASBO; F(Q) vs G(r) vs",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_180a750db12224c6",
+   "scores": {
+    "O": "",
+    "A": "",
+    "I": "",
+    "G": "",
+    "U": "",
+    "P": "",
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Summit: Benchmarking Machine Learning Methods for Reaction Optimisation",
@@ -3491,7 +4513,21 @@
   "material_system": "Inorganic metal ( inorganic crystal material )",
   "baseline": "BO agent( candidate + model + UCB ); RL agent(/actor-critic/GNN ); evaluation (MLIP ASE )",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_044444a254ac0885",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 3,
+    "G": 3,
+    "U": "",
+    "P": 3,
+    "E": "",
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Design-Bench: Benchmarks for Data-Driven Offline Model-Based Optimization",
@@ -3508,7 +4544,21 @@
   "material_system": "",
   "baseline": "",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_753d8524f924172f",
+   "scores": {
+    "O": 3,
+    "A": "",
+    "I": 3,
+    "G": "",
+    "U": "",
+    "P": 3,
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Training-free active learning framework in materials science with large language models",
@@ -3525,7 +4575,21 @@
   "material_system": "Inorganic metal + composite + metal: primary alloy material; secondary polymer/composite",
   "baseline": "ML model: GPR/RFR/XGBoost/Bayesian Neural Network(UCB ); Random Walk; Random Sampling",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_0dcd7c25438c4ba0",
+   "scores": {
+    "O": 4,
+    "A": "",
+    "I": "",
+    "G": "",
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Material Discovery Bench: LLM agent temporal material discovery benchmark",
@@ -3559,7 +4623,21 @@
   "material_system": "Organic chemical/material: primary catalytic system; secondary simulation (pétanque simulation )",
   "baseline": "BO-only/LLM-only/SAAS‑BO baseline/HypBO( )/ColaBO; 5 LLM: o4-mini/o3/gpt-5-mini/gpt-5/gemini-2.5-flash",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_1b2f128d9a3ac0b3",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 3,
+    "U": 3,
+    "P": 3,
+    "E": 1,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Cost-Aware Recovery-Pathway Identification and Bayesian Optimization for Autonomous Materials Discovery",
@@ -3576,7 +4654,21 @@
   "material_system": "Inorganic metal (Mg/Sm/Fe/REE selective )",
   "baseline": "1. Oracle-pathway BO( pathway, ) 2. Split-plate BO( plate candidate pathway, ) 3. Commit-first BO( plausible default pathway, , simulated baseline ) 4. Random search",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_5e6dcc9758a01aa2",
+   "scores": {
+    "O": 4,
+    "A": "",
+    "I": "",
+    "G": "",
+    "U": 4,
+    "P": 3,
+    "E": 1,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Rescuable Stagnation: A Diagnostic for Benchmark Suitability in LLM-Guided Materials Optimization",
@@ -3593,7 +4685,21 @@
   "material_system": "Metal (MP metal + HEA)",
   "baseline": "None( ); random random; mutation; digest; experimental group: llm model",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_3279168eaba04fad",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 3,
+    "U": "",
+    "P": 3,
+    "E": "",
+    "R": 0,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Active Learning Guided Design Space Refinement for Scalable Multi-Objective Bayesian Optimization in Materials Discovery",
@@ -3610,7 +4716,21 @@
   "material_system": "Primary: COF COF; secondary: fiber composite pressure vessel ( ‑ structure ‑ )",
   "baseline": "BO/based on BO",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_52ddefaf39f8438e",
+   "scores": {
+    "O": 4,
+    "A": "",
+    "I": 4,
+    "G": "",
+    "U": 4,
+    "P": 3,
+    "E": 0,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "Best practices for multi-fidelity Bayesian optimization in materials and molecular research",
@@ -3627,7 +4747,21 @@
   "material_system": "Primary: molecular material; secondary: COF porous material (Xe/Kr separation )",
   "baseline": "SFBO( BO): Single‑Fidelity Expected Improvement/Single‑Fidelity Maximum Entropy Search random search",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_9b7ccdcef6943f1a",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 3,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "An autonomous laboratory for the accelerated synthesis of inorganic materials",
@@ -3644,7 +4778,21 @@
   "material_system": "Inorganic metal ( oxide/P 57 )",
   "baseline": "none",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_574b5523f857b544",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 3,
+    "U": 3,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Accelerated Materials Discovery through Cost-Aware Bayesian Optimization of Real-World Indentation Workflows",
@@ -3661,7 +4809,21 @@
   "material_system": "Metal (Ta-Ti-Hf-Zr thin film )+ composite",
   "baseline": "Grid search",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_4544d44eca696916",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": "",
+    "U": "",
+    "P": "",
+    "E": "",
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Matbench Discovery A framework to evaluate machine learning crystal stability predictions",
@@ -3695,7 +4857,21 @@
   "material_system": "Organic (OPV polymer )",
   "baseline": "Grid search; random sampling baseline",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_8b2c8b4d29c6bbb1",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 3,
+    "U": "",
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Accelerating Combinatorial Electrocatalyst Discovery withBayesian Optimization: a Case Study in the QuaternarySystem Ni-Pd-Pt-Ru for the Oxygen Evolution Reaction",
@@ -3712,7 +4888,21 @@
   "material_system": "Metal ( quaternary Ni-Pd-Pt-Ru )",
   "baseline": "",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_b46bd6b0e10e4fe0",
+   "scores": {
+    "O": 4,
+    "A": 2,
+    "I": 4,
+    "G": 2,
+    "U": 2,
+    "P": 1,
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Discovery of Energy Storage Molecular Materials Using Quantum Chemistry-Guided Multiobjective Bayesian Optimization",
@@ -3729,7 +4919,21 @@
   "material_system": "Organic molecular",
   "baseline": "",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_5458a944eba9b2bd",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": ""
+   }
+  }
  },
  {
   "name": "RECOB: Reliable Benchmarking of Experimental Optimization in Chemistry and Materials Science",
@@ -3746,7 +4950,21 @@
   "material_system": "Organic + inorganic metal + catalytic/surface +/( chemical reaction/material/chemical/continuous/)",
   "baseline": "",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_34d66e563782ec27",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": ""
+   }
+  }
  },
  {
   "name": "Benchmark Datasets for Active-Learning-Guided Search-Space Reduction and Multi-Objective Bayesian Optimization",
@@ -3763,7 +4981,21 @@
   "material_system": "Organic",
   "baseline": "",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_107a8cc77c33fa31",
+   "scores": {
+    "O": 4,
+    "A": "",
+    "I": 3,
+    "G": 3,
+    "U": "",
+    "P": "",
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "MP-ALOE: an r2SCAN dataset for universal machine learning interatomic potentials",
@@ -3780,7 +5012,21 @@
   "material_system": "Inorganic crystal ( binary/ternary ordered )",
   "baseline": "MatPES training MACE model",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_32490800eb5c2ffd",
+   "scores": {
+    "O": 2,
+    "A": "",
+    "I": 3,
+    "G": "",
+    "U": "",
+    "P": 2,
+    "E": 2,
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "ULtrahigh TEmperature Refractory Alloys (ULTERA) Database of High Entropy Alloys",
@@ -3797,7 +5043,21 @@
   "material_system": "High-entropy alloy/alloy (HEAs/CCAs/MPEAs)",
   "baseline": "",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_28a661eca508137d",
+   "scores": {
+    "O": "",
+    "A": "",
+    "I": "",
+    "G": "",
+    "U": "",
+    "P": "",
+    "E": "",
+    "R": "",
+    "C": ""
+   }
+  }
  },
  {
   "name": "The Computational 2D Materials Database: high throughput modeling and discovery of atomically thin crystals",
@@ -3814,7 +5074,21 @@
   "material_system": "Inorganic metal ( 2D material, crystal )",
   "baseline": "",
   "score": 0,
-  "source_sheet": "迭代优化（时序）"
+  "source_sheet": "迭代优化（时序）",
+  "agent_review": {
+   "paper_id": "paper_20592e73266e0346",
+   "scores": {
+    "O": 0,
+    "A": 1,
+    "I": 0,
+    "G": "",
+    "U": "",
+    "P": 2,
+    "E": 1,
+    "R": 1,
+    "C": ""
+   }
+  }
  },
  {
   "name": "2DMatPedia, an open computational database of two-dimensional materials from top-down and bottom-up approaches",

@@ -91,6 +91,8 @@
   .badge-year{background:var(--amber-light);color:var(--amber)}
   .badge-score{background:var(--emerald-light);color:var(--emerald)}
   .badge-score.zero{background:#f1f5f9;color:#94a3b8}
+  .badge-agent{background:var(--amber-light);color:var(--amber);cursor:pointer;border:none;font-family:var(--font);font-size:11px;padding:4px 10px;border-radius:12px;font-weight:600;white-space:nowrap;letter-spacing:.01em;transition:all .15s}
+  .badge-agent:hover{background:var(--amber);color:#fff;box-shadow:0 2px 6px rgba(217,119,6,.3);transform:translateY(-1px)}
   .card-desc{font-size:13px;color:var(--text2);margin-top:8px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .card-desc.open{-webkit-line-clamp:unset}
   .card-expand{font-size:12px;color:var(--primary);cursor:pointer;border:none;background:none;padding:2px 0;margin-top:3px;font-family:var(--font);font-weight:500}
@@ -184,7 +186,35 @@
     .stat-bar-row .lbl{width:110px}
     .tl-chart{height:160px;margin-bottom:30px}
     .tl-year{bottom:-24px;font-size:9px}
+    .modal-body{max-height:60vh;padding:18px 22px}
+    .score-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr))}
   }
+
+  /* ═══ MODAL ═══ */
+  .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,.55);backdrop-filter:blur(3px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}
+  .modal-overlay.hidden{display:none}
+  .modal{background:var(--surface);border-radius:14px;width:100%;max-width:620px;max-height:90vh;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.2);display:flex;flex-direction:column}
+  .modal-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border);gap:12px}
+  .modal-header h2{font-size:17px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .modal-header .m-badge{font-size:11px;padding:4px 10px;border-radius:12px;font-weight:600;white-space:nowrap;background:var(--amber-light);color:var(--amber);flex-shrink:0}
+  .modal-close{width:32px;height:32px;border-radius:50%;border:none;background:var(--bg);color:var(--text2);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .12s;flex-shrink:0;line-height:1}
+  .modal-close:hover{background:var(--rose-light);color:var(--rose)}
+  .modal-body{overflow-y:auto;padding:22px 26px;flex:1}
+  .modal-body .info-line{font-size:12px;color:var(--text2);margin-bottom:4px}
+  .modal-body .info-line strong{color:var(--text)}
+  .score-section{margin-top:16px}
+  .score-section h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+  .score-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+  .score-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;text-align:center;transition:all .12s}
+  .score-card:hover{border-color:var(--primary);background:var(--primary-light)}
+  .score-card .s-dim{font-size:18px;font-weight:700;color:var(--text);line-height:1.2}
+  .score-card .s-label{font-size:10px;color:var(--text2);margin-top:2px;letter-spacing:.03em}
+  .score-card .s-name{font-size:9px;color:var(--text3);margin-top:1px;line-height:1.3}
+  .score-card.pending{opacity:.55}
+  .score-card.pending .s-dim{color:var(--amber)}
+  .score-note{font-size:11px;color:var(--text3);margin-top:14px;font-style:italic}
+  .modal-footer{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-top:1px solid var(--border);gap:12px}
+  .modal-footer .m-paper-id{font-size:11px;color:var(--text3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -279,6 +309,30 @@
         <h3><span class="dot"></span>Timeline &mdash; Dataset Publications by Year</h3>
         <div class="tl-container"><div class="tl-chart" id="timeline"></div></div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ AGENT REVIEW MODAL ═══ -->
+<div class="modal-overlay hidden" id="review-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modal-title">Agent Evaluation</h2>
+      <span class="m-badge">Agent评价</span>
+      <button class="modal-close" onclick="closeReview()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="info-line"><strong>Dataset:</strong> <span id="modal-dsname"></span></div>
+      <div class="info-line"><strong>Paper ID:</strong> <span id="modal-paperid"></span></div>
+      <div class="score-section">
+        <h3>&#128202; Intelligence &amp; Experiment Scores</h3>
+        <div class="score-grid" id="modal-scores"></div>
+      </div>
+      <div class="score-note">Scores assigned by LLM agent evaluation (model: gpt-6-sol, thinking: high). ~N = candidate score pending verification.</div>
+    </div>
+    <div class="modal-footer">
+      <span class="m-paper-id" id="modal-footer-id"></span>
+      <button class="btn-reset" onclick="closeReview()">Close</button>
     </div>
   </div>
 </div>
@@ -439,6 +493,7 @@ function renderCards() {
           <span class="badge badge-task">${escHtml(d.task_type||'')}</span>
           ${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : ''}
           <span class="badge ${sc}">${st}</span>
+                    ${d.agent_review ? `<button class="badge badge-agent" onclick="openReview(${idx})" title="View LLM evaluation scores">&#129488; Agent评价</button>` : ''}
         </div>
       </div>
       <div class="card-desc" id="dsc-${idx}">${short}</div>
@@ -476,7 +531,7 @@ function renderTable() {
       <td>${d.data_type ? `<span class="badge badge-dt">${escHtml(d.data_type)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
       <td><span class="badge badge-task">${escHtml(d.task_type||'')}</span></td>
       <td>${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
-      <td style="font-weight:600;color:${(d.score||0)>0?'var(--emerald)':'var(--text3)'}">${sc}</td>
+      <td style="font-weight:600;color:${(d.score||0)>0?'var(--emerald)':'var(--text3)'}">${sc}${d.agent_review ? ` <button class="badge badge-agent" style="font-size:10px;padding:2px 7px" onclick="openReview(${start+i})">&#129488;</button>` : ''}</td>
       <td class="td-desc">${escHtml((d.description||'').slice(0,150))}${(d.description||'').length>150?'&hellip;':''}</td>
       <td class="td-url">${d.url ? `<a href="${escHtml(d.url)}" target="_blank" rel="noopener">link</a>` : ''}</td>
       <td style="font-size:12px">${escHtml((d.doi||'').slice(0,40))}</td>
@@ -655,6 +710,54 @@ function switchTab() {
 function escHtml(s) { if(!s) return ''; const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 function escJs(s) { return (s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"'); }
 function debounce(fn,ms) { let t; return function(...a){ clearTimeout(t); t=setTimeout(()=>fn.apply(this,a),ms); }; }
+
+// ═══════════════════════════════════════
+//  AGENT REVIEW MODAL
+// ═══════════════════════════════════════
+const DIM_NAMES = {
+  O: 'Output & Decision', A: 'Adaptivity & Sequential',
+  I: 'Workflow Integration', G: 'Goal & Constraint',
+  U: 'Uncertainty & Failure', P: 'Autonomy & Executability',
+  E: 'Exp. Dependence', R: 'Exp. Alignment', C: 'Exp. Completeness'
+};
+function openReview(idx) {
+  const d = filtered[idx];
+  if (!d||!d.agent_review) return;
+  const r = d.agent_review;
+  const dims = Object.keys(DIM_NAMES);
+  let scoresHtml = '';
+  dims.forEach(dim => {
+    const v = r.scores?.[dim];
+    const label = dim;
+    const name = DIM_NAMES[dim]||'';
+    let display = 'N/A';
+    let pending = false;
+    if (v===undefined||v===null||v==='') { display='N/A'; }
+    else if (typeof v==='string'&&v.includes('待复核')) { display='?'; pending=true; }
+    else if (typeof v==='string'&&v.startsWith('~')) { display=v; pending=true; }
+    else { display=v; }
+    scoresHtml += `<div class="score-card${pending?' pending':''}">
+      <div class="s-dim">${display}</div>
+      <div class="s-label">${label}</div>
+      <div class="s-name">${name}</div>
+    </div>`;
+  });
+  document.getElementById('modal-title').textContent = d.name||'(untitled)';
+  document.getElementById('modal-dsname').textContent = d.name||'';
+  document.getElementById('modal-paperid').textContent = r.paper_id||'N/A';
+  document.getElementById('modal-footer-id').textContent = 'Paper ID: '+(r.paper_id||'N/A');
+  document.getElementById('modal-scores').innerHTML = scoresHtml;
+  document.getElementById('review-modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+function closeReview() {
+  document.getElementById('review-modal').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e=>{ if (e.key==='Escape') closeReview(); });
+document.getElementById('review-modal').addEventListener('click', e=>{
+  if (e.target===document.getElementById('review-modal')) closeReview();
+});
 
 init();
 </script>
