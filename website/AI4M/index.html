@@ -202,15 +202,40 @@
   .modal-body .info-line{font-size:12px;color:var(--text2);margin-bottom:4px}
   .modal-body .info-line strong{color:var(--text)}
   .score-section{margin-top:16px}
-  .score-section h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:6px}
-  .score-table{width:100%;border-collapse:collapse;font-size:12px}
-  .score-table td{padding:6px 8px;border-bottom:1px solid var(--border-light);vertical-align:middle}
-  .score-table td:first-child{font-weight:700;color:var(--text);width:28px;text-align:center;font-size:13px}
-  .score-table td:nth-child(2){color:var(--text2);font-size:11px;width:80px}
-  .score-table td:last-child{color:var(--text3);font-size:10px;line-height:1.3}
-  .score-table td.pending{opacity:.5}
-  .score-table td.pending:first-child{color:var(--amber)}
-  .score-table tr:last-child td{border-bottom:none}
+  .score-section h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+  .score-section h3 .axis-tag{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600}
+  .score-section h3 .axis-tag.x-tag{background:var(--violet-light);color:var(--violet)}
+  .score-section h3 .axis-tag.y-tag{background:var(--accent-light);color:var(--accent)}
+
+  /* ── X-axis: Task Intelligence ── */
+  .x-dims{display:flex;flex-direction:column;gap:5px}
+  .x-row{display:flex;align-items:center;gap:8px}
+  .x-code{width:22px;font-size:12px;font-weight:700;color:var(--violet);text-align:center;flex-shrink:0}
+  .x-name{width:140px;font-size:11px;color:var(--text2);flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .x-bar-wrap{flex:1;height:16px;background:var(--bg);border-radius:4px;overflow:hidden;min-width:40px;position:relative}
+  .x-bar-fill{height:100%;border-radius:4px;transition:width .4s ease;min-width:4px}
+  .x-bar-fill.l0{background:#e2e8f0}
+  .x-bar-fill.l1{background:#c7d2fe}
+  .x-bar-fill.l2{background:#a5b4fc}
+  .x-bar-fill.l3{background:#818cf8}
+  .x-bar-fill.l4{background:#6366f1}
+  .x-score{width:16px;font-size:12px;font-weight:700;color:var(--text);text-align:center;flex-shrink:0}
+  .x-weight{font-size:10px;color:var(--text3);width:34px;text-align:right;flex-shrink:0}
+
+  /* ── Y-axis: Experimental Orientation ── */
+  .y-dims{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+  .y-row{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;background:var(--bg);border-radius:var(--radius-sm);border:1px solid var(--border-light)}
+  .y-code{width:22px;font-size:12px;font-weight:700;color:var(--accent);text-align:center;flex-shrink:0;padding-top:1px}
+  .y-info{flex:1;min-width:0}
+  .y-name{font-size:11px;color:var(--text2);margin-bottom:2px}
+  .y-dots{display:inline-flex;gap:3px;margin-right:6px}
+  .y-dot{width:9px;height:9px;border-radius:50%;background:var(--border);transition:background .2s}
+  .y-dot.on{background:var(--accent)}
+  .y-level{font-size:10px;color:var(--text3);margin-top:1px;line-height:1.35}
+  .y-row.pending{opacity:.5}
+
+  .axis-divider{height:1px;background:var(--border);margin:14px 0}
+
   .report-link{display:inline-flex;align-items:center;gap:5px;margin-top:14px;padding:8px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg);color:var(--primary);font-size:12px;font-weight:500;text-decoration:none;transition:all .12s}
   .report-link:hover{background:var(--primary-light);border-color:var(--primary);color:var(--primary-dark)}
   .score-note{font-size:11px;color:var(--text3);margin-top:8px;font-style:italic}
@@ -326,8 +351,13 @@
       <div class="info-line"><strong>Dataset:</strong> <span id="modal-dsname"></span></div>
       <div class="info-line"><strong>Paper ID:</strong> <span id="modal-paperid"></span></div>
       <div class="score-section">
-        <h3>&#128202; Intelligence &amp; Experiment Scores</h3>
-        <table class="score-table" id="modal-scores"></table>
+        <h3><span class="axis-tag x-tag">X</span> Task Intelligence</h3>
+        <div class="x-dims" id="modal-x"></div>
+      </div>
+      <div class="axis-divider"></div>
+      <div class="score-section">
+        <h3><span class="axis-tag y-tag">Y</span> Experimental Orientation</h3>
+        <div class="y-dims" id="modal-y"></div>
       </div>
       <a class="report-link" id="modal-report-link" href="#" target="_blank" rel="noopener">&#128196; View Full Evaluation Report</a>
       <div class="score-note">Scores assigned by LLM agent (gpt-6-sol, high reasoning). ~N = candidate score pending verification.</div>
@@ -716,42 +746,81 @@ function debounce(fn,ms) { let t; return function(...a){ clearTimeout(t); t=setT
 // ═══════════════════════════════════════
 //  AGENT REVIEW MODAL
 // ═══════════════════════════════════════
-const DIM_NAMES = {
-  O: 'Output & Decision', A: 'Adaptivity & Sequential',
-  I: 'Workflow Integration', G: 'Goal & Constraint',
-  U: 'Uncertainty & Failure', P: 'Autonomy & Executability',
-  E: 'Exp. Dependence', R: 'Exp. Alignment', C: 'Exp. Completeness'
-};
+const X_DIMS = [
+  {code:'O', name:'Output & Decision Role', weight:'25%'},
+  {code:'A', name:'Adaptivity & Sequentiality', weight:'20%'},
+  {code:'I', name:'Workflow Integration', weight:'20%'},
+  {code:'G', name:'Goal & Constraint Handling', weight:'15%'},
+  {code:'U', name:'Uncertainty & Failure Handling', weight:'10%'},
+  {code:'P', name:'Autonomy & Actionability', weight:'10%'},
+];
+const Y_DIMS = [
+  {code:'E', name:'Dependence on Experimental Results', levels:['No real experimental results; evaluation uses only simulation or proxy labels.','Experimental results used for training, calibration, or few-shot examples, but do not constitute formal experimental testing.','Real experimental results serve as formal testing; performance can be independently evaluated on experimental data.']},
+  {code:'R', name:'Alignment with Experimental Needs', levels:['Data provides only idealized properties or proxy labels, without connection to a specific experimental use case.','Data explicitly targets an experimental need but does not cover key constraints required to fulfill it.','Data and candidate scope support a well-defined experimental decision, including relevant objectives and key constraints (or guaranteed by design).']},
+  {code:'C', name:'Completeness of Key Experimental Conditions', levels:['Only material identity and results are provided; conditions needed to interpret results are missing.','Some key conditions are provided, but missing ones affect interpretation or comparison.','Key preparation, processing, and measurement conditions required by the task are provided, traceable to individual samples or standardized protocols.']},
+];
+
 function openReview(idx) {
   const d = filtered[idx];
   if (!d||!d.agent_review) return;
   const r = d.agent_review;
-  const dims = Object.keys(DIM_NAMES);
+  const sc = r.scores || {};
 
-  let rows = '';
-  dims.forEach(dim => {
-    const v = r.scores?.[dim];
-    const name = DIM_NAMES[dim]||'';
-    let display = 'N/A';
-    let pending = false;
-    if (v===undefined||v===null||v==='') { display='N/A'; }
+  // X-axis: Task Intelligence — score bars
+  let xHtml = '';
+  X_DIMS.forEach(dim => {
+    let v = sc[dim.code];
+    let pending = false, display = '?';
+    if (v===undefined||v===null||v==='') { display='?'; pending=true; }
     else if (typeof v==='string'&&v.includes('待复核')) { display='?'; pending=true; }
     else if (typeof v==='string'&&v.startsWith('~')) { display=v; pending=true; }
     else { display=v; }
-    rows += `<tr class="${pending?'pending':''}"><td>${display}</td><td>${dim}</td><td>${name}</td></tr>`;
+    const pct = (typeof v==='number'&&v>=0&&v<=4) ? (v/4*100) : 0;
+    const lvl = (typeof v==='number') ? 'l'+Math.min(v,4) : 'l0';
+    xHtml += `<div class="x-row" style="opacity:${pending?'.4':'1'}">
+      <span class="x-code">${dim.code}</span>
+      <span class="x-name" title="${dim.name}">${dim.name}</span>
+      <span class="x-bar-wrap"><span class="x-bar-fill ${lvl}" style="width:${pct}%"></span></span>
+      <span class="x-score">${display}</span>
+      <span class="x-weight">${dim.weight}</span>
+    </div>`;
   });
-  document.getElementById('modal-title').textContent = d.name||'(untitled)';
+
+  // Y-axis: Experimental Orientation — dot indicators + level text
+  let yHtml = '';
+  Y_DIMS.forEach(dim => {
+    let v = sc[dim.code];
+    let pending = false, scoreVal = -1;
+    if (v===undefined||v===null||v==='') { pending=true; }
+    else if (typeof v==='string'&&v.includes('待复核')) { pending=true; }
+    else if (typeof v==='string'&&v.startsWith('~')) { scoreVal = parseInt(v.slice(1))||-1; pending=true; }
+    else if (typeof v==='number') { scoreVal = v; }
+    else { pending=true; }
+
+    let dots = '';
+    for (let i=0; i<3; i++) { dots += `<span class="y-dot${i<=scoreVal?' on':''}"></span>`; }
+    const levelText = (scoreVal>=0&&scoreVal<=2) ? dim.levels[scoreVal] : '';
+    yHtml += `<div class="y-row${pending?' pending':''}">
+      <span class="y-code">${dim.code}</span>
+      <div class="y-info">
+        <div class="y-name">${dim.name}</div>
+        ${pending ? '<div class="y-dots">'+dots+'</div>' : '<div class="y-dots">'+dots+'</div>'}
+        <div class="y-level">${levelText}</div>
+      </div>
+    </div>`;
+  });
+
+  document.getElementById('modal-title').textContent = 'Agent Evaluation — '+(d.name||'(untitled)');
   document.getElementById('modal-dsname').textContent = d.name||'';
   document.getElementById('modal-paperid').textContent = r.paper_id||'N/A';
   document.getElementById('modal-footer-id').textContent = 'Paper ID: '+(r.paper_id||'N/A');
-  document.getElementById('modal-scores').innerHTML = rows;
+  document.getElementById('modal-x').innerHTML = xHtml;
+  document.getElementById('modal-y').innerHTML = yHtml;
+
   const rl = document.getElementById('modal-report-link');
-  if (r.report_url) {
-    rl.href = r.report_url;
-    rl.style.display = '';
-  } else {
-    rl.style.display = 'none';
-  }
+  if (r.report_url) { rl.href = r.report_url; rl.style.display = ''; }
+  else { rl.style.display = 'none'; }
+
   document.getElementById('review-modal').classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 }
