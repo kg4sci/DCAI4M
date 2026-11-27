@@ -1,38 +1,38 @@
-# 单篇论文数据集评分报告
+# Single-Paper Dataset Scoring Report
 
-## 评分汇总
+## Score Summary
 
-已复核的指标采用《评分差异复核表.xlsx》的复核分，其余指标采用 Agent 评分。
+Reviewed dimensions use the reviewed scores from the Score Difference Review Table (.xlsx); other dimensions use the Agent scores.
 
-| 指标 | 分数 | 评分来源 |
+| Dimension | Score | Source |
 |---|---:|---|
-| O · 输出与决策角色 | 2 | Agent |
-| A · 自适应性与序贯性 | 0 | Agent |
-| I · 工作流整合度 | 2 | Agent |
-| G · 目标与约束处理 | 3 | 专家复核 |
-| U · 不确定性与失败处理 | 0 | Agent |
-| P · 自主性与可执行性 | 0 | Agent |
-| E · 对实验结果的依赖 | 1 | Agent |
-| R · 与实验需求的对齐 | 0 | Agent |
-| C · 关键实验条件的完备性 | 1 | Agent |
+| O · Output & Decision Role | 2 | Agent |
+| A · Adaptivity & Sequentiality | 0 | Agent |
+| I · Workflow Integration | 2 | Agent |
+| G · Goal & Constraint Handling | 3 | Expert review |
+| U · Uncertainty & Failure Handling | 0 | Agent |
+| P · Autonomy & Actionability | 0 | Agent |
+| E · Dependence on Experimental Results | 1 | Agent |
+| R · Alignment with Experimental Needs | 0 | Agent |
+| C · Completeness of Key Experimental Conditions | 1 | Agent |
 
-## Agent 待定项候选分补充
+## Agent Pending-Item Candidate Score Supplement
 
-以下为 Agent 在原评审后补充的候选分。
+Below are the candidate scores the Agent added after the original review.
 
-### C · 候选 1 分
+### C · candidate 1
 
-**对应标准**　提供了部分关键条件，但缺失会影响解读或对比。
+**Criterion** Some key conditions are provided, but missing ones affect interpretation or comparison. 
 
-暂列候选1，但其成立依赖尚未核实的适用性假设。C-1说明主任务标签为能量、力和晶胞应力；C-2提供VASP、PAW及PBE／PBE+U等计算设置，不能将这些设置作为实验制备、加工或测量条件计分。C-3、C-4确立附属兼容性修正使用历史实验生成能，并说明其室温背景，因此存在部分实验条件信息，但不能将其直接转移为冻结主任务的条件证据。候选1须以进一步证实T1确需相关实验条件、已披露信息覆盖其中一部分，且其余条件缺口影响解读或对比为前提。相比0，现有摘录不能证明任务必需的实验条件确实缺失；相比2，尚未建立任务所需实验条件的完整性及样品或标准协议追溯。现有证据也尚未证实1所要求的实质缺口，故该候选不能作为正式评分。
+Provisionally listed as candidate 1, but its holding depends on an applicability assumption not yet verified. C-1 states the main-task labels are energy, force, and cell stress; C-2 provides computational settings such as VASP, PAW, and PBE/PBE+U, which cannot be scored as experimental preparation, processing, or measurement conditions. C-3, C-4 establish that the auxiliary compatibility correction uses historical experimental formation energies and describe their room-temperature background, so some experimental-condition information exists, but it cannot be directly transferred as condition evidence for the frozen main task. Candidate 1 must premise on further confirming that T1 indeed needs relevant experimental conditions, that the disclosed information covers part of them, and that the remaining condition gaps affect interpretation or comparison. Compared with 0, the current excerpt cannot prove that the experimental conditions necessary for the task are actually missing; compared with 2, the completeness of the task's required experimental conditions and traceability to samples or standard protocols is not yet established. The current evidence also has not verified the substantive gap required by 1, so this candidate cannot serve as a formal score.
 
-**原文证据**
+**Source evidence**
 
-- C-1 · [PDF 第 2 页，正文第 26 行](高亮论文.pdf#page=2)
+- C-1 · [PDF page 2, main text line 26](highlighted_paper.pdf#page=2)
 
   > The OMat24 dataset includes a total of 118 million structures labeled with energy, forces and cell stress. The
 
-- C-2 · [PDF 第 11 页，正文第 9–15 行](高亮论文.pdf#page=11)
+- C-2 · [PDF page 11, main text lines 9-15](highlighted_paper.pdf#page=11)
 
   > DFT calculations generally followed Material Project default settings19 with some important exceptions. The
   > calculations in this work have been performed using the ab-initio total-energy and molecular-dynamics package
@@ -42,55 +42,55 @@
   > Perdew-Burke-Ernzerhof (PBE) with Hubbard U corrections for oxide and fluoride materials containing Co,
   > Cr, Fe, Mn, Mo, Ni, V, or W, following Materials Project defaults19.
 
-- C-3 · [PDF 第 25 页，正文第 4–7 行](高亮论文.pdf#page=25)
+- C-3 · [PDF page 25, main text lines 4-7](highlighted_paper.pdf#page=25)
 
   > In addition, an energy adjustment to certain anion species is added to account for electron localization
   > errors41. These compatiblity corrections are obtained by way of a least squares fit minimizing the error
   > between predicted formation energies and a set of experimental formation energies with reported uncertainties
   > below 100 meV/atom41.
 
-- C-4 · [PDF 第 26 页，正文第 18–20 行](高亮论文.pdf#page=26)
+- C-4 · [PDF page 26, main text lines 18-20](highlighted_paper.pdf#page=26)
 
   > Furthermore, we remind readers that when using MP2020 style compatiblity corrections,
   > the predicted formation energies are meant to represent values at room temperature (the temperature of
   > experimental formation energies used to fit the corrections). We refer readers to the original publication41
 
-**仍需核实**
+**Still to verify**
 
-- 明确冻结的结构到DFT能量、力和应力预测任务是否需要实验条件；若需要，逐项说明必要条件及其影响目标解读的原因。
-- 在不将附属生成焓修正并入主任务标签的前提下，提供相关实验记录与T1数据记录之间的实际关联证据。
-- 若确认适用，提供测量温度、样品状态、制备加工过程和测量方法的样品字段或标准协议，并核实哪些必要条件确实缺失及其对比较的影响。
+- Clarify whether the frozen structure-to-DFT-energy, force, and stress prediction task requires experimental conditions; if so, explain item by item the necessary conditions and why they affect target interpretation.
+- Without merging the auxiliary formation-enthalpy correction into the main task's labels, provide actual connection evidence between the relevant experimental records and T1's data records.
+- If applicability is confirmed, provide the sample fields or standard protocols for measurement temperature, sample state, preparation and processing, and measurement method, and verify which necessary conditions are actually missing and their impact on comparison.
 
-## Agent 原评审记录
+## Agent Original Review Record
 
-Agent 使用同一模型分工评分，由独立审查和主 Agent 裁决。
+The Agent scores using the same model in divided roles, adjudicated by an independent review and the main Agent.
 
-- 论文 ID：paper_3bbcd0bb5ced6be0
-- 论文名称：Open Materials 2024 (OMat24) Inorganic Materials Dataset and Models
-- 数据集／基准：Open Materials 2024（OMat24）
-- 对应任务：给定无机体相晶体原子结构，预测对应的 DFT 总能量、原子力和晶胞应力；通过 OMat24 的训练、验证及 ID、OOD、WBM 等测试划分检验预测表现。
-- 评价对象：Open Materials 2024（OMat24）无机体相结构数据集支持的主任务：以晶体原子结构为输入，训练并评测机器学习原子间势对 DFT 能量、原子力和晶胞应力的预测。
-- 已提供的流程：从 Alexandria 的弛豫体相结构出发，经扰动结构的 Boltzmann 抽样、从头算分子动力学和扰动后弛豫构建结构；用 DFT 标注能量、力和应力，划分训练、验证及多种测试集，训练并评测 EquiformerV2 和 eSEN 模型。论文另报告 Matbench-Discovery 下游评测及系统性软化分析。
-- 模型：gpt-6-sol
-- 思考强度：high
-- Agent 报告状态：包含待复核事项
-- 高亮论文：[打开带行号与证据高亮的PDF](高亮论文.pdf)
+- Paper ID: paper_3bbcd0bb5ced6be0
+- Paper title: Open Materials 2024 (OMat24) Inorganic Materials Dataset and Models
+- Dataset / benchmark: Open Materials 2024 (OMat24) 
+- Task: given inorganic bulk crystal atomic structures, predicting the corresponding DFT total energy, atomic forces, and unit-cell stress; testing prediction performance through OMat24's training, validation, and ID, OOD, WBM test splits.
+- Evaluation object: the main task supported by the Open Materials 2024 (OMat24) inorganic bulk-phase structure dataset: taking crystal atomic structure as input to train and evaluate machine-learning interatomic potentials' prediction of DFT energy, atomic force, and unit-cell stress.
+- Provided workflow: starting from Alexandria's relaxed bulk structures, constructing structures via Boltzmann sampling of perturbed structures, ab initio molecular dynamics, and post-perturbation relaxation; labeling energy, force, and stress with DFT, splitting training, validation, and multiple test sets, and training and evaluating EquiformerV2 and eSEN models. The paper also reports Matbench-Discovery downstream evaluation and systematic softening analysis.
+- Model: gpt-6-sol
+- Reasoning effort: high
+- Agent report status: contains items pending review
+- Highlighted paper: [open the line-numbered, evidence-highlighted PDF](highlighted_paper.pdf)
 
-原文检索：124 次工具调用，146 个逻辑操作（批量请求内的子操作分别计数）。
+Source retrieval: 124 tool calls, 146 logical operations (sub-operations within batch requests counted separately).
 
-行号说明：每页从 1 开始，按阅读顺序编号；同栏、同一基线的文字片段合并。识别出的重复页眉页脚、页码和图内文字不编号；双栏注明栏位。行号为本系统生成，以带行号 PDF 阅览版为准，并非作者印刷行号。
+Line-number note: each page starts at 1, numbered in reading order; text fragments in the same column and on the same baseline are merged. Detected repeated headers/footers, page numbers, and in-figure text are not numbered; columns are marked for two-column layouts. Line numbers are generated by this system, based on the line-numbered PDF reading copy, not the authors printed line numbers.
 
-评价对象复核：冻结评价对象为 OMat24 的结构到 DFT 能量、力、应力预测。PDF 第 2 页给出数据标签，第 11 页明确模型输入输出，第 33 页列出主任务测试指标；第 6 页另将稳定性与热导率列为 Matbench-Discovery 任务。原评价单元成立，未将其他任务的行动或实验条件并入 T1。
+Evaluation object review: The frozen evaluation object is OMat24's structure-to-DFT energy, force, and stress prediction. PDF page 2 gives the data labels, page 11 specifies the model inputs and outputs, and page 33 lists the main-task test metrics; page 6 separately lists stability and thermal conductivity as Matbench-Discovery tasks. The original evaluation unit holds, and other tasks' actions or experimental conditions are not merged into T1.
 
-不计入本次能力判断的内容：T2 稳定性发现与 T3 热导率预测虽经正式下游评测，但不把其输出或能力并入 T1 的直接监督预测任务。；扰动结构的模型能量抽样属于数据构建，不是 T1 在获得新标签后采取的下一步行动。；历史实验生成焓用于 DFT 兼容性修正及对比，不能直接当作 OMat24 主测试集的标签。；主动学习循环是未来方向；能源、碳减排等应用背景不构成本文实施的实验决策任务。
+Content excluded from this capability assessment: Although T2 stability discovery and T3 thermal-conductivity prediction undergo formal downstream evaluation, their outputs or capabilities are not merged into T1's direct supervised-prediction task.; Model-energy sampling of perturbed structures belongs to data construction, not the next action T1 takes after obtaining new labels.; Historical experimental formation enthalpies are used for DFT compatibility correction and comparison and cannot be directly treated as labels of the OMat24 main test set.; The active-learning loop is a future direction; application backgrounds such as energy and carbon reduction do not constitute experimental-decision tasks implemented in this paper.
 
-固定任务：T1。选择依据：论文将 OMat24 定义为训练 MLIP 的数据集，明确规定结构输入与能量、力、应力输出，并报告 OMat24 验证和测试指标；因此选择该直接监督任务为主评价单元。
+Fixed task: T1. Selection rationale: The paper defines OMat24 as a dataset for training MLIPs, explicitly specifies structure input and energy, force, and stress outputs, and reports OMat24 validation and test metrics; therefore this direct supervised task is selected as the main evaluation unit.
 
-## Agent 初评、独立审查与裁决
+## Agent Initial Scoring, Independent Review & Adjudication
 
-独立审查使用同模型新上下文，未提供初评分及专家分数；其意见供裁决，不作投票或平均。
+The independent review uses a fresh context of the same model, without the initial scores or expert scores; its opinion informs adjudication, not voting or averaging.
 
-| 指标 | 初评 | 独立审查 | Agent 裁决 |
+| Dimension | Initial | Independent review | Agent adjudication |
 |---|---:|---:|---:|
 | O | 2 | 2 | 2 |
 | A | 0 | 0 | 0 |
@@ -100,106 +100,106 @@ Agent 使用同一模型分工评分，由独立审查和主 Agent 裁决。
 | P | 0 | 0 | 0 |
 | E | 1 | 1 | 1 |
 | R | 0 | 0 | 0 |
-| C | 待复核 | 待复核 | 待复核 |
+| C | pending review | pending review | pending review |
 
-未计算加权总分：原准则未写明 O 项权重。
+Weighted total not computed: the original rubric did not specify the weight for O.
 
-## O · 输出与决策角色
+## O · Output & Decision Role
 
-**评分**：2；已评分
-**对应标准**：多性质预测、候选排序或风险评估。
-**判定理由**：所选 T1 明确要求从输入结构预测能量、力和应力，属于多个物理量的预测。扰动候选结构的抽样发生在数据构建环节，不是 T1 的模型输出。
-**分档比较**：相对 1 档，输出不止一个性质；相对 3 档，T1 不要求生成候选或逆向设计；相对 4 档，T1 不负责决定下一步实验或发现策略。
-**任务归属**：T1
-**边界与争议说明**：“候选”一词见于构建流程，但该流程不要求受评 T1 模型输出候选；因此不据此升至 3 或 4 档。
-## A · 自适应性与序贯性
+**Score**: 2; scored
+**Criterion**: Multi-property prediction, candidate ranking, or risk assessment. 
+**Rationale**: The selected T1 explicitly requires predicting energy, force, and stress from input structures, belonging to prediction of multiple physical quantities. Sampling of perturbed candidate structures occurs in the data-construction stage, not T1's model output.
+**Level comparison**: Relative to level 1, the output is more than one property; relative to level 3, T1 does not require candidate generation or inverse design; relative to level 4, T1 is not responsible for deciding the next experiment or discovery strategy.
+**Task**: T1
+**Boundary & dispute notes**: The word "candidate" appears in the construction pipeline, but that pipeline does not require the evaluated T1 model to output candidates; therefore it is not raised to level 3 or 4 on this basis.
+## A · Adaptivity & Sequentiality
 
-**评分**：0；已评分
-**对应标准**：完全静态、一次性预测。
-**判定理由**：T1 在预先标注的数据与固定测试划分上，按输入结构输出能量、力和应力预测。模型辅助抽样属于数据构建，不是任务预测后的反馈更新。
-**分档比较**：0 档由固定划分上的结构到标签预测支持。普通结构输入不自动满足 1 档的条件式协议；构建阶段的一次模型辅助抽样不属于 T1 的 2 档主动筛选，也未建立 3、4 档的多轮结果反馈。
-**任务归属**：T1
-**边界与争议说明**：反例是从 500 个候选结构中选 5 个，但其发生在数据构建阶段，不能视为 T1 获得新标签后主动选择下一项。
-## I · 工作流整合度
+**Score**: 0; scored
+**Criterion**: Completely static, one-shot prediction. 
+**Rationale**: T1 outputs energy, force, and stress predictions from input structures on pre-labeled data and a fixed test split. Model-assisted sampling belongs to data construction, not feedback updating after task prediction.
+**Level comparison**: Level 0 is supported by structure-to-label prediction on a fixed split. Ordinary structure input does not automatically satisfy level 1's conditional protocol; the one-time model-assisted sampling in the construction stage does not belong to T1's level-2 active screening, and the multi-round result feedback of levels 3 and 4 is not established either.
+**Task**: T1
+**Boundary & dispute notes**: The counterexample is selecting 5 from 500 candidate structures, but it occurs in the data-construction stage and cannot be treated as T1 actively selecting the next item after obtaining new labels.
+## I · Workflow Integration
 
-**评分**：2；已评分
-**对应标准**：单一任务的增强版本。
-**判定理由**：T1 有实际训练和评测的单模型预测流程。eSEN 同一模型先进行直接力预训练、再进行保守微调，以提高同一预测任务的精度；另测试了 DeNS 增强。它们是单任务的已实施增强，未构成独立模型或材料发现模块的任务级串联。
-**分档比较**：1 档的单模型单任务成立；已实施的 eSEN 两阶段训练支持 2 档增强。3 档要求多个模型或模块按顺序连接，而这里是同一模型预训练后微调；4 档的生成、筛选、实验规划、反馈更新一体化流程未由 T1 实现。
-**任务归属**：T1
-**边界与争议说明**：两阶段训练可被宽泛地称为串联，但原文描述的是同一 eSEN 模型的训练状态切换和预测头移除，因此按单任务增强解释为 2 档。
-## G · 目标与约束处理
+**Score**: 2; scored
+**Criterion**: An enhanced version of a single task. 
+**Rationale**: T1 has an actually trained and evaluated single-model prediction workflow. The same eSEN model first undergoes direct-force pretraining, then conservative fine-tuning, to improve the accuracy of the same prediction task; DeNS enhancement is also tested. They are implemented enhancements of a single task, not constituting task-level chaining of independent models or materials discovery modules.
+**Level comparison**: Level 1's single model single task holds; the implemented eSEN two-stage training supports level-2 enhancement. Level 3 requires multiple models or modules connected in sequence, while here it is the same model pretrained then fine-tuned; the integrated workflow of generation, screening, experiment planning, and feedback updating in level 4 is not implemented by T1.
+**Task**: T1
+**Boundary & dispute notes**: Two-stage training can be broadly called chaining, but the source describes training-state switching and prediction-head removal of the same eSEN model, so it is interpreted as single-task enhancement at level 2.
+## G · Goal & Constraint Handling
 
-**评分** 3 分（专家复核）
-**对应标准**：多目标或多约束优化。
-**判定理由**：EquiformerV2 在 T1 训练中分别定义能量、力与应力误差损失并共同优化，构成模型拟合层面的多目标训练。此判断不扩展为材料候选的多目标筛选；构建抽样参数也不是正式任务约束。
-**分档比较**：0 档不符，因为训练目标明确；1 档把多个物理量损失概括为单一拟合目标，但原文实际分别优化能量、力、应力误差，故按 3 档的多目标口径判断。2 档静态候选约束不能从构建参数推出；4 档动态资源决策未成立。
-**任务归属**：T1
-**边界与争议说明**：初评把多个损失合称一个监督拟合目标；独立审查指出它们是实际训练中分别定义并优化的能量、力和应力误差。原锚点未排除训练层面的多目标优化，故采纳 3 档并限定层级。
-## U · 不确定性与失败处理
+**Score** 3(Expert review)
+**Criterion**: Multi-objective or multi-constraint optimization. 
+**Rationale**: EquiformerV2 separately defines energy, force, and stress error losses in T1 training and jointly optimizes them, constituting multi-objective training at the model-fitting level. This judgment does not extend to multi-objective screening of material candidates; construction sampling parameters are also not formal task constraints.
+**Level comparison**: Level 0 does not fit because the training objective is explicit; level 1 summarizes multiple physical-quantity losses as a single fitting objective, but the source actually optimizes energy, force, and stress errors separately, so it is judged by level 3's multi-objective scope. Level-2 static candidate constraints cannot be inferred from construction parameters; level-4 dynamic resource decision-making is not established.
+**Task**: T1
+**Boundary & dispute notes**: Initial collectively calls multiple losses one supervised fitting objective; the Independent review points out they are energy, force, and stress errors separately defined and optimized in actual training. The original anchor does not exclude training-level multi-objective optimization, so level 3 is adopted with the hierarchy limited.
+## U · Uncertainty & Failure Handling
 
-**评分**：0；已评分
-**对应标准**：仅输出确定性结果。
-**判定理由**：T1 的正式输出是能量、力和应力点预测。DeNS 变体学习人工加入的扰动噪声；漂移力复算及严格收敛测试属于标签质量核查，未形成候选级不确定性输出或失败、阴性结果驱动的任务处理。
-**分档比较**：0 档对应主任务的点预测。1 档不能由附属实验值的不确定度替代；2、4 档需要不确定性用于候选行动。3 档的噪声、失败与阴性结果处理不能由人工去噪训练和事后漂移力稳健性核查直接推出。
-**任务归属**：T1
-**边界与争议说明**：独立审查把去噪和漂移力复算解释为 3 档。原文第 24 页强调原样训练模型对严格收敛测试误差相近，未说明模型或发布数据依据失败／阴性结果更新处理策略；保留 0 档。
-## P · 自主性与可执行性
+**Score**: 0; scored
+**Criterion**: Deterministic outputs only. 
+**Rationale**: T1's formal output is energy, force, and stress point predictions. The DeNS variant learns artificially added perturbation noise; drift-force recomputation and strict convergence testing belong to label quality checking, not forming candidate-level uncertainty output or failure/negative-result-driven task handling.
+**Level comparison**: Level 0 corresponds to the main task's point prediction. Level 1 cannot be replaced by the uncertainty of auxiliary experimental values; levels 2 and 4 require uncertainty used for candidate actions. Level 3's noise, failure, and negative-result handling cannot be directly inferred from manual denoising training and post-hoc drift-force robustness checks.
+**Task**: T1
+**Boundary & dispute notes**: The Independent review interprets denoising and drift-force recomputation as level 3. Page 24 of the source emphasizes that the as-trained model has similar errors on strict convergence tests, and does not state that the model or released data update the handling strategy based on failures/negative results; level 0 is retained.
+## P · Autonomy & Actionability
 
-**评分**：0；已评分
-**对应标准**：仅输出预测结果。
-**判定理由**：T1 的正式模型行为是给定结构并输出能量、力和应力预测。构建时的结构抽样不是由 T1 模型执行的后续任务行动。
-**分档比较**：0 档与 T1 明确的预测输出相符。1 档需有任务级行动建议；2 档需自动执行相应任务流程，S3 的预构建抽样不构成该流程；3、4 档还需反馈选行动和全程监控纠正。
-**任务归属**：T1
-**边界与争议说明**：自动抽样发生在数据构建中；另有 T2 结构弛豫，但冻结的 T1 不承接其行动能力。
-## E · 对实验结果的依赖
+**Score**: 0; scored
+**Criterion**: Outputs predictions only. 
+**Rationale**: T1's formal model behavior is given a structure and outputting energy, force, and stress predictions. Structure sampling during construction is not a subsequent task action executed by the T1 model.
+**Level comparison**: Level 0 fits T1's explicit prediction output. Level 1 requires task-level action recommendations; level 2 requires automatic execution of the corresponding task workflow, and S3's pre-built sampling does not constitute that workflow; levels 3 and 4 additionally require feedback-based action selection and full-process monitoring and correction.
+**Task**: T1
+**Boundary & dispute notes**: Automatic sampling occurs in data construction; there is also T2 structure relaxation, but the frozen T1 does not inherit its action capability.
+## E · Dependence on Experimental Results
 
-**评分**：1；已评分
-**对应标准**：实验结果用于训练、校准或少数示例案例，但不构成正式的实验测试。
-**判定理由**：论文使用历史实验生成焓拟合 OMat24 DFT 兼容性修正。所报告的实验对比是 DFT 生成焓与实验值的对比；主任务 MLIP 的 OMat24 测试指标则是能量、力和应力误差。实验数据因此用于附属校正，但原文未将其设为主任务 MLIP 的正式实验测试。
-**分档比较**：0 档“无真实实验结果”不符，因为兼容性修正确实使用历史实验生成焓；1 档涵盖这一校正用途；2 档需要实验结果成为可单独评估的正式测试依据，而 Figure C.1 是 DFT 对实验的对比，Table H.1 是 MLIP 对计算标签的测试。
-**任务归属**：T1
-**边界与争议说明**：附属校正不是主任务的训练或测试标签，但属于论文实现的 OMat24 DFT 输出校正环节；按原准则的“校准”口径记录为 1，保留其适用范围。
-## R · 与实验需求的对齐
+**Score**: 1; scored
+**Criterion**: Experimental results used for training, calibration, or few-shot examples, but do not constitute formal experimental testing. 
+**Rationale**: The paper uses historical experimental formation enthalpies to fit the OMat24 DFT compatibility correction. The reported experimental comparison is between DFT formation enthalpies and experimental values; the OMat24 test metrics for the main-task MLIP are energy, force, and stress errors. Experimental data are thus used for an auxiliary correction, but the source does not set them as formal experimental testing for the main-task MLIP.
+**Level comparison**: Level 0 "no real experimental results" does not fit, because compatibility correction does use historical experimental formation enthalpies; level 1 covers this correction use; level 2 requires experimental results to become a formal testing basis that can be evaluated separately, while Figure C.1 is a DFT-versus-experiment comparison and Table H.1 is an MLIP test against computational labels.
+**Task**: T1
+**Boundary & dispute notes**: The auxiliary correction is not the main task's training or test labels, but belongs to the OMat24 DFT output correction stage implemented by the paper; recorded as 1 per the original rubric's "calibration" scope, retaining its applicability.
+## R · Alignment with Experimental Needs
 
-**评分**：0；已评分
-**对应标准**：数据仅提供理想化性质或代理标签，与具体实验用途无关联。
-**判定理由**：固定问题一：论文明确规定的是训练 DFT 代理模型预测平衡及非平衡结构性质，未定义一种具体实验用途。固定问题二：数据限于 PBE／PBE+U 计算的周期体相结构，并明确排除缺陷、表面等效应；未给出针对某一实验用途的候选约束。实验生成焓的附属修正不能为主任务补出一个具体实验决策。
-**分档比较**：0 档对应明确的 DFT 代理预测目标且无具体实验用途；1 档需先满足固定问题一，论文的广泛现实应用动机不足以定义实验用途；2 档还需与该用途对应的关键候选约束，原文的数据范围与限制未建立这种对应。
-**任务归属**：T1
-**边界与争议说明**：R 的两问评估实验问题及候选范围；补充材料的实验生成焓拟合说明存在实验数据使用，但不自动使主任务对应明确的实验决策。
-## C · 关键实验条件的完备性
+**Score**: 0; scored
+**Criterion**: Data provides only idealized properties or proxy labels, without connection to a specific experimental use case. 
+**Rationale**: Fixed question one: what the paper explicitly stipulates is training DFT proxy models to predict equilibrium and non-equilibrium structure properties, without defining a specific experimental use. Fixed question two: data are limited to periodic bulk structures computed by PBE/PBE+U, explicitly excluding defects, surfaces, and other effects; no candidate constraints for a certain experimental use are given. The auxiliary correction of experimental formation enthalpy cannot supplement a specific experimental decision for the main task.
+**Level comparison**: Level 0 corresponds to an explicit DFT proxy prediction objective with no specific experimental use; level 1 requires first satisfying fixed question one, and the paper's broad real-world application motivation is insufficient to define an experimental use; level 2 additionally requires key candidate constraints corresponding to that use, which the source's data scope and limits do not establish.
+**Task**: T1
+**Boundary & dispute notes**: R's two questions evaluate the experimental problem and candidate scope; the supplementary material's experimental formation-enthalpy fitting description shows experimental data use, but does not automatically make the main task correspond to a clear experimental decision.
+## C · Completeness of Key Experimental Conditions
 
-**评分**：待复核；待复核
-**对应标准**：当前信息不足，暂不选择数值分档
-**判定理由**：所选任务预测的是 DFT 能量、力和应力，论文详述的是 VASP／DFT 计算设置。附属实验生成焓修正提到室温，但未建立主任务需要哪些实验制备、加工与测量条件，也未显示这类条件如何逐样品或按标准协议连接到主任务记录。因此不能依据完整计算协议给 C 正分，也不能把论文未披露实验条件直接判作数据已证实缺失。
-**分档比较**：0 档要求证实本任务必要的实验条件在数据记录中缺失，现未确立这些条件是否适用；1 档要求有部分关键实验条件且存在影响解读的缺口，室温只属于附属修正；2 档要求任务所需制备、加工、测量条件可追溯，而计算协议不能替代这些证据。三个档位均暂不能确认。
-**任务归属**：T1
-**边界与争议说明**：C 与 E 分别问条件完备性和实验结果使用。E 中可确认的实验校正，并不自动确定 C 所需条件或其逐样品追溯。
-## 局限与待复核事项
+**Score**: pending review; pending review
+**Criterion**: Insufficient information; no numeric level selected for now
+**Rationale**: The selected task predicts DFT energy, force, and stress, and the paper details VASP/DFT computational settings. The auxiliary experimental formation-enthalpy correction mentions room temperature, but does not establish which experimental preparation, processing, and measurement conditions the main task needs, nor show how such conditions connect to main-task records per sample or by standard protocol. Therefore C cannot be given a positive score based on the complete computational protocol, nor can the paper's non-disclosure of experimental conditions be directly judged as data confirmed missing.
+**Level comparison**: Level 0 requires confirming the experimental conditions necessary for this task are missing in the data records, and whether these conditions apply is not currently established; level 1 requires having some key experimental conditions and a gap affecting interpretation, while room temperature belongs only to auxiliary correction; level 2 requires the task's needed preparation, processing, and measurement conditions traceable, and computational protocols cannot replace this evidence. None of the three levels can be confirmed for now.
+**Task**: T1
+**Boundary & dispute notes**: C and E respectively ask about completeness of conditions and use of experimental results. The experimental correction confirmable under E does not automatically determine the conditions required by C or their per-sample traceability.
+## Limitations & Items Pending Review
 
-- 本报告是依照所供论文和冻结准则作出的模型评价，未核验论文以外的数据文件或实验记录。
-- A-4 与 P-3 的初评绑定跨越冻结任务环节，最终评分记录已移除这些证据；原文仍在范围核查中检查。
-- C 的实验条件适用性及逐样品追溯未由所供论文确立，保留 pending。
-- 已查看 PDF 第 26 页 Figure C.1 原图：横轴为实验生成焓、纵轴为 OMat24 DFT 生成焓；该图不是 MLIP 对实验标签的测试。
-- PDF 第 33 页 Table H.1 仅据图注文字确认其报告能量、力、应力测试 MAE，未从表格视觉布局推断额外结论。
-- PDF 第 24 页 Table B.1 的正文说明常规及严格收敛测试误差相近；未依据表格数值作独立图像解读。
-- PDF 第 4 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 5 页定位提示：图表区域未可靠识别；内部文字可能参与行号，核对时以带行号阅览版及图表标签为准
-- PDF 第 6 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 7 页定位提示：图表区域未可靠识别；内部文字可能参与行号，核对时以带行号阅览版及图表标签为准
-- PDF 第 8 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 9 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 9 页定位提示：图表区域未可靠识别；内部文字可能参与行号，核对时以带行号阅览版及图表标签为准
-- PDF 第 21 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 23 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 27 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 28 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 29 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
+- This report is a model evaluation made per the supplied paper and frozen rubric, without verifying data files or experimental records beyond the paper.
+- The Initial bindings of A-4 and P-3 cross frozen task stages; the final scoring record has removed this evidence; the source is still checked during scope verification.
+- C's experimental-condition applicability and per-sample traceability are not established by the supplied paper; pending is retained.
+- The original PDF page 26 Figure C.1 has been viewed: the horizontal axis is experimental formation enthalpy, the vertical axis is OMat24 DFT formation enthalpy; this figure is not a test of MLIP against experimental labels.
+- PDF page 33 Table H.1 is confirmed only by caption text to report energy, force, and stress test MAE, without inferring additional conclusions from the table's visual layout.
+- The main text for PDF page 24 Table B.1 states that the standard and strict convergence test errors are similar; no independent image interpretation is made based on table values.
+- PDF page 4 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 5 location hint: figure/table region not reliably detected; inner text may carry line numbers - verify against the line-numbered reading copy and figure/table labels
+- PDF page 6 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 7 location hint: figure/table region not reliably detected; inner text may carry line numbers - verify against the line-numbered reading copy and figure/table labels
+- PDF page 8 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 9 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 9 location hint: figure/table region not reliably detected; inner text may carry line numbers - verify against the line-numbered reading copy and figure/table labels
+- PDF page 21 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 23 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 27 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 28 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 29 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
 
-## 评分修订记录
+## Score Revision Log
 
-- A：分数与状态未变；修订了评分理由、证据或其他解释字段。
-- G：1（已评分） → 3（已评分）。
-- U：分数与状态未变；修订了评分理由、证据或其他解释字段。
-- P：分数与状态未变；修订了评分理由、证据或其他解释字段。
+- A: score and status unchanged; revised the rationale, evidence, or other explanatory fields.
+- G: 1(scored) -> 3(scored). 
+- U: score and status unchanged; revised the rationale, evidence, or other explanatory fields.
+- P: score and status unchanged; revised the rationale, evidence, or other explanatory fields.

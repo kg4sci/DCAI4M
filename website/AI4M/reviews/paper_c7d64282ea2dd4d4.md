@@ -1,34 +1,34 @@
-# 单篇论文数据集评分报告
+# Single-Paper Dataset Scoring Report
 
-## 评分汇总
+## Score Summary
 
-已复核的指标采用《评分差异复核表.xlsx》的复核分，其余指标采用 Agent 评分。
+Reviewed dimensions use the reviewed scores from the Score Difference Review Table (.xlsx); other dimensions use the Agent scores.
 
-| 指标 | 分数 | 评分来源 |
+| Dimension | Score | Source |
 |---|---:|---|
-| O · 输出与决策角色 | 3 | Agent |
-| A · 自适应性与序贯性 | 4 | Agent |
-| I · 工作流整合度 | 3 | Agent |
-| G · 目标与约束处理 | 2 | Agent |
-| U · 不确定性与失败处理 | 2 | 专家复核 |
-| P · 自主性与可执行性 | 3 | Agent |
-| E · 对实验结果的依赖 | 0 | Agent |
-| R · 与实验需求的对齐 | 0 | Agent |
-| C · 关键实验条件的完备性 | 1 | Agent |
+| O · Output & Decision Role | 3 | Agent |
+| A · Adaptivity & Sequentiality | 4 | Agent |
+| I · Workflow Integration | 3 | Agent |
+| G · Goal & Constraint Handling | 2 | Agent |
+| U · Uncertainty & Failure Handling | 2 | Expert review |
+| P · Autonomy & Actionability | 3 | Agent |
+| E · Dependence on Experimental Results | 0 | Agent |
+| R · Alignment with Experimental Needs | 0 | Agent |
+| C · Completeness of Key Experimental Conditions | 1 | Agent |
 
-## Agent 待定项候选分补充
+## Agent Pending-Item Candidate Score Supplement
 
-以下为 Agent 在原评审后补充的候选分。
+Below are the candidate scores the Agent added after the original review.
 
-### C · 候选 1 分
+### C · candidate 1
 
-**对应标准**　提供了部分关键条件，但缺失会影响解读或对比。
+**Criterion** Some key conditions are provided, but missing ones affect interpretation or comparison. 
 
-暂列条件性候选1，尚不能形成正式评分。C-1明确主任务为固定晶格和原子位置的虚拟组成筛选；C-2提供Quantum Espresso、赝势版本及性质对应的计算类型；C-3说明训练与评估中保持候选骨架和晶格不变。这些确立的是计算条件，不能直接视为制备、加工或实测条件。候选1成立须假设：后续确认主任务有适用的实体实验用途，并证实部分必要实验条件已有记录，但仍有影响解读或对比的缺口；当前摘录尚未验证该假设。与相邻锚点比较，0要求确认所需条件缺失，不能由未披露推得；2要求任务所需实验条件完整且可追溯，目前亦未确立。因此1仅是待补证的候选，不表示已证明实验条件部分完备。
+Provisionally listed as conditional candidate 1, which cannot yet form a formal score. C-1 specifies the main task as virtual composition screening with fixed lattice and atomic positions; C-2 provides Quantum Espresso, pseudopotential versions, and the computation types corresponding to properties; C-3 states the candidate framework and lattice are kept unchanged during training and evaluation. These establish computational conditions, which cannot be directly treated as preparation, processing, or measured conditions. Candidate 1 holding must assume: subsequent confirmation that the main task has an applicable physical-experiment use, and verification that some necessary experimental conditions are recorded but gaps affecting interpretation or comparison remain; the current excerpt has not verified this assumption. Compared with adjacent anchors, 0 requires confirming the needed conditions are missing, which cannot be derived from non-disclosure; 2 requires the task's needed experimental conditions to be complete and traceable, which is also not currently established. Therefore 1 is only a candidate awaiting supplementary evidence and does not mean partial completeness of experimental conditions has been proven.
 
-**原文证据**
+**Source evidence**
 
-- C-1 · [PDF 第 4 页，正文第 17–23 行](高亮论文.pdf#page=4)
+- C-1 · [PDF page 4, main text lines 17-23](highlighted_paper.pdf#page=4)
 
   > generating a crystal’s lattice, atomic positions, and compositions together, we simplify the problem such that
   > the agent only predicts the identities of the atoms given fixed lattice and atom positions. This also aligns with
@@ -38,7 +38,7 @@
   > crystals (space groups 200-230) with 4-8 atoms, for which DFT calculations are faster and certain properties
   > are easier to compute.
 
-- C-2 · [PDF 第 18 页，正文第 23–28 行](高亮论文.pdf#page=18)
+- C-2 · [PDF page 18, main text lines 23-28](highlighted_paper.pdf#page=18)
 
   > We performed DFT single-point SCF simulations using Quantum Espresso v7.1 (Giannozzi et al., 2009),
   > which is fully open-source. Solid-state pseudopotentials from SSSP version 1.3.0 (Prandini et al., 2018) were
@@ -47,7 +47,7 @@
   > • scf for band gap and bulk modulus
   > • vc-relax for density
 
-- C-3 · [PDF 第 15 页，正文第 21–25 行](高亮论文.pdf#page=15)
+- C-3 · [PDF page 15, main text lines 21-25](highlighted_paper.pdf#page=15)
 
   > For practical reasons, we do not perform structure relaxation on policy-generated
   > crystals. Although DFT relaxation optimizes the crystal structure to minimize system energy, which ben-
@@ -55,42 +55,42 @@
   > increasing computational complexity. Hence, the backbone structure and lattice of each crystal candidate
   > in the environment is unchanged during training and evaluation. As an immediate next step, we wish to
 
-**仍需核实**
+**Still to verify**
 
-- 明确该固定结构、DFT奖励的主基准是否适用实体实验条件评价；若适用，说明具体实验用途和测量对象。
-- 若存在实体实验对应关系，提供候选样品或标准协议关联的制备、加工及相应带隙、体积模量或密度测量条件。
-- 提供上述实验条件的样品覆盖范围及具体缺口，以区分部分完备、完整可追溯与必要条件缺失。
+- Clarify whether this fixed-structure, DFT-reward main benchmark is subject to physical-experimental-condition evaluation; if so, explain the specific experimental use and measurement object.
+- If a physical-experiment correspondence exists, provide the preparation and processing associated with candidate samples or standard protocols, and the corresponding band-gap, bulk-modulus, or density measurement conditions.
+- Provide the sample coverage and specific gaps of the above experimental conditions, to distinguish partial completeness, full traceability, and missing necessary conditions.
 
-## Agent 原评审记录
+## Agent Original Review Record
 
-Agent 使用同一模型分工评分，由独立审查和主 Agent 裁决。
+The Agent scores using the same model in divided roles, adjudicated by an independent review and the main Agent.
 
-- 论文 ID：paper_c7d64282ea2dd4d4
-- 论文名称：CrystalGym: A New Benchmark for Materials Discovery Using Reinforcement Learning
-- 数据集／基准：CrystalGym
-- 对应任务：给定选定的立方晶体固定晶格及原子位置、三种性质之一的目标值，策略从空原子位开始逐步选择元素；完成晶体后由 DFT 计算对应性质并获得奖励。主评测使用混合结构、分布外目标和 18 元素动作空间。
-- 评价对象：CrystalGym 基准中，以给定立方晶体晶格、原子位置和单一目标性质值为条件，由强化学习策略逐位选择元素、补全晶体组成，并利用每轮生成晶体的 DFT 性质计算结果形成奖励的任务；主要基准设置为混合起始结构、分布外目标值和 18 元素动作空间。
-- 已提供的流程：环境从选定晶体结构开始，策略逐位填入元素；完成后以 DFT 计算目标性质并给出奖励，供强化学习更新。论文比较 PPO、SAC、Rainbow、DQN，并以不同结构、目标值和动作空间设置评估策略。另有取代模式实验及 LLM+REINFORCE 案例。
-- 模型：gpt-6-sol
-- 思考强度：high
-- Agent 报告状态：包含待复核事项
-- 高亮论文：[打开带行号与证据高亮的PDF](高亮论文.pdf)
+- Paper ID: paper_c7d64282ea2dd4d4
+- Paper title: CrystalGym: A New Benchmark for Materials Discovery Using Reinforcement Learning
+- Dataset / benchmark: CrystalGym
+- Task: given a selected cubic crystal's fixed lattice and atomic positions and the target value of one of three properties, the policy starts from empty atomic sites and progressively selects elements; after completing the crystal, DFT computes the corresponding property and a reward is obtained. The main evaluation uses mixed structures, out-of-distribution targets, and an 18-element action space.
+- Evaluation object: in the CrystalGym benchmark, the task where a reinforcement-learning policy, conditioned on a given cubic crystal lattice, atomic positions, and a single target property value, selects elements site by site to complete the crystal composition and forms rewards using the DFT property-computation results of each round's generated crystal; the main benchmark setting is mixed starting structures, out-of-distribution target values, and an 18-element action space.
+- Provided workflow: the environment starts from a selected crystal structure, and the policy fills in elements site by site; upon completion, DFT computes the target property and gives a reward for reinforcement-learning updating. The paper compares PPO, SAC, Rainbow, and DQN, and evaluates policies with different structure, target-value, and action-space settings. There are also substitution-mode experiments and an LLM+REINFORCE case.
+- Model: gpt-6-sol
+- Reasoning effort: high
+- Agent report status: contains items pending review
+- Highlighted paper: [open the line-numbered, evidence-highlighted PDF](highlighted_paper.pdf)
 
-原文检索：96 次工具调用，113 个逻辑操作（批量请求内的子操作分别计数）。
+Source retrieval: 96 tool calls, 113 logical operations (sub-operations within batch requests counted separately).
 
-行号说明：每页从 1 开始，按阅读顺序编号；同栏、同一基线的文字片段合并。识别出的重复页眉页脚、页码和图内文字不编号；双栏注明栏位。行号为本系统生成，以带行号 PDF 阅览版为准，并非作者印刷行号。
+Line-number note: each page starts at 1, numbered in reading order; text fragments in the same column and on the same baseline are merged. Detected repeated headers/footers, page numbers, and in-figure text are not numbered; columns are marked for two-column layouts. Line numbers are generated by this system, based on the line-numbered PDF reading copy, not the authors printed line numbers.
 
-评价对象复核：已用原文第 5 页的组成补全定义、第 6 页的基准结构及第 9 页的最终评测设置复核冻结对象。正文主要任务是给定固定几何与目标性质值，逐位产生组成并由 DFT 奖励训练策略；取代模式与 LLM 案例已在冻结 profile 中单列。评价对象及完整 profile 保持冻结版本。
+Evaluation object review: Re-checked the frozen object using the composition-completion definition on source page 5, the benchmark structure on page 6, and the final evaluation setup on page 9. The main task in the text is, given fixed geometry and target property values, to generate composition site by site and train the policy with DFT rewards; the substitution mode and LLM case are separately listed in the frozen profile. The evaluation object and complete profile keep the frozen version.
 
-不计入本次能力判断的内容：不把取代模式实验 6 的 CHGNet 初始化能力并入主补全任务的通用实现。；不把 LLM+REINFORCE 案例中的 SFT 训练数据及其特殊推理限制当作所有 CrystalGym 策略的要求。；不把完整晶格与原子位置的联合生成、结构弛豫、稳定性优化或多目标强化学习视为本次主基准已实现能力。；DFT 模拟设置属于计算条件；不能据此推断制备或实测条件已被记录。
+Content excluded from this capability assessment: The CHGNet initialization capability of substitution-mode experiment 6 is not merged into the general implementation of the main completion task.; The SFT training data and its special inference restrictions in the LLM+REINFORCE case are not treated as requirements for all CrystalGym policies.; Joint generation of complete lattice and atomic positions, structure relaxation, stability optimization, or multi-objective reinforcement learning are not treated as capabilities implemented in this main benchmark.; DFT simulation settings are computational conditions; it cannot be inferred from them that preparation or measured conditions have been recorded.
 
-固定任务：T-completion。选择依据：第 3.1 节将从空结构逐位填入原子定义为 CrystalGym 任务；第 5 节和最终基准评测均以组成补全为中心，并明确最终采用混合结构、分布外目标及小动作空间。
+Fixed task: T-completion. Selection rationale: Section 3.1 defines filling atoms site by site from an empty structure as the CrystalGym task; Section 5 and the final benchmark evaluation both center on composition completion, and explicitly adopt mixed structures, out-of-distribution targets, and a small action space in the end.
 
-## Agent 初评、独立审查与裁决
+## Agent Initial Scoring, Independent Review & Adjudication
 
-独立审查使用同模型新上下文，未提供初评分及专家分数；其意见供裁决，不作投票或平均。
+The independent review uses a fresh context of the same model, without the initial scores or expert scores; its opinion informs adjudication, not voting or averaging.
 
-| 指标 | 初评 | 独立审查 | Agent 裁决 |
+| Dimension | Initial | Independent review | Agent adjudication |
 |---|---:|---:|---:|
 | O | 3 | 3 | 3 |
 | A | 4 | 4 | 4 |
@@ -100,98 +100,98 @@ Agent 使用同一模型分工评分，由独立审查和主 Agent 裁决。
 | P | 3 | 3 | 3 |
 | E | 0 | 0 | 0 |
 | R | 0 | 0 | 0 |
-| C | 待复核 | 待复核 | 待复核 |
+| C | pending review | pending review | pending review |
 
-未计算加权总分：原准则未写明 O 项权重。
+Weighted total not computed: the original rubric did not specify the weight for O.
 
-## O · 输出与决策角色
+## O · Output & Decision Role
 
-**评分**：3；已评分
-**对应标准**：候选生成、逆向设计或目标导向设计。
-**判定理由**：正式任务要求策略在给定晶格、原子位置和目标性质值后，逐位选择元素，输出完整的候选晶体组成。逐位动作属于生成过程；正式输出不是下一项实验或资源分配决定。
-**分档比较**：0 档和 1–2 档不足以描述明确要求的目标导向候选组成生成。4 档要求决定下一步候选、实验、资源或发现策略；本任务直接输出完整组成，DFT 随后按固定流程评估，未定义独立的下一项实验或资源决策。
-**任务归属**：T-completion
-**边界与争议说明**：强化学习确实逐步选择元素，但该选择构成一个候选组成；因此按输出角色取 3 档，而不把生成内部的每个动作重复计为 4 档。
-## A · 自适应性与序贯性
+**Score**: 3; scored
+**Criterion**: Candidate generation, inverse design, or goal-directed design. 
+**Rationale**: The formal task requires the policy, after given lattice, atomic positions, and target property values, to select elements site by site and output complete candidate crystal compositions. Site-by-site actions belong to the generation process; the formal output is not a next experiment or resource allocation decision.
+**Level comparison**: Levels 0 and 1-2 are insufficient to describe the explicitly required goal-directed candidate composition generation. Level 4 requires deciding the next candidates, experiments, resources, or discovery strategy; this task directly outputs complete compositions, and DFT subsequently evaluates them in a fixed workflow, without defining an independent next experiment or resource decision.
+**Task**: T-completion
+**Boundary & dispute notes**: Reinforcement learning does select elements step by step, but that selection constitutes one candidate composition; therefore level 3 is taken by output role, without repeatedly counting each internal generation action as level 4.
+## A · Adaptivity & Sequentiality
 
-**评分**：4；已评分
-**对应标准**：多轮、反馈驱动的自适应闭环。
-**判定理由**：晶体完成后运行 DFT、计算奖励；受评 RL 策略从不断取得的环境样本学习并改变后续选择。该在线、跨轮的生成—评估—更新过程构成反馈闭环，尽管反馈来自仿真。
-**分档比较**：3 档“利用仿真或离线反馈进行多轮序贯优化”也符合 DFT 仿真奖励这一事实；4 档“多轮、反馈驱动的自适应闭环”更准确涵盖每轮生成、DFT 评价、奖励和策略更新的完整在线循环。原锚点未规定 4 档必须有实体实验反馈。
-**任务归属**：T-completion
-**边界与争议说明**：若将所有仿真反馈一律封顶为 3 档，会给原锚点增添未写出的实体实验必要条件。此处已评测算法的策略确实随每轮新奖励调整，故取 4 档；证据中的算法行为仅代表所评测实现。
-## I · 工作流整合度
+**Score**: 4; scored
+**Criterion**: Multi-round, feedback-driven adaptive closed loop. 
+**Rationale**: After crystal completion DFT is run and rewards computed; the evaluated RL policy learns from continuously obtained environment samples and changes subsequent selection. This online, cross-round generation-evaluation-updating process constitutes a feedback closed loop, although the feedback comes from simulation.
+**Level comparison**: Level 3 "Multi-round sequential optimization using simulation or offline feedback" also fits the fact of DFT simulation reward; level 4 "Multi-round, feedback-driven adaptive closed loop" more accurately covers the complete online loop of each round's generation, DFT evaluation, reward, and policy update. The original anchor does not stipulate that level 4 must have physical experiment feedback.
+**Task**: T-completion
+**Boundary & dispute notes**: Capping all simulation feedback uniformly at level 3 would add an unwritten physical-experiment necessary condition to the original anchor. Here the evaluated algorithm's strategy does adjust with each round's new reward, so level 4 is taken; the algorithm behavior in the evidence only represents the evaluated implementation.
+## I · Workflow Integration
 
-**评分**：3；已评分
-**对应标准**：多个模型或模块按顺序连接。
-**判定理由**：已评测实现将晶体图的 GNN 表征及 RL 策略，与完成候选后的 DFT 性质评价、奖励反馈串联起来。这是单一晶体组成补全任务中的已实现模块链；没有正式的实验规划或跨任务发现系统。
-**分档比较**：2 档可描述单一任务的增强实现；3 档原文允许“多个模型或模块按顺序连接”，已评测 GNN/RL 策略和 DFT 奖励评价符合这一层级。4 档的一体化发现系统还列有筛选、实验规划等多个发现环节，本文没有将其实现为主基准工作流。
-**任务归属**：T-completion
-**边界与争议说明**：另一种解释会把 DFT 奖励评价视为单一 RL 任务的内部增强，仅取 2 档；但这里存在任务执行中顺序运行且相互传递结果的 GNN/RL 与 DFT 奖励模块，符合 3 档文字。此边界应在独立审查时重点复核。
-## G · 目标与约束处理
+**Score**: 3; scored
+**Criterion**: Multiple models or modules connected in sequence. 
+**Rationale**: The evaluated implementation chains the crystal graph's GNN representation and RL policy with DFT property evaluation and reward feedback after candidate completion. This is an implemented module chain in a single crystal composition completion task; there is no formal experiment planning or cross-task discovery system.
+**Level comparison**: Level 2 can describe an enhanced implementation of a single task; level 3's source allows "Multiple models or modules connected in sequence", and the evaluated GNN/RL policy and DFT reward evaluation fit this level. Level 4's integrated discovery system also lists screening, experiment planning, and other discovery stages, which this paper does not implement as the main benchmark workflow.
+**Task**: T-completion
+**Boundary & dispute notes**: Another interpretation would treat DFT reward evaluation as an internal enhancement of a single RL task, taking only level 2; but here there are GNN/RL and DFT reward modules that run sequentially and pass results to each other during task execution, fitting the level-3 wording. This boundary should be focused on during the Independent review.
+## G · Goal & Constraint Handling
 
-**评分**：2；已评分
-**对应标准**：单一目标加静态约束。
-**判定理由**：每次训练分别优化一个性质靠近指定值；固定结构和小动作空间是主任务执行中生效的静态候选约束。三种性质是分开实验，不能相加为联合多目标。
-**分档比较**：1 档包含单一目标，但遗漏运行时固定的元素动作空间；2 档同时覆盖该静态约束。3 档所需多目标或多约束优化没有从三个分别优化的性质和一个动作空间约束中得到证明；4 档所需动态多目标与资源约束也未建立。
-**任务归属**：T-completion
-**边界与争议说明**：固定晶格也限制候选范围，但 2 档已由正式执行中生效的 18 元素动作空间独立支持。失败惩罚影响奖励，不把它另计为第二个材料性质目标。
-## U · 不确定性与失败处理
+**Score**: 2; scored
+**Criterion**: A single objective with static constraints. 
+**Rationale**: Each training separately optimizes one property toward a specified value; fixed structure and small action space are static candidate constraints taking effect during main-task execution. The three properties are separate experiments and cannot be summed into joint multi-objectives.
+**Level comparison**: Level 1 contains a single objective but misses the runtime-fixed element action space; level 2 covers that static constraint simultaneously. The multi-objective or multi-constraint optimization required by level 3 is not proven from three separately optimized properties and one action-space constraint; the dynamic multi-objective and resource constraints required by level 4 are also not established.
+**Task**: T-completion
+**Boundary & dispute notes**: A fixed lattice also limits the candidate scope, but level 2 is independently supported by the 18-element action space effective in formal execution. The failure penalty affects the reward and is not separately counted as a second materials-property objective.
+## U · Uncertainty & Failure Handling
 
-**评分** 2 分（专家复核）
-**对应标准**：显式处理噪声、失败与阴性结果。
-**判定理由**：论文报告 DFT 结果噪声及跨运行波动，并明确把 DFT 技术失败或不收敛转化为惩罚奖励。这是对失败结果的任务级显式处理；没有证据表明候选级预测不确定性驱动筛选或风险感知搜索。
-**分档比较**：1 档的基础不确定性报告可由结果标准差在有限口径下体现，但它不是策略使用的预测不确定性；2 档候选筛选不确定性没有依据。3 档的失败处理有明确惩罚机制，噪声和失败也被报告；4 档要求不确定性驱动风险感知搜索，现有奖励规则未显示这一点。
-**任务归属**：T-completion
-**边界与争议说明**：原 3 档同时写到噪声、失败与阴性结果；本文明确处理失败，并报告噪声，但未建立独立的噪声建模或一般阴性实验机制。按协议对失败惩罚单独核查后取 3 档，此边界需重点复核。
-## P · 自主性与可执行性
+**Score** 2(Expert review)
+**Criterion**: Noise, failures, and negative results are explicitly handled. 
+**Rationale**: The paper reports DFT result noise and cross-run fluctuation, and explicitly converts DFT technical failures or non-convergence into penalty rewards. This is task-level explicit handling of failed results; there is no evidence that candidate-level predictive uncertainty drives screening or risk-aware search.
+**Level comparison**: Level 1's basic uncertainty reporting can be embodied by result standard deviation under a limited scope, but it is not prediction uncertainty used by the strategy; level 2's candidate-screening uncertainty has no basis. Level 3's failure handling has a clear penalty mechanism, and noise and failure are also reported; level 4 requires uncertainty-driven risk-aware search, which the existing reward rules do not show.
+**Task**: T-completion
+**Boundary & dispute notes**: The original level 3 writes noise, failures, and negative results together; this paper explicitly handles failures and reports noise, but does not establish independent noise modeling or a general negative-experiment mechanism. After separately checking the failure penalty per the protocol, level 3 is taken; this boundary needs focused review.
+## P · Autonomy & Actionability
 
-**评分**：3；已评分
-**对应标准**：根据反馈自动选择下一步动作。
-**判定理由**：人类指定性质和目标值；RL 策略自动决定各原子位的元素，环境自动完成 DFT 评价并回传奖励。已评测策略随新样本更新探索与利用，因而后续生成动作受反馈影响。流程没有自主设定研究目标或管理整个发现过程。
-**分档比较**：2 档的固定生成—DFT 评价流程存在，但 3 档还得到策略依据奖励后的新样本自动改变后续原子选择的支持。4 档要求自主规划、执行、监控并纠正整个过程；用户仍设目标，计算流程预设，未见全过程自主规划。
-**任务归属**：T-completion
-**边界与争议说明**：DFT 奖励在轮末到达，因此同一候选内部后续原子动作不依据该轮尚未得到的奖励；3 档指跨轮更新后的下一次生成行动。
-## E · 对实验结果的依赖
+**Score**: 3; scored
+**Criterion**: Automatically selects the next action based on feedback. 
+**Rationale**: Humans specify properties and target values; the RL policy automatically decides the element at each atomic site, and the environment automatically completes DFT evaluation and returns rewards. The evaluated policy updates exploration and exploitation with new samples, so subsequent generation actions are affected by feedback. The workflow does not autonomously set research objectives or manage the whole discovery process.
+**Level comparison**: Level 2's fixed generation-DFT evaluation workflow exists, but level 3 is additionally supported by the policy automatically changing subsequent atom selection based on new samples after reward. Level 4 requires autonomously planning, executing, monitoring, and correcting the whole process; the user still sets the objective, the computational workflow is preset, and no whole-process autonomous planning is seen.
+**Task**: T-completion
+**Boundary & dispute notes**: The DFT reward arrives at the end of the round, so subsequent atomic actions within the same candidate do not rely on the reward not yet obtained in that round; level 3 refers to the next generation action after cross-round updating.
+## E · Dependence on Experimental Results
 
-**评分**：0；已评分
-**对应标准**：无真实实验结果；评估仅使用仿真或代理标签。
-**判定理由**：主任务每轮以 DFT 计算性质并形成奖励，最终基准也以这些计算结果评估策略。Materials Project 提供起始晶体结构，但原文未将其描述为目标性质的实验测量标签或正式实验测试集。
-**分档比较**：0 档对应已描述的 DFT 仿真奖励与评测。1 档需要实验结果用于训练、校准或案例；2 档需要真实实验结果作为可单独评估的正式测试依据，现有正式流程均未确立这些条件。
-**任务归属**：T-completion
-**边界与争议说明**：若把 Materials Project 结构的可能实验来源视为实验结果，会与原文将 DFT 计算性质用于奖励和评测的任务定义混淆；本判断仅针对正式目标标签和测试依据。
-## R · 与实验需求的对齐
+**Score**: 0; scored
+**Criterion**: No real experimental results; evaluation uses only simulation or proxy labels. 
+**Rationale**: The main task computes properties via DFT each round and forms rewards, and the final benchmark also evaluates policies with these computational results. Materials Project provides starting crystal structures, but the source does not describe them as experimental measurement labels of target properties or a formal experimental test set.
+**Level comparison**: Level 0 corresponds to the described DFT simulation reward and evaluation. Level 1 requires experimental results used for training, calibration, or cases; level 2 requires real experimental results as a formal testing basis that can be evaluated separately, and the existing formal workflow establishes none of these conditions.
+**Task**: T-completion
+**Boundary & dispute notes**: Treating the possible experimental source of Materials Project structures as experimental results would confuse it with the source's task definition using DFT-computed properties for reward and evaluation; this judgment targets only the formal target labels and testing basis.
+## R · Alignment with Experimental Needs
 
-**评分**：0；已评分
-**对应标准**：数据仅提供理想化性质或代理标签，与具体实验用途无关联。
-**判定理由**：论文正式目标是比较优化 DFT 奖励的 RL 算法，性质目标分别设定。文中列举半导体、电池等广泛应用，但没有把任一目标值定义为具体实验决策；作者也明确不声称生成晶体稳定或容易合成。因此两个固定问题均未由主基准满足。
-**分档比较**：固定问题一：论文列举潜在应用，但正式目标是 DFT 奖励优化，未定义具体实验用途。固定问题二：作者明确不保证稳定或易合成，候选范围也未按某项实验决策的关键约束设计。两问均否，对应 0；1 需第一问为是，2 需两问均为是。
-**任务归属**：T-completion
-**边界与争议说明**：若把目标性质可能用于半导体或结构材料直接算作固定问题一成立，可能倾向 1 档；原文没有指定要执行或选择的实验，因此本判断采用 0 档，并保留该边界供主 Agent 复核。
-## C · 关键实验条件的完备性
+**Score**: 0; scored
+**Criterion**: Data provides only idealized properties or proxy labels, without connection to a specific experimental use case. 
+**Rationale**: The paper's formal objective is to compare RL algorithms optimizing DFT rewards, with property objectives set separately. It lists broad applications such as semiconductors and batteries, but does not define any target value as a specific experimental decision; the authors also explicitly do not claim the generated crystals are stable or easy to synthesize. Therefore neither fixed question is satisfied by the main benchmark.
+**Level comparison**: Fixed question one: the paper lists potential applications, but the formal objective is DFT reward optimization, without defining a specific experimental use. Fixed question two: the authors explicitly do not guarantee stability or easy synthesis, and the candidate scope is not designed according to the key constraints of any experimental decision. Both questions are no, corresponding to 0; 1 requires the first question to be yes, and 2 requires both to be yes.
+**Task**: T-completion
+**Boundary & dispute notes**: Directly counting the target property's possible use in semiconductors or structural materials as the first fixed question holding might tend toward level 1; the source does not specify experiments to execute or select, so this judgment adopts level 0 and retains that boundary for the main Agent's review.
+## C · Completeness of Key Experimental Conditions
 
-**评分**：待复核；待复核
-**对应标准**：当前信息不足，暂不选择数值分档
-**判定理由**：主任务是固定晶格上的虚拟组成补全及 DFT 模拟评价。论文列出了计算软件和参数，却没有定义相应实体实验流程；因此无法确定哪些制备、加工和测量条件对这一任务是必要的，也不能凭论文未披露实验条件推定数据本身缺失。
-**分档比较**：0 档需要证实必要实验条件确实缺失；1 档需要确定部分关键实验条件已给出但仍缺影响解读的项目；2 档需要完整、可追溯的制备加工测量条件。当前只能确认计算条件，尚不能确立实验条件适用性与必要清单，故不选择数值档位。
-**任务归属**：T-completion
-**边界与争议说明**：把附录 B.5 的完整 DFT 设置当成 C=2 会混淆计算与实验条件；把论文未写实体实验条件当成 C=0 则缺少已证实缺失的依据。保留 pending。
-## 局限与待复核事项
+**Score**: pending review; pending review
+**Criterion**: Insufficient information; no numeric level selected for now
+**Rationale**: The main task is virtual composition completion on a fixed lattice and DFT simulation evaluation. The paper lists computational software and parameters but does not define a corresponding physical experimental workflow; therefore which preparation, processing, and measurement conditions are necessary for this task cannot be determined, nor can the data itself be presumed missing based on the paper's non-disclosure of experimental conditions.
+**Level comparison**: Level 0 needs confirming necessary experimental conditions are indeed missing; level 1 needs determining some key experimental conditions are given but items affecting interpretation are still missing; level 2 needs complete, traceable preparation, processing, and measurement conditions. Currently only computational conditions can be confirmed, and experimental-condition applicability and the necessary list cannot yet be established, so no numeric level is selected.
+**Task**: T-completion
+**Boundary & dispute notes**: Treating Appendix B.5's complete DFT settings as C=2 would confuse computational and experimental conditions; treating the paper's not writing physical experimental conditions as C=0 lacks basis for confirmed absence. Pending is retained.
+## Limitations & Items Pending Review
 
-- 本报告为依据当前论文与冻结准则作出的模型评估，不代表专家认证。
-- DFT 成功或失败不能直接证明生成晶体可合成；论文明确不作稳定或易合成主张。
-- C 项的实验条件适用性和任务所需条件清单未由当前论文确立，因此保留 pending。
-- 图 1、图 2、图 6 及表 1–4 的标题和相邻正文用于定位流程与设置；本报告的判断不依赖图形内部的视觉结构，未声称完成图像视觉核查。
-- PDF 第 2 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 6 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 9 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 16 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 18 页定位提示：图表区域未可靠识别；内部文字可能参与行号，核对时以带行号阅览版及图表标签为准
-- PDF 第 19 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 20 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 21 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 22 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
+- This report is a model assessment made per the current paper and frozen rubric, and does not represent expert certification.
+- DFT success or failure cannot directly prove that generated crystals are synthesizable; the paper explicitly makes no stability or easy-synthesis claim.
+- C's experimental-condition applicability and the list of conditions required by the task are not established by the current paper, so pending is retained.
+- The titles and adjacent main text of Figure 1, Figure 2, Figure 6, and Tables 1-4 are used to locate the workflow and settings; this report's judgments do not rely on the internal visual structure of graphics, and no completion of image visual checking is claimed.
+- PDF page 2 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 6 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 9 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 16 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 18 location hint: figure/table region not reliably detected; inner text may carry line numbers - verify against the line-numbered reading copy and figure/table labels
+- PDF page 19 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 20 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 21 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 22 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
 
-## 评分修订记录
+## Score Revision Log
 
-复核未修改初评分。
+The review did not modify the initial scores.

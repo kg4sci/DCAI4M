@@ -1,18 +1,18 @@
-# 单篇论文数据集评分报告
+# Single-Paper Dataset Scoring Report
 
-## 待定项候选分补充
+## Pending-Item Candidate Score Supplement
 
-以下分数为待定项的候选分，正式分数见下方原评审记录。
+The following scores are candidate scores for pending items; formal scores are in the original review records below.
 
-### C · 候选 1 分
+### C · candidate 1
 
-**对应标准**　提供了部分关键条件，但缺失会影响解读或对比。
+**Criterion** Some key conditions are provided, but missing ones affect interpretation or comparison. 
 
-暂选1，前提是将实验结构来源与输入结构状态视为本任务必要条件上下文的一部分，且仍需核验相关实验状态。C-1明确输入为未优化实验结构、目标为DFT优化结构的计算带隙；C-4提供CSD来源及自动去除游离溶剂的处理信息，可条件性支持部分上下文已提供，但该处理不能等同于样品的实验后处理。C-3的PBE-D3(BJ)与VASP属于计算设置，不能据此满足实验条件要求。比较相邻锚点：0所要求的必要条件缺失尚未证实；2所要求的必要实验条件完备且可追溯也未获核验。C-2仅说明合成和后处理会影响实测带隙，不能直接确立这些条件对本计算标签基准的必要性。因此1仅为上述适用性假设下的候选，尚不能形成正式评分。
+Provisionally selected as 1, premised on treating the experimental structure source and input structure state as part of this task's necessary-condition context, and the relevant experimental state still needs verification. C-1 specifies the input is unrelaxed experimental structures and the target is the computed band gap of DFT-relaxed structures; C-4 provides the CSD source and processing information about automatic removal of free solvent, which can conditionally support that part of the context is provided, but this processing cannot be equated with the sample's experimental post-processing. C-3's PBE-D3(BJ) and VASP are computational settings and cannot satisfy experimental-condition requirements on this basis. Comparing adjacent anchors: the necessary-condition absence required by 0 is not yet verified; the complete and traceable necessary experimental conditions required by 2 are also not verified. C-2 only states that synthesis and post-processing affect the measured band gap, and cannot directly establish the necessity of these conditions for this computed-label benchmark. Therefore 1 is only a candidate under the above applicability assumption and cannot yet form a formal score.
 
-**原文证据**
+**Source evidence**
 
-- C-1 · [PDF 第 6 页，正文第 12–16 行](高亮论文.pdf#page=6)
+- C-1 · [PDF page 6, main text lines 12-16](highlighted_paper.pdf#page=6)
 
   > In this work, we have chosen to develop an ML regression model that can rapidly predict the DFT-computed
   > band gaps of MOFs. Specifically, we aim to predict the computed band gaps of the DFT-optimized
@@ -20,144 +20,144 @@
   > chemical calculations need to be carried out. To achieve this, all ML models are trained on the band gaps
   > of the DFT-optimized structures but take representations of the corresponding unrelaxed experimental
 
-- C-2 · [PDF 第 8 页，正文第 15–16 行](高亮论文.pdf#page=8)
+- C-2 · [PDF page 8, main text lines 15-16](highlighted_paper.pdf#page=8)
 
   > (OMDB).41,65,115,116 It is also worth noting that the experimentally measured band gaps of MOFs can vary
   > by several tenths of an eV depending on the synthesis and post-treatment conditions,117 so an MAE less
 
-- C-3 · [PDF 第 4 页，正文第 1–3 行](高亮论文.pdf#page=4)
+- C-3 · [PDF page 4, main text lines 1-3](highlighted_paper.pdf#page=4)
 
   > carried out at the PBE-D3(BJ)27,76,77 level of theory using the Vienna ab initio Simulation Package
   > (VASP)78,79. Additional methodological details regarding the dataset construction, DFT calculations, and
   > ML methods can be found in the Supporting Information.
 
-- C-4 · [PDF 第 3 页，正文第 34–37 行](高亮论文.pdf#page=3)
+- C-4 · [PDF page 3, main text lines 34-37](highlighted_paper.pdf#page=3)
 
   > We considered the list of materials identified as MOFs in the Cambridge Structural Database (CSD)3,67,68
   > and the 2019 Computation-Ready, Experimental (CoRE) MOF database.4 All starting structures were taken
   > directly from the CSD,69 and free (i.e. unbound) solvents were automatically removed from the frameworks.
   > From this set of experimental crystal structures, we constructed a DFT-ready dataset of 42,362 non-
 
-**仍需核实**
+**Still to verify**
 
-- 明确冻结的DFT带隙回归任务究竟需要哪些实验条件，以及实验结构来源与输入状态是否属于本指标认可的条件上下文。
-- 核验CSD-13058-opt逐样本记录能否关联必要的合成、后处理或晶体结构测定条件及其标准化协议。
-- 若样品溶剂或活化状态属于必要条件，需核验原实验样品状态与自动去除游离溶剂后的输入结构之间的对应关系。
+- Clarify exactly which experimental conditions the frozen DFT band-gap regression task requires, and whether the experimental structure source and input state belong to the condition context recognized by this dimension.
+- Verify whether CSD-13058-opt's per-sample records can be linked to the necessary synthesis, post-processing, or crystal-structure determination conditions and their standardized protocols.
+- If sample solvent or activation state is a necessary condition, verify the correspondence between the original experimental sample state and the input structure after automatic removal of free solvent.
 
-## 原评审记录
+## Original Review Record
 
-本报告为同一模型分工评分、独立规则审查与主 Agent 裁决的结果，供后续检查；未融合专家评分。
+This report is the result of same-model divided-role scoring, independent rule review, and main-Agent adjudication, for subsequent inspection; expert scores are not merged.
 
-- 论文 ID：paper_8af976f1d32d22da
-- 论文名称：Machine Learning the Quantum-Chemical Properties of Metal–Organic Frameworks for Accelerated Materials Discovery with a New Electronic Structure Database
-- 数据集／基准：Quantum MOF (QMOF) database；主评测子集 CSD-13058-opt
-- 对应任务：在 QMOF 的 CSD-13058-opt 去重子集上，使用未优化的实验 MOF 晶体结构表示，回归预测对应 DFT 优化结构的计算带隙，并比较留出测试集表现。
-- 评价对象：QMOF 数据库的 MOF 带隙回归基准：以去重的 CSD-13058-opt 子集为主要评测数据，从未优化的实验晶体结构预测 DFT 优化结构的带隙。
-- 已提供的流程：从 CSD 实验晶体结构构建并筛选 QMOF，计算 DFT 性质；在 13,058 个去重样本上比较 KRR 与 CGCNN 的带隙回归结果，并报告留出测试集表现。论文另实施无监督结构分析和材料筛选案例。
-- 模型：gpt-6-sol
-- 思考强度：high
-- 报告状态：包含待复核事项
-- 高亮论文：[打开带行号与证据高亮的PDF](高亮论文.pdf)
+- Paper ID: paper_8af976f1d32d22da
+- Paper title: Machine Learning the Quantum-Chemical Properties of Metal–Organic Frameworks for Accelerated Materials Discovery with a New Electronic Structure Database
+- Dataset / benchmark: Quantum MOF (QMOF) database; the main evaluation subset CSD-13058-opt
+- Task: on QMOF's CSD-13058-opt deduplicated subset, using unrelaxed experimental MOF crystal-structure representations to regress the computed band gap of the corresponding DFT-relaxed structure, and comparing held-out test-set performance.
+- Evaluation object: the QMOF database's MOF band-gap regression benchmark: using the deduplicated CSD-13058-opt subset as the main evaluation data to predict the band gap of DFT-relaxed structures from unrelaxed experimental crystal structures.
+- Provided workflow: constructing and screening QMOF from CSD experimental crystal structures and computing DFT properties; comparing KRR and CGCNN band-gap regression results on 13,058 deduplicated samples and reporting held-out test-set performance. The paper also implements unsupervised structure analysis and a material-screening case.
+- Model: gpt-6-sol
+- Reasoning effort: high
+- Report status: contains items pending review
+- Highlighted paper: [open the line-numbered, evidence-highlighted PDF](highlighted_paper.pdf)
 
-原文检索：44 次工具调用，111 个逻辑操作（批量请求内的子操作分别计数）。
+Source retrieval: 44 tool calls, 111 logical operations (sub-operations within batch requests counted separately).
 
-行号说明：每页从 1 开始，按阅读顺序编号；同栏、同一基线的文字片段合并。识别出的重复页眉页脚、页码和图内文字不编号；双栏注明栏位。行号为本系统生成，以带行号 PDF 阅览版为准，并非作者印刷行号。
+Line-number note: each page starts at 1, numbered in reading order; text fragments in the same column and on the same baseline are merged. Detected repeated headers/footers, page numbers, and in-figure text are not numbered; columns are marked for two-column layouts. Line numbers are generated by this system, based on the line-numbered PDF reading copy, not the authors printed line numbers.
 
-评价对象复核：已重新核对摘要、PDF 第 3 页数据构建、第 6 页任务定义及第 7–8 页正式测试。冻结对象 CSD-13058-opt 带隙回归与原文一致；UMAP、Fe 筛选及低带隙案例均另列，不改变评价单元。
+Evaluation object review: Re-checked the abstract, the data construction on PDF page 3, the task definition on page 6, and the formal test on pages 7-8. The frozen object CSD-13058-opt band-gap regression is consistent with the source; UMAP, Fe screening, and the low-band-gap case are all separately listed and do not change the evaluation unit.
 
-不计入本次能力判断的内容：第 5 页高自旋 Fe 与孔径筛选的阈值属于独立应用案例，不是带隙回归的约束。；第 9–11 页 UMAP 是另一项无监督任务，其聚类输出不并入带隙回归输出。；第 11–13 页低带隙材料分析属于应用案例；HSE06-D3(BJ) 是计算复核，不是实验带隙测试。；第 13 页迁移学习、多任务学习及新性质预测是未来方向。
+Content excluded from this capability assessment: The high-spin Fe and pore-size screening thresholds on page 5 are an independent application case, not constraints of band-gap regression.; The UMAP on pages 9-11 is another unsupervised task, and its clustering output is not merged into the band-gap regression output.; The low-band-gap material analysis on pages 11-13 is an application case; HSE06-D3(BJ) is a computational re-check, not an experimental band-gap test.; Transfer learning, multi-task learning, and new property prediction on page 13 are future directions.
 
-固定任务：T-bandgap。选择依据：第 6 页明确选择从未优化实验结构预测 DFT 优化结构带隙的回归任务，第 7–8 页主要定量比较各模型在该任务上的测试结果。其他已实施的分析与筛选具有不同输出，分别登记。
+Fixed task: T-bandgap. Selection rationale: Page 6 explicitly selects the regression task of predicting the DFT-relaxed structure's band gap from unrelaxed experimental structures, and pages 7-8 mainly quantitatively compare each model's test results on this task. Other implemented analyses and screenings have different outputs and are registered separately.
 
-## 初评、独立审查与最终裁决
+## Initial Scoring, Independent Review & Final Adjudication
 
-## O · 输出与决策角色
+## O · Output & Decision Role
 
-**评分**：1；已评分
-**对应标准**：单一性质或单一标签预测。
-**判定理由**：正式基准预测单一 DFT 带隙；排序是该预测的用途。
-**分档比较**：正式任务满足单一性质预测；排序仅是预测用途，生成与行动决策也未成为任务输出。
-**任务归属**：T-bandgap
-**边界与争议说明**：初评以排序用途取 2；独立评估以正式回归输出取 1，原文支持后者。
-## A · 自适应性与序贯性
+**Score**: 1; scored
+**Criterion**: Single-property or single-label prediction. 
+**Rationale**: The formal benchmark predicts a single DFT band gap; ranking is a use of that prediction.
+**Level comparison**: The formal task satisfies single property prediction; ranking is only a prediction use, and generation and action decisions have not become task outputs.
+**Task**: T-bandgap
+**Boundary & dispute notes**: Initial takes 2 based on the ranking use; the independent evaluation takes 1 based on the formal regression output, and the source supports the latter.
+## A · Adaptivity & Sequentiality
 
-**评分**：0；已评分
-**对应标准**：完全静态、一次性预测。
-**判定理由**：正式协议是静态监督回归和固定集合推理，重复随机划分用于评测。
-**分档比较**：固定训练、留出测试及批量预测符合 0 档；更高档所需的条件策略、主动查询或反馈更新未见于该协议。
-**任务归属**：T-bandgap
-**边界与争议说明**：“screening”和排序不能单独证明主动查询。
-## I · 工作流整合度
+**Score**: 0; scored
+**Criterion**: Completely static, one-shot prediction. 
+**Rationale**: The formal protocol is static supervised regression and fixed-set inference, with repeated random splits used for evaluation.
+**Level comparison**: Fixed training, held-out testing, and batch prediction fit level 0; the conditional policy, active querying, or feedback updating required by higher levels is not seen in this protocol.
+**Task**: T-bandgap
+**Boundary & dispute notes**: "screening" and ranking alone cannot prove active querying.
+## I · Workflow Integration
 
-**评分**：1；已评分
-**对应标准**：单一模型完成单一任务。
-**判定理由**：每个受评方案分别用一个模型完成同一带隙预测。
-**分档比较**：单个 KRR 或 CGCNN 完成单一预测；多个特征与模型是并列受评方案，数据构建也不构成任务级串联。
-**任务归属**：T-bandgap
-**边界与争议说明**：独立评估将多个方案计为增强版本；原文显示它们分别受评。
-## G · 目标与约束处理
+**Score**: 1; scored
+**Criterion**: A single model performing a single task. 
+**Rationale**: Each evaluated scheme separately uses one model to complete the same band-gap prediction.
+**Level comparison**: A single KRR or CGCNN completes a single prediction; multiple features and models are parallel evaluated schemes, and data construction does not constitute task-level chaining.
+**Task**: T-bandgap
+**Boundary & dispute notes**: The independent evaluation counts multiple schemes as enhanced versions; the source shows they are evaluated separately.
+## G · Goal & Constraint Handling
 
-**评分**：0；已评分
-**对应标准**：无显式优化目标或约束。
-**判定理由**：带隙为回归标签，MAE 为评测指标；建库过滤不是正式候选决策约束。
-**分档比较**：正式任务只有带隙回归及误差评测；更高档的候选优化目标和任务级约束未由该流程建立。
-**任务归属**：T-bandgap
-**边界与争议说明**：初评把回归标签理解为单一优化目标；独立评估区分材料优化与预测评测，原文支持后者。
-## U · 不确定性与失败处理
+**Score**: 0; scored
+**Criterion**: No explicit optimization objective or constraint. 
+**Rationale**: Band gap is the regression label, MAE is the evaluation metric; library-building filtering is not a formal candidate decision constraint.
+**Level comparison**: The formal task only has band-gap regression and error evaluation; higher levels' candidate optimization objectives and task-level constraints are not established by this workflow.
+**Task**: T-bandgap
+**Boundary & dispute notes**: Initial understands the regression label as "A single optimization objective"; the independent evaluation distinguishes materials optimization from prediction evaluation, and the source supports the latter.
+## U · Uncertainty & Failure Handling
 
-**评分**：1；已评分
-**对应标准**：报告了基础不确定性，但不影响策略。
-**判定理由**：Table 1 报告测试统计的一个标准差，但没有用它改变候选选择。
-**分档比较**：相较只有点预测，论文另报告测试统计波动，故按基础不确定性取 1；未见候选级或策略级使用。
-**任务归属**：T-bandgap
-**边界与争议说明**：仅计候选预测不确定性可能取 0；此处按原锚点“基础不确定性”包含运行波动解释。
-## P · 自主性与可执行性
+**Score**: 1; scored
+**Criterion**: Basic uncertainty reported but does not affect the strategy. 
+**Rationale**: Table 1 reports one standard deviation of test statistics, but does not use it to change candidate selection.
+**Level comparison**: Compared with only point prediction, the paper additionally reports test statistical variability, so 1 is taken per basic uncertainty; no candidate-level or policy-level use is seen.
+**Task**: T-bandgap
+**Boundary & dispute notes**: Counting only candidate prediction uncertainty might yield 0; here it is interpreted according to the original anchor "basic uncertainty" including run variability.
+## P · Autonomy & Actionability
 
-**评分**：0；已评分
-**对应标准**：仅输出预测结果。
-**判定理由**：模型可自动批量预测，但未执行下一步材料或实验行动。
-**分档比较**：主任务在预测输出处结束；批量推理不构成建议、行动执行或反馈规划。
-**任务归属**：T-bandgap
-**边界与争议说明**：自动编码和批量推理未执行材料或实验行动。
-## E · 对实验结果的依赖
+**Score**: 0; scored
+**Criterion**: Outputs predictions only. 
+**Rationale**: The model can automatically predict in batches, but does not execute next-step material or experimental actions.
+**Level comparison**: The main task ends at the prediction output; batch inference does not constitute recommendation, action execution, or feedback planning.
+**Task**: T-bandgap
+**Boundary & dispute notes**: Autoencoding and batch inference do not execute materials or experimental actions.
+## E · Dependence on Experimental Results
 
-**评分**：1；已评分
-**对应标准**：实验结果用于训练、校准或少数示例案例，但不构成正式的实验测试。
-**判定理由**：训练使用实验解析结构作为输入；监督标签和正式测试参照均为 DFT 带隙。
-**分档比较**：实验结构是真实训练输入，满足 1；标签与正式测试均是 DFT 值，不满足实验测试档。
-**任务归属**：T-bandgap
-**边界与争议说明**：若将实验结果限于目标性质测量可能取 0；原锚点未要求实验结果必须为标签。
-## R · 与实验需求的对齐
+**Score**: 1; scored
+**Criterion**: Experimental results used for training, calibration, or few-shot examples, but do not constitute formal experimental testing. 
+**Rationale**: Training uses experimentally resolved structures as input; the supervision labels and formal testing references are all DFT band gaps.
+**Level comparison**: Experimental structures are real training inputs, satisfying 1; labels and formal testing are both DFT values, not satisfying the experimental testing level.
+**Task**: T-bandgap
+**Boundary & dispute notes**: If experimental results are limited to target-property measurements, 0 might be taken; the original anchor does not require experimental results to be labels.
+## R · Alignment with Experimental Needs
 
-**评分**：1；已评分
-**对应标准**：数据明确针对某一实验需求，但未覆盖满足该需求所需的关键约束。
-**判定理由**：带隙预测与导电应用相关，但作者指出低带隙不是高电导率的唯一条件。
-**分档比较**：第一问为是：预测带隙关联需导电性的应用；第二问为否：低带隙并非高电导率的充分条件。
-**任务归属**：T-bandgap
-**边界与争议说明**：R-2 的一般材料学限定只用于限定主任务用途，不借用低带隙案例的筛选能力。
-## C · 关键实验条件的完备性
+**Score**: 1; scored
+**Criterion**: Data explicitly targets an experimental need but does not cover key constraints required to fulfill it. 
+**Rationale**: Band-gap prediction relates to conductive applications, but the authors note low band gap is not the only condition for high electrical conductivity.
+**Level comparison**: The first question is yes: predicted band gap relates to applications requiring conductivity; the second question is no: a low band gap is not a sufficient condition for high electrical conductivity.
+**Task**: T-bandgap
+**Boundary & dispute notes**: R-2's general materials-science qualification is only used to limit the main task's use, without borrowing the screening capability of the low-band-gap case.
+## C · Completeness of Key Experimental Conditions
 
-**评分**：待复核；待复核
-**对应标准**：当前信息不足，暂不选择数值分档
-**判定理由**：实验结构只作输入，目标及正式测试参照均为 DFT 带隙；实验条件的适用性与追溯情况尚未确立。
-**分档比较**：0 档需证实必要实验条件缺失；1 档需证实部分提供及具体缺项；2 档需关键条件可追溯。现有原文均不足。
-**任务归属**：T-bandgap
-**边界与争议说明**：不能因有 DFT 协议给 2，也不能因正文未列实验条件字段给 0。
-## 局限与待复核事项
+**Score**: pending review; pending review
+**Criterion**: Insufficient information; no numeric level selected for now
+**Rationale**: Experimental structures serve only as input, and targets and formal testing references are all DFT band gaps; the applicability and traceability of experimental conditions are not yet established.
+**Level comparison**: Level 0 needs confirming necessary experimental conditions missing; level 1 needs confirming partial provision and specific missing items; level 2 needs key conditions traceable. The existing source is insufficient for all.
+**Task**: T-bandgap
+**Boundary & dispute notes**: 2 cannot be given because there is a DFT protocol, nor can 0 be given because the main text does not list experimental-condition fields.
+## Limitations & Items Pending Review
 
-- C 的实验条件适用性及逐样本可追溯性未确立，故保持 pending；DFT 方法不能代替实验条件。
-- R-3 属于另一低带隙案例，已从最终证据中剔除；R-2 只作通用材料学限定。
-- Table 1 的图注文字支持随机划分标准差；本报告未根据表格视觉结构或图像内容推出额外结论。
-- PDF 第 7 页 Table 1 图注说明测试统计为五次随机划分的均值及 ±1 标准差；未依赖表内单元格的视觉解释。
+- C's experimental-condition applicability and per-sample traceability are not established, so pending is kept; DFT methods cannot replace experimental conditions.
+- R-3 belongs to another low-band-gap case and has been removed from the final evidence; R-2 serves only as a general materials-science qualification.
+- Table 1's caption text supports the random-split standard deviation; this report does not draw additional conclusions from table visual structure or image content.
+- PDF page 7 Table 1's caption states the test statistics are the mean and +/-1 standard deviation over five random splits; no visual interpretation of in-table cells is relied upon.
 
-## 评分修订记录
+## Score Revision Log
 
-- O：2（已评分） → 1（已评分）。
-- A：分数与状态未变；修订了评分理由、证据或其他解释字段。
-- I：分数与状态未变；修订了评分理由、证据或其他解释字段。
-- G：1（已评分） → 0（已评分）。
-- U：分数与状态未变；修订了评分理由、证据或其他解释字段。
-- P：分数与状态未变；修订了评分理由、证据或其他解释字段。
-- E：分数与状态未变；修订了评分理由、证据或其他解释字段。
-- R：分数与状态未变；修订了评分理由、证据或其他解释字段。
-- C：分数与状态未变；修订了评分理由、证据或其他解释字段。
+- O: 2(scored) -> 1(scored). 
+- A: score and status unchanged; revised the rationale, evidence, or other explanatory fields.
+- I: score and status unchanged; revised the rationale, evidence, or other explanatory fields.
+- G: 1(scored) -> 0(scored). 
+- U: score and status unchanged; revised the rationale, evidence, or other explanatory fields.
+- P: score and status unchanged; revised the rationale, evidence, or other explanatory fields.
+- E: score and status unchanged; revised the rationale, evidence, or other explanatory fields.
+- R: score and status unchanged; revised the rationale, evidence, or other explanatory fields.
+- C: score and status unchanged; revised the rationale, evidence, or other explanatory fields.

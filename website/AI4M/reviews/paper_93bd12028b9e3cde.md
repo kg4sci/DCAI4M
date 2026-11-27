@@ -1,252 +1,252 @@
-# 单篇论文数据集评分报告
+# Single-Paper Dataset Scoring Report
 
-## 评分汇总
+## Score Summary
 
-已复核的指标采用《评分差异复核表.xlsx》的复核分，其余指标采用 Agent 评分。
+Reviewed dimensions use the reviewed scores from the Score Difference Review Table (.xlsx); other dimensions use the Agent scores.
 
-| 指标 | 分数 | 评分来源 |
+| Dimension | Score | Source |
 |---|---:|---|
-| O · 输出与决策角色 | 3 | Agent |
-| A · 自适应性与序贯性 | 0 | Agent |
-| I · 工作流整合度 | 3 | 专家复核 |
-| G · 目标与约束处理 | 2 | 专家复核 |
-| U · 不确定性与失败处理 | 1 | Agent |
-| P · 自主性与可执行性 | 2 | Agent |
-| E · 对实验结果的依赖 | 0 | Agent |
-| R · 与实验需求的对齐 | 1 | Agent |
-| C · 关键实验条件的完备性 | 0 | 专家复核 |
+| O · Output & Decision Role | 3 | Agent |
+| A · Adaptivity & Sequentiality | 0 | Agent |
+| I · Workflow Integration | 3 | Expert review |
+| G · Goal & Constraint Handling | 2 | Expert review |
+| U · Uncertainty & Failure Handling | 1 | Agent |
+| P · Autonomy & Actionability | 2 | Agent |
+| E · Dependence on Experimental Results | 0 | Agent |
+| R · Alignment with Experimental Needs | 1 | Agent |
+| C · Completeness of Key Experimental Conditions | 0 | Expert review |
 
-## Agent 待定项候选分补充
+## Agent Pending-Item Candidate Score Supplement
 
-以下为 Agent 在原评审后补充的候选分。
+Below are the candidate scores the Agent added after the original review.
 
-### U · 候选 1 分
+### U · candidate 1
 
-**对应标准**　报告了基础不确定性，但不影响策略。
+**Criterion** Basic uncertainty reported but does not affect the strategy. 
 
-暂选1。U-1明确报告三次独立初始化的均值与标准差，支持运行层面的基础不确定性报告；按这些波动仅用于结果汇报的理解，符合1档。相比3档，U-3说明其他指标仅对有效分子计算，U-4报告无效生成失败及部分基线的有效性约束，确有失败识别与处理，但尚不能确认这些措施同时满足噪声、失败与阴性结果的整体要求。因此保留1为候选，3档的适用边界仍需核实。
+Provisionally selected as 1. U-1 explicitly reports the mean and standard deviation of three independent initializations, supporting run-level basic uncertainty reporting; under the understanding that these fluctuations are only used for result reporting, it fits level 1. Compared with level 3, U-3 states other metrics are computed only for valid molecules, and U-4 reports invalid-generation failures and some baselines' validity constraints, so there is indeed failure identification and handling, but it cannot yet be confirmed that these measures simultaneously satisfy the overall requirements for noise, failure, and negative results. Therefore 1 is retained as a candidate, and level 3's applicability boundary still needs verification.
 
-**原文证据**
+**Source evidence**
 
-- U-1 · [PDF 第 5 页，右栏第 78 行](高亮论文.pdf#page=5)
+- U-1 · [PDF page 5, right column line 78](highlighted_paper.pdf#page=5)
 
   > Reported (mean ± SD) over three independent model initializations.
 
-- U-3 · [PDF 第 3 页，正文第 7–10 行](高亮论文.pdf#page=3)
+- U-3 · [PDF page 3, main text lines 7-10](highlighted_paper.pdf#page=3)
 
   > structures or mode collapse. Each metric depends on a generated
   > set G and a test (reference) set R. We compute all metrics (except
   > for validity) only for valid molecules from the generated set. We
   > suggest generating 30, 000 molecules and obtaining G as valid
 
-- U-4 · [PDF 第 7 页，正文第 14–16 行](高亮论文.pdf#page=7)
+- U-4 · [PDF page 7, main text lines 14-16](highlighted_paper.pdf#page=7)
 
   > and NGram models fail to produce valid molecules since they
   > have a limited context. Combinatorial generator and JTN-VAE
   > have built-in validity constraints, so their validity is 100%.
 
-**仍需核实**
+**Still to verify**
 
-- 生成有效性的识别、过滤及内置约束能否满足3档对噪声、失败与阴性结果的整体要求。
-- 是否存在针对噪声或阴性结果的独立处理机制及其实际作用。
+- Whether generation-validity identification, filtering, and built-in constraints can satisfy level 3's overall requirement for noise, failures, and negative results.
+- Whether there is an independent handling mechanism for noise or negative results and its actual effect.
 
-### R · 候选 1 分
+### R · candidate 1
 
-**对应标准**　数据明确针对某一实验需求，但未覆盖满足该需求所需的关键约束。
+**Criterion** Data explicitly targets an experimental need but does not cover key constraints required to fulfill it. 
 
-暂选1，前提是将支持hit识别及后续ADMET优化视为该档所称的实验需求。R-1明确建立这一用途关联，R-2给出结构范围及药物化学过滤规则。相比2档，这些规则尚不足以确认一个具体实验决策的目标与关键约束已得到覆盖；R-3和R-4明确的正式任务仍是分布学习、生成样本及计算指标。因而1档也只是条件性候选：当前不能把宽泛用途关联直接认定为明确的实验需求，更不能据摘录未列测定细节断言关键约束确实缺失。
+Provisionally selected as 1, premised on treating support for hit identification and subsequent ADMET optimization as the experimental need referred to by this level. R-1 explicitly establishes this use association, and R-2 gives the structure scope and medicinal-chemistry filtering rules. Compared with level 2, these rules are not yet sufficient to confirm that the objective and key constraints of a specific experimental decision are covered; the formal task specified by R-3 and R-4 is still distribution learning, generating samples, and computing metrics. Thus level 1 is also only a conditional candidate: currently a broad use association cannot be directly deemed a clear experimental need, nor can key constraints be asserted actually missing because the excerpt does not list measurement details.
 
-**原文证据**
+**Source evidence**
 
-- R-1 · [PDF 第 4 页，右栏第 111–114 行](高亮论文.pdf#page=4)
+- R-1 · [PDF page 4, right column lines 111-114](highlighted_paper.pdf#page=4)
 
   > 7, and XlogP (Wang et al., 1997) not greater then 3.5. Clean-leads
   > dataset consists of structures suitable for identifying hit
   > compounds and they are small enough to allow for further
   > ADMET optimization of generated molecules (Teague et al.,
 
-- R-2 · [PDF 第 4 页，右栏第 115–118 行](高亮论文.pdf#page=4)
+- R-2 · [PDF page 4, right column lines 115-118](highlighted_paper.pdf#page=4)
 
   > 1999). We removed molecules containing charged atoms,
   > atoms besides C, N, S, O, F, Cl, Br, H, or cycles larger than
   > eight atoms. The molecules were ﬁltered via custom medicinal
   > chemistry ﬁlters (MCFs) and PAINS ﬁlters (Baell and Holloway,
 
-- R-3 · [PDF 第 2 页，正文第 29–30 行](高亮论文.pdf#page=2)
+- R-3 · [PDF page 2, main text lines 29-30](highlighted_paper.pdf#page=2)
 
   > former. We focus on standardizing metrics and data for the
   > distribution learning problem that we introduce below.
 
-- R-4 · [PDF 第 7 页，正文第 36–37 行](高亮论文.pdf#page=7)
+- R-4 · [PDF page 7, main text lines 36-37](highlighted_paper.pdf#page=7)
 
   > one should train a model on MOSES train set, generate 30,
   > 000 samples and compute metrics using the provided
 
-**仍需核实**
+**Still to verify**
 
-- 在冻结的分布学习任务内，hit识别用途是否对应一个明确的实验需求或候选采纳决策。
-- 该实验需求的目标、hit判据及关键约束，以及现有过滤规则对这些约束的覆盖情况。
+- Within the frozen distribution-learning task, whether the hit-identification use corresponds to a clear experimental need or candidate-adoption decision.
+- The objective, hit criteria, and key constraints of this experimental need, and the coverage of these constraints by the existing filtering rules.
 
-### C · 候选 2 分
+### C · candidate 2
 
-**对应标准**　提供了任务所需的关键制备、加工与测量条件，且可追溯到具体样品或标准化协议。
+**Criterion** Key preparation, processing, and measurement conditions required by the task are provided, traceable to individual samples or standardized protocols. 
 
-条件性暂选2，唯一支撑假设是：若确认冻结任务不依赖实验测量，且本准则允许将无必需实验条件的情形视为任务相对完备。C-1和C-2提供生成数量、指标计算及结构表示；C-3的pH是过滤理由，C-4的logP是计算估计，均不能充作已记录的实验条件。相比1档，目前未确立任何已提供的必要实验条件或影响解读的关键缺项；0档所需的条件缺失也不能由摘录省略推定。故2仅表示上述适用性解释下的候选，并不证明存在完整、可追溯的实验协议；适用性规则未明确前不能形成正式分数。
+Conditionally provisionally selected as 2, the only supporting assumption being: if it is confirmed that the frozen task does not depend on experimental measurement, and this criterion allows treating the case with no required experimental conditions as relatively complete for the task. C-1 and C-2 provide generation count, metric computation, and structure representation; C-3's pH is a filtering rationale and C-4's logP is a computed estimate, neither can serve as recorded experimental conditions. Compared with level 1, no provided necessary experimental conditions or key missing items affecting interpretation are currently established; the condition absence required by level 0 also cannot be presumed from the excerpt's omission. Therefore 2 only represents a candidate under the above applicability interpretation and does not prove the existence of a complete, traceable experimental protocol; a formal score cannot be formed before the applicability rule is clarified.
 
-**原文证据**
+**Source evidence**
 
-- C-1 · [PDF 第 7 页，正文第 36–37 行](高亮论文.pdf#page=7)
+- C-1 · [PDF page 7, main text lines 36-37](highlighted_paper.pdf#page=7)
 
   > one should train a model on MOSES train set, generate 30,
   > 000 samples and compute metrics using the provided
 
-- C-2 · [PDF 第 7 页，正文第 41–42 行](高亮论文.pdf#page=7)
+- C-2 · [PDF page 7, main text lines 41-42](highlighted_paper.pdf#page=7)
 
   > initialization. We store molecular structures in SMILES
   > format;
 
-- C-3 · [PDF 第 4 页，右栏第 120–121 行](高亮论文.pdf#page=4)
+- C-3 · [PDF page 4, right column lines 120-121](highlighted_paper.pdf#page=4)
 
   > Information 1. We removed charged molecules to avoid
   > ambiguity with tautomers and pH conditions. Note that in the
 
-- C-4 · [PDF 第 4 页，右栏第 90 行](高亮论文.pdf#page=4)
+- C-4 · [PDF page 4, right column line 90](highlighted_paper.pdf#page=4)
 
   > octanol/water system; computed with RDKit’s Crippen
 
-**仍需核实**
+**Still to verify**
 
-- 本准则对纯计算任务不需要实验条件的情形如何处理，是否允许按2档认定任务相对完备。
-- 冻结任务的结果是否实际依赖实验测量；若依赖，需明确必要制备、加工和测量条件及其样品或标准协议追溯关系。
+- How this rubric handles the case where a purely computational task does not need experimental conditions, and whether it allows recognizing the task as relatively complete at level 2.
+- Whether the frozen task's results actually depend on experimental measurements; if so, the necessary preparation, processing, and measurement conditions and their sample or standard-protocol traceability must be clarified.
 
-## Agent 原评审记录
+## Agent Original Review Record
 
-Agent 使用同一模型分工评分，由独立审查和主 Agent 裁决。
+The Agent scores using the same model in divided roles, adjudicated by an independent review and the main Agent.
 
-- 论文 ID：paper_93bd12028b9e3cde
-- 论文名称：Molecular Sets (MOSES): A Benchmarking Platform for Molecular Generation Models
-- 数据集／基准：Molecular Sets (MOSES)
-- 对应任务：正式任务是分子分布学习：生成模型利用 MOSES 训练集学习分子结构分布、输出生成分子样本，再与随机及骨架测试参考集合比较。
-- 评价对象：MOSES 基准的分子分布学习与生成任务：受评模型从筛选后的分子训练集学习结构分布，生成分子样本，并在随机测试集及骨架测试集上评估生成质量与多样性。
-- 已提供的流程：提供筛选后的分子数据及训练、随机测试、骨架测试拆分；实现并比较多种生成基线；模型生成分子样本后，使用有效性、新颖性、多样性和分布相似性等指标评估。
-- 模型：gpt-6-sol
-- 思考强度：high
-- Agent 报告状态：包含待复核事项
-- 高亮论文：[打开带行号与证据高亮的PDF](高亮论文.pdf)
+- Paper ID: paper_93bd12028b9e3cde
+- Paper title: Molecular Sets (MOSES): A Benchmarking Platform for Molecular Generation Models
+- Dataset / benchmark: Molecular Sets (MOSES)
+- Task: the formal task is molecular distribution learning: the generative model learns the molecular structure distribution using the MOSES training set, outputs generated molecular samples, and compares them with random and scaffold test reference sets.
+- Evaluation object: the MOSES benchmark's molecular distribution-learning and generation task: the evaluated models learn the structure distribution from a filtered molecular training set, generate molecular samples, and evaluate generation quality and diversity on a random test set and a scaffold test set.
+- Provided workflow: providing filtered molecular data and training, random-test, and scaffold-test splits; implementing and comparing multiple generation baselines; after models generate molecular samples, evaluating with metrics such as validity, novelty, diversity, and distribution similarity.
+- Model: gpt-6-sol
+- Reasoning effort: high
+- Agent report status: contains items pending review
+- Highlighted paper: [open the line-numbered, evidence-highlighted PDF](highlighted_paper.pdf)
 
-原文检索：47 次工具调用，114 个逻辑操作（批量请求内的子操作分别计数）。
+Source retrieval: 47 tool calls, 114 logical operations (sub-operations within batch requests counted separately).
 
-行号说明：每页从 1 开始，按阅读顺序编号；同栏、同一基线的文字片段合并。识别出的重复页眉页脚、页码和图内文字不编号；双栏注明栏位。行号为本系统生成，以带行号 PDF 阅览版为准，并非作者印刷行号。
+Line-number note: each page starts at 1, numbered in reading order; text fragments in the same column and on the same baseline are merged. Detected repeated headers/footers, page numbers, and in-figure text are not numbered; columns are marked for two-column layouts. Line numbers are generated by this system, based on the line-numbered PDF reading copy, not the authors printed line numbers.
 
-评价对象复核：复核摘要、分布学习定义、数据集和平台协议后，冻结对象与原文一致：MOSES 的正式任务是学习分子分布、生成结构并进行计算评测。随机测试和骨架测试是同一任务的拆分；背景中的目标导向设计、虚拟筛选与下游预测未并入评分。评价对象及完整 profile 保持冻结版本。
+Evaluation object review: After re-checking the abstract, distribution-learning definition, dataset, and platform protocol, the frozen object is consistent with the source: MOSES's formal task is to learn the molecular distribution, generate structures, and perform computational evaluation. The random test and scaffold test are splits of the same task; target-oriented design, virtual screening, and downstream prediction in the background are not merged into scoring. The evaluation object and complete profile keep the frozen version.
 
-不计入本次能力判断的内容：其他文献中的目标导向设计不属于本文的正式任务。；虚拟文库和下游半监督预测是应用说明，不并入已评测任务。；数据过滤、模型内部步骤及评测指标不等同于实验规划或反馈更新。
+Content excluded from this capability assessment: Target-oriented design in other literature does not belong to this paper's formal tasks.; The virtual library and downstream semi-supervised prediction are application descriptions and are not merged into the evaluated tasks.; Data filtering, internal model steps, and evaluation metrics are not equivalent to experimental planning or feedback updating.
 
-固定任务：T1。选择依据：论文明确将分布学习作为重点，并要求受评模型在 MOSES 训练集上训练、生成样本和计算指标；主要结果比较该任务的生成模型。
+Fixed task: T1. Selection rationale: The paper explicitly takes distribution learning as the focus and requires evaluated models to train on the MOSES training set, generate samples, and compute metrics; the main results compare generative models on this task.
 
-## Agent 初评、独立审查与裁决
+## Agent Initial Scoring, Independent Review & Adjudication
 
-独立审查使用同模型新上下文，未提供初评分及专家分数；其意见供裁决，不作投票或平均。
+The independent review uses a fresh context of the same model, without the initial scores or expert scores; its opinion informs adjudication, not voting or averaging.
 
-| 指标 | 初评 | 独立审查 | Agent 裁决 |
+| Dimension | Initial | Independent review | Agent adjudication |
 |---|---:|---:|---:|
 | O | 3 | 3 | 3 |
 | A | 0 | 0 | 0 |
 | I | 3 | 3 | 3 |
 | G | 2 | 2 | 2 |
-| U | 1 | 待复核 | 待复核 |
+| U | 1 | pending review | pending review |
 | P | 2 | 1 | 2 |
 | E | 0 | 0 | 0 |
 | R | NR | 1 | NR |
-| C | 待复核 | 待复核 | 待复核 |
+| C | pending review | pending review | pending review |
 
-未计算加权总分：原准则未写明 O 项权重。
+Weighted total not computed: the original rubric did not specify the weight for O.
 
-## O · 输出与决策角色
+## O · Output & Decision Role
 
-**评分**：3；已评分
-**对应标准**：候选生成、逆向设计或目标导向设计。
-**判定理由**：正式任务要求受评模型生成分子结构；论文也实际训练并比较了生成基线。评测协议未要求模型决定下一次实验或资源分配。
-**分档比较**：3 档直接对应生成分子；0–2 档的纯处理、性质预测或排序均不能概括所需输出。4 档需要决定后续候选、实验或策略，所述协议止于生成样本和计算指标。
-**任务归属**：T1
-**边界与争议说明**：已实现基线属于正式生成评测；背景中的目标导向设计不扩大本任务。
-## A · 自适应性与序贯性
+**Score**: 3; scored
+**Criterion**: Candidate generation, inverse design, or goal-directed design. 
+**Rationale**: The formal task requires the evaluated model to generate molecular structures; the paper also actually trains and compares generation baselines. The evaluation protocol does not require the model to decide the next experiment or resource allocation.
+**Level comparison**: Level 3 directly corresponds to generated molecules; levels 0-2's pure processing, property prediction, or ranking cannot summarize the required output. Level 4 needs to decide subsequent candidates, experiments, or strategy, while the described protocol stops at generating samples and computing metrics.
+**Task**: T1
+**Boundary & dispute notes**: The implemented baseline belongs to the formal generation evaluation; the goal-directed design in the background does not expand this task.
+## A · Adaptivity & Sequentiality
 
-**评分**：0；已评分
-**对应标准**：完全静态、一次性预测。
-**判定理由**：正式流程按固定数据集训练模型、批量生成样本、事后计算指标；论文描述的 FCD 架构选择是离线调参。未见任务执行中依据新结果改变下一轮生成或实验行动。
-**分档比较**：0 档对应固定训练、批量生成及一次性评测。1 档要求条件式预测或生成，正式任务是无外加目标条件的分布学习；2 档要求主动选择评估对象；3–4 档要求多轮结果反馈，本协议均未定义。
-**任务归属**：T1
-**边界与争议说明**：“一次性预测”与无条件生成的措辞不完全重合；此处依据该档的静态性和正式批量推理协议选 0，未将生成本身视为条件式或序贯决策。
-## I · 工作流整合度
+**Score**: 0; scored
+**Criterion**: Completely static, one-shot prediction. 
+**Rationale**: The formal workflow trains models on a fixed dataset, generates samples in batches, and computes metrics post-hoc; the FCD architecture selection described by the paper is offline tuning. No changing of the next round's generation or experimental actions based on new results during task execution is seen.
+**Level comparison**: Level 0 corresponds to fixed training, batch generation, and one-time evaluation. Level 1 requires conditional prediction or generation, while the formal task is distribution learning without externally added target conditions; level 2 requires actively selecting evaluation objects; levels 3-4 require multi-round result feedback, none defined in this protocol.
+**Task**: T1
+**Boundary & dispute notes**: The wording "one-shot prediction" does not fully coincide with unconditional generation; here 0 is chosen based on the static nature of this level and the formal batch-inference protocol, without treating generation itself as conditional or sequential decision-making.
+## I · Workflow Integration
 
-**评分** 3 分（专家复核）
-**对应标准**：多个模型或模块按顺序连接。
-**判定理由**：正式评测的 JTN-VAE 基线先生成结点树，再组装子图形成分子；LatentGAN 也将预训练自编码器与 GAN 串联。该 3 档依据限于已评测基线的模型内部模块，不代表整个基准已形成跨实验环节的发现系统。
-**分档比较**：1 档可描述单个基线，2 档可描述其增强生成过程；3 档原文明确允许“多个模型或模块按顺序连接”，JTN-VAE 的两阶段及 LatentGAN 的模型串联满足这一字面条件。4 档所列多种发现环节未集成。
-**任务归属**：T1
-**边界与争议说明**：另一解释会把内部两阶段视为 2 档的单任务增强；本判断依据 3 档明示的顺序模块，以及 LatentGAN 的自编码器和 GAN 串联，选择 3 档并标明其模型层级和可选基线范围。
-## G · 目标与约束处理
+**Score** 3(Expert review)
+**Criterion**: Multiple models or modules connected in sequence. 
+**Rationale**: The formally evaluated JTN-VAE baseline first generates a junction tree, then assembles subgraphs into molecules; LatentGAN also chains a pretrained autoencoder with a GAN. This level 3 basis is limited to internal model modules of the evaluated baselines, not representing the whole benchmark having formed a discovery system spanning experimental stages.
+**Level comparison**: Level 1 can describe a single baseline, and level 2 can describe its enhanced generation process; level 3's source explicitly allows "Multiple models or modules connected in sequence", and JTN-VAE's two stages and LatentGAN's model chaining satisfy this literal condition. The multiple discovery stages listed in level 4 are not integrated.
+**Task**: T1
+**Boundary & dispute notes**: Another interpretation would treat the internal two stages as a level-2 single-task enhancement; this judgment relies on level 3's explicit sequential modules, and LatentGAN's autoencoder-GAN chaining, choosing level 3 and noting its model hierarchy and optional baseline scope.
+## G · Goal & Constraint Handling
 
-**评分** 2 分（专家复核）
-**对应标准**：单一目标加静态约束。
-**判定理由**：正式目标是拟合训练分布；本文已评测的组合生成器及 JTN-VAE 在生成时内置化学有效性约束。数据集过滤和事后报告的多项指标另行区分，不作为动态或联合多目标优化。
-**分档比较**：1 档的单一分布学习目标有据；2 档进一步有部分正式评测基线的内置有效性约束。3 档需要多目标或多约束联合优化，报告多种指标及训练集过滤不足以证明；4 档还需动态与资源约束。
-**任务归属**：T1
-**边界与争议说明**：若只看所有模型共有的协议，可停在 1 档；本评价单元包括正式评测基线，故采用其明确实现的静态有效性约束，并限定适用模型。
-## U · 不确定性与失败处理
+**Score** 2(Expert review)
+**Criterion**: A single objective with static constraints. 
+**Rationale**: The formal objective is fitting the training distribution; the evaluated combinatorial generator and JTN-VAE in this paper have built-in chemical validity constraints during generation. Dataset filtering and multiple post-hoc reported metrics are distinguished separately, not serving as dynamic or joint multi-objective optimization.
+**Level comparison**: Level 1's single distribution-learning objective has basis; level 2 further has built-in validity constraints of some formally evaluated baselines. Level 3 needs joint multi-objective or multi-constraint optimization, which reporting multiple metrics and training-set filtering is insufficient to prove; level 4 additionally needs dynamic and resource constraints.
+**Task**: T1
+**Boundary & dispute notes**: Looking only at the protocol shared by all models could stop at level 1; this evaluation unit includes the formally evaluated baseline, so its explicitly implemented static validity constraints are adopted, with the applicable models limited.
+## U · Uncertainty & Failure Handling
 
-**评分**：待复核；待复核
-**对应标准**：当前信息不足，暂不选择数值分档
-**判定理由**：论文既报告三次初始化的运行波动，又对无效生成进行识别、单独计量和过滤；部分基线还内置有效性约束。所供证据不能可靠判定这些失败处理是否满足原 3 档的整体表述。
-**分档比较**：运行间标准差支持 1 档的一种基础不确定性口径；有效性检查、过滤及内置约束又构成实际失败处理。原 3 档同时写“噪声、失败与阴性结果”，所供材料不能可靠消除其与 1 档的边界，因此暂挂而不发布数值。
-**任务归属**：T1
-**边界与争议说明**：初评按运行间标准差给 1 档，独立审查指出无效分子会被计量并从其他指标排除；既不能忽略这项失败处理，也不能自动把它等同于噪声和阴性结果处理。
-## P · 自主性与可执行性
+**Score**: pending review; pending review
+**Criterion**: Insufficient information; no numeric level selected for now
+**Rationale**: The paper both reports run fluctuation across three initializations and identifies, separately counts, and filters invalid generations; some baselines also have built-in validity constraints. The supplied evidence cannot reliably determine whether this failure handling satisfies the original level 3's overall description.
+**Level comparison**: The between-run standard deviation supports one basic-uncertainty interpretation of level 1; validity checking, filtering, and built-in constraints also constitute actual failure handling. The original level 3 simultaneously states "noise, failures, and negative results", and the supplied material cannot reliably resolve its boundary with level 1, so it is suspended without releasing a number.
+**Task**: T1
+**Boundary & dispute notes**: Initial gives level 1 based on the between-run standard deviation; the Independent review points out that invalid molecules are counted and excluded from other metrics; this failure handling can neither be ignored nor automatically equated with noise and negative-result handling.
+## P · Autonomy & Actionability
 
-**评分**：2；已评分
-**对应标准**：自动执行固定工作流。
-**判定理由**：论文实现生成基线，并提供训练、生成样本、用工具计算指标的固定计算流程。目标与模型选择由研究者设定；未描述基于新结果自动选择下一动作。
-**分档比较**：0 档仅预测结果过窄；1 档仅人类行动建议也不足以概括已实现的生成和评测流程。2 档对应自动执行的固定计算流程；3–4 档需要根据反馈决定动作及自主监控纠正，正式协议没有这些步骤。
-**任务归属**：T1
-**边界与争议说明**：独立审查把生成候选视为由人决定后续行动的建议；本文同时实现了生成基线和固定评测工具，故按其实际执行的计算任务环节保留有限的 2 档。
-## E · 对实验结果的依赖
+**Score**: 2; scored
+**Criterion**: Automatically executes a fixed workflow. 
+**Rationale**: The paper implements generation baselines and provides a fixed computational workflow of training, generating samples, and computing metrics with tools. Objectives and model selection are set by researchers; no automatic selection of the next action based on new results is described.
+**Level comparison**: Level 0's prediction-only output is too narrow; level 1's human action recommendation alone is also insufficient to summarize the implemented generation and evaluation workflow. Level 2 corresponds to an automatically executed fixed computational workflow; levels 3-4 require deciding actions based on feedback and autonomous monitoring and correction, which the formal protocol does not have.
+**Task**: T1
+**Boundary & dispute notes**: The Independent review treats generated candidates as recommendations whose follow-up actions are decided by humans; this paper also implements a generation baseline and fixed evaluation tools, so a limited level 2 is retained according to the computational task stages it actually executes.
+## E · Dependence on Experimental Results
 
-**评分**：0；已评分
-**对应标准**：无真实实验结果；评估仅使用仿真或代理标签。
-**判定理由**：MOSES 的正式比较以生成分子样本和结构参考集合计算指标；所列性质是计算估计或启发式分数。FCD 借用预训练 ChemNet 的表征，但论文并未把其生物活性预测标签作为 MOSES 的训练标签或正式实验测试结果。
-**分档比较**：原文明确规定以生成样本和结构参考集计算指标，且所举性质为计算估计，符合 0 档。没有证据表明实测结果用于本任务训练或校准，故不满足 1 档；也没有以实测结果为正式测试依据或单独实验子集报告，故不满足 2 档。ChemNet 是评测表征工具，不能移入本任务的实验标签范围。
-**任务归属**：T1
-**边界与争议说明**：外部 ChemNet 可能使 FCD 间接包含生物活性信息，但 MOSES 正式评测仍计算生成结构与参考结构的距离；不据此提升 E。
-## R · 与实验需求的对齐
+**Score**: 0; scored
+**Criterion**: No real experimental results; evaluation uses only simulation or proxy labels. 
+**Rationale**: MOSES's formal comparison computes metrics on generated molecular samples and a structure reference set; the listed properties are computational estimates or heuristic scores. FCD borrows the representation of pretrained ChemNet, but the paper does not use its bioactivity prediction labels as MOSES's training labels or formal experimental test results.
+**Level comparison**: The source explicitly stipulates computing metrics on generated samples and a structure reference set, and the cited properties are computational estimates, fitting level 0. There is no evidence that measured results are used for this task's training or calibration, so level 1 is not satisfied; nor are measured results used as a formal testing basis or reported as a separate experimental subset, so level 2 is not satisfied. ChemNet is an evaluation representation tool and cannot be moved into this task's experimental label scope.
+**Task**: T1
+**Boundary & dispute notes**: External ChemNet might make FCD indirectly contain bioactivity information, but MOSES's formal evaluation still computes the distance between generated and reference structures; E is not raised on this basis.
+## R · Alignment with Experimental Needs
 
-**评分**：NR；NR（信息不足）
-**对应标准**：当前信息不足，暂不选择数值分档
-**判定理由**：论文将 Clean Leads 与寻找 hit 化合物联系起来，并设置药物化学过滤规则，因此不能断言完全没有实验用途关联；但主任务是分布学习，未指定靶点、实验测定或明确的 hit 选择决策，也未说明这些过滤规则是否覆盖该决策所需的关键约束。两项固定问题不能同时得到确定答案。
-**分档比较**：0 档的“与具体实验用途无关联”与 Clean Leads 的 hit 识别用途陈述存在张力；1 档要求明确实验需求及未覆盖的关键约束，本文未充分界定需求和约束边界；2 档要求明确定义的实验决策及相关目标与关键约束，正式分布学习协议尚未建立这些内容。因此使用准则允许的 NR。
-**任务归属**：T1
-**边界与争议说明**：Clean Leads 的 hit 识别适用性可支持 R 的相关性判断；但正式评测只检验生成分布，不能把一般药物发现用途直接升格为定义充分的实验决策。
-## C · 关键实验条件的完备性
+**Score**: NR; NR (insufficient information)
+**Criterion**: Insufficient information; no numeric level selected for now
+**Rationale**: The paper links Clean Leads to finding hit compounds and sets medicinal-chemistry filtering rules, so it cannot be asserted that there is no experimental-use connection at all; but the main task is distribution learning, without a specified target, experimental assay, or explicit hit-selection decision, nor does it explain whether these filtering rules cover the key constraints required for that decision. The two fixed questions cannot both receive definite answers.
+**Level comparison**: Level 0's "no connection to a specific experimental use" is in tension with Clean Leads' hit-identification use statement; level 1 requires a clear experimental need and uncovered key constraints, but this paper does not sufficiently define the need and constraint boundaries; level 2 requires a clearly defined experimental decision and related objectives and key constraints, which the formal distribution-learning protocol has not established. Therefore NR, as allowed by the rubric, is used.
+**Task**: T1
+**Boundary & dispute notes**: The applicability of hit identification in Clean Leads can support the relevance judgment for R; but the formal evaluation only tests the generation distribution, and a general drug-discovery use cannot be directly elevated into a well-defined experimental decision.
+## C · Completeness of Key Experimental Conditions
 
-**评分** 0 分（专家复核）
-**对应标准**：当前信息不足，暂不选择数值分档
-**判定理由**：正式任务为分子结构分布学习和计算评测。论文给出 SMILES 结构、数据过滤及生成量等计算条件，未确立需解读的实验测量结果或本任务适用的关键制备、加工和测量条件。不能仅因正文未列实验条件就认定数据已证实缺失这些条件。
-**分档比较**：0 档需要确认存在应由实验条件解释的结果且关键条件确实缺失；所查材料仅建立计算评测，不能据论文未披露直接给 0。1 档需要可确认的部分关键实验条件，2 档需要完整且可追溯的关键实验条件；目前两者也无适用性及字段证据。因此 pending，而非新增不适用分档。
-**任务归属**：T1
-**边界与争议说明**：论文详述计算评测设置，并提及 pH 作为数据过滤理由；两者都不能替代 C 所问的样品实验条件，也不能证明相关条件已在数据中缺失。
-## 局限与待复核事项
+**Score** 0(Expert review)
+**Criterion**: Insufficient information; no numeric level selected for now
+**Rationale**: The formal task is molecular structure distribution learning and computational evaluation. The paper gives computational conditions such as SMILES structures, data filtering, and generation quantity, without establishing experimental measurement results needing interpretation or key preparation, processing, and measurement conditions applicable to this task. The data cannot be deemed confirmed missing these conditions merely because the main text does not list experimental conditions.
+**Level comparison**: Level 0 needs confirming there are results that should be explained by experimental conditions and the key conditions are indeed missing; the checked material only establishes computational evaluation, and 0 cannot be given directly from the paper's non-disclosure. Level 1 needs confirmable partial key experimental conditions, and level 2 needs complete and traceable key experimental conditions; currently neither has applicability or field evidence. Therefore pending, rather than adding a not-applicable level.
+**Task**: T1
+**Boundary & dispute notes**: The paper details the computational evaluation setup and mentions pH as a data-filtering rationale; neither can replace the sample experimental conditions C asks about, nor prove the relevant conditions are already missing in the data.
+## Limitations & Items Pending Review
 
-- 本报告是依据所供论文和冻结量表形成的模型评价，不是专家认证。
-- 补充材料未随所供 PDF 提供，不能核查其过滤器及训练超参数细节。
-- U 的运行波动与无效生成处理对应的量表边界尚未消除；R 缺少具体实验用途与关键约束；C 缺少实验条件适用性的前提。
-- 已渲染并查看 PDF 第 2 页 Figure 1；图示数据、模型、指标和排名的计算流程，没有实验环节。评分依据仍以正文引文为准。
-- 第 5–6 页表 1–4 的均值与标准差由表下注释支持；未从未经核对的图表布局推导候选级不确定性。
-- PDF 第 4 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 5 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
-- PDF 第 6 页定位提示：图表区域未可靠识别；内部文字可能参与行号，核对时以带行号阅览版及图表标签为准
-- PDF 第 8 页定位提示：Two-column reading order is heuristic; use page rendering for ambiguous passages
+- This report is a model evaluation formed per the supplied paper and frozen scale, not expert certification.
+- Supplementary material is not provided with the supplied PDF, so its filters and training-hyperparameter details cannot be checked.
+- The scale boundary corresponding to U's run fluctuation and invalid-generation handling is not yet resolved; R lacks a specific experimental use and key constraints; C lacks the prerequisite of experimental-condition applicability.
+- PDF page 2 Figure 1 has been rendered and viewed; it illustrates the computational workflow of data, models, metrics, and ranking, with no experimental stage. The scoring basis still follows main-text citations.
+- The means and standard deviations of Tables 1-4 on pages 5-6 are supported by the notes below the tables; candidate-level uncertainty is not derived from unchecked figure/table layout.
+- PDF page 4 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 5 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
+- PDF page 6 location hint: figure/table region not reliably detected; inner text may carry line numbers - verify against the line-numbered reading copy and figure/table labels
+- PDF page 8 location hint: Two-column reading order is heuristic; use page rendering for ambiguous passages
 
-## 评分修订记录
+## Score Revision Log
 
-- U：1（已评分） → 待复核（待复核）。
-- P：分数与状态未变；修订了评分理由、证据或其他解释字段。
+- U: 1(scored) -> pending review (pending review). 
+- P: score and status unchanged; revised the rationale, evidence, or other explanatory fields.
