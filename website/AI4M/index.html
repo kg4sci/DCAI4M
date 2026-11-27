@@ -391,6 +391,14 @@ async function init() {
   try {
     const r = await fetch('datasets.json');
     ALL = await r.json();
+      // Sort: scored datasets first, then by score desc, then by name
+      ALL.sort((a,b)=>{
+        const sa = (a.score||0)>0 ? 1 : 0;
+        const sb = (b.score||0)>0 ? 1 : 0;
+        if (sa !== sb) return sb - sa;
+        if (sa && sb) return (b.score||0) - (a.score||0);
+        return (a.name||'').localeCompare(b.name||'');
+      });
   } catch(e) {
     document.getElementById('card-list').innerHTML = '<div class="empty-state"><div class="e-icon">&#9888;&#65039;</div><p>Failed to load datasets. Ensure datasets.json exists.</p></div>';
     return;
