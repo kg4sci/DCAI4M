@@ -351,18 +351,18 @@
     </div>
     <div class="modal-body">
       <div class="info-line"><strong>Dataset:</strong> <span id="modal-dsname"></span></div>
-      <div class="info-line"><strong>Paper ID:</strong> <span id="modal-paperid"></span></div>
-      <div class="info-line"><strong>Proponent paper:</strong> <span id="modal-proponent"></span></div>
-      <div style="display:flex;gap:8px;margin-top:8px">
+      <div class="info-line" id="modal-line-paperid"><strong>Paper ID:</strong> <span id="modal-paperid"></span></div>
+      <div class="info-line" id="modal-line-proponent"><strong>Proponent paper:</strong> <span id="modal-proponent"></span></div>
+      <div id="modal-tabs" style="display:flex;gap:8px;margin-top:8px">
         <button class="badge badge-agent" id="btn-agent-tab" onclick="switchReviewer('agent')" style="font-size:12px;padding:5px 12px">&#129488; AI Review</button>
         <button class="badge badge-expert" id="btn-expert-tab" onclick="switchReviewer('expert')" style="font-size:12px;padding:5px 12px">&#128100; Expert Review</button>
       </div>
-      <div class="score-section">
+      <div class="score-section" id="modal-sec-x">
         <h3><span class="axis-tag x-tag">X</span> Task Intelligence</h3>
         <div class="x-dims" id="modal-x"></div>
       </div>
-      <div class="axis-divider"></div>
-      <div class="score-section">
+      <div class="axis-divider" id="modal-divider"></div>
+      <div class="score-section" id="modal-sec-y">
         <h3><span class="axis-tag y-tag">Y</span> Experimental Orientation</h3>
         <div class="y-dims" id="modal-y"></div>
       </div>
@@ -371,7 +371,7 @@
         <div id="modal-citations"></div>
       </div>
       <a class="report-link" id="modal-report-link" href="#" target="_blank" rel="noopener">&#128196; View Full Evaluation Report</a>
-      <div class="score-note">Entry = the online dataset; the scored object is its <em>proposing paper</em> (agent review of that paper, else expert workbook 261120). Composite = mean of the nine O/A/I/G/U/P + E/R/C dimensions. Papers that cite/use the dataset are listed under Citations with their own scores.</div>
+      <div class="score-note">Entry = the online dataset. Scores follow the final scoring master table: the proposing paper's agent review and the reviewed expert adopted score. When both exist the composite is their average; otherwise the single review is used. Composite = mean of the nine O/A/I/G/U/P + E/R/C dimensions. Papers citing/using the dataset are listed under Citations with their own scores.</div>
     </div>
     <div class="modal-footer">
       <span class="m-paper-id" id="modal-footer-id"></span>
@@ -540,22 +540,22 @@ function renderCards() {
     const st = (d.score||0)>0 ? `&#9733; ${Number(sv)===Math.floor(sv)?sv:sv.toFixed(1)}` : '&#9734; 0';
     return `<div class="card">
       <div class="card-top">
-        <div class="card-name">${d.url ? `<a href="${escHtml(d.url)}" target="_blank" rel="noopener" title="${escHtml(d.url)}">${escHtml(d.name||'(untitled)')}</a>` : escHtml(d.name||'(untitled)')}</div>
+        <div class="card-name">${normUrl(d.url) ? `<a href="${escHtml(normUrl(d.url))}" target="_blank" rel="noopener" title="${escHtml(d.url)}">${escHtml(d.name||'(untitled)')}</a>` : escHtml(d.name||'(untitled)')}</div>
         <div class="card-badges">
           <span class="badge badge-cat">${escHtml(d.category)}</span>
           ${d.data_type ? `<span class="badge badge-dt">${escHtml(d.data_type)}</span>` : ''}
-          <span class="badge badge-task">${escHtml(d.task_type||'')}</span>
+          ${(d.task_type && d.task_type!==d.category) ? `<span class="badge badge-task" title="Task type">${escHtml(d.task_type)}</span>` : ''}
           ${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : ''}
           <span class="badge ${sc}">${st}</span>
                     ${d.agent_review ? `<button class="badge badge-agent" onclick="openReview(${idx},'agent')" title="AI evaluation scores">&#129488; AI Review</button>` : ''}
                               ${d.expert_review ? `<button class="badge badge-expert" onclick="openReview(${idx},'expert')" title="Expert evaluation scores">&#128100; Expert</button>` : ''}
-          ${(d.citations&&d.citations.length) ? `<span class="badge" style="background:#e2e8f0;color:#475569" title="Papers citing/using this dataset">&#128218; ${d.citations.length} cite</span>` : ''}
+          ${(d.citations&&d.citations.length) ? `<button class="badge" style="background:#e2e8f0;color:#475569;cursor:pointer" onclick="openCitations(${idx})" title="View papers citing/using this dataset">&#128218; ${d.citations.length} cite</button>` : ''}
         </div>
       </div>
       <div class="card-desc" id="dsc-${idx}">${short}</div>
       ${expandable ? `<button class="card-expand" onclick="toggleDesc(${idx})">&#9654; Show more</button>` : ''}
       <div class="card-foot">
-        ${d.url ? `<span>&#128279; <a href="${escHtml(d.url)}" target="_blank" rel="noopener" class="url-link">${escHtml(d.url)}</a></span>` : ''}
+        ${d.url ? (normUrl(d.url) ? `<span>&#128279; <a href="${escHtml(normUrl(d.url))}" target="_blank" rel="noopener" class="url-link">${escHtml(d.url)}</a></span>` : `<span style="color:var(--text3)">${escHtml(d.url)}</span>`) : ''}
         ${d.doi ? `<span class="sep">&middot;</span><span>DOI: ${escHtml(d.doi)}</span>` : ''}
         ${d.scale ? `<span class="sep">&middot;</span><span>${escHtml(d.scale).slice(0,120)}</span>` : ''}
       </div>
@@ -582,14 +582,14 @@ function renderTable() {
     const sc = (d.score||0)>0 ? `&#9733; ${d.score}` : '&#9734; 0';
     return `<tr>
       <td style="color:var(--text3)">${start+i+1}</td>
-      <td class="td-name">${d.url ? `<a href="${escHtml(d.url)}" target="_blank" rel="noopener">${escHtml(d.name||'')}</a>` : escHtml(d.name||'')}</td>
+      <td class="td-name">${normUrl(d.url) ? `<a href="${escHtml(normUrl(d.url))}" target="_blank" rel="noopener">${escHtml(d.name||'')}</a>` : escHtml(d.name||'')}</td>
       <td><span class="badge badge-cat">${escHtml(d.category)}</span></td>
       <td>${d.data_type ? `<span class="badge badge-dt">${escHtml(d.data_type)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
-      <td><span class="badge badge-task">${escHtml(d.task_type||'')}</span></td>
+      <td>${d.task_type ? `<span class="badge badge-task">${escHtml(d.task_type)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
       <td>${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
       <td style="font-weight:600;color:${(d.score||0)>0?'var(--emerald)':'var(--text3)'}">${sc}${d.agent_review ? ` <button class="badge badge-agent" style="font-size:10px;padding:2px 7px" onclick="openReview(${start+i},'agent')">&#129488;</button>` : ''}${d.expert_review ? ` <button class="badge badge-expert" style="font-size:10px;padding:2px 7px" onclick="openReview(${start+i},'expert')">&#128100;</button>` : ''}</td>
       <td class="td-desc">${escHtml((d.description||'').slice(0,150))}${(d.description||'').length>150?'&hellip;':''}</td>
-      <td class="td-url">${d.url ? `<a href="${escHtml(d.url)}" target="_blank" rel="noopener">link</a>` : ''}</td>
+      <td class="td-url">${normUrl(d.url) ? `<a href="${escHtml(normUrl(d.url))}" target="_blank" rel="noopener">link</a>` : (d.url ? `<span style="color:var(--text3);font-size:11px">${escHtml(d.url.slice(0,30))}</span>` : '')}</td>
       <td style="font-size:12px">${escHtml((d.doi||'').slice(0,40))}</td>
     </tr>`;
   }).join('')}</tbody></table>`;
@@ -765,6 +765,15 @@ function switchTab() {
 // ═══════════════════════════════════════
 function escHtml(s) { if(!s) return ''; const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 function escJs(s) { return (s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"'); }
+function normUrl(u) {
+  u = (u||'').trim();
+  if (!u) return '';
+  if (/^https?:\/\//i.test(u)) return u;
+  if (/^10\.\d{4,9}\//.test(u)) return 'https://doi.org/'+u;
+  if (/^www\./i.test(u)) return 'https://'+u;
+  if (!/\s/.test(u) && /^[a-z0-9.-]+\.[a-z]{2,}(\/\S*)?$/i.test(u)) return 'https://'+u;
+  return '';
+}
 function debounce(fn,ms) { let t; return function(...a){ clearTimeout(t); t=setTimeout(()=>fn.apply(this,a),ms); }; }
 
 // ═══════════════════════════════════════
@@ -815,6 +824,8 @@ function switchReviewer(type) {
 function renderReview() {
   const d = filtered[_reviewIdx];
   if (!d) return;
+  ['modal-sec-x','modal-divider','modal-sec-y','modal-line-paperid','modal-line-proponent'].forEach(id=>{const el=document.getElementById(id); if(el) el.style.display='';});
+  const tb=document.getElementById('modal-tabs'); if(tb) tb.style.display='flex';
   const review = _reviewType === 'expert' ? d.expert_review : d.agent_review;
   if (!review) return;
   const sc = review.scores || {};
@@ -828,15 +839,7 @@ function renderReview() {
   document.getElementById('modal-dsname').textContent = d.name||'';
   document.getElementById('modal-paperid').textContent = review.paper_id||'N/A';
   document.getElementById('modal-proponent').textContent = d.proposing_paper || d.doi || 'N/A';
-  let citHtml = '';
-  (d.citations||[]).forEach(c => {
-    const sv = (c.score!=null) ? `&#9733; ${c.score}` : '&#9734; unscored';
-    const col = (c.score!=null) ? 'var(--emerald)' : 'var(--text3)';
-    citHtml += `<div style="display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px dashed var(--border);font-size:12px">
-      <span style="color:var(--text2)">${c.name}</span>
-      <span style="color:${col};font-weight:600;white-space:nowrap">${sv}</span></div>`;
-  });
-  document.getElementById('modal-citations').innerHTML = citHtml || '<div style="font-size:12px;color:var(--text3);font-style:italic">No citing papers recorded.</div>';
+  document.getElementById('modal-citations').innerHTML = citationLinks(d);
   document.getElementById('modal-footer-id').textContent = 'Paper ID: '+(review.paper_id||'N/A');
 
   // X-axis
@@ -845,7 +848,7 @@ function renderReview() {
     let v = sc[dim.code];
     let pending = false, display = '?';
     if (v===undefined||v===null||v==='') { display='?'; pending=true; }
-    else if (typeof v==='string'&&v.includes('待复核')) { display='?'; pending=true; }
+    else if (typeof v==='string'&&v.includes('pending')) { display='?'; pending=true; }
     else if (typeof v==='string'&&v.startsWith('~')) { display=v; pending=true; }
     else if (typeof v==='number') { display = Number(v)===Math.floor(v) ? v : v.toFixed(1); }
     else { display=v; }
@@ -866,7 +869,7 @@ function renderReview() {
     let v = sc[dim.code];
     let pending = false, scoreVal = -1;
     if (v===undefined||v===null||v==='') { pending=true; }
-    else if (typeof v==='string'&&v.includes('待复核')) { pending=true; }
+    else if (typeof v==='string'&&v.includes('pending')) { pending=true; }
     else if (typeof v==='string'&&v.startsWith('~')) { scoreVal = parseInt(v.slice(1))||-1; pending=true; }
     else if (typeof v==='number') { scoreVal = v; }
     else { pending=true; }
@@ -891,6 +894,51 @@ function renderReview() {
   if (review.report_url && _reviewType === 'agent') { rl.href = review.report_url; rl.style.display = ''; }
   else { rl.style.display = 'none'; }
 }
+function citationLinks(d) {
+  let citHtml = '';
+  (d.citations||[]).forEach(c => {
+    const sv = (c.score!=null) ? `&#9733; ${c.score}` : '&#9734; unscored';
+    const col = (c.score!=null) ? 'var(--emerald)' : 'var(--text3)';
+    const doi = (c.doi||'').trim();
+    const href = doi ? (/^https?:\/\//i.test(doi) ? doi : 'https://doi.org/'+doi)
+                     : 'https://scholar.google.com/scholar?q='+encodeURIComponent(c.name||'');
+    const nm = `<a href="${escHtml(href)}" target="_blank" rel="noopener" style="color:var(--sky);text-decoration:none" title="Open paper: ${escHtml(href)}">${escHtml(c.name||'(untitled)')} &#8599;</a>`;
+    citHtml += `<div style="display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px dashed var(--border);font-size:12px">
+      <span style="color:var(--text2)">${nm}</span>
+      <span style="color:${col};font-weight:600;white-space:nowrap">${sv}</span></div>`;
+  });
+  return citHtml || '<div style="font-size:12px;color:var(--text3);font-style:italic">No citing papers recorded.</div>';
+}
+
+function openCitations(idx) {
+  const d = filtered[idx];
+  if (!d) return;
+  _reviewIdx = idx;
+  const show = (id,on)=>{const el=document.getElementById(id); if(el) el.style.display=on?'':'none';};
+  const ab = document.getElementById('btn-agent-tab');
+  const eb = document.getElementById('btn-expert-tab');
+  if (d.agent_review || d.expert_review) {
+    _reviewType = d.agent_review ? 'agent' : 'expert';
+    renderReview();
+    if (d.expert_review) { eb.style.display=''; } else { eb.style.display='none'; }
+    if (_reviewType==='agent') { ab.style.opacity='1'; ab.style.boxShadow='0 0 0 2px var(--amber)'; eb.style.opacity='.5'; eb.style.boxShadow='none'; }
+    else { eb.style.opacity='1'; eb.style.boxShadow='0 0 0 2px var(--sky)'; ab.style.opacity='.5'; ab.style.boxShadow='none'; }
+  } else {
+    document.getElementById('modal-title').textContent = 'Citations — '+(d.name||'(untitled)');
+    const rv = document.getElementById('modal-reviewer');
+    rv.textContent='Citations'; rv.style.background='#e2e8f0'; rv.style.color='#475569';
+    document.getElementById('modal-dsname').textContent = d.name||'';
+    show('modal-tabs',false); show('modal-sec-x',false); show('modal-divider',false); show('modal-sec-y',false);
+    show('modal-line-paperid',false); show('modal-line-proponent',false);
+    document.getElementById('modal-citations').innerHTML = citationLinks(d);
+    document.getElementById('modal-footer-id').textContent = '';
+    document.getElementById('modal-report-link').style.display='none';
+  }
+  document.getElementById('review-modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  setTimeout(()=>{const el=document.getElementById('modal-citations'); if(el) el.scrollIntoView({behavior:'smooth',block:'center'});},60);
+}
+
 function closeReview() {
   document.getElementById('review-modal').classList.add('hidden');
   document.body.style.overflow = '';
