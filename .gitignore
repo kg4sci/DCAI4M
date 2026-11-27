@@ -20,6 +20,10 @@ Thumbs.db
 # Temp / smoketest
 _smoketest/
 
+# Local analysis report (keep out of repo)
+summary/ai4m_analysis_report.tex
+summary/_analysis_full.txt
+
 # Python virtual env
 venv/
 .venv/
