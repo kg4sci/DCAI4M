@@ -13,7 +13,7 @@
   "bib": "@misc{benchmark1, title={{LeMat-GenBench: A Unified Evaluation Framework for Crystal Generative Models}}, year={2025}, doi={10.48550/arXiv.2512.04562}, url={https://doi.org/10.48550/arXiv.2512.04562}}",
   "material_system": "Inorganic crystal",
   "baseline": "MatterGen/DiffCSP/DiffCSP++/FlowMM ( version )",
-  "score": 0,
+  "score": 1.4,
   "source_sheet": "AI模型评测",
   "agent_review": {
    "paper_id": "paper_64641de3f9e4e515",
@@ -22,13 +22,27 @@
     "A": 0,
     "I": 3,
     "G": 0,
-    "U": "",
+    "U": 3,
     "P": 2,
-    "E": "",
+    "E": 1,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_64641de3f9e4e515.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_64641de3f9e4e515",
+   "scores": {
+    "O": 3,
+    "A": 0,
+    "I": 3,
+    "G": 3,
+    "U": 3,
+    "P": 1,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -64,7 +78,7 @@
   "bib": "@misc{benchmark3, title={{Dismai-Bench: benchmarking and designing generative models using disordered materials and interfaces}}, year={2024}, doi={10.1039/D4DD00100A}, url={https://doi.org/10.1039/D4DD00100A}}",
   "material_system": "Disordered material interface",
   "baseline": "CDVAE/DiffCSP/CrysTens/UniMat/CryinGAN",
-  "score": 1.0,
+  "score": 1.4,
   "source_sheet": "AI模型评测",
   "level": 1,
   "level_label": "Predictive",
@@ -72,16 +86,30 @@
    "paper_id": "paper_5f58decf6f642357",
    "scores": {
     "O": 3,
-    "A": "",
+    "A": 1,
     "I": 3,
     "G": 2,
     "U": 3,
     "P": 2,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_5f58decf6f642357.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_5f58decf6f642357",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": 3,
+    "G": 1,
+    "U": 3,
+    "P": 1,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -98,7 +126,7 @@
   "bib": "@misc{benchmark4, title={{PhononBench: A Large-Scale Phonon-Based Benchmark for Dynamical Stability in Crystal Generation}}, year={2026}, doi={10.1088/3050-287X/ae9ee4}, url={https://doi.org/10.1088/3050-287X/ae9ee4}}",
   "material_system": "Inorganic crystal",
   "baseline": "CrystalFlow/CrystalFormer/CrystaLLM/DiffCSP/InvDesFlow-AL/MatterGen",
-  "score": 1.75,
+  "score": 1.3,
   "source_sheet": "AI模型评测",
   "level": 2,
   "level_label": "Design-oriented",
@@ -108,14 +136,28 @@
     "O": 3,
     "A": 1,
     "I": 3,
-    "G": "",
+    "G": 3,
     "U": 1,
     "P": 2,
     "E": 0,
     "R": 1,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_836d4d140a503c7a.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_836d4d140a503c7a",
+   "scores": {
+    "O": 3,
+    "A": 0,
+    "I": 3,
+    "G": 2,
+    "U": 0,
+    "P": 1,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -151,7 +193,7 @@
   "bib": "@misc{benchmark6, title={{CrystalGym: A New Benchmark for Materials Discovery Using Reinforcement Learning}}, year={2025}, doi={10.48550/arXiv.2509.23156}, url={https://doi.org/10.48550/arXiv.2509.23156}}",
   "material_system": "Inorganic crystal",
   "baseline": "DQN; random",
-  "score": 3.62,
+  "score": 2.0,
   "source_sheet": "AI模型评测",
   "level": 3,
   "level_label": "Decision-oriented",
@@ -166,9 +208,23 @@
     "P": 3,
     "E": 0,
     "R": 0,
-    "C": "待复核"
+    "C": 1
    },
    "report_url": "reviews/paper_c7d64282ea2dd4d4.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_c7d64282ea2dd4d4",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 1,
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -185,7 +241,7 @@
   "bib": "@misc{benchmark7, title={{MADE: Benchmark Environments for Closed-Loop Materials Discovery}}, year={2026}, doi={10.48550/arXiv.2601.20996}, url={https://doi.org/10.48550/arXiv.2601.20996}}",
   "material_system": "Inorganic crystal/metal compound",
   "baseline": "Random generation baseline/Chemeleon generation baseline",
-  "score": 4.31,
+  "score": 2.4,
   "source_sheet": "AI模型评测",
   "level": 4,
   "level_label": "Adaptive discovery",
@@ -193,16 +249,30 @@
    "paper_id": "paper_8c791f6b9bb3ee43",
    "scores": {
     "O": 4,
-    "A": "",
-    "I": "",
+    "A": 3,
+    "I": 4,
     "G": 3,
     "U": 3,
-    "P": "",
+    "P": 3,
     "E": 0,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_8c791f6b9bb3ee43.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_8c791f6b9bb3ee43",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 3,
+    "P": 3,
+    "E": 0,
+    "R": 2,
+    "C": 0
+   }
   }
  },
  {
@@ -255,7 +325,7 @@
   "bib": "@misc{benchmark10, title={{Tartarus: A Benchmarking Platform for Realistic And Practical Inverse Molecular Design}}, year={2023}, doi={10.52202/075280-0145}, url={https://doi.org/10.52202/075280-0145}}",
   "material_system": "Organic molecular/molecular material",
   "baseline": "JANUS/REINVENT VAE/algorithm molecular baseline",
-  "score": 3.69,
+  "score": 2.3,
   "source_sheet": "AI模型评测",
   "level": 3,
   "level_label": "Decision-oriented",
@@ -270,9 +340,23 @@
     "P": 3,
     "E": 0,
     "R": 1,
-    "C": "待复核"
+    "C": 1
    },
    "report_url": "reviews/paper_4f150443f6b3c004.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_4f150443f6b3c004",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": 2,
+    "C": 0
+   }
   }
  },
  {
@@ -346,22 +430,36 @@
   "bib": "@misc{benchmark14, title={{MetamatBench: Integrating Heterogeneous Data, Computational Tools, and Visual Interface for Metamaterial Discovery}}, year={2025}, doi={10.1145/3711896.3737416}, url={https://doi.org/10.1145/3711896.3737416}}",
   "material_system": "Metamaterial",
   "baseline": "Generation baseline CDVAE/CondCDVAE/DiffCSP/EquiCSP/EDM/GeoLDM",
-  "score": 0,
+  "score": 1.4,
   "source_sheet": "AI模型评测",
   "agent_review": {
    "paper_id": "paper_63c63e7f7cd57984",
    "scores": {
     "O": 3,
     "A": 1,
-    "I": "",
-    "G": "",
-    "U": "",
-    "P": "",
-    "E": "",
-    "R": "",
-    "C": ""
+    "I": 3,
+    "G": 2,
+    "U": 3,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_63c63e7f7cd57984.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_63c63e7f7cd57984",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": 3,
+    "G": 2,
+    "U": 2,
+    "P": 1,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -465,22 +563,36 @@
   "bib": "@misc{data2, title={{A Dataset Generation Framework for Symmetry-Induced Mechanical Metamaterials}}, year={2025}, doi={10.1115/1.4066169}, url={https://doi.org/10.1115/1.4066169}}",
   "material_system": "Metamaterial",
   "baseline": "",
-  "score": 0,
+  "score": 0.7,
   "source_sheet": "生成与逆向设计",
   "agent_review": {
    "paper_id": "paper_797377af837356ac",
    "scores": {
-    "O": "",
+    "O": 0,
     "A": 2,
-    "I": "",
-    "G": "",
-    "U": "",
+    "I": 0,
+    "G": 2,
+    "U": 0,
     "P": 2,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_797377af837356ac.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_797377af837356ac",
+   "scores": {
+    "O": 2,
+    "A": 1,
+    "I": 1,
+    "G": 1,
+    "U": 0,
+    "P": 1,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -947,22 +1059,36 @@
   "bib": "@article{data_expand_29, title={2DMatPedia, an open computational database of two-dimensional materials from top-down and bottom-up approaches}, year={2019}, doi={10.1038/s41597-019-0097-3}, url={https://www.nature.com/articles/s41597-019-0097-3}}",
   "material_system": "2D inorganic material",
   "baseline": "",
-  "score": 0,
+  "score": 1.1,
   "source_sheet": "生成与逆向设计",
   "agent_review": {
    "paper_id": "paper_346170a5975dbc61",
    "scores": {
-    "O": "",
+    "O": 3,
     "A": 1,
-    "I": "",
+    "I": 3,
     "G": 0,
     "U": 0,
     "P": 2,
     "E": 2,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_346170a5975dbc61.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_346170a5975dbc61",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 1,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -1506,22 +1632,36 @@
   "bib": "@article{Saal2013OQMD, author={Saal, James E. and Kirklin, Scott and Aykol, Muratahan and Meredig, Bryce and Wolverton, C.}, title={Materials Design and Discovery with High-Throughput Density Functional Theory: The Open Quantum Materials Database (OQMD)}, journal={JOM}, year={2013}, volume={65}, number={11}, pages={1501--1509}, doi={10.1007/s11837-013-0755-4}}",
   "material_system": "Inorganic crystal material, covers element crystal structure",
   "baseline": "",
-  "score": 0,
+  "score": 1.5,
   "source_sheet": "预测与识别",
   "agent_review": {
    "paper_id": "paper_6e56c6779de86477",
    "scores": {
     "O": 1,
     "A": 0,
-    "I": "",
+    "I": 3,
     "G": 1,
-    "U": 1,
+    "U": 3,
     "P": 2,
     "E": 2,
-    "R": 0,
-    "C": ""
+    "R": 1,
+    "C": 1
    },
    "report_url": "reviews/paper_6e56c6779de86477.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_6e56c6779de86477",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": 2,
+    "P": 2,
+    "E": 2,
+    "R": 1,
+    "C": 1
+   }
   }
  },
  {
@@ -1555,22 +1695,36 @@
   "bib": "@article{Jain2013MaterialsProject, author={Jain, Anubhav and Ong, Shyue Ping and Hautier, Geoffroy and Chen, Wei and Richards, William Davidson and Dacek, Stephen and Cholia, Shreyas and Gunter, Dan and Skinner, David and Ceder, Gerbrand and Persson, Kristin A.}, title={Commentary: The Materials Project: A materials genome approach to accelerating materials innovation}, journal={APL Materials}, year={2013}, volume={1}, number={1}, pages={011002}, doi={10.1063/1.4812323}}",
   "material_system": "Inorganic crystal material",
   "baseline": "",
-  "score": 0,
+  "score": 0.8,
   "source_sheet": "预测与识别",
   "agent_review": {
    "paper_id": "paper_a71271d94a94d9cd",
    "scores": {
     "O": 3,
-    "A": "待复核",
+    "A": 1,
     "I": 2,
     "G": 0,
     "U": 0,
-    "P": "待复核",
-    "E": "待复核",
+    "P": 2,
+    "E": 2,
     "R": 0,
-    "C": "待复核"
+    "C": 1
    },
    "report_url": "reviews/paper_a71271d94a94d9cd.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_a71271d94a94d9cd",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 0,
+    "U": 0,
+    "P": 1,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -1587,7 +1741,7 @@
   "bib": "@article{Dunn2020Matbench, author={Dunn, Alexander and Wang, Qi and Ganose, Alex and Dopp, Daniel and Jain, Anubhav}, title={Benchmarking materials property prediction methods: the Matbench test set and Automatminer reference algorithm}, journal={npj Computational Materials}, year={2020}, volume={6}, number={1}, doi={10.1038/s41524-020-00406-3}}",
   "material_system": "Material property benchmark, primarily inorganic crystal, also including perovskite/system",
   "baseline": "",
-  "score": 0,
+  "score": 1.2,
   "source_sheet": "预测与识别",
   "agent_review": {
    "paper_id": "paper_003a1bf09c4f7e29",
@@ -1599,10 +1753,24 @@
     "U": 1,
     "P": 2,
     "E": 2,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_003a1bf09c4f7e29.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_003a1bf09c4f7e29",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 2,
+    "G": 0,
+    "U": 0,
+    "P": 3,
+    "E": 2,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -1619,7 +1787,7 @@
   "bib": "@article{BarrosLuque2026OMat24, author={Barros-Luque, Luis and Shuaibi, Muhammed and Fu, Xiang and Wood, Brandon M. and Dzamba, Misko and Gao, Meng and Rizvi, Ammar and Uyttendaele, Matt and Zitnick, C. Lawrence and Ulissi, Zachary W.}, title={The Open Materials 2024 (OMat24) inorganic materials dataset and models}, journal={Nature Computational Science}, year={2026}, volume={6}, number={6}, pages={642--652}, doi={10.1038/s43588-026-00996-w}}",
   "material_system": "Inorganic crystal material",
   "baseline": "",
-  "score": 0,
+  "score": 0.8,
   "source_sheet": "预测与识别",
   "agent_review": {
    "paper_id": "paper_3bbcd0bb5ced6be0",
@@ -1632,9 +1800,23 @@
     "P": 0,
     "E": 1,
     "R": 0,
-    "C": "待复核"
+    "C": 1
    },
    "report_url": "reviews/paper_3bbcd0bb5ced6be0.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_3bbcd0bb5ced6be0",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 3,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -1702,22 +1884,36 @@
   "bib": "@article{Chanussot2021OC20, author={Chanussot, Lowik and Das, Abhishek and Goyal, Siddharth and Lavril, Thibaut and Shuaibi, Muhammed and Riviere, Morgane and Tran, Kevin and Heras-Domingo, Javier and Ho, Caleb and Hu, Weihua and Palizhati, Aini and Sriram, Anuroop and Wood, Brandon and Yoon, Junwoong and Parikh, Devi and Zitnick, C. Lawrence and Ulissi, Zachary}, title={Open Catalyst 2020 ({OC20}) Dataset and Community Challenges}, journal={ACS Catalysis}, year={2021}, volume={11}, number={10}, pages={6059--6072}, doi={10.1021/acscatal.0c04525}}",
   "material_system": "Catalytic surface catalytic system",
   "baseline": "",
-  "score": 0,
+  "score": 0.6,
   "source_sheet": "预测与识别",
   "agent_review": {
    "paper_id": "paper_35d65cd8316e4e65",
    "scores": {
     "O": 2,
-    "A": "",
+    "A": 0,
     "I": 2,
     "G": 1,
     "U": 0,
     "P": 0,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_35d65cd8316e4e65.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_35d65cd8316e4e65",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -1734,7 +1930,7 @@
   "bib": "@article{Huan2016PolymerDataset, author={Huan, Tran Doan and Mannodi-Kanakkithodi, Arun and Kim, Chiho and Sharma, Vinit and Pilania, Ghanshyam and Ramprasad, Rampi}, title={A polymer dataset for accelerated property prediction and design}, journal={Scientific Data}, year={2016}, volume={3}, number={1}, pages={160012}, doi={10.1038/sdata.2016.12}}",
   "material_system": "Polymer polymer crystal",
   "baseline": "",
-  "score": 0,
+  "score": 0.9,
   "source_sheet": "预测与识别",
   "agent_review": {
    "paper_id": "paper_4dea7ac1d5e44eab",
@@ -1747,9 +1943,23 @@
     "P": 1,
     "E": 1,
     "R": 2,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_4dea7ac1d5e44eab.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_4dea7ac1d5e44eab",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 2,
+    "U": 0,
+    "P": 0,
+    "E": 1,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -2114,24 +2324,38 @@
   "bib": "",
   "material_system": "Polymer",
   "baseline": "VAE/AAE/ORGAN/CharRNN/REINVENT/GraphINVENT",
-  "score": 2.5,
+  "score": 1.8,
   "source_sheet": "逆向设计",
   "level": 3,
   "level_label": "Decision-oriented",
   "agent_review": {
-   "paper_id": "paper_8c3dd2cfb2ab06cc",
+   "paper_id": "paper_ec82c8921d72a8da",
    "scores": {
     "O": 3,
-    "A": "",
-    "I": 1,
-    "G": "",
-    "U": "",
-    "P": "",
-    "E": "",
-    "R": "",
-    "C": ""
+    "A": 1,
+    "I": 3,
+    "G": 2,
+    "U": 3,
+    "P": 2,
+    "E": 0,
+    "R": 1,
+    "C": 1
    },
-   "report_url": "reviews/paper_8c3dd2cfb2ab06cc.md"
+   "report_url": "reviews/paper_ec82c8921d72a8da.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_ec82c8921d72a8da",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": 3,
+    "G": 3,
+    "U": 3,
+    "P": 1,
+    "E": 0,
+    "R": 2,
+    "C": 0
+   }
   }
  },
  {
@@ -2167,7 +2391,7 @@
   "bib": "",
   "material_system": "Inorganic crystal",
   "baseline": "Random search (Random Generator + Random Planner + Random Selector); comparison Chemeleon/Chemeleon + Diversity/Chemeleon + LLM/Chemeleon + MLIP/LLM Orchestrator",
-  "score": 4.31,
+  "score": 2.3,
   "source_sheet": "逆向设计",
   "level": 4,
   "level_label": "Adaptive discovery",
@@ -2182,9 +2406,23 @@
     "P": 3,
     "E": 0,
     "R": 0,
-    "C": "待复核"
+    "C": 1
    },
    "report_url": "reviews/paper_0c72c10069f0b713.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_0c72c10069f0b713",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 4,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -2258,7 +2496,7 @@
   "bib": "",
   "material_system": "Inorganic crystal",
   "baseline": "2 baseline: random (AFLOW + )/data (DMSP); 4 generation model: CrystalLLM/FTCP/CDVAE/MatterGen",
-  "score": 2.19,
+  "score": 1.6,
   "source_sheet": "逆向设计",
   "level": 2,
   "level_label": "Design-oriented",
@@ -2269,13 +2507,27 @@
     "A": 2,
     "I": 3,
     "G": 2,
-    "U": "",
+    "U": 3,
     "P": 2,
     "E": 1,
     "R": 1,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_f8580239587da0a7.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_f8580239587da0a7",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": 3,
+    "G": 1,
+    "U": 2,
+    "P": 1,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -2292,7 +2544,7 @@
   "bib": "",
   "material_system": "Inorganic crystal/MOF",
   "baseline": "CrystalLLM(25M/200M)/Llama 3.1(8B)/DiffCSP/DiffCSP++/EquiCSP/FlowMM/MOFFlow/CDVAE/Cond-CDVAE",
-  "score": 1.12,
+  "score": 1.4,
   "source_sheet": "逆向设计",
   "level": 1,
   "level_label": "Predictive",
@@ -2301,15 +2553,29 @@
    "scores": {
     "O": 3,
     "A": 1,
-    "I": "",
+    "I": 3,
     "G": 2,
     "U": 3,
-    "P": "",
+    "P": 2,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_a3ca8a1e4918e58b.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_a3ca8a1e4918e58b",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": 2,
+    "G": 1,
+    "U": 2,
+    "P": 1,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -2345,7 +2611,7 @@
   "bib": "",
   "material_system": "Inorganic crystal",
   "baseline": "AtomGPT(LLM)/CDVAE/FlowMM( matching )/MatterGen",
-  "score": 1.06,
+  "score": 1.2,
   "source_sheet": "逆向设计",
   "level": 1,
   "level_label": "Predictive",
@@ -2354,15 +2620,29 @@
    "scores": {
     "O": 3,
     "A": 1,
-    "I": "",
+    "I": 2,
     "G": 2,
-    "U": "",
+    "U": 3,
     "P": 2,
     "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_cf0464f374b21599.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_cf0464f374b21599",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": 1,
+    "G": 1,
+    "U": 2,
+    "P": 1,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -2436,7 +2716,7 @@
   "bib": "",
   "material_system": "Organic molecular",
   "baseline": "HMM/NGram/Combinatorial/CharRNN/VAE/AAE/JTN-VAE/LatentGAN",
-  "score": 0.88,
+  "score": 1.2,
   "source_sheet": "逆向设计",
   "level": 1,
   "level_label": "Predictive",
@@ -2447,13 +2727,27 @@
     "A": 0,
     "I": 3,
     "G": 2,
-    "U": "待复核",
+    "U": 1,
     "P": 2,
     "E": 0,
-    "R": "NR",
-    "C": "待复核"
+    "R": 1,
+    "C": 2
    },
    "report_url": "reviews/paper_93bd12028b9e3cde.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_93bd12028b9e3cde",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 2,
+    "U": 0,
+    "P": 1,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -2489,7 +2783,7 @@
   "bib": "",
   "material_system": "Metamaterial",
   "baseline": "3 VLM: LLaVA/Nova/OpenAI o3; 2: MetaAssist (LLaVA)/MetaAssist (Nova); Constant/Random baseline",
-  "score": 2.19,
+  "score": 1.6,
   "source_sheet": "逆向设计",
   "level": 2,
   "level_label": "Design-oriented",
@@ -2500,13 +2794,27 @@
     "A": 1,
     "I": 3,
     "G": 3,
-    "U": "",
-    "P": "",
+    "U": 3,
+    "P": 2,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_2a0ac89738179b18.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_2a0ac89738179b18",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 1,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -2561,7 +2869,7 @@
   "bib": "",
   "material_system": "Inorganic crystal",
   "baseline": "DiffCSP/FlowMM/OMatG( )",
-  "score": 0.88,
+  "score": 1.3,
   "source_sheet": "逆向设计",
   "level": 1,
   "level_label": "Predictive",
@@ -2574,11 +2882,25 @@
     "G": 1,
     "U": 3,
     "P": 0,
-    "E": "待复核",
+    "E": 0,
     "R": 0,
-    "C": "待复核"
+    "C": 1
    },
    "report_url": "reviews/paper_192ad61d116c5a0f.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_192ad61d116c5a0f",
+   "scores": {
+    "O": 3,
+    "A": 1,
+    "I": 3,
+    "G": 1,
+    "U": 2,
+    "P": 1,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -2745,22 +3067,36 @@
   "bib": "",
   "material_system": "Inorganic crystal/material",
   "baseline": "eqV2 S DENS,ORB MPtrj,SevenNet,MACE,CHGNet,M3GNet,ALIGNN,MEGNet,CGCNN,CGCNN+P,Wrenformer,BOWSR,Voronoi RF,Dummy",
-  "score": 0,
+  "score": 1.7,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_f7de4fd5118c5f06",
    "scores": {
     "O": 2,
-    "A": "",
+    "A": 3,
     "I": 3,
     "G": 2,
     "U": 3,
-    "P": "",
+    "P": 2,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_f7de4fd5118c5f06.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_f7de4fd5118c5f06",
+   "scores": {
+    "O": 2,
+    "A": 3,
+    "I": 3,
+    "G": 2,
+    "U": 3,
+    "P": 1,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -2777,7 +3113,7 @@
   "bib": "",
   "material_system": "Inorganic material, catalytic molecular",
   "baseline": "Dummy model; LAMs: DPA/MACE/Orb/SevenNet/MatterSim/GRACE; model: MACE-OFF23/EquiformerV2/eSCN/JMP",
-  "score": 0,
+  "score": 0.9,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_a256b6e13a4e702e",
@@ -2785,14 +3121,28 @@
     "O": 2,
     "A": 0,
     "I": 3,
-    "G": "",
-    "U": "",
+    "G": 0,
+    "U": 0,
     "P": 2,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_a256b6e13a4e702e.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_a256b6e13a4e702e",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": 3,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -2809,7 +3159,7 @@
   "bib": "",
   "material_system": "Inorganic crystal/material",
   "baseline": "12 GNN: CGCNN/SchNet/MEGNet/DimeNet++/ALIGNN/PotNet/DeeperGATGNN/Matformer/iComFormer/eComFormer/SODNet/CrystalFramer; training baseline MSE MVE; UQ comparing 8",
-  "score": 0,
+  "score": 1.6,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_7be3d23c69b694bf",
@@ -2820,11 +3170,25 @@
     "G": 3,
     "U": 1,
     "P": 2,
-    "E": "",
-    "R": "",
-    "C": ""
+    "E": 2,
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_7be3d23c69b694bf.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_7be3d23c69b694bf",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 2,
+    "G": 3,
+    "U": 1,
+    "P": 2,
+    "E": 2,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -2841,22 +3205,36 @@
   "bib": "",
   "material_system": "Porous material ( MOF material )",
   "baseline": "baseline:UFF/UFF4MOF/MACE-MP-MOF0 ;host-guest baseline:MACE-DAC-1/UFF＋DDEC",
-  "score": 0,
+  "score": 1.6,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_744d4c2f2ea81244",
    "scores": {
-    "O": "",
-    "A": "",
+    "O": 3,
+    "A": 3,
     "I": 3,
     "G": 1,
     "U": 3,
-    "P": "",
+    "P": 2,
     "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_744d4c2f2ea81244.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_744d4c2f2ea81244",
+   "scores": {
+    "O": 2,
+    "A": 3,
+    "I": 3,
+    "G": 0,
+    "U": 3,
+    "P": 2,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -2873,22 +3251,36 @@
   "bib": "",
   "material_system": "Material/porous material//reaction surface/metal alloy and oxide material",
   "baseline": "External baseline; model: MACE/NequIP/Allegro/MTP/Torch-ANI",
-  "score": 0,
+  "score": 1.1,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_fe2e2be714bd8c87",
    "scores": {
     "O": 2,
     "A": 0,
-    "I": "",
-    "G": "",
-    "U": "",
-    "P": "",
-    "E": "",
-    "R": "",
-    "C": ""
+    "I": 3,
+    "G": 1,
+    "U": 3,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_fe2e2be714bd8c87.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_fe2e2be714bd8c87",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": 2,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -2905,22 +3297,36 @@
   "bib": "",
   "material_system": "Inorganic",
   "baseline": "MatBench SOTA MAE + GNN model i.i.d. MAE + 8 GNN model comparison (CGCNN/MEGNet/Schnet/DimeNet++/ALIGNN/DeeperGATGNN/coGN/coNGN)",
-  "score": 0,
+  "score": 0.8,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_3e81d013aa590a22",
    "scores": {
     "O": 1,
     "A": 0,
-    "I": "",
-    "G": "",
-    "U": "",
-    "P": "",
-    "E": "",
-    "R": "",
-    "C": ""
+    "I": 3,
+    "G": 1,
+    "U": 0,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_3e81d013aa590a22.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_3e81d013aa590a22",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": 0,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -2937,22 +3343,36 @@
   "bib": "",
   "material_system": "Inorganic crystal material",
   "baseline": "DeepH-pack/HamGNN",
-  "score": 0,
+  "score": 0.6,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_6323ab4b59a5cbad",
    "scores": {
     "O": 1,
     "A": 0,
-    "I": "",
-    "G": 1,
+    "I": 2,
+    "G": 3,
     "U": 0,
     "P": 0,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_6323ab4b59a5cbad.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_6323ab4b59a5cbad",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 2,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -2969,7 +3389,7 @@
   "bib": "",
   "material_system": "Organic molecular",
   "baseline": "PBE AIMD/MACE MP-0/MACE MH-1/UMA OMat/Orb/EquiformerV2/eSCN/SchNet/PaiNN/MatterSim/SevenNet/GFN-FF/GFN2-xTB",
-  "score": 0,
+  "score": 1.2,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_becb6500dda30e10",
@@ -2978,13 +3398,27 @@
     "A": 1,
     "I": 3,
     "G": 0,
-    "U": "",
+    "U": 3,
     "P": 2,
     "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_becb6500dda30e10.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_becb6500dda30e10",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": 3,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -3018,7 +3452,7 @@
   "bib": "",
   "material_system": "Crystal material ( inorganic crystal/MOFs/alloy/high-entropy alloy )",
   "baseline": "Baseline model: CGCNN(GNN baseline); comparison model: LLM-Prop(35M)/MatBERT(109.5M)/Llama 2-7b-chat/Llama 3/3.1/3.2/Mistral 7b-Instruct-v0.1/v0.2/v0.3/Gemma 7b/1.1-7b/2-9b",
-  "score": 0,
+  "score": 0.8,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_036776a8c17549e1",
@@ -3030,10 +3464,24 @@
     "U": 3,
     "P": 0,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_036776a8c17549e1.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_036776a8c17549e1",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": 2,
+    "P": 0,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -3050,7 +3498,7 @@
   "bib": "",
   "material_system": "Element/binary/ternary metal compound surface",
   "baseline": "Mean cleavage-energy baseline, Random-selection baseline",
-  "score": 0,
+  "score": 0.8,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_a85a5b73cd0f2d4d",
@@ -3060,12 +3508,26 @@
     "I": 1,
     "G": 2,
     "U": 0,
-    "P": "",
+    "P": 2,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_a85a5b73cd0f2d4d.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_a85a5b73cd0f2d4d",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 2,
+    "U": 0,
+    "P": 2,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -3082,7 +3544,7 @@
   "bib": "",
   "material_system": "Magnetic inorganic semiconductor crystal",
   "baseline": "7 uMLIP model (M3GNet/CHGNet/MACE-MP-0/SevenNet-0/MatterSim-v1/ORB/eqV2-M/PBESol",
-  "score": 0,
+  "score": 1.7,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_58eb1cbe13137f77",
@@ -3095,9 +3557,23 @@
     "P": 2,
     "E": 0,
     "R": 0,
-    "C": "待复核"
+    "C": 1
    },
    "report_url": "reviews/paper_58eb1cbe13137f77.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_58eb1cbe13137f77",
+   "scores": {
+    "O": 2,
+    "A": 3,
+    "I": 3,
+    "G": 2,
+    "U": 3,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -3114,22 +3590,36 @@
   "bib": "",
   "material_system": "Organic molecular",
   "baseline": "Cosine similarity",
-  "score": 0,
+  "score": 0.9,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_5012c0dc82f98b2f",
    "scores": {
     "O": 1,
     "A": 0,
-    "I": "",
+    "I": 2,
     "G": 0,
     "U": 1,
     "P": 0,
     "E": 2,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_5012c0dc82f98b2f.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_5012c0dc82f98b2f",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 0,
+    "U": 1,
+    "P": 0,
+    "E": 2,
+    "R": 1,
+    "C": 1
+   }
   }
  },
  {
@@ -3146,7 +3636,7 @@
   "bib": "",
   "material_system": "Inorganic material",
   "baseline": "CGCNN,SchNet,MEGNet,DimeNet/DimeNet++",
-  "score": 0,
+  "score": 0.8,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_09825257a0b31b27",
@@ -3159,9 +3649,23 @@
     "P": 2,
     "E": 0,
     "R": 0,
-    "C": "待复核"
+    "C": 2
    },
    "report_url": "reviews/paper_09825257a0b31b27.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_09825257a0b31b27",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 2,
+    "G": 0,
+    "U": 0,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -3178,7 +3682,7 @@
   "bib": "",
   "material_system": "Inorganic crystal structure",
   "baseline": "GAP/Behler-Parrinello BPNN/ANN NequIP-GNN MLIP",
-  "score": 0,
+  "score": 1.0,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_5de7ca8dd126933c",
@@ -3186,14 +3690,28 @@
     "O": 2,
     "A": 1,
     "I": 3,
-    "G": "",
-    "U": "",
-    "P": "",
+    "G": 1,
+    "U": 3,
+    "P": 0,
     "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_5de7ca8dd126933c.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_5de7ca8dd126933c",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": 3,
+    "P": 0,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -3210,22 +3728,36 @@
   "bib": "",
   "material_system": "Metal (Cu)/inorganic molecular (H₂) surface interface; material: catalytic/surface",
   "baseline": "Baseline: SchNet MLIP baseline; QCD-BOSS/CRP DCM(CRP+EAM) reaction dynamics main comparing PaiNN/MACE/REANN ACE MLIP; DFT/SRP48 main oracle, sticking curve, baseline",
-  "score": 0,
+  "score": 1.7,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_59d28a25ec077fad",
    "scores": {
     "O": 2,
-    "A": "",
+    "A": 1,
     "I": 3,
     "G": 2,
     "U": 1,
     "P": 2,
     "E": 2,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 1
    },
    "report_url": "reviews/paper_59d28a25ec077fad.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_59d28a25ec077fad",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 2,
+    "U": 1,
+    "P": 2,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
   }
  },
  {
@@ -3242,7 +3774,7 @@
   "bib": "",
   "material_system": "Si",
   "baseline": "Baseline: DFT K4/K1 benchmarks/handpicked benchmarks; comparison model: GAP/NNP/DeePMD/DeepPot-SE/MTP/SNAP",
-  "score": 0,
+  "score": 1.1,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_0a1a22ed94b70671",
@@ -3255,9 +3787,23 @@
     "P": 2,
     "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_0a1a22ed94b70671.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_0a1a22ed94b70671",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 3,
+    "U": 0,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -3274,7 +3820,7 @@
   "bib": "",
   "material_system": "Polymer",
   "baseline": "Baseline model: deterministic model; model: MVE/DEL/QREG/LA/MCD/MFVI/BNNVI/SWAG/DKL/VBLL/VBLL SNGP/Deep Ensemble/Mask Ensemble/Zigzag",
-  "score": 0,
+  "score": 0.9,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_ee9e2c898b39ced0",
@@ -3282,14 +3828,28 @@
     "O": 2,
     "A": 0,
     "I": 3,
-    "G": "",
+    "G": 1,
     "U": 1,
-    "P": "",
+    "P": 2,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 0,
+    "C": 0
    },
    "report_url": "reviews/paper_ee9e2c898b39ced0.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_ee9e2c898b39ced0",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": 1,
+    "P": 2,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -3306,7 +3866,7 @@
   "bib": "",
   "material_system": "DESs",
   "baseline": "Baseline model: mean predictor/temperature-only/ratio-only/temperature + ratio/component-identity baseline/1-NN k-NN; comparison model: Ridge regression/ExtraTrees regression/Histogram boosting regression",
-  "score": 0,
+  "score": 1.4,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_47bc819db83cb6cd",
@@ -3318,10 +3878,24 @@
     "U": 1,
     "P": 2,
     "E": 2,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 1
    },
    "report_url": "reviews/paper_47bc819db83cb6cd.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_47bc819db83cb6cd",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": 0,
+    "P": 2,
+    "E": 2,
+    "R": 2,
+    "C": 1
+   }
   }
  },
  {
@@ -3338,7 +3912,7 @@
   "bib": "",
   "material_system": "Heusler alloy",
   "baseline": "ALIGNN-F/ALIGNN MLRM/CHGNet/MatterSim/SevenNet-13i5/SevenNet-MFompa/HIENet/eqV2-S/M/L-OAM/eSEN-30M-OAM",
-  "score": 0,
+  "score": 1.8,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_aeb950686590b859",
@@ -3348,12 +3922,26 @@
     "I": 3,
     "G": 3,
     "U": 3,
-    "P": "",
+    "P": 2,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_aeb950686590b859.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_aeb950686590b859",
+   "scores": {
+    "O": 3,
+    "A": 2,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 1,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -3370,22 +3958,36 @@
   "bib": "",
   "material_system": "Alloy",
   "baseline": "Baseline model: Mistral-Nemo-Instruct-2407-bnb-4bit( ); comparison: aLLoyM model",
-  "score": 0,
+  "score": 0.8,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_fb5c5325f2b6e75a",
    "scores": {
     "O": 1,
     "A": 1,
-    "I": 1,
+    "I": 2,
     "G": 0,
-    "U": "",
+    "U": 1,
     "P": 0,
-    "E": "",
-    "R": "",
-    "C": ""
+    "E": 1,
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_fb5c5325f2b6e75a.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_fb5c5325f2b6e75a",
+   "scores": {
+    "O": 1,
+    "A": 1,
+    "I": 2,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 1,
+    "R": 1,
+    "C": 1
+   }
   }
  },
  {
@@ -3402,7 +4004,7 @@
   "bib": "",
   "material_system": "Metal/semiconductor",
   "baseline": "o4-mini/GPT-4.1-mini/GPT-4o/GPT-4o-mini/Llama-3.2-11B-Vision-Instruct/Pixtral-12B-2409/Qwen2.5-VL-7B-Instruct",
-  "score": 0,
+  "score": 0.4,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_8f78aeae2ef3150b",
@@ -3415,9 +4017,23 @@
     "P": 0,
     "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_8f78aeae2ef3150b.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_8f78aeae2ef3150b",
+   "scores": {
+    "O": 2,
+    "A": 1,
+    "I": 1,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -3434,7 +4050,7 @@
   "bib": "",
   "material_system": "Metal; Cu-Zr amorphous alloy; alloy/high-entropy",
   "baseline": "DistGNN; comparing GemNet-T/GemNet-Q/NequIP/MACE-3/MACE-4",
-  "score": 0,
+  "score": 0.4,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_1d8cb0afa5e3376b",
@@ -3447,9 +4063,23 @@
     "P": 0,
     "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_1d8cb0afa5e3376b.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_1d8cb0afa5e3376b",
+   "scores": {
+    "O": 1,
+    "A": 0,
+    "I": 1,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -3466,7 +4096,7 @@
   "bib": "",
   "material_system": "Inorganic metal; 2D; Cr Sb₂Te₃ layered vdW material",
   "baseline": "Scratch MACE; zero-shot MACE-MP Foundation; comparing FT-600K/FT-Multi-T",
-  "score": 0,
+  "score": 1.3,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_2b8e59823b13b1c0",
@@ -3478,10 +4108,24 @@
     "U": 1,
     "P": 2,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_2b8e59823b13b1c0.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_2b8e59823b13b1c0",
+   "scores": {
+    "O": 2,
+    "A": 3,
+    "I": 3,
+    "G": 0,
+    "U": 0,
+    "P": 2,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -3498,22 +4142,36 @@
   "bib": "",
   "material_system": "Organic molecular polymer",
   "baseline": "30 model (22 ML, 8 DL), Ridge/Lasso/ElasticNet/KRR/SVR/Random Forest/ExtraTrees/XGBoost/CatBoost/HistGradientBoosting/MLP/Transformer/GRU/DMPNN/GCN",
-  "score": 0,
+  "score": 1.2,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_ecf6e8c73a0f03f5",
    "scores": {
-    "O": "",
+    "O": 2,
     "A": 0,
     "I": 3,
-    "G": "",
+    "G": 1,
     "U": 1,
     "P": 2,
-    "E": "",
-    "R": "",
-    "C": ""
+    "E": 1,
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_ecf6e8c73a0f03f5.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_ecf6e8c73a0f03f5",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 3,
+    "G": 0,
+    "U": 0,
+    "P": 2,
+    "E": 1,
+    "R": 1,
+    "C": 1
+   }
   }
  },
  {
@@ -3530,7 +4188,7 @@
   "bib": "",
   "material_system": "Inorganic material; metal/alloy; ; 2D material; oxide",
   "baseline": "EAM; AGNI; 2-body FLARE; DFT/AIMD Oracle",
-  "score": 0,
+  "score": 2.1,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_692654f5d631fa19",
@@ -3543,9 +4201,23 @@
     "P": 3,
     "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_692654f5d631fa19.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_692654f5d631fa19",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 1,
+    "U": 4,
+    "P": 3,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -3562,22 +4234,36 @@
   "bib": "",
   "material_system": "Inorganic material; metal catalytic;/; catalytic/surface",
   "baseline": "ML baseline; catalytic/framework/metal performed comparing",
-  "score": 0,
+  "score": 0.8,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_2af73854e33cb1ea",
    "scores": {
-    "O": "",
-    "A": "",
+    "O": 0,
+    "A": 0,
     "I": 0,
     "G": 0,
     "U": 1,
-    "P": "",
+    "P": 0,
     "E": 2,
     "R": 2,
-    "C": ""
+    "C": 2
    },
    "report_url": "reviews/paper_2af73854e33cb1ea.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_2af73854e33cb1ea",
+   "scores": {
+    "O": 0,
+    "A": 0,
+    "I": 1,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
   }
  },
  {
@@ -3594,22 +4280,36 @@
   "bib": "",
   "material_system": "Inorganic metal; metal; inorganic material; crystal material",
   "baseline": "RF/XGB; comparison GMP/ALIGNN/LLM-Prop; random ID split",
-  "score": 0,
+  "score": 0.6,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
-   "paper_id": "paper_f42291af49684f7a",
+   "paper_id": "paper_c6b7cee075e9457b",
    "scores": {
     "O": 1,
     "A": 0,
-    "I": "",
+    "I": 2,
     "G": 1,
     "U": 1,
-    "P": "",
+    "P": 0,
     "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
-   "report_url": "reviews/paper_f42291af49684f7a.md"
+   "report_url": "reviews/paper_c6b7cee075e9457b.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_c6b7cee075e9457b",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 1,
+    "C": 1
+   }
   }
  },
  {
@@ -3626,22 +4326,36 @@
   "bib": "",
   "material_system": "Catalytic surface - system",
   "baseline": "Plain CGCNN/CGCNN*/FTCP/GINConv/NNConv/SchNet",
-  "score": 0,
+  "score": 0.5,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_0cd395d9c9bd2de7",
    "scores": {
     "O": 1,
     "A": 0,
-    "I": "",
+    "I": 2,
     "G": 1,
     "U": 0,
     "P": 0,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_0cd395d9c9bd2de7.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_0cd395d9c9bd2de7",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -3726,7 +4440,7 @@
   "bib": "",
   "material_system": "Inorganic material ( 89 element, covers oxide/P/metal compound )",
   "baseline": "",
-  "score": 0,
+  "score": 0.6,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_fa4a98d6e4bd6560",
@@ -3739,9 +4453,23 @@
     "P": 0,
     "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_fa4a98d6e4bd6560.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_fa4a98d6e4bd6560",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 1,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -3758,22 +4486,36 @@
   "bib": "",
   "material_system": "MOF",
   "baseline": "",
-  "score": 0,
+  "score": 2.2,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_819199dbc2b68f0b",
    "scores": {
-    "O": "待复核",
+    "O": 4,
     "A": 3,
-    "I": "待复核",
+    "I": 3,
     "G": 3,
     "U": 1,
     "P": 3,
     "E": 1,
     "R": 2,
-    "C": "待复核"
+    "C": 1
    },
    "report_url": "reviews/paper_819199dbc2b68f0b.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_819199dbc2b68f0b",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 0,
+    "P": 3,
+    "E": 1,
+    "R": 1,
+    "C": 1
+   }
   }
  },
  {
@@ -3790,7 +4532,7 @@
   "bib": "",
   "material_system": "MOFs",
   "baseline": "constant mean/Sine Coulomb matrix/Stoichiometric-45/120/Orbital field matrix/SOAP/CGCNN",
-  "score": 0,
+  "score": 0.5,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_8af976f1d32d22da",
@@ -3803,9 +4545,23 @@
     "P": 0,
     "E": 1,
     "R": 1,
-    "C": "待复核"
+    "C": 1
    },
    "report_url": "reviews/paper_8af976f1d32d22da.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_8af976f1d32d22da",
+   "scores": {
+    "O": 1,
+    "A": 0,
+    "I": 1,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -3822,7 +4578,7 @@
   "bib": "",
   "material_system": "Inorganic crystal, binary hexanary; layered/solid electrolyte/Li/Mn oxide",
   "baseline": "",
-  "score": 0,
+  "score": 2.3,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_f1af6c92eda54f5b",
@@ -3831,13 +4587,27 @@
     "A": 4,
     "I": 4,
     "G": 3,
-    "U": "",
+    "U": 2,
     "P": 3,
-    "E": "",
-    "R": "",
-    "C": ""
+    "E": 2,
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_f1af6c92eda54f5b.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_f1af6c92eda54f5b",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 4,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 1,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -3905,7 +4675,7 @@
   "bib": "",
   "material_system": "Inorganic crystal",
   "baseline": "",
-  "score": 0,
+  "score": 2.3,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_330656d13b53b995",
@@ -3914,13 +4684,27 @@
     "A": 4,
     "I": 4,
     "G": 2,
-    "U": "",
-    "P": "",
+    "U": 3,
+    "P": 3,
     "E": 1,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_330656d13b53b995.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_330656d13b53b995",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 2,
+    "U": 3,
+    "P": 2,
+    "E": 1,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -3937,7 +4721,7 @@
   "bib": "",
   "material_system": "Inorganic 3D/2D/1D crystal",
   "baseline": "",
-  "score": 0,
+  "score": 0.7,
   "source_sheet": "性质预测（正向）",
   "agent_review": {
    "paper_id": "paper_c701c3ba1d31e60d",
@@ -3949,10 +4733,24 @@
     "U": 0,
     "P": 0,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_c701c3ba1d31e60d.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_c701c3ba1d31e60d",
+   "scores": {
+    "O": 1,
+    "A": 1,
+    "I": 2,
+    "G": 2,
+    "U": 0,
+    "P": 0,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -4003,22 +4801,36 @@
   "bib": "",
   "material_system": "‑ ( inorganic metal ( perovskite )+ metal (AgNP)+ molecular (P3HT/CNT)+ composite (3D )",
   "baseline": "Random sampling random sampling; experimental group: RF/GP‑ARD/vanilla GP, EI/PI/LCB BO",
-  "score": 0,
+  "score": 2.4,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_669033fcd9c574bf",
    "scores": {
     "O": 4,
-    "A": "",
-    "I": "",
-    "G": 2,
+    "A": 3,
+    "I": 4,
+    "G": 1,
+    "U": 3,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 1
+   },
+   "report_url": "reviews/paper_669033fcd9c574bf.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_669033fcd9c574bf",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 1,
     "U": 2,
     "P": 3,
     "E": 2,
     "R": 2,
-    "C": ""
-   },
-   "report_url": "reviews/paper_669033fcd9c574bf.md"
+    "C": 1
+   }
   }
  },
  {
@@ -4035,7 +4847,7 @@
   "bib": "",
   "material_system": "Metal (Fe-Co-Ni ternary alloy )",
   "baseline": "Random sampling Random sampling; experimental group: EI/UCB/Add‑GP‑UCB/Thompson‑sampling/main CAMEO",
-  "score": 0,
+  "score": 2.6,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_ffd4dd8ad1c8c40e",
@@ -4048,9 +4860,23 @@
     "P": 3,
     "E": 1,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_ffd4dd8ad1c8c40e.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_ffd4dd8ad1c8c40e",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
   }
  },
  {
@@ -4067,7 +4893,7 @@
   "bib": "",
   "material_system": "Organic chemical reaction/chemical//material",
   "baseline": "Random Search(100 campaigns × 10000 evaluation ) 18 planners: GPyOpt/HyperOpt/PHOENICS/GENETIC/CMA-ES/PARTICLE SWARMS/DIFFERENTIAL EVOLUTION",
-  "score": 0,
+  "score": 2.3,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_57e3b0694b3795fa",
@@ -4079,10 +4905,24 @@
     "U": 1,
     "P": 3,
     "E": 1,
-    "R": "",
-    "C": ""
+    "R": 2,
+    "C": 1
    },
    "report_url": "reviews/paper_57e3b0694b3795fa.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_57e3b0694b3795fa",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 1,
+    "U": 2,
+    "P": 3,
+    "E": 1,
+    "R": 2,
+    "C": 1
+   }
   }
  },
  {
@@ -4099,22 +4939,36 @@
   "bib": "",
   "material_system": "Inorganic metal (Li₆PS₅Cl )+ composite (8-ply ))+ (Ishigami)",
   "baseline": "Uniform random search random sampling",
-  "score": 0,
+  "score": 2.1,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_38b50d64f57c7696",
    "scores": {
     "O": 4,
     "A": 4,
-    "I": "",
-    "G": "",
+    "I": 3,
+    "G": 1,
     "U": 2,
     "P": 3,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_38b50d64f57c7696.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_38b50d64f57c7696",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": 2,
+    "C": 0
+   }
   }
  },
  {
@@ -4148,13 +5002,13 @@
   "bib": "",
   "material_system": "Inorganic metal oxide",
   "baseline": "Random sample selection random sampling comparing ML model: Random Forest (RF)/Gaussian Process (GP)/Linear Ensemble/query-by-committee (LE)",
-  "score": 0,
+  "score": 2.5,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_b1c30c36b5fa420f",
    "scores": {
     "O": 4,
-    "A": 4,
+    "A": 3,
     "I": 3,
     "G": 2,
     "U": 2,
@@ -4164,6 +5018,20 @@
     "C": 2
    },
    "report_url": "reviews/paper_b1c30c36b5fa420f.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_b1c30c36b5fa420f",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 1,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
   }
  },
  {
@@ -4180,7 +5048,7 @@
   "bib": "",
   "material_system": "Inorganic metal",
   "baseline": "CDVAE/Cond‑CDVAE/DiffCSP/DiffCSP++/EquiCSP/FlowMM/MOFFlow; CrystaLLM/Llama‑3.1‑8B experimental group: generation model/checkpoint",
-  "score": 0,
+  "score": 2.4,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_737aef662195d14e",
@@ -4191,11 +5059,25 @@
     "G": 3,
     "U": 3,
     "P": 3,
-    "E": "",
+    "E": 0,
     "R": 2,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_737aef662195d14e.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_737aef662195d14e",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 4,
+    "G": 3,
+    "U": 3,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -4231,7 +5113,7 @@
   "bib": "",
   "material_system": "Inorganic metal, metal",
   "baseline": "Random search Random search experimental group: novelty‑only/50/50 equal‑weight/performance‑only DiSCoVeR",
-  "score": 0,
+  "score": 1.9,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_be59af8c4cfe6687",
@@ -4240,13 +5122,27 @@
     "A": 4,
     "I": 3,
     "G": 3,
-    "U": "",
+    "U": 0,
     "P": 3,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_be59af8c4cfe6687.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_be59af8c4cfe6687",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 0,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -4263,22 +5159,36 @@
   "bib": "",
   "material_system": "Inorganic metal",
   "baseline": "Random search RS experimental group: EV/EI/MU",
-  "score": 0,
+  "score": 2.3,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_5b550c8f9ec91c7d",
    "scores": {
     "O": 4,
-    "A": 4,
+    "A": 3,
     "I": 3,
     "G": 1,
     "U": 2,
     "P": 3,
     "E": 2,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 1
    },
    "report_url": "reviews/paper_5b550c8f9ec91c7d.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_5b550c8f9ec91c7d",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 1,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 1
+   }
   }
  },
  {
@@ -4295,22 +5205,36 @@
   "bib": "",
   "material_system": "Inorganic metal ( cementitious material, material AAB/)",
   "baseline": "Random sampling RP; experimental group: GPR/DT/TE model × MEI/MLI/MEI+D/MLI+D, 12 SL algorithm",
-  "score": 0,
+  "score": 2.5,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_301f9bbdc0c649bc",
    "scores": {
     "O": 4,
-    "A": 4,
+    "A": 3,
     "I": 4,
-    "G": "",
+    "G": 1,
     "U": 2,
     "P": 3,
     "E": 2,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_301f9bbdc0c649bc.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_301f9bbdc0c649bc",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
   }
  },
  {
@@ -4327,22 +5251,36 @@
   "bib": "",
   "material_system": "Inorganic metal ( cementitious material,/AAB)",
   "baseline": "Random sampling Random Draw (RD); experimental group: GPR/RF model × MLI",
-  "score": 0,
+  "score": 2.6,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_c51a591a222cd8f5",
    "scores": {
     "O": 4,
-    "A": "",
+    "A": 3,
     "I": 4,
     "G": 3,
     "U": 2,
     "P": 3,
     "E": 2,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_c51a591a222cd8f5.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_c51a591a222cd8f5",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 1
+   }
   }
  },
  {
@@ -4359,13 +5297,13 @@
   "bib": "",
   "material_system": "Inorganic metal ( cementitious material, AAC)",
   "baseline": "Random RD; experimental group: GPR/RF model × 3 pipelines(vanilla/PCA/grid search feature )× 2 strategies(Exploitation=0/Exploration=2)× 2 ISS(4/20)× 2 (SOO/MOO)",
-  "score": 0,
+  "score": 2.7,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_64c74bb927f6f71b",
    "scores": {
     "O": 4,
-    "A": "",
+    "A": 3,
     "I": 4,
     "G": 3,
     "U": 2,
@@ -4375,6 +5313,20 @@
     "C": 1
    },
    "report_url": "reviews/paper_64c74bb927f6f71b.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_64c74bb927f6f71b",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
   }
  },
  {
@@ -4391,22 +5343,36 @@
   "bib": "",
   "material_system": "Inorganic metal ( cementitious, AAC)",
   "baseline": "Random sampling RD/BO‑GPR/SL‑RF random; experimental group: KDD: GPT-3.5-Turbo(SFDL TT=1/TVDL TT=3)/GPT-4-Turbo(SFDL only)/Design knowledge(None/Generic/Specific)/10 cycles(GPT-3.5)/5 cycles(GPT-4)",
-  "score": 0,
+  "score": 2.3,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_66187f2092fbec57",
    "scores": {
     "O": 4,
-    "A": 4,
+    "A": 3,
     "I": 4,
-    "G": "",
-    "U": "",
-    "P": "",
+    "G": 2,
+    "U": 1,
+    "P": 3,
     "E": 2,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_66187f2092fbec57.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_66187f2092fbec57",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 1,
+    "U": 0,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
   }
  },
  {
@@ -4423,22 +5389,36 @@
   "bib": "",
   "material_system": "MXene semiconductor (2D transition-metal carbides/nitrides)",
   "baseline": "Random selection 7 query policies: ε-greedy(ε=0.1)/uncertainty sampling/entropy sampling/UCB(β=0.75)/Thompson sampling/greedy/uncertainty+diversity Surrogate model: XGBoost(Task 1); Random Forest regressor(Task 2, batch-mode UCB)",
-  "score": 0,
+  "score": 2.0,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_240fb502f75ecb60",
    "scores": {
     "O": 4,
-    "A": "",
+    "A": 3,
     "I": 3,
     "G": 2,
     "U": 2,
     "P": 3,
     "E": 0,
     "R": 1,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_240fb502f75ecb60.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_240fb502f75ecb60",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -4455,7 +5435,7 @@
   "bib": "",
   "material_system": "Inorganic metal (MAX material )",
   "baseline": "Space-filling DoE: UDS(Uniform Design Sampling)/LHS(Latin Hypercube Sampling)/SPM(Sphere Packing Method) State-of-the-art MOO: NSGA-II(metaheuristic)/KGB-DMOEA(ML-based) BMSDM: GP surrogate + qEHVI acquisition function",
-  "score": 0,
+  "score": 2.3,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_d7e16d7012634264",
@@ -4466,11 +5446,25 @@
     "G": 4,
     "U": 2,
     "P": 3,
-    "E": "",
-    "R": "",
-    "C": ""
+    "E": 1,
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_d7e16d7012634264.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_d7e16d7012634264",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -4487,7 +5481,7 @@
   "bib": "",
   "material_system": "Inorganic material",
   "baseline": "Single-fidelity( HSE, a = 0, c = 0.58); Random campaign(c = 0.24); Ideal multifidelity( all LF, c = 0.87); Palizhati et al. (single model + one-hot encoding, c = 0.58-0.67) experimental group: model",
-  "score": 0,
+  "score": 2.1,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_7105a7a95b78f39c",
@@ -4496,13 +5490,27 @@
     "A": 4,
     "I": 4,
     "G": 2,
-    "U": "",
+    "U": 1,
     "P": 3,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_7105a7a95b78f39c.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_7105a7a95b78f39c",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -4519,22 +5527,36 @@
   "bib": "",
   "material_system": "Inorganic nanoparticle (AuNP)",
   "baseline": "Random sampling; VanillaBO vs SAASBO; F(Q) vs G(r) vs",
-  "score": 0,
+  "score": 2.5,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_180a750db12224c6",
    "scores": {
-    "O": "",
-    "A": "",
-    "I": "",
-    "G": "",
-    "U": "",
-    "P": "",
-    "E": "",
-    "R": "",
-    "C": ""
+    "O": 4,
+    "A": 4,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 1
    },
    "report_url": "reviews/paper_180a750db12224c6.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_180a750db12224c6",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -4585,7 +5607,7 @@
   "bib": "",
   "material_system": "Inorganic metal ( inorganic crystal material )",
   "baseline": "BO agent( candidate + model + UCB ); RL agent(/actor-critic/GNN ); evaluation (MLIP ASE )",
-  "score": 0,
+  "score": 2.2,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_044444a254ac0885",
@@ -4594,13 +5616,27 @@
     "A": 4,
     "I": 3,
     "G": 3,
-    "U": "",
+    "U": 2,
     "P": 3,
-    "E": "",
+    "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_044444a254ac0885.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_044444a254ac0885",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 3,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -4617,22 +5653,36 @@
   "bib": "",
   "material_system": "",
   "baseline": "",
-  "score": 0,
+  "score": 2.1,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_753d8524f924172f",
    "scores": {
     "O": 3,
-    "A": "",
+    "A": 3,
     "I": 3,
-    "G": "",
-    "U": "",
+    "G": 1,
+    "U": 3,
     "P": 3,
-    "E": "",
-    "R": "",
-    "C": ""
+    "E": 2,
+    "R": 1,
+    "C": 1
    },
    "report_url": "reviews/paper_753d8524f924172f.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_753d8524f924172f",
+   "scores": {
+    "O": 3,
+    "A": 3,
+    "I": 3,
+    "G": 1,
+    "U": 2,
+    "P": 3,
+    "E": 1,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -4649,22 +5699,36 @@
   "bib": "",
   "material_system": "Inorganic metal + composite + metal: primary alloy material; secondary polymer/composite",
   "baseline": "ML model: GPR/RFR/XGBoost/Bayesian Neural Network(UCB ); Random Walk; Random Sampling",
-  "score": 0,
+  "score": 2.5,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_0dcd7c25438c4ba0",
    "scores": {
     "O": 4,
-    "A": "",
-    "I": "",
-    "G": "",
+    "A": 4,
+    "I": 4,
+    "G": 2,
     "U": 2,
     "P": 3,
     "E": 2,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_0dcd7c25438c4ba0.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_0dcd7c25438c4ba0",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 1,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 1
+   }
   }
  },
  {
@@ -4698,7 +5762,7 @@
   "bib": "",
   "material_system": "Organic chemical/material: primary catalytic system; secondary simulation (pétanque simulation )",
   "baseline": "BO-only/LLM-only/SAAS‑BO baseline/HypBO( )/ColaBO; 5 LLM: o4-mini/o3/gpt-5-mini/gpt-5/gemini-2.5-flash",
-  "score": 0,
+  "score": 2.6,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_1b2f128d9a3ac0b3",
@@ -4711,9 +5775,23 @@
     "P": 3,
     "E": 1,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_1b2f128d9a3ac0b3.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_1b2f128d9a3ac0b3",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 4,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 1,
+    "R": 2,
+    "C": 1
+   }
   }
  },
  {
@@ -4730,22 +5808,36 @@
   "bib": "",
   "material_system": "Inorganic metal (Mg/Sm/Fe/REE selective )",
   "baseline": "1. Oracle-pathway BO( pathway, ) 2. Split-plate BO( plate candidate pathway, ) 3. Commit-first BO( plausible default pathway, , simulated baseline ) 4. Random search",
-  "score": 0,
+  "score": 2.6,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_5e6dcc9758a01aa2",
    "scores": {
     "O": 4,
-    "A": "",
-    "I": "",
-    "G": "",
+    "A": 3,
+    "I": 4,
+    "G": 2,
     "U": 4,
     "P": 3,
     "E": 1,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_5e6dcc9758a01aa2.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_5e6dcc9758a01aa2",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 4,
+    "G": 3,
+    "U": 4,
+    "P": 3,
+    "E": 1,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -4762,7 +5854,7 @@
   "bib": "",
   "material_system": "Metal (MP metal + HEA)",
   "baseline": "None( ); random random; mutation; digest; experimental group: llm model",
-  "score": 0,
+  "score": 2.1,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_3279168eaba04fad",
@@ -4771,13 +5863,27 @@
     "A": 4,
     "I": 4,
     "G": 3,
-    "U": "",
+    "U": 2,
     "P": 3,
-    "E": "",
+    "E": 0,
     "R": 0,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_3279168eaba04fad.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_3279168eaba04fad",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -4794,22 +5900,36 @@
   "bib": "",
   "material_system": "Primary: COF COF; secondary: fiber composite pressure vessel ( ‑ structure ‑ )",
   "baseline": "BO/based on BO",
-  "score": 0,
+  "score": 2.5,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_52ddefaf39f8438e",
    "scores": {
     "O": 4,
-    "A": "",
+    "A": 3,
     "I": 4,
-    "G": "",
+    "G": 4,
     "U": 4,
     "P": 3,
     "E": 0,
-    "R": "",
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_52ddefaf39f8438e.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_52ddefaf39f8438e",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 4,
+    "P": 3,
+    "E": 0,
+    "R": 2,
+    "C": 0
+   }
   }
  },
  {
@@ -4826,7 +5946,7 @@
   "bib": "",
   "material_system": "Primary: molecular material; secondary: COF porous material (Xe/Kr separation )",
   "baseline": "SFBO( BO): Single‑Fidelity Expected Improvement/Single‑Fidelity Maximum Entropy Search random search",
-  "score": 0,
+  "score": 2.3,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_9b7ccdcef6943f1a",
@@ -4838,10 +5958,24 @@
     "U": 2,
     "P": 3,
     "E": 2,
-    "R": 2,
-    "C": ""
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_9b7ccdcef6943f1a.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_9b7ccdcef6943f1a",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 1,
+    "C": 1
+   }
   }
  },
  {
@@ -4858,7 +5992,7 @@
   "bib": "",
   "material_system": "Inorganic metal ( oxide/P 57 )",
   "baseline": "none",
-  "score": 0,
+  "score": 3.1,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_574b5523f857b544",
@@ -4871,9 +6005,23 @@
     "P": 3,
     "E": 2,
     "R": 2,
-    "C": ""
+    "C": 2
    },
    "report_url": "reviews/paper_574b5523f857b544.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_574b5523f857b544",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 3,
+    "U": 3,
+    "P": 4,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
   }
  },
  {
@@ -4890,7 +6038,7 @@
   "bib": "",
   "material_system": "Metal (Ta-Ti-Hf-Zr thin film )+ composite",
   "baseline": "Grid search",
-  "score": 0,
+  "score": 3.1,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_4544d44eca696916",
@@ -4898,14 +6046,28 @@
     "O": 4,
     "A": 4,
     "I": 4,
-    "G": "",
-    "U": "",
-    "P": "",
-    "E": "",
+    "G": 3,
+    "U": 3,
+    "P": 3,
+    "E": 2,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_4544d44eca696916.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_4544d44eca696916",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 3,
+    "U": 4,
+    "P": 4,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
   }
  },
  {
@@ -4939,7 +6101,7 @@
   "bib": "",
   "material_system": "Organic (OPV polymer )",
   "baseline": "Grid search; random sampling baseline",
-  "score": 0,
+  "score": 2.8,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_8b2c8b4d29c6bbb1",
@@ -4948,13 +6110,27 @@
     "A": 4,
     "I": 4,
     "G": 3,
-    "U": "",
+    "U": 1,
     "P": 3,
     "E": 2,
     "R": 2,
-    "C": ""
+    "C": 2
    },
    "report_url": "reviews/paper_8b2c8b4d29c6bbb1.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_8b2c8b4d29c6bbb1",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 4,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
   }
  },
  {
@@ -4971,7 +6147,7 @@
   "bib": "",
   "material_system": "Metal ( quaternary Ni-Pd-Pt-Ru )",
   "baseline": "",
-  "score": 0,
+  "score": 2.2,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_b46bd6b0e10e4fe0",
@@ -4979,14 +6155,28 @@
     "O": 4,
     "A": 2,
     "I": 4,
-    "G": 2,
+    "G": 1,
     "U": 2,
     "P": 1,
     "E": 2,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_b46bd6b0e10e4fe0.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_b46bd6b0e10e4fe0",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 1,
+    "U": 2,
+    "P": 1,
+    "E": 2,
+    "R": 2,
+    "C": 2
+   }
   }
  },
  {
@@ -5003,22 +6193,36 @@
   "bib": "",
   "material_system": "Organic molecular",
   "baseline": "",
-  "score": 0,
+  "score": 2.1,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_5458a944eba9b2bd",
    "scores": {
     "O": 4,
-    "A": 4,
-    "I": 4,
+    "A": 3,
+    "I": 3,
     "G": 3,
     "U": 2,
     "P": 3,
     "E": 0,
     "R": 1,
-    "C": ""
+    "C": 0
    },
    "report_url": "reviews/paper_5458a944eba9b2bd.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_5458a944eba9b2bd",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 3,
+    "E": 0,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {
@@ -5035,7 +6239,7 @@
   "bib": "",
   "material_system": "Organic + inorganic metal + catalytic/surface +/( chemical reaction/material/chemical/continuous/)",
   "baseline": "",
-  "score": 0,
+  "score": 2.7,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_34d66e563782ec27",
@@ -5048,9 +6252,23 @@
     "P": 3,
     "E": 2,
     "R": 2,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_34d66e563782ec27.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_34d66e563782ec27",
+   "scores": {
+    "O": 4,
+    "A": 3,
+    "I": 3,
+    "G": 3,
+    "U": 3,
+    "P": 3,
+    "E": 2,
+    "R": 2,
+    "C": 1
+   }
   }
  },
  {
@@ -5067,22 +6285,36 @@
   "bib": "",
   "material_system": "Organic",
   "baseline": "",
-  "score": 0,
+  "score": 2.1,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_107a8cc77c33fa31",
    "scores": {
     "O": 4,
-    "A": "",
+    "A": 3,
     "I": 3,
     "G": 3,
-    "U": "",
-    "P": "",
-    "E": "",
-    "R": "",
-    "C": ""
+    "U": 2,
+    "P": 2,
+    "E": 0,
+    "R": 1,
+    "C": 0
    },
    "report_url": "reviews/paper_107a8cc77c33fa31.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_107a8cc77c33fa31",
+   "scores": {
+    "O": 4,
+    "A": 4,
+    "I": 3,
+    "G": 3,
+    "U": 2,
+    "P": 2,
+    "E": 0,
+    "R": 2,
+    "C": 0
+   }
   }
  },
  {
@@ -5099,22 +6331,36 @@
   "bib": "",
   "material_system": "Inorganic crystal ( binary/ternary ordered )",
   "baseline": "MatPES training MACE model",
-  "score": 0,
+  "score": 1.9,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_32490800eb5c2ffd",
    "scores": {
     "O": 2,
-    "A": "",
+    "A": 3,
     "I": 3,
-    "G": "",
-    "U": "",
+    "G": 1,
+    "U": 3,
     "P": 2,
     "E": 2,
-    "R": "",
-    "C": ""
+    "R": 0,
+    "C": 1
    },
    "report_url": "reviews/paper_32490800eb5c2ffd.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_32490800eb5c2ffd",
+   "scores": {
+    "O": 2,
+    "A": 3,
+    "I": 3,
+    "G": 2,
+    "U": 2,
+    "P": 3,
+    "E": 2,
+    "R": 0,
+    "C": 0
+   }
   }
  },
  {
@@ -5131,22 +6377,36 @@
   "bib": "",
   "material_system": "High-entropy alloy/alloy (HEAs/CCAs/MPEAs)",
   "baseline": "",
-  "score": 0,
+  "score": 0.7,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_28a661eca508137d",
    "scores": {
-    "O": "",
-    "A": "",
-    "I": "",
-    "G": "",
-    "U": "",
-    "P": "",
-    "E": "",
-    "R": "",
-    "C": ""
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 1,
+    "U": 0,
+    "P": 0,
+    "E": 1,
+    "R": 1,
+    "C": 1
    },
    "report_url": "reviews/paper_28a661eca508137d.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_28a661eca508137d",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 0,
+    "U": 0,
+    "P": 0,
+    "E": 1,
+    "R": 1,
+    "C": 1
+   }
   }
  },
  {
@@ -5163,22 +6423,36 @@
   "bib": "",
   "material_system": "Inorganic metal ( 2D material, crystal )",
   "baseline": "",
-  "score": 0,
+  "score": 1.2,
   "source_sheet": "迭代优化（时序）",
   "agent_review": {
    "paper_id": "paper_20592e73266e0346",
    "scores": {
-    "O": 0,
+    "O": 3,
     "A": 1,
     "I": 0,
-    "G": "",
-    "U": "",
+    "G": 2,
+    "U": 1,
     "P": 2,
     "E": 1,
     "R": 1,
-    "C": ""
+    "C": 1
    },
    "report_url": "reviews/paper_20592e73266e0346.md"
+  },
+  "expert_review": {
+   "paper_id": "paper_20592e73266e0346",
+   "scores": {
+    "O": 2,
+    "A": 0,
+    "I": 1,
+    "G": 2,
+    "U": 0,
+    "P": 2,
+    "E": 1,
+    "R": 1,
+    "C": 0
+   }
   }
  },
  {

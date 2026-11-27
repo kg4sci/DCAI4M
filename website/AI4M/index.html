@@ -93,6 +93,8 @@
   .badge-score.zero{background:#f1f5f9;color:#94a3b8}
   .badge-agent{background:var(--amber-light);color:var(--amber);cursor:pointer;border:none;font-family:var(--font);font-size:11px;padding:4px 10px;border-radius:12px;font-weight:600;white-space:nowrap;letter-spacing:.01em;transition:all .15s}
   .badge-agent:hover{background:var(--amber);color:#fff;box-shadow:0 2px 6px rgba(217,119,6,.3);transform:translateY(-1px)}
+  .badge-expert{background:var(--sky-light);color:var(--sky);cursor:pointer;border:none;font-family:var(--font);font-size:11px;padding:4px 10px;border-radius:12px;font-weight:600;white-space:nowrap;letter-spacing:.01em;transition:all .15s}
+  .badge-expert:hover{background:var(--sky);color:#fff;box-shadow:0 2px 6px rgba(2,132,199,.3);transform:translateY(-1px)}
   .card-desc{font-size:13px;color:var(--text2);margin-top:8px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .card-desc.open{-webkit-line-clamp:unset}
   .card-expand{font-size:12px;color:var(--primary);cursor:pointer;border:none;background:none;padding:2px 0;margin-top:3px;font-family:var(--font);font-weight:500}
@@ -344,12 +346,16 @@
   <div class="modal">
     <div class="modal-header">
       <h2 id="modal-title">Agent Evaluation</h2>
-      <span class="m-badge">Agent Review</span>
+      <span class="m-badge" id="modal-reviewer">Agent Review</span>
       <button class="modal-close" onclick="closeReview()">&times;</button>
     </div>
     <div class="modal-body">
       <div class="info-line"><strong>Dataset:</strong> <span id="modal-dsname"></span></div>
       <div class="info-line"><strong>Paper ID:</strong> <span id="modal-paperid"></span></div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="badge badge-agent" id="btn-agent-tab" onclick="switchReviewer('agent')" style="font-size:12px;padding:5px 12px">&#129488; AI Review</button>
+        <button class="badge badge-expert" id="btn-expert-tab" onclick="switchReviewer('expert')" style="font-size:12px;padding:5px 12px">&#128100; Expert Review</button>
+      </div>
       <div class="score-section">
         <h3><span class="axis-tag x-tag">X</span> Task Intelligence</h3>
         <div class="x-dims" id="modal-x"></div>
@@ -515,7 +521,8 @@ function renderCards() {
     const expandable = desc.length>200;
     descStore._[idx] = {full:desc, short};
     const sc = (d.score||0)>0 ? 'badge-score' : 'badge-score zero';
-    const st = (d.score||0)>0 ? `&#9733; ${d.score}` : '&#9734; 0';
+    const sv = (d.score||0)>0 ? d.score : 0;
+    const st = (d.score||0)>0 ? `&#9733; ${Number(sv)===Math.floor(sv)?sv:sv.toFixed(1)}` : '&#9734; 0';
     return `<div class="card">
       <div class="card-top">
         <div class="card-name">${d.url ? `<a href="${escHtml(d.url)}" target="_blank" rel="noopener" title="${escHtml(d.url)}">${escHtml(d.name||'(untitled)')}</a>` : escHtml(d.name||'(untitled)')}</div>
@@ -525,7 +532,8 @@ function renderCards() {
           <span class="badge badge-task">${escHtml(d.task_type||'')}</span>
           ${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : ''}
           <span class="badge ${sc}">${st}</span>
-                    ${d.agent_review ? `<button class="badge badge-agent" onclick="openReview(${idx})" title="View LLM evaluation scores">&#129488; AI Review</button>` : ''}
+                    ${d.agent_review ? `<button class="badge badge-agent" onclick="openReview(${idx},'agent')" title="AI evaluation scores">&#129488; AI Review</button>` : ''}
+                              ${d.expert_review ? `<button class="badge badge-expert" onclick="openReview(${idx},'expert')" title="Expert evaluation scores">&#128100; Expert</button>` : ''}
         </div>
       </div>
       <div class="card-desc" id="dsc-${idx}">${short}</div>
@@ -563,7 +571,7 @@ function renderTable() {
       <td>${d.data_type ? `<span class="badge badge-dt">${escHtml(d.data_type)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
       <td><span class="badge badge-task">${escHtml(d.task_type||'')}</span></td>
       <td>${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
-      <td style="font-weight:600;color:${(d.score||0)>0?'var(--emerald)':'var(--text3)'}">${sc}${d.agent_review ? ` <button class="badge badge-agent" style="font-size:10px;padding:2px 7px" onclick="openReview(${start+i})">&#129488;</button>` : ''}</td>
+      <td style="font-weight:600;color:${(d.score||0)>0?'var(--emerald)':'var(--text3)'}">${sc}${d.agent_review ? ` <button class="badge badge-agent" style="font-size:10px;padding:2px 7px" onclick="openReview(${start+i},'agent')">&#129488;</button>` : ''}${d.expert_review ? ` <button class="badge badge-expert" style="font-size:10px;padding:2px 7px" onclick="openReview(${start+i},'expert')">&#128100;</button>` : ''}</td>
       <td class="td-desc">${escHtml((d.description||'').slice(0,150))}${(d.description||'').length>150?'&hellip;':''}</td>
       <td class="td-url">${d.url ? `<a href="${escHtml(d.url)}" target="_blank" rel="noopener">link</a>` : ''}</td>
       <td style="font-size:12px">${escHtml((d.doi||'').slice(0,40))}</td>
@@ -760,13 +768,52 @@ const Y_DIMS = [
   {code:'C', name:'Completeness of Key Experimental Conditions', levels:['Only material identity and results are provided; conditions needed to interpret results are missing.','Some key conditions are provided, but missing ones affect interpretation or comparison.','Key preparation, processing, and measurement conditions required by the task are provided, traceable to individual samples or standardized protocols.']},
 ];
 
-function openReview(idx) {
-  const d = filtered[idx];
-  if (!d||!d.agent_review) return;
-  const r = d.agent_review;
-  const sc = r.scores || {};
+let _reviewIdx = 0, _reviewType = 'agent';
 
-  // X-axis: Task Intelligence — score bars
+function openReview(idx, type) {
+  _reviewIdx = idx;
+  _reviewType = type || 'agent';
+  renderReview();
+  document.getElementById('review-modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  // Highlight active tab
+  const ab = document.getElementById('btn-agent-tab');
+  const eb = document.getElementById('btn-expert-tab');
+  // Hide expert tab if no expert review
+  const ds = filtered[_reviewIdx];
+  if (ds && ds.expert_review) { eb.style.display = ''; }
+  else { eb.style.display = 'none'; _reviewType = 'agent'; }
+  if (_reviewType === 'agent') { ab.style.opacity='1'; ab.style.boxShadow='0 0 0 2px var(--amber)'; eb.style.opacity='.5'; eb.style.boxShadow='none'; }
+  else { eb.style.opacity='1'; eb.style.boxShadow='0 0 0 2px var(--sky)'; ab.style.opacity='.5'; ab.style.boxShadow='none'; }
+}
+
+function switchReviewer(type) {
+  _reviewType = type;
+  renderReview();
+  const ab = document.getElementById('btn-agent-tab');
+  const eb = document.getElementById('btn-expert-tab');
+  if (type === 'agent') { ab.style.opacity='1'; ab.style.boxShadow='0 0 0 2px var(--amber)'; eb.style.opacity='.5'; eb.style.boxShadow='none'; }
+  else { eb.style.opacity='1'; eb.style.boxShadow='0 0 0 2px var(--sky)'; ab.style.opacity='.5'; ab.style.boxShadow='none'; }
+}
+
+function renderReview() {
+  const d = filtered[_reviewIdx];
+  if (!d) return;
+  const review = _reviewType === 'expert' ? d.expert_review : d.agent_review;
+  if (!review) return;
+  const sc = review.scores || {};
+  const tag = _reviewType === 'expert' ? 'Expert Review' : 'Agent Review';
+
+  document.getElementById('modal-title').textContent = tag + ' — '+(d.name||'(untitled)');
+  document.getElementById('modal-reviewer').textContent = tag;
+  document.getElementById('modal-reviewer').className = _reviewType === 'expert' ? 'm-badge' : 'm-badge';
+  document.getElementById('modal-reviewer').style.background = _reviewType === 'expert' ? 'var(--sky-light)' : 'var(--amber-light)';
+  document.getElementById('modal-reviewer').style.color = _reviewType === 'expert' ? 'var(--sky)' : 'var(--amber)';
+  document.getElementById('modal-dsname').textContent = d.name||'';
+  document.getElementById('modal-paperid').textContent = review.paper_id||'N/A';
+  document.getElementById('modal-footer-id').textContent = 'Paper ID: '+(review.paper_id||'N/A');
+
+  // X-axis
   let xHtml = '';
   X_DIMS.forEach(dim => {
     let v = sc[dim.code];
@@ -774,9 +821,10 @@ function openReview(idx) {
     if (v===undefined||v===null||v==='') { display='?'; pending=true; }
     else if (typeof v==='string'&&v.includes('待复核')) { display='?'; pending=true; }
     else if (typeof v==='string'&&v.startsWith('~')) { display=v; pending=true; }
+    else if (typeof v==='number') { display = Number(v)===Math.floor(v) ? v : v.toFixed(1); }
     else { display=v; }
     const pct = (typeof v==='number'&&v>=0&&v<=4) ? (v/4*100) : 0;
-    const lvl = (typeof v==='number') ? 'l'+Math.min(v,4) : 'l0';
+    const lvl = (typeof v==='number') ? 'l'+Math.min(Math.floor(v),4) : 'l0';
     xHtml += `<div class="x-row" style="opacity:${pending?'.4':'1'}">
       <span class="x-code">${dim.code}</span>
       <span class="x-name" title="${dim.name}">${dim.name}</span>
@@ -786,7 +834,7 @@ function openReview(idx) {
     </div>`;
   });
 
-  // Y-axis: Experimental Orientation — dot indicators + level text
+  // Y-axis
   let yHtml = '';
   Y_DIMS.forEach(dim => {
     let v = sc[dim.code];
@@ -804,25 +852,18 @@ function openReview(idx) {
       <span class="y-code">${dim.code}</span>
       <div class="y-info">
         <div class="y-name">${dim.name}</div>
-        ${pending ? '<div class="y-dots">'+dots+'</div>' : '<div class="y-dots">'+dots+'</div>'}
+        <div class="y-dots">${dots}</div>
         <div class="y-level">${levelText}</div>
       </div>
     </div>`;
   });
 
-  document.getElementById('modal-title').textContent = 'Agent Evaluation — '+(d.name||'(untitled)');
-  document.getElementById('modal-dsname').textContent = d.name||'';
-  document.getElementById('modal-paperid').textContent = r.paper_id||'N/A';
-  document.getElementById('modal-footer-id').textContent = 'Paper ID: '+(r.paper_id||'N/A');
   document.getElementById('modal-x').innerHTML = xHtml;
   document.getElementById('modal-y').innerHTML = yHtml;
 
   const rl = document.getElementById('modal-report-link');
-  if (r.report_url) { rl.href = r.report_url; rl.style.display = ''; }
+  if (review.report_url && _reviewType === 'agent') { rl.href = review.report_url; rl.style.display = ''; }
   else { rl.style.display = 'none'; }
-
-  document.getElementById('review-modal').classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
 }
 function closeReview() {
   document.getElementById('review-modal').classList.add('hidden');
