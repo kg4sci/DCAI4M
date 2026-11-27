@@ -352,6 +352,7 @@
     <div class="modal-body">
       <div class="info-line"><strong>Dataset:</strong> <span id="modal-dsname"></span></div>
       <div class="info-line"><strong>Paper ID:</strong> <span id="modal-paperid"></span></div>
+      <div class="info-line"><strong>Proponent paper:</strong> <span id="modal-proponent"></span></div>
       <div style="display:flex;gap:8px;margin-top:8px">
         <button class="badge badge-agent" id="btn-agent-tab" onclick="switchReviewer('agent')" style="font-size:12px;padding:5px 12px">&#129488; AI Review</button>
         <button class="badge badge-expert" id="btn-expert-tab" onclick="switchReviewer('expert')" style="font-size:12px;padding:5px 12px">&#128100; Expert Review</button>
@@ -365,8 +366,12 @@
         <h3><span class="axis-tag y-tag">Y</span> Experimental Orientation</h3>
         <div class="y-dims" id="modal-y"></div>
       </div>
+      <div class="score-section">
+        <h3><span class="axis-tag" style="background:#e2e8f0;color:#475569">Cite</span> Citations &mdash; papers using this dataset</h3>
+        <div id="modal-citations"></div>
+      </div>
       <a class="report-link" id="modal-report-link" href="#" target="_blank" rel="noopener">&#128196; View Full Evaluation Report</a>
-      <div class="score-note">Scores assigned by LLM agent (gpt-6-sol, high reasoning). ~N = candidate score pending verification.</div>
+      <div class="score-note">Entry = the online dataset; the scored object is its <em>proposing paper</em> (agent review of that paper, else expert workbook 261120). Composite = mean of the nine O/A/I/G/U/P + E/R/C dimensions. Papers that cite/use the dataset are listed under Citations with their own scores.</div>
     </div>
     <div class="modal-footer">
       <span class="m-paper-id" id="modal-footer-id"></span>
@@ -391,12 +396,14 @@ async function init() {
   try {
     const r = await fetch('datasets.json');
     ALL = await r.json();
-      // Sort: scored datasets first, then by score desc, then by name
+      // Sort: datasets with both expert+agent reviews first, then single-review,
+      // then unreviewed; within a tier by score desc, then name.
+      const tier = e => (e.agent_review?1:0)+(e.expert_review?1:0);
       ALL.sort((a,b)=>{
-        const sa = (a.score||0)>0 ? 1 : 0;
-        const sb = (b.score||0)>0 ? 1 : 0;
-        if (sa !== sb) return sb - sa;
-        if (sa && sb) return (b.score||0) - (a.score||0);
+        const ta=tier(a), tb=tier(b);
+        if (ta!==tb) return tb-ta;
+        const sa=a.score||0, sb=b.score||0;
+        if (sa!==sb) return sb-sa;
         return (a.name||'').localeCompare(b.name||'');
       });
   } catch(e) {
@@ -542,6 +549,7 @@ function renderCards() {
           <span class="badge ${sc}">${st}</span>
                     ${d.agent_review ? `<button class="badge badge-agent" onclick="openReview(${idx},'agent')" title="AI evaluation scores">&#129488; AI Review</button>` : ''}
                               ${d.expert_review ? `<button class="badge badge-expert" onclick="openReview(${idx},'expert')" title="Expert evaluation scores">&#128100; Expert</button>` : ''}
+          ${(d.citations&&d.citations.length) ? `<span class="badge" style="background:#e2e8f0;color:#475569" title="Papers citing/using this dataset">&#128218; ${d.citations.length} cite</span>` : ''}
         </div>
       </div>
       <div class="card-desc" id="dsc-${idx}">${short}</div>
@@ -819,6 +827,16 @@ function renderReview() {
   document.getElementById('modal-reviewer').style.color = _reviewType === 'expert' ? 'var(--sky)' : 'var(--amber)';
   document.getElementById('modal-dsname').textContent = d.name||'';
   document.getElementById('modal-paperid').textContent = review.paper_id||'N/A';
+  document.getElementById('modal-proponent').textContent = d.proposing_paper || d.doi || 'N/A';
+  let citHtml = '';
+  (d.citations||[]).forEach(c => {
+    const sv = (c.score!=null) ? `&#9733; ${c.score}` : '&#9734; unscored';
+    const col = (c.score!=null) ? 'var(--emerald)' : 'var(--text3)';
+    citHtml += `<div style="display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px dashed var(--border);font-size:12px">
+      <span style="color:var(--text2)">${c.name}</span>
+      <span style="color:${col};font-weight:600;white-space:nowrap">${sv}</span></div>`;
+  });
+  document.getElementById('modal-citations').innerHTML = citHtml || '<div style="font-size:12px;color:var(--text3);font-style:italic">No citing papers recorded.</div>';
   document.getElementById('modal-footer-id').textContent = 'Paper ID: '+(review.paper_id||'N/A');
 
   // X-axis
