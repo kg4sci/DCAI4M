@@ -171,6 +171,22 @@
   .tl-val{font-size:10px;font-weight:700;color:var(--text);margin-bottom:3px}
   .tl-year{position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--text3);white-space:nowrap;font-weight:500}
 
+  /* ═══ DISCOVERY BUBBLE MAP ═══ */
+  .bubble-wrap{position:relative}
+  .bubble-wrap svg{width:100%;height:auto;display:block}
+  .bub{transition:fill-opacity .15s}
+  .bub:hover{fill-opacity:1;stroke:#0f172a;stroke-width:1.5}
+  .bub-legend{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-light)}
+  .bub-lg-group{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .bub-lg-title{font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.04em}
+  .bub-lg-item{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)}
+  .bub-dot{width:11px;height:11px;border-radius:50%;display:inline-block;flex-shrink:0}
+  .bubble-note{font-size:11px;color:var(--text3);margin-top:10px;line-height:1.5}
+  .bubble-tip{position:fixed;z-index:10000;pointer-events:none;background:#0f172a;color:#f8fafc;padding:9px 12px;border-radius:8px;font-size:12px;line-height:1.55;max-width:280px;box-shadow:0 6px 20px rgba(0,0,0,.25);display:none}
+  .bubble-tip .bt-name{font-weight:700;font-size:12.5px;margin-bottom:2px}
+  .bubble-tip .bt-row{color:#cbd5e1}
+  .bubble-tip .bt-row b{color:#fff}
+
   /* Empty */
   .empty-state{text-align:center;padding:60px 20px;color:var(--text3)}
   .empty-state .e-icon{font-size:48px;margin-bottom:8px;opacity:.5}
@@ -336,6 +352,15 @@
       <div class="stat-card">
         <h3><span class="dot"></span>Timeline &mdash; Dataset Publications by Year</h3>
         <div class="tl-container"><div class="tl-chart" id="timeline"></div></div>
+      </div>
+    </div>
+
+    <!-- Discovery bubble map -->
+    <div class="stats-grid" style="margin-top:18px">
+      <div class="stat-card" style="grid-column:1/-1">
+        <h3><span class="dot"></span>Discovery Landscape &mdash; Intelligence vs Real-World Effectiveness</h3>
+        <div class="bubble-wrap" id="bubble-map"></div>
+        <div class="bubble-note">Each bubble is a scored dataset. Position uses final per-dimension scores (agent &amp; expert averaged when both exist): X&nbsp;=&nbsp;mean(O,A,I,G,U,P), Y&nbsp;=&nbsp;mean(E,R,C). Size = data volume (log10 of the largest reported quantity); colour = task category; shade = data type (light&nbsp;=&nbsp;simulated, dark&nbsp;=&nbsp;experimental). Hover for details; click a bubble to open its evaluation. Interactive counterpart of the report figure fig_bubble_discovery.png.</div>
       </div>
     </div>
   </div>
@@ -651,6 +676,7 @@ function renderStats() {
   renderHeatmap();
   renderCompleteness();
   renderTimeline();
+  renderBubbleMap();
 }
 function countBy(arr, key) {
   const m = {};
@@ -747,6 +773,117 @@ function renderTimeline() {
     const h = Math.max(4, (yrMap[y]/max*200).toFixed(0));
     return `<div class="tl-bar-wrap"><span class="tl-val">${yrMap[y]}</span><div class="tl-bar" style="height:${h}px" title="${y}: ${yrMap[y]} datasets"></div><span class="tl-year">${y}</span></div>`;
   }).join('');
+}
+
+// ═══════════════════════════════════════
+//  DISCOVERY BUBBLE MAP (mirrors summary/make_bubble_discovery.py)
+// ═══════════════════════════════════════
+const BUB_CATS = ['Property Prediction','Generation & Inverse Design','Sequential Optimization','Benchmarks & Evaluation','Workflow & Data'];
+const BUB_SHORT = ['PropPred','Gen/Inv','SeqOpt','Bench','Workflow'];
+const BUB_COL = {'Property Prediction':'#3E7CBF','Generation & Inverse Design':'#2E9E7E','Sequential Optimization':'#EE7E3F','Benchmarks & Evaluation':'#7B5EA7','Workflow & Data':'#D9534F'};
+const BUB_DT = ['Simulated','Hybrid','Experimental'];
+const BUB_DT_SHORT = ['Sim','Hyb','Exp'];
+
+function bubFinalDims(d) {
+  const ag=(d.agent_review||{}).scores||{}, ex=(d.expert_review||{}).scores||{};
+  if (!Object.keys(ag).length && !Object.keys(ex).length) return null;
+  const fd={};
+  ['O','A','I','G','U','P','E','R','C'].forEach(k=>{
+    const v=[ag[k],ex[k]].filter(x=>typeof x==='number');
+    fd[k]=v.length?v.reduce((a,b)=>a+b,0)/v.length:0;
+  });
+  return fd;
+}
+function bubMaxNum(s) {
+  if (!s) return null;
+  const m=String(s).match(/\d[\d,]*/g)||[];
+  const v=m.map(t=>parseInt(t.replace(/,/g,''),10)).filter(x=>x>=10);
+  return v.length?Math.max(...v):null;
+}
+function bubShade(hex,t) {
+  const c=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255);
+  const out=c.map(v=>{const light=v*0.45+0.55, dark=v*0.8; return light*(1-t)+dark*t;});
+  return `rgb(${out.map(v=>Math.round(v*255)).join(',')})`;
+}
+function bubGrey(t) {
+  const L=[216,220,224],D=[51,55,59];
+  return `rgb(${L.map((v,i)=>Math.round(v*(1-t)+D[i]*t)).join(',')})`;
+}
+function bubRadius(log) {
+  const lp=Math.min(Math.max(log,1),8);
+  return (4+18*(lp-1)/7)*1.6;
+}
+function bubRng(seed) {
+  let a=seed;
+  return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};
+}
+
+function renderBubbleMap() {
+  const pts=[];
+  ALL.forEach(d=>{
+    const fd=bubFinalDims(d); if(!fd) return;
+    if(!BUB_DT.includes(d.data_type)) return;
+    const x=(fd.O+fd.A+fd.I+fd.G+fd.U+fd.P)/6, y=(fd.E+fd.R+fd.C)/3;
+    const mn=bubMaxNum(d.scale), log=mn?Math.log10(mn):2.8;
+    pts.push({d,x,y,t:BUB_DT.indexOf(d.data_type)/2,log});
+  });
+  const wrap=document.getElementById('bubble-map');
+  if (!pts.length) { wrap.innerHTML='<span style="color:var(--text3);font-size:13px">No scored datasets available.</span>'; return; }
+  const W=1000,H=620,ML=70,MR=30,MT=30,MB=70,pw=W-ML-MR,ph=H-MT-MB;
+  const X0=-0.25,X1=4.25,Y0=-0.2,Y1=2.2;
+  const sx=v=>ML+(v-X0)/(X1-X0)*pw, sy=v=>MT+ph-(v-Y0)/(Y1-Y0)*ph;
+  const rng=bubRng(7);
+  pts.forEach(p=>{p.jx=(rng()*2-1)*0.07;p.jy=(rng()*2-1)*0.05;});
+  pts.sort((a,b)=>b.log-a.log); // large bubbles first so small ones stay clickable on top
+  const ax1=sx(0.1),ay1=sy(0.05),ax2=sx(3.9),ay2=sy(1.95);
+  const ang=Math.atan2(ay2-ay1,ax2-ax1)*180/Math.PI;
+  const cx=sx(1.9),cy=sy(0.95)-14;
+  let s=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Discovery landscape bubble chart">`;
+  s+=`<defs><marker id="bubArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#0f172a"/></marker><marker id="bubArrowGrey" markerWidth="6" markerHeight="6" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#C9CED4"/></marker></defs>`;
+  s+=`<rect x="0" y="0" width="${W}" height="${H}" fill="#F7F9FB" rx="10"/>`;
+  s+=`<line x1="${ax1}" y1="${ay1}" x2="${ax2}" y2="${ay2}" stroke="#C9CED4" stroke-width="10" opacity="0.8" marker-end="url(#bubArrowGrey)"/>`;
+  s+=`<text x="${cx}" y="${cy}" transform="rotate(${ang.toFixed(1)} ${cx} ${cy})" text-anchor="middle" font-size="17" font-weight="700" font-style="italic" fill="#0f172a" font-family="Georgia,serif">From static prediction to integrated real-world discovery</text>`;
+  s+=`<line x1="${sx(X0)}" y1="${sy(Y0)}" x2="${sx(X1)}" y2="${sy(Y0)}" stroke="#0f172a" stroke-width="2.5" marker-end="url(#bubArrow)"/>`;
+  s+=`<line x1="${sx(X0)}" y1="${sy(Y0)}" x2="${sx(X0)}" y2="${sy(Y1)}" stroke="#0f172a" stroke-width="2.5" marker-end="url(#bubArrow)"/>`;
+  s+=`<text x="${ML+pw/2}" y="${H-16}" text-anchor="middle" font-size="18" font-weight="700" font-style="italic" fill="#0f172a" font-family="Georgia,serif">Task-intelligence Requirements</text>`;
+  s+=`<text x="22" y="${MT+ph/2}" transform="rotate(-90 22 ${MT+ph/2})" text-anchor="middle" font-size="18" font-weight="700" font-style="italic" fill="#0f172a" font-family="Georgia,serif">Real-world Discovery Effectiveness</text>`;
+  pts.forEach((p,i)=>{
+    const r=bubRadius(p.log), px=sx(p.x+p.jx), py=sy(p.y+p.jy);
+    const col=bubShade(BUB_COL[p.d.category]||'#94a3b8',p.t);
+    s+=`<circle class="bub" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${r.toFixed(1)}" fill="${col}" fill-opacity="0.85" data-i="${i}" style="cursor:pointer"/>`;
+  });
+  s+='</svg>';
+  // legend
+  let lg='<div class="bub-legend">';
+  lg+='<div class="bub-lg-group"><span class="bub-lg-title">Data Type</span>'+BUB_DT.map((k,i)=>`<span class="bub-lg-item"><span class="bub-dot" style="background:${bubGrey(i/2)}"></span>${BUB_DT_SHORT[i]}</span>`).join('')+'</div>';
+  lg+='<div class="bub-lg-group"><span class="bub-lg-title">Data Size</span>'+[2,4,6,8].map(v=>{const rr=(bubRadius(v)*0.7).toFixed(1);return `<span class="bub-lg-item"><span class="bub-dot" style="width:${rr}px;height:${rr}px;background:${bubGrey(0.5)}"></span>1e${v}</span>`;}).join('')+'</div>';
+  lg+='<div class="bub-lg-group"><span class="bub-lg-title">Task Categories</span>'+BUB_CATS.map((c,i)=>`<span class="bub-lg-item"><span class="bub-dot" style="background:${BUB_COL[c]}"></span>${BUB_SHORT[i]}</span>`).join('')+'</div>';
+  lg+='</div>';
+  wrap.innerHTML=s+lg;
+  // tooltip
+  let tip=document.getElementById('bubble-tip');
+  if(!tip){tip=document.createElement('div');tip.id='bubble-tip';tip.className='bubble-tip';document.body.appendChild(tip);}
+  wrap.querySelectorAll('circle.bub').forEach(c=>{
+    const p=pts[+c.dataset.i], d=p.d;
+    c.addEventListener('mousemove',e=>{
+      tip.innerHTML=`<div class="bt-name">${escHtml(d.name)}</div>`
+        +`<div class="bt-row">${escHtml(d.category)}${d.year?' &middot; '+escHtml(String(d.year)):''}</div>`
+        +`<div class="bt-row">Composite <b>${(d.score!=null?d.score.toFixed(2):'--')}</b> &middot; X <b>${p.x.toFixed(2)}</b> &middot; Y <b>${p.y.toFixed(2)}</b></div>`
+        +`<div class="bt-row">${escHtml(d.data_type)}${d.scale?' &middot; '+escHtml(String(d.scale).slice(0,60)):''}</div>`
+        +`<div class="bt-row" style="margin-top:3px;color:#94a3b8">Click to open evaluation</div>`;
+      tip.style.display='block';
+      const tw=tip.offsetWidth,th=tip.offsetHeight;
+      tip.style.left=Math.min(e.clientX+14,window.innerWidth-tw-8)+'px';
+      tip.style.top=Math.min(e.clientY+14,window.innerHeight-th-8)+'px';
+    });
+    c.addEventListener('mouseleave',()=>{tip.style.display='none';});
+    c.addEventListener('click',()=>{
+      tip.style.display='none';
+      let i=filtered.indexOf(d);
+      if(i<0){resetAll();i=filtered.indexOf(d);}
+      if(i>=0&&(d.agent_review||d.expert_review))openReview(i,d.agent_review?'agent':'expert');
+    });
+  });
 }
 
 // ═══════════════════════════════════════
