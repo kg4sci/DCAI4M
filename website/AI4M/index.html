@@ -431,7 +431,7 @@ function populateSelects() {
   fillSelect('sel-category', catVals);
   const dtVals = [...new Set(ALL.map(d=>d.data_type).filter(Boolean))].sort();
   fillSelect('sel-datatype', dtVals);
-  const ttVals = [...new Set(ALL.map(d=>d.task_type).filter(Boolean))].sort();
+  const ttVals = [...new Set(ALL.flatMap(d=>(d.task_type||'').split(';').map(s=>s.trim()).filter(Boolean)))].sort();
   fillSelect('sel-tasktype', ttVals);
 }
 function fillSelect(id, vals) {
@@ -487,7 +487,7 @@ function applyFilters() {
   filtered = ALL.filter(d => {
     if (cat && d.category !== cat) return false;
     if (dt && d.data_type !== dt) return false;
-    if (tt && d.task_type !== tt) return false;
+    if (tt && !(d.task_type||'').split(';').map(s=>s.trim()).includes(tt)) return false;
     if (q) {
       const hay = [d.name,d.description,d.material_system,d.category,d.doi,d.scale,d.baseline,d.data_type,d.task_type].filter(Boolean).join(' ').toLowerCase();
       if (!hay.includes(q)) return false;
@@ -544,7 +544,7 @@ function renderCards() {
         <div class="card-badges">
           <span class="badge badge-cat">${escHtml(d.category)}</span>
           ${d.data_type ? `<span class="badge badge-dt">${escHtml(d.data_type)}</span>` : ''}
-          ${(d.task_type && d.task_type!==d.category) ? `<span class="badge badge-task" title="Task type">${escHtml(d.task_type)}</span>` : ''}
+          ${(d.task_type||'').split(';').map(s=>s.trim()).filter(t=>t && t!==d.category).map(t=>`<span class="badge badge-task" title="Task type">${escHtml(t)}</span>`).join('')}
           ${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : ''}
           <span class="badge ${sc}">${st}</span>
                     ${d.agent_review ? `<button class="badge badge-agent" onclick="openReview(${idx},'agent')" title="AI evaluation scores">&#129488; AI Review</button>` : ''}

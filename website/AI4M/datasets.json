@@ -384,7 +384,7 @@
     "url": "https://github.com/chandar-lab/crystal-gym",
     "doi": "10.48550/arXiv.2509.23156",
     "material_system": "Inorganic crystals",
-    "task": "Generation & Inverse Design",
+    "task": "Generation & Inverse Design; Sequential Optimization",
     "usage": "Evaluates RL policies on goal attainment, reward and simulation cost under physics-simulation feedback; an environment-style benchmark",
     "score": 2.0,
     "linked_papers": [
@@ -446,7 +446,7 @@
       "source": "final_table",
       "report_url": "reviews/paper_c7d64282ea2dd4d4.md"
     },
-    "task_type": "Generation & Inverse Design"
+    "task_type": "Generation & Inverse Design; Sequential Optimization"
   },
   {
     "id": "made",
@@ -460,7 +460,7 @@
     "url": "https://github.com/diffractivelabs/MADE",
     "doi": "10.48550/arXiv.2601.20996",
     "material_system": "Inorganic crystals / intermetallics",
-    "task": "Generation & Inverse Design",
+    "task": "Generation & Inverse Design; Sequential Optimization",
     "usage": "Measures closed-loop discovery efficiency with AF, EF, AUDC and mSUN; compared after fixing oracle, initial convex hull and budget",
     "agent_review": {
       "paper_id": "paper_0c72c10069f0b713",
@@ -515,7 +515,7 @@
     "score_source": "final_avg",
     "proposing_paper": "MADE:Benchmark Environments for Closed-Loop Materials Discovery",
     "citations": [],
-    "task_type": "Generation & Inverse Design"
+    "task_type": "Generation & Inverse Design; Sequential Optimization"
   },
   {
     "id": "",
@@ -674,7 +674,7 @@
     "url": "https://github.com/the-matter-lab/Tartarus",
     "doi": "10.52202/075280-0145",
     "material_system": "Organic molecules / functional molecular materials",
-    "task": "Generation & Inverse Design",
+    "task": "Generation & Inverse Design; Sequential Optimization",
     "usage": "Evaluates practical inverse design with physical-property/reaction or binding targets plus feasibility constraints and compute budgets",
     "score": 2.28,
     "linked_papers": [
@@ -736,7 +736,7 @@
       "source": "final_table",
       "report_url": "reviews/paper_4f150443f6b3c004.md"
     },
-    "task_type": "Generation & Inverse Design"
+    "task_type": "Generation & Inverse Design; Sequential Optimization"
   },
   {
     "id": "guacamol",
@@ -917,7 +917,7 @@
     "url": "https://github.com/cjpcool/Metamaterial-Benchmark",
     "doi": "10.1145/3711896.3737416",
     "material_system": "Mechanical metamaterials",
-    "task": "Generation & Inverse Design",
+    "task": "Generation & Inverse Design; Property Prediction",
     "usage": "Generation checks connectivity, dangling nodes, periodic/symmetry constraints, coverage and conditional validity; not all 17 models are generative",
     "score": 1.44,
     "linked_papers": [
@@ -979,7 +979,7 @@
       "source": "final_table",
       "report_url": "reviews/paper_63c63e7f7cd57984.md"
     },
-    "task_type": "Generation & Inverse Design"
+    "task_type": "Generation & Inverse Design; Property Prediction"
   },
   {
     "id": "metre-crmse",
