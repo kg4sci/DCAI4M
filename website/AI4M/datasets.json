@@ -3976,7 +3976,37 @@
     "linked_papers": [],
     "proposing_paper": "AFLOW( material property database )",
     "citations": [],
-    "task_type": "Generation & Inverse Design"
+    "task_type": "Generation & Inverse Design",
+    "expert_review": {
+      "scores": {
+        "O": 0,
+        "A": 0,
+        "I": 0,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 0,
+        "R": 0,
+        "C": 0
+      },
+      "source": "expert_7z"
+    },
+    "review": {
+      "scores": {
+        "O": 0,
+        "A": 0,
+        "I": 0,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 0,
+        "R": 0,
+        "C": 0
+      },
+      "source": "expert_7z"
+    },
+    "score": 0.0,
+    "score_source": "expert"
   },
   {
     "id": "cod-crystallography-open-database",
@@ -4043,7 +4073,37 @@
     "usage": "Molecular graph/3D generation training and property-conditioned generation; public download. Covers small-molecule chemical space, not a substitute for complex materials or synthesisability data",
     "proposing_paper": "QM9",
     "citations": [],
-    "task_type": "Generation & Inverse Design"
+    "task_type": "Generation & Inverse Design",
+    "expert_review": {
+      "scores": {
+        "O": 2,
+        "A": 0,
+        "I": 1,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 0,
+        "R": 0,
+        "C": 0
+      },
+      "source": "expert_7z"
+    },
+    "review": {
+      "scores": {
+        "O": 2,
+        "A": 0,
+        "I": 1,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 0,
+        "R": 0,
+        "C": 0
+      },
+      "source": "expert_7z"
+    },
+    "score": 0.33,
+    "score_source": "expert"
   },
   {
     "id": "zinc20",
@@ -4595,7 +4655,37 @@
     "linked_papers": [],
     "proposing_paper": "The joint automated repository for various integrated simulations (JARVIS) for data-driven materials design",
     "citations": [],
-    "task_type": "Generation & Inverse Design"
+    "task_type": "Generation & Inverse Design",
+    "expert_review": {
+      "scores": {
+        "O": 0,
+        "A": 0,
+        "I": 0,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 0,
+        "R": 0,
+        "C": 0
+      },
+      "source": "expert_7z"
+    },
+    "review": {
+      "scores": {
+        "O": 0,
+        "A": 0,
+        "I": 0,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 0,
+        "R": 0,
+        "C": 0
+      },
+      "source": "expert_7z"
+    },
+    "score": 0.0,
+    "score_source": "expert"
   },
   {
     "id": "pi1m",
@@ -5641,7 +5731,37 @@
     "linked_papers": [],
     "proposing_paper": "The joint automated repository for various integrated simulations (JARVIS) for data-driven materials design",
     "citations": [],
-    "task_type": "Property Prediction"
+    "task_type": "Property Prediction",
+    "expert_review": {
+      "scores": {
+        "O": 0,
+        "A": 0,
+        "I": 0,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 0,
+        "R": 0,
+        "C": 0
+      },
+      "source": "expert_7z"
+    },
+    "review": {
+      "scores": {
+        "O": 0,
+        "A": 0,
+        "I": 0,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 0,
+        "R": 0,
+        "C": 0
+      },
+      "source": "expert_7z"
+    },
+    "score": 0.0,
+    "score_source": "expert"
   },
   {
     "id": "materials-project",
