@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Materials Discovery: A Data-Centric Perspective</title>
+<style>
+  :root {
+    --bg:#f4f6f9;--surface:#fff;--text:#0f172a;--text2:#475569;--text3:#94a3b8;
+    --border:#e2e8f0;--border-light:#f1f5f9;--primary:#4f46e5;--primary-light:#eef2ff;
+    --primary-dark:#3730a3;--accent:#0d9488;--accent-light:#ccfbf1;--amber:#d97706;
+    --amber-light:#fef3c7;--rose:#e11d48;--rose-light:#ffe4e6;--sky:#0284c7;
+    --sky-light:#e0f2fe;--violet:#7c3aed;--violet-light:#ede9fe;--emerald:#059669;
+    --emerald-light:#d1fae5;--radius:10px;--radius-sm:6px;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.03);--shadow:0 1px 3px rgba(0,0,0,.05),0 1px 2px rgba(0,0,0,.04);
+    --shadow-md:0 4px 14px rgba(0,0,0,.06),0 2px 4px rgba(0,0,0,.04);
+    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--primary);text-decoration:none;transition:color .15s}
+  a:hover{color:var(--primary-dark)}
+
+  /* ═══ HEADER ═══ */
+  .site-header{background:linear-gradient(135deg,#0f172a 0%,#1e293b 40%,#312e81 100%);color:#fff;padding:32px 0 28px;position:relative;overflow:hidden}
+  .site-header::before{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(99,102,241,.12)}
+  .site-header::after{content:'';position:absolute;bottom:-50px;left:5%;width:200px;height:200px;border-radius:50%;background:rgba(13,148,136,.08)}
+  .header-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;flex-wrap:wrap;gap:16px}
+  .logo-row{display:flex;align-items:center;gap:16px}
+  .logo-icon{width:48px;height:48px;background:rgba(255,255,255,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.12)}
+  .logo-text h1{font-size:20px;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+  .logo-text span{font-size:12px;opacity:.6;font-weight:400}
+  .header-stats{display:flex;gap:28px}
+  .hstat{text-align:center}
+  .hstat .num{font-size:28px;font-weight:700;line-height:1.1}
+  .hstat .lbl{font-size:11px;opacity:.55;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+
+  /* ═══ CONTAINER ═══ */
+  .container{max-width:1400px;margin:0 auto;padding:0 24px}
+
+  /* ═══ TABS ═══ */
+  .tab-nav{display:flex;gap:2px;margin:20px 0 0;background:var(--surface);border-radius:var(--radius) var(--radius) 0 0;padding:5px;border:1px solid var(--border);border-bottom:none}
+  .tab-btn{flex:1;max-width:220px;padding:11px 20px;border:none;background:transparent;font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;border-radius:var(--radius-sm);transition:all .15s;display:flex;align-items:center;justify-content:center;gap:7px;font-family:var(--font)}
+  .tab-btn:hover{color:var(--text);background:var(--border-light)}
+  .tab-btn.active{background:var(--primary);color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(79,70,229,.3)}
+  .tab-panel{display:none;background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:24px}
+  .tab-panel.active{display:block}
+
+  /* ═══ FILTERS ═══ */
+  .filter-section{margin-bottom:18px}
+  .filter-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+  .search-wrap{flex:1;min-width:260px;max-width:440px;position:relative}
+  .search-wrap input{width:100%;padding:10px 14px 10px 40px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:14px;background:var(--bg);color:var(--text);transition:all .15s;font-family:var(--font)}
+  .search-wrap input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light);background:#fff}
+  .search-wrap .s-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:15px;pointer-events:none}
+  .filter-select{padding:10px 34px 10px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;background:var(--bg);color:var(--text);cursor:pointer;font-family:var(--font);appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;transition:all .15s;min-width:150px}
+  .filter-select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light);background-color:#fff}
+  .btn-reset{padding:10px 18px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);color:var(--text2);cursor:pointer;font-size:13px;font-family:var(--font);white-space:nowrap;transition:all .15s;display:flex;align-items:center;gap:5px}
+  .btn-reset:hover{background:var(--rose-light);color:var(--rose);border-color:var(--rose)}
+  .btn-export{padding:10px 18px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--emerald-light);color:var(--emerald);cursor:pointer;font-size:13px;font-family:var(--font);white-space:nowrap;transition:all .15s;display:flex;align-items:center;gap:5px;font-weight:500}
+  .btn-export:hover{background:var(--emerald);color:#fff;border-color:var(--emerald)}
+  .filter-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+  .f-tag{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--bg);color:var(--text2);transition:all .15s;white-space:nowrap;user-select:none}
+  .f-tag:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+  .f-tag.active{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:600;box-shadow:0 2px 6px rgba(79,70,229,.25)}
+  .f-tag .count{font-size:10px;opacity:.7;background:rgba(0,0,0,.1);padding:1px 5px;border-radius:8px}
+  .f-tag.active .count{background:rgba(255,255,255,.2)}
+  .result-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .result-bar-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .result-bar-right{display:flex;align-items:center;gap:8px}
+  .result-count{font-size:13px;color:var(--text2)}
+  .result-count strong{color:var(--text);font-size:15px}
+  .view-toggle{display:flex;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border)}
+  .view-toggle button{padding:7px 14px;border:none;background:var(--bg);color:var(--text2);cursor:pointer;font-size:12px;font-family:var(--font);transition:all .12s}
+  .view-toggle button.active{background:var(--primary);color:#fff;font-weight:600}
+  .view-toggle button:not(.active):hover{background:var(--border-light);color:var(--text)}
+
+  /* ═══ CARDS ═══ */
+  .card-list{display:flex;flex-direction:column;gap:10px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;box-shadow:var(--shadow-sm);transition:all .18s;position:relative;border-left:3px solid transparent}
+  .card:hover{box-shadow:var(--shadow-md);border-color:#cbd5e1;border-left-color:var(--primary)}
+  .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .card-name{font-size:15px;font-weight:600;color:var(--text);line-height:1.45;flex:1;min-width:200px;word-break:break-word}
+  .card-name a{color:inherit}
+  .card-name a:hover{color:var(--primary)}
+  .card-badges{display:flex;flex-wrap:wrap;gap:5px;align-items:center;flex-shrink:0}
+  .badge{font-size:11px;padding:4px 10px;border-radius:12px;font-weight:600;white-space:nowrap;letter-spacing:.01em}
+  .badge-cat{background:var(--violet-light);color:var(--violet)}
+  .badge-dt{background:var(--sky-light);color:var(--sky)}
+  .badge-task{background:var(--accent-light);color:var(--accent)}
+  .badge-year{background:var(--amber-light);color:var(--amber)}
+  .badge-score{background:var(--emerald-light);color:var(--emerald)}
+  .badge-score.zero{background:#f1f5f9;color:#94a3b8}
+  .badge-agent{background:var(--amber-light);color:var(--amber);cursor:pointer;border:none;font-family:var(--font);font-size:11px;padding:4px 10px;border-radius:12px;font-weight:600;white-space:nowrap;letter-spacing:.01em;transition:all .15s}
+  .badge-agent:hover{background:var(--amber);color:#fff;box-shadow:0 2px 6px rgba(217,119,6,.3);transform:translateY(-1px)}
+  .badge-expert{background:var(--sky-light);color:var(--sky);cursor:pointer;border:none;font-family:var(--font);font-size:11px;padding:4px 10px;border-radius:12px;font-weight:600;white-space:nowrap;letter-spacing:.01em;transition:all .15s}
+  .badge-expert:hover{background:var(--sky);color:#fff;box-shadow:0 2px 6px rgba(2,132,199,.3);transform:translateY(-1px)}
+  .card-desc{font-size:13px;color:var(--text2);margin-top:8px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .card-desc.open{-webkit-line-clamp:unset}
+  .card-expand{font-size:12px;color:var(--primary);cursor:pointer;border:none;background:none;padding:2px 0;margin-top:3px;font-family:var(--font);font-weight:500}
+  .card-expand:hover{text-decoration:underline}
+  .card-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px;font-size:12px;color:var(--text2)}
+  .card-foot .url-link{max-width:360px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle}
+  .card-foot .sep{color:var(--text3)}
+
+  /* ═══ TABLE VIEW ═══ */
+  .table-view{width:100%;border-collapse:collapse;font-size:13px}
+  .table-view th{text-align:left;padding:10px 12px;background:var(--bg);color:var(--text2);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid var(--border);white-space:nowrap;position:sticky;top:0;z-index:1}
+  .table-view td{padding:9px 12px;border-bottom:1px solid var(--border-light);vertical-align:top}
+  .table-view tr:hover td{background:var(--primary-light)}
+  .table-view .td-name{font-weight:600;max-width:300px}
+  .table-view .td-name a{color:var(--text)}
+  .table-view .td-name a:hover{color:var(--primary)}
+  .table-view .td-url{max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+  .table-view .td-desc{max-width:300px;font-size:12px;color:var(--text2);line-height:1.4}
+  .table-wrap{overflow-x:auto;max-height:70vh;overflow-y:auto}
+
+  /* ═══ PAGINATION ═══ */
+  .pager{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:24px;padding:8px 0}
+  .pager button{padding:8px 15px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);cursor:pointer;font-size:13px;font-family:var(--font);transition:all .12s}
+  .pager button:hover:not(:disabled){background:var(--primary-light);color:var(--primary);border-color:var(--primary)}
+  .pager button:disabled{opacity:.35;cursor:default}
+  .pager button.cur{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:600}
+  .pager .pg-info{font-size:13px;color:var(--text2);margin:0 8px}
+
+  /* ═══ STATS ═══ */
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:18px}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow-sm)}
+  .stat-card h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .stat-card h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--primary);flex-shrink:0}
+  .stat-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+  .stat-bar-row .lbl{width:170px;font-size:12px;color:var(--text2);text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .stat-bar-row .bar-track{flex:1;height:20px;background:var(--bg);border-radius:4px;overflow:hidden;min-width:30px}
+  .stat-bar-row .bar-fill{height:100%;background:linear-gradient(90deg,var(--primary),#818cf8);border-radius:4px;transition:width .5s ease}
+  .stat-bar-row .val{font-size:12px;font-weight:600;color:var(--text);width:32px;flex-shrink:0;text-align:right}
+
+  /* ═══ HEATMAP ═══ */
+  .heatmap-wrap{overflow-x:auto;margin-top:2px}
+  .heatmap-table{border-collapse:collapse;font-size:12px;width:100%}
+  .heatmap-table th{padding:8px 10px;text-align:center;font-weight:600;color:var(--text2);font-size:11px;white-space:nowrap}
+  .heatmap-table th:first-child{text-align:right;padding-right:14px}
+  .heatmap-table td{padding:0;text-align:center}
+  .heatmap-table .hm-cell{display:block;padding:8px 4px;min-width:60px;font-weight:600;font-size:13px;border-radius:4px;margin:2px;transition:transform .12s}
+  .heatmap-table .hm-cell:hover{transform:scale(1.1);z-index:2;position:relative}
+  .heatmap-table .hm-row-label{text-align:right;padding-right:14px;font-size:12px;color:var(--text2);white-space:nowrap;font-weight:500}
+  .hm-0{background:var(--bg);color:var(--text3)}
+  .hm-1{background:#e0e7ff;color:#4338ca}
+  .hm-2{background:#c7d2fe;color:#3730a3}
+  .hm-3{background:#a5b4fc;color:#312e81}
+  .hm-4{background:#818cf8;color:#fff}
+  .hm-5{background:#6366f1;color:#fff}
+  .hm-6{background:#4f46e5;color:#fff}
+
+  /* ═══ COMPLETENESS ═══ */
+  .completeness-grid{display:flex;flex-wrap:wrap;gap:14px}
+  .comp-item{display:flex;align-items:center;gap:8px;min-width:160px}
+  .comp-item .comp-label{font-size:11px;color:var(--text2);width:80px;text-align:right;white-space:nowrap}
+  .comp-item .comp-bar-track{flex:1;height:14px;background:var(--bg);border-radius:4px;overflow:hidden;min-width:60px}
+  .comp-item .comp-bar-fill{height:100%;border-radius:4px;transition:width .5s ease}
+  .comp-item .comp-pct{font-size:11px;font-weight:600;color:var(--text);width:36px;text-align:right}
+
+  /* ═══ TIMELINE ═══ */
+  .timeline-section{margin-top:22px}
+  .timeline-section h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+  .timeline-section h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex-shrink:0}
+  .tl-container{position:relative}
+  .tl-chart{display:flex;align-items:flex-end;gap:5px;height:220px;padding:0 4px;border-bottom:1px solid var(--border);margin-bottom:40px}
+  .tl-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:22px;position:relative}
+  .tl-bar{width:100%;max-width:40px;background:linear-gradient(180deg,#6366f1,#0d9488);border-radius:5px 5px 0 0;transition:height .5s ease,filter .15s;cursor:pointer;min-height:4px}
+  .tl-bar:hover{filter:brightness(1.2);box-shadow:0 0 12px rgba(99,102,241,.3)}
+  .tl-val{font-size:10px;font-weight:700;color:var(--text);margin-bottom:3px}
+  .tl-year{position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--text3);white-space:nowrap;font-weight:500}
+
+  /* ═══ DISCOVERY BUBBLE MAP ═══ */
+  .bubble-wrap{position:relative}
+  .bubble-wrap svg{width:100%;height:auto;display:block}
+  .bub{transition:fill-opacity .15s}
+  .bub:hover{fill-opacity:1;stroke:#0f172a;stroke-width:1.5}
+  .bub-legend{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-light)}
+  .bub-lg-group{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .bub-lg-title{font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.04em}
+  .bub-lg-item{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)}
+  .bub-dot{width:11px;height:11px;border-radius:50%;display:inline-block;flex-shrink:0}
+  .bubble-note{font-size:11px;color:var(--text3);margin-top:10px;line-height:1.5}
+  .bubble-tip{position:fixed;z-index:10000;pointer-events:none;background:#0f172a;color:#f8fafc;padding:9px 12px;border-radius:8px;font-size:12px;line-height:1.55;max-width:280px;box-shadow:0 6px 20px rgba(0,0,0,.25);display:none}
+  .bubble-tip .bt-name{font-weight:700;font-size:12.5px;margin-bottom:2px}
+  .bubble-tip .bt-row{color:#cbd5e1}
+  .bubble-tip .bt-row b{color:#fff}
+
+  /* Empty */
+  .empty-state{text-align:center;padding:60px 20px;color:var(--text3)}
+  .empty-state .e-icon{font-size:48px;margin-bottom:8px;opacity:.5}
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:768px){
+    .header-inner{flex-direction:column;text-align:center}
+    .header-stats{gap:18px}
+    .container{padding:0 12px}
+    .tab-panel{padding:16px 12px}
+    .filter-row{flex-direction:column}
+    .search-wrap{max-width:100%}
+    .card-top{flex-direction:column}
+    .stats-grid{grid-template-columns:1fr}
+    .stat-bar-row .lbl{width:110px}
+    .tl-chart{height:160px;margin-bottom:30px}
+    .tl-year{bottom:-24px;font-size:9px}
+    .modal-body{max-height:60vh;padding:18px 22px}
+  }
+
+  /* ═══ MODAL ═══ */
+  .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,.55);backdrop-filter:blur(3px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}
+  .modal-overlay.hidden{display:none}
+  .modal{background:var(--surface);border-radius:14px;width:100%;max-width:620px;max-height:90vh;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.2);display:flex;flex-direction:column}
+  .modal-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border);gap:12px}
+  .modal-header h2{font-size:17px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .modal-header .m-badge{font-size:11px;padding:4px 10px;border-radius:12px;font-weight:600;white-space:nowrap;background:var(--amber-light);color:var(--amber);flex-shrink:0}
+  .modal-close{width:32px;height:32px;border-radius:50%;border:none;background:var(--bg);color:var(--text2);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .12s;flex-shrink:0;line-height:1}
+  .modal-close:hover{background:var(--rose-light);color:var(--rose)}
+  .modal-body{overflow-y:auto;padding:22px 26px;flex:1}
+  .modal-body .info-line{font-size:12px;color:var(--text2);margin-bottom:4px}
+  .modal-body .info-line strong{color:var(--text)}
+  .score-section{margin-top:16px}
+  .score-section h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+  .score-section h3 .axis-tag{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600}
+  .score-section h3 .axis-tag.x-tag{background:var(--violet-light);color:var(--violet)}
+  .score-section h3 .axis-tag.y-tag{background:var(--accent-light);color:var(--accent)}
+
+  /* ── X-axis: Task Intelligence ── */
+  .x-dims{display:flex;flex-direction:column;gap:5px}
+  .x-row{display:flex;align-items:center;gap:8px}
+  .x-code{width:22px;font-size:12px;font-weight:700;color:var(--violet);text-align:center;flex-shrink:0}
+  .x-name{width:140px;font-size:11px;color:var(--text2);flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .x-bar-wrap{flex:1;height:16px;background:var(--bg);border-radius:4px;overflow:hidden;min-width:40px;position:relative}
+  .x-bar-fill{height:100%;border-radius:4px;transition:width .4s ease;min-width:4px}
+  .x-bar-fill.l0{background:#e2e8f0}
+  .x-bar-fill.l1{background:#c7d2fe}
+  .x-bar-fill.l2{background:#a5b4fc}
+  .x-bar-fill.l3{background:#818cf8}
+  .x-bar-fill.l4{background:#6366f1}
+  .x-score{width:16px;font-size:12px;font-weight:700;color:var(--text);text-align:center;flex-shrink:0}
+  .x-weight{font-size:10px;color:var(--text3);width:34px;text-align:right;flex-shrink:0}
+
+  /* ── Y-axis: Experimental Orientation ── */
+  .y-dims{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+  .y-row{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;background:var(--bg);border-radius:var(--radius-sm);border:1px solid var(--border-light)}
+  .y-code{width:22px;font-size:12px;font-weight:700;color:var(--accent);text-align:center;flex-shrink:0;padding-top:1px}
+  .y-info{flex:1;min-width:0}
+  .y-name{font-size:11px;color:var(--text2);margin-bottom:2px}
+  .y-dots{display:inline-flex;gap:3px;margin-right:6px}
+  .y-dot{width:9px;height:9px;border-radius:50%;background:var(--border);transition:background .2s}
+  .y-dot.on{background:var(--accent)}
+  .y-level{font-size:10px;color:var(--text3);margin-top:1px;line-height:1.35}
+  .y-row.pending{opacity:.5}
+
+  .axis-divider{height:1px;background:var(--border);margin:14px 0}
+
+  .report-link{display:inline-flex;align-items:center;gap:5px;margin-top:14px;padding:8px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg);color:var(--primary);font-size:12px;font-weight:500;text-decoration:none;transition:all .12s}
+  .report-link:hover{background:var(--primary-light);border-color:var(--primary);color:var(--primary-dark)}
+  .score-note{font-size:11px;color:var(--text3);margin-top:8px;font-style:italic}
+  .modal-footer{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-top:1px solid var(--border);gap:12px}
+  .modal-footer .m-paper-id{font-size:11px;color:var(--text3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-row">
+      <div class="logo-icon">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <rect x="2" y="7" width="11" height="11" rx="2.5" fill="white" opacity=".9"/>
+          <rect x="17" y="2" width="11" height="11" rx="2.5" fill="white" opacity=".55"/>
+          <rect x="7" y="17" width="11" height="11" rx="2.5" fill="white" opacity=".7"/>
+          <rect x="17" y="17" width="4" height="4" rx="1.2" fill="white" opacity=".3"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <h1>AI for Materials Discovery: A Data-Centric Perspective</h1>
+        <span>Curated benchmark registry for AI-driven materials science</span>
+      </div>
+    </div>
+    <div class="header-stats">
+      <div class="hstat"><div class="num" id="hdr-total">220</div><div class="lbl">Datasets</div></div>
+      <div class="hstat"><div class="num" id="hdr-cats">5</div><div class="lbl">Categories</div></div>
+      <div class="hstat"><div class="num" id="hdr-years">&ndash;</div><div class="lbl">Year Span</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="browse">&#128269; Browse Datasets</button>
+    <button class="tab-btn" data-tab="stats">&#128202; Statistics</button>
+  </nav>
+
+  <!-- ═══ TAB 1: BROWSE ═══ -->
+  <div class="tab-panel active" id="panel-browse">
+    <div class="filter-section">
+      <div class="filter-row">
+        <div class="search-wrap">
+          <span class="s-icon">&#128269;</span>
+          <input type="text" id="search" placeholder="Search datasets by name, description, material, DOI...">
+        </div>
+        <select class="filter-select" id="sel-category"><option value="">All Categories</option></select>
+        <select class="filter-select" id="sel-datatype"><option value="">All Data Types</option></select>
+        <select class="filter-select" id="sel-tasktype"><option value="">All Task Types</option></select>
+        <button class="btn-reset" id="btn-reset">&#8635; Reset</button>
+      </div>
+      <div class="filter-tags" id="quick-tags-cat"></div>
+    </div>
+    <div class="result-bar">
+      <div class="result-bar-left">
+        <span class="result-count" id="result-msg">Loading...</span>
+      </div>
+      <div class="result-bar-right">
+        <div class="view-toggle" id="view-toggle">
+          <button class="active" data-view="cards" title="Card view">&#9638;&#9638;&#9638; Cards</button>
+          <button data-view="table" title="Table view">&#9776; Table</button>
+        </div>
+        <button class="btn-export" id="btn-export" title="Download filtered results as CSV">&#128229; Export CSV</button>
+      </div>
+    </div>
+    <div id="view-container">
+      <div class="card-list" id="card-list"></div>
+      <div class="table-wrap" id="table-wrap" style="display:none"></div>
+    </div>
+    <div class="pager" id="pager"></div>
+  </div>
+
+  <!-- ═══ TAB 2: STATISTICS ═══ -->
+  <div class="tab-panel" id="panel-stats">
+    <div class="stats-grid">
+      <div class="stat-card"><h3><span class="dot"></span>By Category</h3><div id="stat-cat"></div></div>
+      <div class="stat-card"><h3><span class="dot"></span>By Data Type</h3><div id="stat-dt"></div></div>
+      <div class="stat-card"><h3><span class="dot"></span>By Task Type</h3><div id="stat-tt"></div></div>
+    </div>
+
+    <!-- Heatmap -->
+    <div class="stats-grid" style="margin-top:18px">
+      <div class="stat-card" style="grid-column:1/-1">
+        <h3><span class="dot"></span>Category &times; Task Type Cross-Tabulation</h3>
+        <div class="heatmap-wrap" id="heatmap"></div>
+      </div>
+    </div>
+
+    <!-- Completeness -->
+    <div class="stats-grid" style="margin-top:18px">
+      <div class="stat-card">
+        <h3><span class="dot"></span>Data Completeness</h3>
+        <div class="completeness-grid" id="completeness"></div>
+      </div>
+      <div class="stat-card">
+        <h3><span class="dot"></span>Timeline &mdash; Dataset Publications by Year</h3>
+        <div class="tl-container"><div class="tl-chart" id="timeline"></div></div>
+      </div>
+    </div>
+
+    <!-- Discovery bubble map -->
+    <div class="stats-grid" style="margin-top:18px">
+      <div class="stat-card" style="grid-column:1/-1">
+        <h3><span class="dot"></span>Discovery Landscape &mdash; Intelligence vs Real-World Effectiveness</h3>
+        <div class="bubble-wrap" id="bubble-map"></div>
+        <div class="bubble-note">Each bubble is a scored dataset. Position uses final per-dimension scores (agent &amp; expert averaged when both exist): X&nbsp;=&nbsp;mean(O,A,I,G,U,P), Y&nbsp;=&nbsp;mean(E,R,C). Size = data volume (log10 of the largest reported quantity); colour = task category; shade = data type (light&nbsp;=&nbsp;simulated, dark&nbsp;=&nbsp;experimental). Hover for details; click a bubble to open its evaluation. Interactive counterpart of the report figure fig_bubble_discovery.png.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ AGENT REVIEW MODAL ═══ -->
+<div class="modal-overlay hidden" id="review-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modal-title">Agent Evaluation</h2>
+      <span class="m-badge" id="modal-reviewer">Agent Review</span>
+      <button class="modal-close" onclick="closeReview()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="info-line"><strong>Dataset:</strong> <span id="modal-dsname"></span></div>
+      <div class="info-line" id="modal-line-paperid"><strong>Paper ID:</strong> <span id="modal-paperid"></span></div>
+      <div class="info-line" id="modal-line-proponent"><strong>Proponent paper:</strong> <span id="modal-proponent"></span></div>
+      <div id="modal-tabs" style="display:flex;gap:8px;margin-top:8px">
+        <button class="badge badge-agent" id="btn-agent-tab" onclick="switchReviewer('agent')" style="font-size:12px;padding:5px 12px">&#129488; AI Review</button>
+        <button class="badge badge-expert" id="btn-expert-tab" onclick="switchReviewer('expert')" style="font-size:12px;padding:5px 12px">&#128100; Expert Review</button>
+      </div>
+      <div class="score-section" id="modal-sec-x">
+        <h3><span class="axis-tag x-tag">X</span> Task Intelligence</h3>
+        <div class="x-dims" id="modal-x"></div>
+      </div>
+      <div class="axis-divider" id="modal-divider"></div>
+      <div class="score-section" id="modal-sec-y">
+        <h3><span class="axis-tag y-tag">Y</span> Experimental Orientation</h3>
+        <div class="y-dims" id="modal-y"></div>
+      </div>
+      <div class="score-section">
+        <h3><span class="axis-tag" style="background:#e2e8f0;color:#475569">Cite</span> Citations &mdash; papers using this dataset</h3>
+        <div id="modal-citations"></div>
+      </div>
+      <a class="report-link" id="modal-report-link" href="#" target="_blank" rel="noopener">&#128196; View Full Evaluation Report</a>
+      <div class="score-note">Entry = the online dataset. Scores follow the final scoring master table: the proposing paper's agent review and the reviewed expert adopted score. When both exist the composite is their average; otherwise the single review is used. Composite = mean of the nine O/A/I/G/U/P + E/R/C dimensions. Papers citing/using the dataset are listed under Citations with their own scores.</div>
+    </div>
+    <div class="modal-footer">
+      <span class="m-paper-id" id="modal-footer-id"></span>
+      <button class="btn-reset" onclick="closeReview()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+//  DATA & STATE
+// ═══════════════════════════════════════
+let ALL = [];
+let filtered = [];
+const PER_PAGE = 20;
+let page = 1;
+let activeCatTag = null;
+let currentView = 'cards';
+const descStore = {};
+
+async function init() {
+  try {
+    const r = await fetch('datasets.json');
+    ALL = await r.json();
+      // Sort: datasets with both expert+agent reviews first, then single-review,
+      // then unreviewed; within a tier by score desc, then name.
+      const tier = e => (e.agent_review?1:0)+(e.expert_review?1:0);
+      ALL.sort((a,b)=>{
+        const ta=tier(a), tb=tier(b);
+        if (ta!==tb) return tb-ta;
+        const sa=a.score||0, sb=b.score||0;
+        if (sa!==sb) return sb-sa;
+        return (a.name||'').localeCompare(b.name||'');
+      });
+  } catch(e) {
+    document.getElementById('card-list').innerHTML = '<div class="empty-state"><div class="e-icon">&#9888;&#65039;</div><p>Failed to load datasets. Ensure datasets.json exists.</p></div>';
+    return;
+  }
+  document.getElementById('hdr-total').textContent = ALL.length;
+  const cats = [...new Set(ALL.map(d=>d.category))];
+  document.getElementById('hdr-cats').textContent = cats.length;
+  const years = ALL.map(d=>d.year).filter(y=>/^\d{4}$/.test(y)).sort();
+  document.getElementById('hdr-years').innerHTML = years.length ? `${years[0]}&ndash;${years[years.length-1]}` : '&ndash;';
+
+  populateSelects();
+  renderQuickTags();
+  bindEvents();
+  applyFilters();
+  renderStats();
+}
+
+// ═══════════════════════════════════════
+//  FILTER UI
+// ═══════════════════════════════════════
+function populateSelects() {
+  const catVals = [...new Set(ALL.map(d=>d.category))].sort();
+  fillSelect('sel-category', catVals);
+  const dtVals = [...new Set(ALL.map(d=>d.data_type).filter(Boolean))].sort();
+  fillSelect('sel-datatype', dtVals);
+  const ttVals = [...new Set(ALL.flatMap(d=>(d.task_type||'').split(';').map(s=>s.trim()).filter(Boolean)))].sort();
+  fillSelect('sel-tasktype', ttVals);
+}
+function fillSelect(id, vals) {
+  const sel = document.getElementById(id);
+  vals.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
+}
+function renderQuickTags() {
+  const cats = [...new Set(ALL.map(d=>d.category))].sort();
+  const counts = {}; cats.forEach(c => { counts[c] = ALL.filter(d=>d.category===c).length; });
+  document.getElementById('quick-tags-cat').innerHTML = cats.map(c =>
+    `<span class="f-tag${activeCatTag===c?' active':''}" data-cat="${escHtml(c)}" onclick="toggleCatTag('${escJs(c)}')">${escHtml(c)}<span class="count">${counts[c]}</span></span>`
+  ).join('');
+}
+function toggleCatTag(cat) {
+  activeCatTag = (activeCatTag === cat) ? null : cat;
+  document.getElementById('sel-category').value = activeCatTag || '';
+  renderQuickTags();
+  applyFilters();
+}
+function bindEvents() {
+  document.getElementById('search').addEventListener('input', debounce(applyFilters, 250));
+  document.getElementById('sel-category').addEventListener('change', ()=>{ activeCatTag = null; renderQuickTags(); applyFilters(); });
+  document.getElementById('sel-datatype').addEventListener('change', applyFilters);
+  document.getElementById('sel-tasktype').addEventListener('change', applyFilters);
+  document.getElementById('btn-reset').addEventListener('click', resetAll);
+  document.getElementById('btn-export').addEventListener('click', exportCSV);
+  document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click', switchTab));
+  document.querySelectorAll('#view-toggle button').forEach(b=>b.addEventListener('click', function(){
+    currentView = this.dataset.view;
+    document.querySelectorAll('#view-toggle button').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');
+    renderView();
+  }));
+}
+function resetAll() {
+  document.getElementById('search').value = '';
+  document.getElementById('sel-category').value = '';
+  document.getElementById('sel-datatype').value = '';
+  document.getElementById('sel-tasktype').value = '';
+  activeCatTag = null;
+  renderQuickTags();
+  applyFilters();
+}
+
+// ═══════════════════════════════════════
+//  FILTER LOGIC
+// ═══════════════════════════════════════
+function applyFilters() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const cat = document.getElementById('sel-category').value;
+  const dt = document.getElementById('sel-datatype').value;
+  const tt = document.getElementById('sel-tasktype').value;
+  filtered = ALL.filter(d => {
+    if (cat && d.category !== cat) return false;
+    if (dt && d.data_type !== dt) return false;
+    if (tt && !(d.task_type||'').split(';').map(s=>s.trim()).includes(tt)) return false;
+    if (q) {
+      const hay = [d.name,d.description,d.material_system,d.category,d.doi,d.scale,d.baseline,d.data_type,d.task_type].filter(Boolean).join(' ').toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  page = 1;
+  renderView();
+}
+
+// ═══════════════════════════════════════
+//  VIEW RENDERING
+// ═══════════════════════════════════════
+function renderView() {
+  document.getElementById('result-msg').innerHTML = `Showing <strong>${filtered.length}</strong> of ${ALL.length} datasets`;
+  if (currentView === 'cards') {
+    document.getElementById('card-list').style.display = '';
+    document.getElementById('table-wrap').style.display = 'none';
+    renderCards();
+  } else {
+    document.getElementById('card-list').style.display = 'none';
+    document.getElementById('table-wrap').style.display = '';
+    renderTable();
+  }
+}
+
+// ═══════════════════════════════════════
+//  CARD VIEW
+// ═══════════════════════════════════════
+function renderCards() {
+  const el = document.getElementById('card-list');
+  if (!filtered.length) {
+    el.innerHTML = '<div class="empty-state"><div class="e-icon">&#128236;</div><p>No datasets match your filters.</p></div>';
+    document.getElementById('pager').innerHTML = '';
+    return;
+  }
+  const totalPages = Math.ceil(filtered.length / PER_PAGE);
+  const start = (page-1)*PER_PAGE;
+  const slice = filtered.slice(start, start+PER_PAGE);
+  descStore._ = {};
+
+  el.innerHTML = slice.map((d,i)=>{
+    const idx = start+i;
+    const desc = d.description||'';
+    const short = desc.length>200 ? desc.slice(0,200)+'&hellip;' : desc;
+    const expandable = desc.length>200;
+    descStore._[idx] = {full:desc, short};
+    const sc = (d.score||0)>0 ? 'badge-score' : 'badge-score zero';
+    const sv = (d.score||0)>0 ? d.score : 0;
+    const st = (d.score||0)>0 ? `&#9733; ${Number(sv)===Math.floor(sv)?sv:sv.toFixed(1)}` : '&#9734; 0';
+    return `<div class="card">
+      <div class="card-top">
+        <div class="card-name">${normUrl(d.url) ? `<a href="${escHtml(normUrl(d.url))}" target="_blank" rel="noopener" title="${escHtml(d.url)}">${escHtml(d.name||'(untitled)')}</a>` : escHtml(d.name||'(untitled)')}</div>
+        <div class="card-badges">
+          <span class="badge badge-cat">${escHtml(d.category)}</span>
+          ${d.data_type ? `<span class="badge badge-dt">${escHtml(d.data_type)}</span>` : ''}
+          ${(d.task_type||'').split(';').map(s=>s.trim()).filter(t=>t && t!==d.category).map(t=>`<span class="badge badge-task" title="Task type">${escHtml(t)}</span>`).join('')}
+          ${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : ''}
+          <span class="badge ${sc}">${st}</span>
+                    ${d.agent_review ? `<button class="badge badge-agent" onclick="openReview(${idx},'agent')" title="AI evaluation scores">&#129488; AI Review</button>` : ''}
+                              ${d.expert_review ? `<button class="badge badge-expert" onclick="openReview(${idx},'expert')" title="Expert evaluation scores">&#128100; Expert</button>` : ''}
+          ${(d.citations&&d.citations.length) ? `<button class="badge" style="background:#e2e8f0;color:#475569;cursor:pointer" onclick="openCitations(${idx})" title="View papers citing/using this dataset">&#128218; ${d.citations.length} cite</button>` : ''}
+        </div>
+      </div>
+      <div class="card-desc" id="dsc-${idx}">${short}</div>
+      ${expandable ? `<button class="card-expand" onclick="toggleDesc(${idx})">&#9654; Show more</button>` : ''}
+      <div class="card-foot">
+        ${d.url ? (normUrl(d.url) ? `<span>&#128279; <a href="${escHtml(normUrl(d.url))}" target="_blank" rel="noopener" class="url-link">${escHtml(d.url)}</a></span>` : `<span style="color:var(--text3)">${escHtml(d.url)}</span>`) : ''}
+        ${d.doi ? `<span class="sep">&middot;</span><span>DOI: ${escHtml(d.doi)}</span>` : ''}
+        ${d.scale ? `<span class="sep">&middot;</span><span>${escHtml(d.scale).slice(0,120)}</span>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  renderPager(totalPages);
+}
+
+function renderTable() {
+  const el = document.getElementById('table-wrap');
+  if (!filtered.length) {
+    el.innerHTML = '<div class="empty-state"><div class="e-icon">&#128236;</div><p>No datasets match your filters.</p></div>';
+    document.getElementById('pager').innerHTML = '';
+    return;
+  }
+  const totalPages = Math.ceil(filtered.length / PER_PAGE);
+  const start = (page-1)*PER_PAGE;
+  const slice = filtered.slice(start, start+PER_PAGE);
+
+  el.innerHTML = `<table class="table-view"><thead><tr>
+    <th>#</th><th>Name</th><th>Category</th><th>Data Type</th><th>Task Type</th><th>Year</th><th>Score</th><th>Description</th><th>URL</th><th>DOI</th>
+  </tr></thead><tbody>${slice.map((d,i)=>{
+    const sc = (d.score||0)>0 ? `&#9733; ${d.score}` : '&#9734; 0';
+    return `<tr>
+      <td style="color:var(--text3)">${start+i+1}</td>
+      <td class="td-name">${normUrl(d.url) ? `<a href="${escHtml(normUrl(d.url))}" target="_blank" rel="noopener">${escHtml(d.name||'')}</a>` : escHtml(d.name||'')}</td>
+      <td><span class="badge badge-cat">${escHtml(d.category)}</span></td>
+      <td>${d.data_type ? `<span class="badge badge-dt">${escHtml(d.data_type)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
+      <td>${d.task_type ? `<span class="badge badge-task">${escHtml(d.task_type)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
+      <td>${d.year ? `<span class="badge badge-year">${escHtml(d.year)}</span>` : '<span style="color:var(--text3)">&mdash;</span>'}</td>
+      <td style="font-weight:600;color:${(d.score||0)>0?'var(--emerald)':'var(--text3)'}">${sc}${d.agent_review ? ` <button class="badge badge-agent" style="font-size:10px;padding:2px 7px" onclick="openReview(${start+i},'agent')">&#129488;</button>` : ''}${d.expert_review ? ` <button class="badge badge-expert" style="font-size:10px;padding:2px 7px" onclick="openReview(${start+i},'expert')">&#128100;</button>` : ''}</td>
+      <td class="td-desc">${escHtml((d.description||'').slice(0,150))}${(d.description||'').length>150?'&hellip;':''}</td>
+      <td class="td-url">${normUrl(d.url) ? `<a href="${escHtml(normUrl(d.url))}" target="_blank" rel="noopener">link</a>` : (d.url ? `<span style="color:var(--text3);font-size:11px">${escHtml(d.url.slice(0,30))}</span>` : '')}</td>
+      <td style="font-size:12px">${escHtml((d.doi||'').slice(0,40))}</td>
+    </tr>`;
+  }).join('')}</tbody></table>`;
+
+  renderPager(totalPages);
+}
+
+function renderPager(totalPages) {
+  const pg = document.getElementById('pager');
+  if (totalPages<=1) { pg.innerHTML=''; return; }
+  let h = `<button ${page===1?'disabled':''} onclick="goPage(${page-1})">&lsaquo; Prev</button>`;
+  for (let p=1; p<=totalPages; p++) {
+    if (p===1||p===totalPages||(p>=page-2&&p<=page+2)) {
+      h += `<button class="${p===page?'cur':''}" onclick="goPage(${p})">${p}</button>`;
+    } else if (p===page-3||p===page+3) {
+      h += `<span style="padding:0 4px;color:var(--text3)">&hellip;</span>`;
+    }
+  }
+  h += `<button ${page===totalPages?'disabled':''} onclick="goPage(${page+1})">Next &rsaquo;</button>`;
+  h += `<span class="pg-info">Page ${page} / ${totalPages}</span>`;
+  pg.innerHTML = h;
+}
+
+function goPage(p) { page = p; renderView(); window.scrollTo({top:0,behavior:'smooth'}); }
+function toggleDesc(idx) {
+  const el = document.getElementById('dsc-'+idx);
+  const btn = el.nextElementSibling;
+  const s = descStore._[idx];
+  if (!el||!btn||!s) return;
+  if (el.classList.contains('open')) { el.innerHTML=s.short; el.classList.remove('open'); btn.innerHTML='&#9654; Show more'; }
+  else { el.innerHTML=s.full; el.classList.add('open'); btn.innerHTML='&#9650; Show less'; }
+}
+
+// ═══════════════════════════════════════
+//  EXPORT CSV
+// ═══════════════════════════════════════
+function exportCSV() {
+  const cols = ['name','category','data_type','task_type','year','score','url','doi','description','material_system','scale','usage','baseline'];
+  const header = cols.join(',');
+  const rows = filtered.map(d=>cols.map(c=>{
+    let v = (d[c]||'').toString();
+    if (v.includes(',')||v.includes('"')||v.includes('\n')) v = '"'+v.replace(/"/g,'""')+'"';
+    return v;
+  }).join(','));
+  const csv = [header, ...rows].join('\n');
+  const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = `materials-benchmarks-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click(); URL.revokeObjectURL(url);
+}
+
+// ═══════════════════════════════════════
+//  STATISTICS
+// ═══════════════════════════════════════
+function renderStats() {
+  renderBarChart('stat-cat', countBy(ALL, 'category'));
+  renderBarChart('stat-dt', countBy(ALL.filter(d=>d.data_type), 'data_type'));
+  renderBarChart('stat-tt', countBy(ALL, 'task_type'));
+  renderHeatmap();
+  renderCompleteness();
+  renderTimeline();
+  renderBubbleMap();
+}
+function countBy(arr, key) {
+  const m = {};
+  arr.forEach(d=>{ const v=d[key]; if(v){ m[v]=(m[v]||0)+1; } });
+  return Object.entries(m).sort((a,b)=>b[1]-a[1]);
+}
+function renderBarChart(elId, entries) {
+  const max = Math.max(...entries.map(e=>e[1]), 1);
+  document.getElementById(elId).innerHTML = entries.map(([k,v])=>`<div class="stat-bar-row"><span class="lbl" title="${escHtml(k)}">${escHtml(k)}</span><div class="bar-track"><div class="bar-fill" style="width:${(v/max*100).toFixed(0)}%"></div></div><span class="val">${v}</span></div>`).join('');
+}
+
+// Heatmap: Category × Task Type
+function renderHeatmap() {
+  const cats = [...new Set(ALL.map(d=>d.category))].sort();
+  const tasks = [...new Set(ALL.map(d=>d.task_type).filter(Boolean))].sort();
+  const matrix = {};
+  cats.forEach(c=>{ matrix[c]={}; tasks.forEach(t=>{ matrix[c][t]=0; }); });
+  ALL.forEach(d=>{ if (d.task_type&&matrix[d.category]) matrix[d.category][d.task_type]=(matrix[d.category][d.task_type]||0)+1; });
+  const maxVal = Math.max(1, ...cats.flatMap(c=>tasks.map(t=>matrix[c][t])));
+
+  function hmClass(v) {
+    if (v===0) return 'hm-0';
+    const pct = v/maxVal;
+    if (pct<=0.15) return 'hm-1';
+    if (pct<=0.3) return 'hm-2';
+    if (pct<=0.5) return 'hm-3';
+    if (pct<=0.7) return 'hm-4';
+    if (pct<=0.85) return 'hm-5';
+    return 'hm-6';
+  }
+
+  let h = '<table class="heatmap-table"><thead><tr><th></th>';
+  tasks.forEach(t=>{ h += `<th>${escHtml(t)}</th>`; });
+  h += '<th style="color:var(--text3)">Total</th></tr></thead><tbody>';
+  let colTotals = {}; tasks.forEach(t=>{ colTotals[t]=0; });
+  cats.forEach(c=>{
+    h += `<tr><td class="hm-row-label">${escHtml(c)}</td>`;
+    let rowTotal = 0;
+    tasks.forEach(t=>{
+      const v = matrix[c][t];
+      rowTotal += v; colTotals[t] += v;
+      h += `<td><span class="hm-cell ${hmClass(v)}" title="${c} / ${t}: ${v}">${v||''}</span></td>`;
+    });
+    h += `<td style="font-weight:700;color:var(--text);font-size:13px">${rowTotal}</td></tr>`;
+  });
+  // Totals row
+  h += '<tr style="border-top:2px solid var(--border)"><td class="hm-row-label" style="font-weight:700;color:var(--text)">Total</td>';
+  let grandTotal = 0;
+  tasks.forEach(t=>{ grandTotal+=colTotals[t]; h+=`<td style="font-weight:700;color:var(--text);font-size:13px;padding:6px 0">${colTotals[t]}</td>`; });
+  h += `<td style="font-weight:700;color:var(--primary);font-size:14px">${grandTotal}</td></tr>`;
+  h += '</tbody></table>';
+  document.getElementById('heatmap').innerHTML = h;
+}
+
+// Data completeness
+function renderCompleteness() {
+  const fields = [
+    {key:'name', label:'Name'},
+    {key:'url', label:'URL'},
+    {key:'year', label:'Year'},
+    {key:'description', label:'Description'},
+    {key:'data_type', label:'Data Type'},
+    {key:'task_type', label:'Task Type'},
+    {key:'material_system', label:'Material'},
+    {key:'doi', label:'DOI'},
+    {key:'scale', label:'Scale'},
+    {key:'score', label:'Score'},
+  ];
+  const total = ALL.length;
+  function barColor(pct) {
+    if (pct>=95) return 'var(--emerald)';
+    if (pct>=70) return 'var(--amber)';
+    return 'var(--rose)';
+  }
+  document.getElementById('completeness').innerHTML = fields.map(f=>{
+    const cnt = ALL.filter(d=>!!d[f.key]).length;
+    const pct = Math.round(cnt/total*100);
+    return `<div class="comp-item">
+      <span class="comp-label">${f.label}</span>
+      <span class="comp-bar-track"><span class="comp-bar-fill" style="width:${pct}%;background:${barColor(pct)}"></span></span>
+      <span class="comp-pct">${pct}%</span>
+    </div>`;
+  }).join('');
+}
+
+// Timeline
+function renderTimeline() {
+  const yrMap = {};
+  ALL.forEach(d=>{ if(d.year&&/^\d{4}$/.test(d.year)) yrMap[d.year]=(yrMap[d.year]||0)+1; });
+  const yrs = Object.keys(yrMap).sort();
+  if (!yrs.length) { document.getElementById('timeline').innerHTML='<span style="color:var(--text3);font-size:13px">No year data available.</span>'; return; }
+  const max = Math.max(...Object.values(yrMap),1);
+  document.getElementById('timeline').innerHTML = yrs.map(y=>{
+    const h = Math.max(4, (yrMap[y]/max*200).toFixed(0));
+    return `<div class="tl-bar-wrap"><span class="tl-val">${yrMap[y]}</span><div class="tl-bar" style="height:${h}px" title="${y}: ${yrMap[y]} datasets"></div><span class="tl-year">${y}</span></div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════
+//  DISCOVERY BUBBLE MAP (mirrors summary/make_bubble_discovery.py)
+// ═══════════════════════════════════════
+const BUB_CATS = ['Property Prediction','Generation & Inverse Design','Sequential Optimization','Benchmarks & Evaluation','Workflow & Data'];
+const BUB_SHORT = ['PropPred','Gen/Inv','SeqOpt','Bench','Workflow'];
+const BUB_COL = {'Property Prediction':'#3E7CBF','Generation & Inverse Design':'#2E9E7E','Sequential Optimization':'#EE7E3F','Benchmarks & Evaluation':'#7B5EA7','Workflow & Data':'#D9534F'};
+const BUB_DT = ['Simulated','Hybrid','Experimental'];
+const BUB_DT_SHORT = ['Sim','Hyb','Exp'];
+
+function bubFinalDims(d) {
+  const ag=(d.agent_review||{}).scores||{}, ex=(d.expert_review||{}).scores||{};
+  if (!Object.keys(ag).length && !Object.keys(ex).length) return null;
+  const fd={};
+  ['O','A','I','G','U','P','E','R','C'].forEach(k=>{
+    const v=[ag[k],ex[k]].filter(x=>typeof x==='number');
+    fd[k]=v.length?v.reduce((a,b)=>a+b,0)/v.length:0;
+  });
+  return fd;
+}
+function bubMaxNum(s) {
+  if (!s) return null;
+  const m=String(s).match(/\d[\d,]*/g)||[];
+  const v=m.map(t=>parseInt(t.replace(/,/g,''),10)).filter(x=>x>=10);
+  return v.length?Math.max(...v):null;
+}
+function bubShade(hex,t) {
+  const c=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255);
+  const out=c.map(v=>{const light=v*0.45+0.55, dark=v*0.8; return light*(1-t)+dark*t;});
+  return `rgb(${out.map(v=>Math.round(v*255)).join(',')})`;
+}
+function bubGrey(t) {
+  const L=[216,220,224],D=[51,55,59];
+  return `rgb(${L.map((v,i)=>Math.round(v*(1-t)+D[i]*t)).join(',')})`;
+}
+function bubRadius(log) {
+  const lp=Math.min(Math.max(log,1),8);
+  return (4+18*(lp-1)/7)*1.6;
+}
+function bubRng(seed) {
+  let a=seed;
+  return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};
+}
+
+function renderBubbleMap() {
+  const pts=[];
+  ALL.forEach(d=>{
+    const fd=bubFinalDims(d); if(!fd) return;
+    if(!BUB_DT.includes(d.data_type)) return;
+    const x=(fd.O+fd.A+fd.I+fd.G+fd.U+fd.P)/6, y=(fd.E+fd.R+fd.C)/3;
+    const mn=bubMaxNum(d.scale), log=mn?Math.log10(mn):2.8;
+    pts.push({d,x,y,t:BUB_DT.indexOf(d.data_type)/2,log});
+  });
+  const wrap=document.getElementById('bubble-map');
+  if (!pts.length) { wrap.innerHTML='<span style="color:var(--text3);font-size:13px">No scored datasets available.</span>'; return; }
+  const W=1000,H=620,ML=70,MR=30,MT=30,MB=70,pw=W-ML-MR,ph=H-MT-MB;
+  const X0=-0.25,X1=4.25,Y0=-0.2,Y1=2.2;
+  const sx=v=>ML+(v-X0)/(X1-X0)*pw, sy=v=>MT+ph-(v-Y0)/(Y1-Y0)*ph;
+  const rng=bubRng(7);
+  pts.forEach(p=>{p.jx=(rng()*2-1)*0.07;p.jy=(rng()*2-1)*0.05;});
+  pts.sort((a,b)=>b.log-a.log); // large bubbles first so small ones stay clickable on top
+  const ax1=sx(0.1),ay1=sy(0.05),ax2=sx(3.9),ay2=sy(1.95);
+  const ang=Math.atan2(ay2-ay1,ax2-ax1)*180/Math.PI;
+  const cx=sx(1.9),cy=sy(0.95)-14;
+  let s=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Discovery landscape bubble chart">`;
+  s+=`<defs><marker id="bubArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#0f172a"/></marker><marker id="bubArrowGrey" markerWidth="6" markerHeight="6" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#C9CED4"/></marker></defs>`;
+  s+=`<rect x="0" y="0" width="${W}" height="${H}" fill="#F7F9FB" rx="10"/>`;
+  s+=`<line x1="${ax1}" y1="${ay1}" x2="${ax2}" y2="${ay2}" stroke="#C9CED4" stroke-width="10" opacity="0.8" marker-end="url(#bubArrowGrey)"/>`;
+  s+=`<text x="${cx}" y="${cy}" transform="rotate(${ang.toFixed(1)} ${cx} ${cy})" text-anchor="middle" font-size="17" font-weight="700" font-style="italic" fill="#0f172a" font-family="Georgia,serif">From static prediction to integrated real-world discovery</text>`;
+  s+=`<line x1="${sx(X0)}" y1="${sy(Y0)}" x2="${sx(X1)}" y2="${sy(Y0)}" stroke="#0f172a" stroke-width="2.5" marker-end="url(#bubArrow)"/>`;
+  s+=`<line x1="${sx(X0)}" y1="${sy(Y0)}" x2="${sx(X0)}" y2="${sy(Y1)}" stroke="#0f172a" stroke-width="2.5" marker-end="url(#bubArrow)"/>`;
+  s+=`<text x="${ML+pw/2}" y="${H-16}" text-anchor="middle" font-size="18" font-weight="700" font-style="italic" fill="#0f172a" font-family="Georgia,serif">Task-intelligence Requirements</text>`;
+  s+=`<text x="22" y="${MT+ph/2}" transform="rotate(-90 22 ${MT+ph/2})" text-anchor="middle" font-size="18" font-weight="700" font-style="italic" fill="#0f172a" font-family="Georgia,serif">Real-world Discovery Effectiveness</text>`;
+  pts.forEach((p,i)=>{
+    const r=bubRadius(p.log), px=sx(p.x+p.jx), py=sy(p.y+p.jy);
+    const col=bubShade(BUB_COL[p.d.category]||'#94a3b8',p.t);
+    s+=`<circle class="bub" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${r.toFixed(1)}" fill="${col}" fill-opacity="0.85" data-i="${i}" style="cursor:pointer"/>`;
+  });
+  s+='</svg>';
+  // legend
+  let lg='<div class="bub-legend">';
+  lg+='<div class="bub-lg-group"><span class="bub-lg-title">Data Type</span>'+BUB_DT.map((k,i)=>`<span class="bub-lg-item"><span class="bub-dot" style="background:${bubGrey(i/2)}"></span>${BUB_DT_SHORT[i]}</span>`).join('')+'</div>';
+  lg+='<div class="bub-lg-group"><span class="bub-lg-title">Data Size</span>'+[2,4,6,8].map(v=>{const rr=(bubRadius(v)*0.7).toFixed(1);return `<span class="bub-lg-item"><span class="bub-dot" style="width:${rr}px;height:${rr}px;background:${bubGrey(0.5)}"></span>1e${v}</span>`;}).join('')+'</div>';
+  lg+='<div class="bub-lg-group"><span class="bub-lg-title">Task Categories</span>'+BUB_CATS.map((c,i)=>`<span class="bub-lg-item"><span class="bub-dot" style="background:${BUB_COL[c]}"></span>${BUB_SHORT[i]}</span>`).join('')+'</div>';
+  lg+='</div>';
+  wrap.innerHTML=s+lg;
+  // tooltip
+  let tip=document.getElementById('bubble-tip');
+  if(!tip){tip=document.createElement('div');tip.id='bubble-tip';tip.className='bubble-tip';document.body.appendChild(tip);}
+  wrap.querySelectorAll('circle.bub').forEach(c=>{
+    const p=pts[+c.dataset.i], d=p.d;
+    c.addEventListener('mousemove',e=>{
+      tip.innerHTML=`<div class="bt-name">${escHtml(d.name)}</div>`
+        +`<div class="bt-row">${escHtml(d.category)}${d.year?' &middot; '+escHtml(String(d.year)):''}</div>`
+        +`<div class="bt-row">Composite <b>${(d.score!=null?d.score.toFixed(2):'--')}</b> &middot; X <b>${p.x.toFixed(2)}</b> &middot; Y <b>${p.y.toFixed(2)}</b></div>`
+        +`<div class="bt-row">${escHtml(d.data_type)}${d.scale?' &middot; '+escHtml(String(d.scale).slice(0,60)):''}</div>`
+        +`<div class="bt-row" style="margin-top:3px;color:#94a3b8">Click to open evaluation</div>`;
+      tip.style.display='block';
+      const tw=tip.offsetWidth,th=tip.offsetHeight;
+      tip.style.left=Math.min(e.clientX+14,window.innerWidth-tw-8)+'px';
+      tip.style.top=Math.min(e.clientY+14,window.innerHeight-th-8)+'px';
+    });
+    c.addEventListener('mouseleave',()=>{tip.style.display='none';});
+    c.addEventListener('click',()=>{
+      tip.style.display='none';
+      let i=filtered.indexOf(d);
+      if(i<0){resetAll();i=filtered.indexOf(d);}
+      if(i>=0&&(d.agent_review||d.expert_review))openReview(i,d.agent_review?'agent':'expert');
+    });
+  });
+}
+
+// ═══════════════════════════════════════
+//  TABS
+// ═══════════════════════════════════════
+function switchTab() {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  this.classList.add('active');
+  document.getElementById('panel-'+this.dataset.tab).classList.add('active');
+  if (this.dataset.tab==='stats') renderStats();
+}
+
+// ═══════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════
+function escHtml(s) { if(!s) return ''; const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+function escJs(s) { return (s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"'); }
+function normUrl(u) {
+  u = (u||'').trim();
+  if (!u) return '';
+  if (/^https?:\/\//i.test(u)) return u;
+  if (/^10\.\d{4,9}\//.test(u)) return 'https://doi.org/'+u;
+  if (/^www\./i.test(u)) return 'https://'+u;
+  if (!/\s/.test(u) && /^[a-z0-9.-]+\.[a-z]{2,}(\/\S*)?$/i.test(u)) return 'https://'+u;
+  return '';
+}
+function debounce(fn,ms) { let t; return function(...a){ clearTimeout(t); t=setTimeout(()=>fn.apply(this,a),ms); }; }
+
+// ═══════════════════════════════════════
+//  AGENT REVIEW MODAL
+// ═══════════════════════════════════════
+const X_DIMS = [
+  {code:'O', name:'Output & Decision Role', weight:'25%'},
+  {code:'A', name:'Adaptivity & Sequentiality', weight:'20%'},
+  {code:'I', name:'Workflow Integration', weight:'20%'},
+  {code:'G', name:'Goal & Constraint Handling', weight:'15%'},
+  {code:'U', name:'Uncertainty & Failure Handling', weight:'10%'},
+  {code:'P', name:'Autonomy & Actionability', weight:'10%'},
+];
+const Y_DIMS = [
+  {code:'E', name:'Dependence on Experimental Results', levels:['No real experimental results; evaluation uses only simulation or proxy labels.','Experimental results used for training, calibration, or few-shot examples, but do not constitute formal experimental testing.','Real experimental results serve as formal testing; performance can be independently evaluated on experimental data.']},
+  {code:'R', name:'Alignment with Experimental Needs', levels:['Data provides only idealized properties or proxy labels, without connection to a specific experimental use case.','Data explicitly targets an experimental need but does not cover key constraints required to fulfill it.','Data and candidate scope support a well-defined experimental decision, including relevant objectives and key constraints (or guaranteed by design).']},
+  {code:'C', name:'Completeness of Key Experimental Conditions', levels:['Only material identity and results are provided; conditions needed to interpret results are missing.','Some key conditions are provided, but missing ones affect interpretation or comparison.','Key preparation, processing, and measurement conditions required by the task are provided, traceable to individual samples or standardized protocols.']},
+];
+
+let _reviewIdx = 0, _reviewType = 'agent';
+
+function openReview(idx, type) {
+  _reviewIdx = idx;
+  _reviewType = type || 'agent';
+  renderReview();
+  document.getElementById('review-modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  // Highlight active tab
+  const ab = document.getElementById('btn-agent-tab');
+  const eb = document.getElementById('btn-expert-tab');
+  // Hide expert tab if no expert review
+  const ds = filtered[_reviewIdx];
+  if (ds && ds.expert_review) { eb.style.display = ''; }
+  else { eb.style.display = 'none'; _reviewType = 'agent'; }
+  if (_reviewType === 'agent') { ab.style.opacity='1'; ab.style.boxShadow='0 0 0 2px var(--amber)'; eb.style.opacity='.5'; eb.style.boxShadow='none'; }
+  else { eb.style.opacity='1'; eb.style.boxShadow='0 0 0 2px var(--sky)'; ab.style.opacity='.5'; ab.style.boxShadow='none'; }
+}
+
+function switchReviewer(type) {
+  _reviewType = type;
+  renderReview();
+  const ab = document.getElementById('btn-agent-tab');
+  const eb = document.getElementById('btn-expert-tab');
+  if (type === 'agent') { ab.style.opacity='1'; ab.style.boxShadow='0 0 0 2px var(--amber)'; eb.style.opacity='.5'; eb.style.boxShadow='none'; }
+  else { eb.style.opacity='1'; eb.style.boxShadow='0 0 0 2px var(--sky)'; ab.style.opacity='.5'; ab.style.boxShadow='none'; }
+}
+
+function renderReview() {
+  const d = filtered[_reviewIdx];
+  if (!d) return;
+  ['modal-sec-x','modal-divider','modal-sec-y','modal-line-paperid','modal-line-proponent'].forEach(id=>{const el=document.getElementById(id); if(el) el.style.display='';});
+  const tb=document.getElementById('modal-tabs'); if(tb) tb.style.display='flex';
+  const review = _reviewType === 'expert' ? d.expert_review : d.agent_review;
+  if (!review) return;
+  const sc = review.scores || {};
+  const tag = _reviewType === 'expert' ? 'Expert Review' : 'Agent Review';
+
+  document.getElementById('modal-title').textContent = tag + ' — '+(d.name||'(untitled)');
+  document.getElementById('modal-reviewer').textContent = tag;
+  document.getElementById('modal-reviewer').className = _reviewType === 'expert' ? 'm-badge' : 'm-badge';
+  document.getElementById('modal-reviewer').style.background = _reviewType === 'expert' ? 'var(--sky-light)' : 'var(--amber-light)';
+  document.getElementById('modal-reviewer').style.color = _reviewType === 'expert' ? 'var(--sky)' : 'var(--amber)';
+  document.getElementById('modal-dsname').textContent = d.name||'';
+  document.getElementById('modal-paperid').textContent = review.paper_id||'N/A';
+  document.getElementById('modal-proponent').textContent = d.proposing_paper || d.doi || 'N/A';
+  document.getElementById('modal-citations').innerHTML = citationLinks(d);
+  document.getElementById('modal-footer-id').textContent = 'Paper ID: '+(review.paper_id||'N/A');
+
+  // X-axis
+  let xHtml = '';
+  X_DIMS.forEach(dim => {
+    let v = sc[dim.code];
+    let pending = false, display = '?';
+    if (v===undefined||v===null||v==='') { display='?'; pending=true; }
+    else if (typeof v==='string'&&v.includes('pending')) { display='?'; pending=true; }
+    else if (typeof v==='string'&&v.startsWith('~')) { display=v; pending=true; }
+    else if (typeof v==='number') { display = Number(v)===Math.floor(v) ? v : v.toFixed(1); }
+    else { display=v; }
+    const pct = (typeof v==='number'&&v>=0&&v<=4) ? (v/4*100) : 0;
+    const lvl = (typeof v==='number') ? 'l'+Math.min(Math.floor(v),4) : 'l0';
+    xHtml += `<div class="x-row" style="opacity:${pending?'.4':'1'}">
+      <span class="x-code">${dim.code}</span>
+      <span class="x-name" title="${dim.name}">${dim.name}</span>
+      <span class="x-bar-wrap"><span class="x-bar-fill ${lvl}" style="width:${pct}%"></span></span>
+      <span class="x-score">${display}</span>
+      <span class="x-weight">${dim.weight}</span>
+    </div>`;
+  });
+
+  // Y-axis
+  let yHtml = '';
+  Y_DIMS.forEach(dim => {
+    let v = sc[dim.code];
+    let pending = false, scoreVal = -1;
+    if (v===undefined||v===null||v==='') { pending=true; }
+    else if (typeof v==='string'&&v.includes('pending')) { pending=true; }
+    else if (typeof v==='string'&&v.startsWith('~')) { scoreVal = parseInt(v.slice(1))||-1; pending=true; }
+    else if (typeof v==='number') { scoreVal = v; }
+    else { pending=true; }
+
+    let dots = '';
+    for (let i=0; i<3; i++) { dots += `<span class="y-dot${i<=scoreVal?' on':''}"></span>`; }
+    const levelText = (scoreVal>=0&&scoreVal<=2) ? dim.levels[scoreVal] : '';
+    yHtml += `<div class="y-row${pending?' pending':''}">
+      <span class="y-code">${dim.code}</span>
+      <div class="y-info">
+        <div class="y-name">${dim.name}</div>
+        <div class="y-dots">${dots}</div>
+        <div class="y-level">${levelText}</div>
+      </div>
+    </div>`;
+  });
+
+  document.getElementById('modal-x').innerHTML = xHtml;
+  document.getElementById('modal-y').innerHTML = yHtml;
+
+  const rl = document.getElementById('modal-report-link');
+  if (review.report_url && _reviewType === 'agent') { rl.href = review.report_url; rl.style.display = ''; }
+  else { rl.style.display = 'none'; }
+}
+function citationLinks(d) {
+  let citHtml = '';
+  (d.citations||[]).forEach(c => {
+    const sv = (c.score!=null) ? `&#9733; ${c.score}` : '&#9734; unscored';
+    const col = (c.score!=null) ? 'var(--emerald)' : 'var(--text3)';
+    const doi = (c.doi||'').trim();
+    const href = doi ? (/^https?:\/\//i.test(doi) ? doi : 'https://doi.org/'+doi)
+                     : 'https://scholar.google.com/scholar?q='+encodeURIComponent(c.name||'');
+    const nm = `<a href="${escHtml(href)}" target="_blank" rel="noopener" style="color:var(--sky);text-decoration:none" title="Open paper: ${escHtml(href)}">${escHtml(c.name||'(untitled)')} &#8599;</a>`;
+    citHtml += `<div style="display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px dashed var(--border);font-size:12px">
+      <span style="color:var(--text2)">${nm}</span>
+      <span style="color:${col};font-weight:600;white-space:nowrap">${sv}</span></div>`;
+  });
+  return citHtml || '<div style="font-size:12px;color:var(--text3);font-style:italic">No citing papers recorded.</div>';
+}
+
+function openCitations(idx) {
+  const d = filtered[idx];
+  if (!d) return;
+  _reviewIdx = idx;
+  const show = (id,on)=>{const el=document.getElementById(id); if(el) el.style.display=on?'':'none';};
+  const ab = document.getElementById('btn-agent-tab');
+  const eb = document.getElementById('btn-expert-tab');
+  if (d.agent_review || d.expert_review) {
+    _reviewType = d.agent_review ? 'agent' : 'expert';
+    renderReview();
+    if (d.expert_review) { eb.style.display=''; } else { eb.style.display='none'; }
+    if (_reviewType==='agent') { ab.style.opacity='1'; ab.style.boxShadow='0 0 0 2px var(--amber)'; eb.style.opacity='.5'; eb.style.boxShadow='none'; }
+    else { eb.style.opacity='1'; eb.style.boxShadow='0 0 0 2px var(--sky)'; ab.style.opacity='.5'; ab.style.boxShadow='none'; }
+  } else {
+    document.getElementById('modal-title').textContent = 'Citations — '+(d.name||'(untitled)');
+    const rv = document.getElementById('modal-reviewer');
+    rv.textContent='Citations'; rv.style.background='#e2e8f0'; rv.style.color='#475569';
+    document.getElementById('modal-dsname').textContent = d.name||'';
+    show('modal-tabs',false); show('modal-sec-x',false); show('modal-divider',false); show('modal-sec-y',false);
+    show('modal-line-paperid',false); show('modal-line-proponent',false);
+    document.getElementById('modal-citations').innerHTML = citationLinks(d);
+    document.getElementById('modal-footer-id').textContent = '';
+    document.getElementById('modal-report-link').style.display='none';
+  }
+  document.getElementById('review-modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  setTimeout(()=>{const el=document.getElementById('modal-citations'); if(el) el.scrollIntoView({behavior:'smooth',block:'center'});},60);
+}
+
+function closeReview() {
+  document.getElementById('review-modal').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e=>{ if (e.key==='Escape') closeReview(); });
+document.getElementById('review-modal').addEventListener('click', e=>{
+  if (e.target===document.getElementById('review-modal')) closeReview();
+});
+
+init();
+</script>
+</body>
+</html>
