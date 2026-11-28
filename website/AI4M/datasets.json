@@ -3979,33 +3979,33 @@
     "task_type": "Generation & Inverse Design",
     "expert_review": {
       "scores": {
-        "O": 0,
+        "O": 2,
         "A": 0,
-        "I": 0,
+        "I": 2,
         "G": 0,
         "U": 0,
         "P": 0,
-        "E": 0,
-        "R": 0,
+        "E": 1,
+        "R": 1,
         "C": 0
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
     "review": {
       "scores": {
-        "O": 0,
+        "O": 2,
         "A": 0,
-        "I": 0,
+        "I": 2,
         "G": 0,
         "U": 0,
         "P": 0,
-        "E": 0,
-        "R": 0,
+        "E": 1,
+        "R": 1,
         "C": 0
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
-    "score": 0.0,
+    "score": 0.67,
     "score_source": "expert"
   },
   {
@@ -4036,7 +4036,7 @@
         "R": 1,
         "C": 1
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
     "review": {
       "scores": {
@@ -4050,7 +4050,7 @@
         "R": 1,
         "C": 1
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
     "score_source": "expert",
     "proposing_paper": "COD(Crystallography Open Database)",
@@ -4086,7 +4086,7 @@
         "R": 0,
         "C": 0
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
     "review": {
       "scores": {
@@ -4100,7 +4100,7 @@
         "R": 0,
         "C": 0
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
     "score": 0.33,
     "score_source": "expert"
@@ -4658,33 +4658,33 @@
     "task_type": "Generation & Inverse Design",
     "expert_review": {
       "scores": {
-        "O": 0,
+        "O": 2,
         "A": 0,
-        "I": 0,
+        "I": 1,
         "G": 0,
         "U": 0,
         "P": 0,
-        "E": 0,
-        "R": 0,
+        "E": 1,
+        "R": 1,
         "C": 0
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
     "review": {
       "scores": {
-        "O": 0,
+        "O": 2,
         "A": 0,
-        "I": 0,
+        "I": 1,
         "G": 0,
         "U": 0,
         "P": 0,
-        "E": 0,
-        "R": 0,
+        "E": 1,
+        "R": 1,
         "C": 0
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
-    "score": 0.0,
+    "score": 0.56,
     "score_source": "expert"
   },
   {
@@ -5595,7 +5595,37 @@
         "has_review": true
       }
     ],
-    "task_type": "Workflow & Data; Sequential Optimization"
+    "task_type": "Workflow & Data; Sequential Optimization",
+    "expert_review": {
+      "scores": {
+        "O": 2,
+        "A": 0,
+        "I": 2,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 2,
+        "R": 2,
+        "C": 1
+      },
+      "source": "expert_supplement"
+    },
+    "review": {
+      "scores": {
+        "O": 2,
+        "A": 0,
+        "I": 2,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 2,
+        "R": 2,
+        "C": 1
+      },
+      "source": "expert_supplement"
+    },
+    "score": 1.0,
+    "score_source": "expert"
   },
   {
     "id": "obliex",
@@ -5623,7 +5653,37 @@
         "has_review": true
       }
     ],
-    "task_type": "Workflow & Data"
+    "task_type": "Workflow & Data",
+    "expert_review": {
+      "scores": {
+        "O": 1,
+        "A": 0,
+        "I": 2,
+        "G": 0,
+        "U": 1,
+        "P": 0,
+        "E": 2,
+        "R": 2,
+        "C": 1
+      },
+      "source": "expert_supplement"
+    },
+    "review": {
+      "scores": {
+        "O": 1,
+        "A": 0,
+        "I": 2,
+        "G": 0,
+        "U": 1,
+        "P": 0,
+        "E": 2,
+        "R": 2,
+        "C": 1
+      },
+      "source": "expert_supplement"
+    },
+    "score": 1.0,
+    "score_source": "expert"
   },
   {
     "id": "crystallography-open-database",
@@ -5642,7 +5702,37 @@
     "linked_papers": [],
     "proposing_paper": null,
     "citations": [],
-    "task_type": "Workflow & Data"
+    "task_type": "Workflow & Data",
+    "expert_review": {
+      "scores": {
+        "O": 0,
+        "A": 0,
+        "I": 0,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 1,
+        "R": 1,
+        "C": 1
+      },
+      "source": "expert_supplement"
+    },
+    "review": {
+      "scores": {
+        "O": 0,
+        "A": 0,
+        "I": 0,
+        "G": 0,
+        "U": 0,
+        "P": 0,
+        "E": 1,
+        "R": 1,
+        "C": 1
+      },
+      "source": "expert_supplement"
+    },
+    "score": 0.33,
+    "score_source": "expert"
   },
   {
     "id": "oqmd",
@@ -5734,33 +5824,33 @@
     "task_type": "Property Prediction",
     "expert_review": {
       "scores": {
-        "O": 0,
+        "O": 2,
         "A": 0,
-        "I": 0,
-        "G": 0,
-        "U": 0,
-        "P": 0,
-        "E": 0,
-        "R": 0,
-        "C": 0
+        "I": 3,
+        "G": 1,
+        "U": 1,
+        "P": 1,
+        "E": 2,
+        "R": 1,
+        "C": 1
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
     "review": {
       "scores": {
-        "O": 0,
+        "O": 2,
         "A": 0,
-        "I": 0,
-        "G": 0,
-        "U": 0,
-        "P": 0,
-        "E": 0,
-        "R": 0,
-        "C": 0
+        "I": 3,
+        "G": 1,
+        "U": 1,
+        "P": 1,
+        "E": 2,
+        "R": 1,
+        "C": 1
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
-    "score": 0.0,
+    "score": 1.33,
     "score_source": "expert"
   },
   {
@@ -7006,7 +7096,7 @@
         "R": 0,
         "C": 0
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
     "review": {
       "scores": {
@@ -7020,7 +7110,7 @@
         "R": 0,
         "C": 0
       },
-      "source": "expert_7z"
+      "source": "expert_supplement"
     },
     "score_source": "expert",
     "proposing_paper": "QM9",
